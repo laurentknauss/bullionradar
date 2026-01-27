@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>labonnepiece.fr - Comparateur de pieces d'or et d'argent d'investissement</title>
+  <meta name="description" content="Le guide francophone pour choisir la bonne piece d'or ou d'argent d'investissement. Comparatifs, fiscalite, liquidite.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #BE943C;
+      --bg-clair: #D4B44A;
+      --bg-sombre: #A8892A;
+      --or-metallique: #D4AF37;
+      --or-standard: #FFD700;
+      --or-vieilli: #DAA520;
+      --or-flat: #F1C40F;
+      --argent-fonce: #5A5A5A;
+      --argent: #787878;
+      --argent-clair: #969696;
+      --noir: #1a1a1a;
+      --noir-doux: #2a2a2a;
+      --texte: #1a1a1a;
+      --texte-secondaire: #3d3520;
+      --carte-bg: rgba(0, 0, 0, 0.08);
+      --carte-bordure: rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--texte);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Nav */
+    .topnav {
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--noir);
+    }
+
+    /* Hero */
+    .hero {
+      width: 100%;
+    }
+
+    .hero-image-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hero-content {
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--noir);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-content .tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--texte-secondaire);
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* Text color accents */
+    .text-or {
+      color: #8B6914;
+      font-weight: 700;
+    }
+
+    .text-argent {
+      color: var(--argent-fonce);
+      font-weight: 700;
+    }
+
+    /* Ornamental separator */
+    .separator {
+      text-align: center;
+      margin: 2.5rem auto;
+      font-size: 1.5rem;
+      color: var(--bg-sombre);
+      letter-spacing: 0.5rem;
+    }
+
+    .separator::before {
+      content: '\2014\2009\25C6\2009\2014';
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--noir);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--texte-secondaire);
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    /* Features */
+    .features {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--carte-bg);
+      border: 1px solid var(--carte-bordure);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(0, 0, 0, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card.silver h3 {
+      color: var(--argent-fonce);
+    }
+
+    .feature-card.silver {
+      border-color: rgba(90, 90, 90, 0.2);
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--texte-secondaire);
+      line-height: 1.65;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 2rem 1.5rem 4rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      color: var(--noir);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: var(--texte-secondaire);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .cta-badge {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      background: var(--noir);
+      color: var(--or-standard);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .auth-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn-login {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: transparent;
+      color: var(--noir);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 2px solid var(--noir);
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-login:hover {
+      background: var(--noir);
+      color: var(--or-standard);
+    }
+
+    .btn-signup {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: var(--noir);
+      color: var(--or-standard);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 2px solid var(--noir);
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-signup:hover {
+      background: var(--noir-doux);
+      border-color: var(--noir-doux);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--texte-secondaire);
+      font-size: 0.85rem;
+    }
+
+    footer strong {
+      color: var(--noir);
+      font-weight: 700;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .stats-bar {
+        gap: 2rem;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="topnav">
+    <div class="nav-inner">
+      <span class="nav-brand">labonnepiece.fr</span>
+      <div class="auth-buttons">
+        <a href="#" class="btn-login">Connexion</a>
+        <a href="#" class="btn-signup">Creer un compte</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-image-wrapper">
+      <img src="images/header-labonnepiece.jpeg" alt="labonnepiece.fr - Comparateur de pieces d'or et d'argent d'investissement" width="1390" height="780">
+    </div>
+    <div class="hero-content">
+      <h1>Le comparateur qui vous aide a trouver la bonne piece d'<span class="text-or">or</span> et d'<span class="text-argent">argent</span></h1>
+      <p class="tagline">Comparez des dizaines de pieces d'<span class="text-or">or</span> et d'<span class="text-argent">argent</span>, et suivez la valeur de votre collection dans un tableau de bord personnel.</p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Pieces analysees</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">1 200+</div>
+      <div class="stat-label">Comparatifs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Pays couverts</div>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">&#9878;</div>
+      <h3>Comparatifs VS Or</h3>
+      <p>Krugerrand vs Maple Leaf ? Napoleon vs Vreneli ? Chaque paire de pieces d'or comparee point par point : prime, purete, liquidite.</p>
+    </div>
+    <div class="feature-card silver">
+      <div class="feature-icon">&#9878;</div>
+      <h3>Comparatifs VS Argent</h3>
+      <p>Silver Eagle vs Maple Leaf ? Philharmonique vs Britannia ? Les pieces d'argent aussi passees au crible pour l'investisseur.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#9733;</div>
+      <h3>Scores Investisseur</h3>
+      <p>Des scores exclusifs : liquidite de revente, robustesse, risque de milk spots, regime fiscal. Pour l'or comme pour l'argent.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#8364;</div>
+      <h3>Fiscalite par pays</h3>
+      <p>France, Belgique, Suisse : chaque piece analysee selon le regime fiscal local. Cours legal, taxe forfaitaire ou plus-value.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Bientot disponible</h2>
+    <p>labonnepiece.fr est en cours de construction. Le guide comparatif de reference pour l'investisseur en <span class="text-or">or</span> et <span class="text-argent">argent</span> physique arrive prochainement.</p>
+    <a href="#" class="cta-badge">Lancement imminent</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 <strong>labonnepiece.fr</strong> &mdash; Guide independant d'investissement en pieces d'or et d'argent</p>
+  </footer>
+
+</body>
+</html>
