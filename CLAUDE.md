@@ -84,3 +84,19 @@ Les utilisateurs connectes pourront :
 
 - Pas de date ni temps de lecture dans les articles
 - Git : pas de Co-Authored-By dans les commits
+
+## Session 2026-01-28 : Bento Grid dashboard
+
+### Ce qui a ete fait
+- Installe le composant Aceternity Bento Grid via `npx shadcn@latest add @aceternity/bento-grid`
+- Cree `src/components/ui/bento-grid.tsx` : composant BentoGrid + BentoGridItem customise au theme or/argent du projet (pas le style Aceternity par defaut blanc/neutral)
+- Refactore `src/components/portfolio-summary.tsx` : remplacement de la grille plate `grid-cols-5` par un Bento Grid asymetrique :
+  - Carte hero "Valeur estimee" en `row-span-2` avec texte `text-4xl`
+  - P&L latent + P&L realise en haut a droite
+  - Repartition + Cours spot en bas a droite
+  - Layout : `grid-cols-3` desktop, `grid-cols-2` tablette, 1 colonne mobile
+- Supprime `@tabler/icons-react` (installe automatiquement par le CLI Aceternity mais inutilise)
+- Build `pnpm build` : zero erreur
+
+### Pas encore commit
+- Les changements sont dans le working tree, non commites

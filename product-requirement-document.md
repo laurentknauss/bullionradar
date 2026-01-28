@@ -286,17 +286,46 @@ Les utilisateurs connectés peuvent constituer leur portefeuille virtuel en déc
 4.  **Répartition visuelle** : Camembert or/argent, répartition géographique, répartition par pureté
 5.  **Alertes** (V2) : Notification si une pièce du portefeuille dépasse un seuil de prix défini par l'utilisateur
 
+#### Analyse concurrentielle des portfolio trackers bullion
+
+| Produit | Type | Prix | Marche | Particularite |
+|---------|------|------|--------|---------------|
+| **GoldFolio** | App iOS | Gratuit | US/EN | Suivi physical, cours live, photos |
+| **Precious Metals Manager** | App iOS | Payant | EN | 300+ profils pieces, rapports fiscaux |
+| **BOLD Precious Metals** | Web + App | Gratuit | US/EN | Lie a leur dealer, auto-import achats |
+| **Gainesville Coins** | Web | Gratuit | US/EN | Lie a leur dealer |
+| **goldsilver.ai** | Web SaaS | Freemium 0-99$/mois | EN | Focus minieres, bullion secondaire |
+| **APMEX** | App | Gratuit | US/EN | Lie a leur dealer |
+| **Spreadsheets** | DIY | Gratuit | - | Ce que ~80% des gens font |
+
+**Constat cle** : Aucun portfolio tracker bullion en francais. Zero. Les trackers gratuits sont tous lies a des dealers anglophones (lock-in). Les SaaS payants (goldsilver.ai) sont axes mining stocks.
+
 #### Avantage concurrentiel
 *   **Numista** : Catalogue collectionneur, pas de valorisation investisseur
-*   **CPoR** : Cours de référence uniquement, pas de portefeuille
-*   **Sites e-commerce** (Godot, AuCoffre) : Suivi limité aux pièces achetées chez eux
-*   **labonnepiece.fr** : Portefeuille universel, toutes pièces, tous vendeurs, orienté performance investisseur
+*   **CPoR** : Cours de reference uniquement, pas de portefeuille
+*   **Sites e-commerce** (Godot, AuCoffre) : Suivi limite aux pieces achetees chez eux
+*   **goldsilver.ai** : En anglais, focus minieres, bullion secondaire
+*   **GoldFolio / BOLD** : Apps anglophones liees a des dealers US
+*   **labonnepiece.fr** : Portefeuille universel, francophone, toutes pieces, tous vendeurs, oriente performance investisseur
 
-#### Stack envisagée
-*   Authentification : NextAuth.js (email + OAuth)
-*   Base de données : PostgreSQL (Supabase ou Neon)
-*   API cours : MetalPrice API ou GoldAPI.io
-*   Temps réel : ISR (Incremental Static Regeneration) pour les cours, rafraîchissement toutes les 15 min
+#### Strategie de monetisation du tracker
+*   **Tracker gratuit** : C'est le hook pour creer un compte et generer de la retention
+*   **Pas de SaaS payant au lancement** : Les concurrents dealers offrent le tracker gratuitement, un prix serait un frein
+*   **Monetisation indirecte** : Affiliation dealers (AuCoffre, Godot, BullionByPost), lead gen, contenu premium
+
+#### goldsilver.ai - Stack technique observee
+*   Framework : Next.js (React) + Vercel
+*   Auth : Custom backend (aucune lib visible : ni Clerk, ni Supabase, ni Auth0, ni NextAuth)
+*   Analytics : Umami (self-hosted)
+*   Images : Azure Blob Storage
+*   B2B : Listings minieres a 3 000$/an
+
+#### Stack envisagee pour labonnepiece.fr
+*   Authentification : a determiner (Clerk.js, Supabase Auth, ou NextAuth.js)
+*   Base de donnees : PostgreSQL (Supabase ou Neon)
+*   API cours spot : metals.dev (deja utilise dans un autre projet)
+*   Prix par piece : spot x contenu metal + prime estimee (colonne `estimated_premium_pct`)
+*   Scraping V2 : CPoR Devises ou gold.fr pour prix quotidiens par piece
 
 ### 9. Instructions de Déploiement & SEO Technique
 
