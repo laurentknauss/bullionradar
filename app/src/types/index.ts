@@ -1,13 +1,38 @@
 export type Metal = "gold" | "silver";
 
+export interface SpotPrices {
+  gold_eur_oz: number;
+  silver_eur_oz: number;
+  updated_at: string;
+}
+export type DesignType = "fixed" | "annual" | "occasional";
+export type Liquidity = 1 | 2 | 3 | 4 | 5;
+
+export interface DesignChange {
+  year: number;
+  description: string;
+}
+
 export interface Coin {
   id: string;
   name: string;
   metal: Metal;
   weight_oz: number;
+  weight_g: number;
   purity: number;
+  fineness: string; // "999.9", "916.7", "900", etc.
   country: string;
+  diameter_mm: number;
+  thickness_mm: number;
+  first_year: number;
+  design_type: DesignType;
+  design_changes?: DesignChange[];
+  liquidity: Liquidity;
+  vat_fr_pct: number;
   estimated_premium_pct: number;
+  image_url?: string;
+  face_value?: string | null; // "5 CAD", "1 USD", null pour Libertad
+  highlights?: string[]; // Particularités uniques de la pièce
 }
 
 export interface Portfolio {
@@ -29,12 +54,6 @@ export interface Holding {
 
 export interface HoldingWithCoin extends Holding {
   coin: Coin;
-}
-
-export interface SpotPrices {
-  gold_eur_oz: number;
-  silver_eur_oz: number;
-  updated_at: string;
 }
 
 export interface Sale {
