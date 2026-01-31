@@ -100,3 +100,39 @@ Les utilisateurs connectes pourront :
 
 ### Pas encore commit
 - Les changements sont dans le working tree, non commites
+
+## Session 2026-01-31 : Images pieces + UI comparateur
+
+### Ce qui a ete fait
+- **Images telechargees** depuis gold.fr dans `app/public/coins-v2/`
+  - Or : 22 images (avers)
+  - Argent : 11 images (avers + revers) converties en PNG fond transparent via ImageMagick
+- **Composants Aceternity installes** : Focus Cards, Compare, Sparkles
+- **Comparateur landing page** (`src/components/coin-comparison.tsx`) :
+  - Grille 1 carte/ligne, max-w-xs, fond blanc, centree
+  - Focus Cards effect : blur sur hover des autres cartes
+  - Clic sur piece -> detail avec Compare (slider avers/revers)
+  - Filtres Or/Argent
+  - Caracteristiques + highlights affiches
+- **Types corriges** : `SpotPrices` ajoute, `face_value` accepte `null`
+
+### TODO prochaine session
+
+1. **Images manquantes** :
+   - Pieces or : ajouter les revers (actuellement que Krugerrand a les 2 faces)
+   - Pieces argent : American Eagle n'a que l'avers
+   - Telecharger images des pieces classiques francaises (Napoleon, Hercule, etc.)
+
+2. **UI/UX comparateur** :
+   - Responsive : adapter la grille pour desktop (plusieurs colonnes)
+   - Ajouter nom de la piece sous chaque carte
+   - Overlay titre au hover (texte blanc) illisible sur fond blanc -> a revoir
+
+3. **Fonctionnalites** :
+   - Selection multiple pour comparaison cote a cote (tableau)
+   - Afficher prix estime (spot + prime) via metals.dev API
+   - Filtre par pays, poids, purete
+
+4. **Dashboard portfolio** (non commite) :
+   - Fichiers modifies non commites : dashboard/page.tsx, portfolio-summary.tsx, portfolio-table.tsx, coins-data.ts
+   - A revoir et commiter separement
