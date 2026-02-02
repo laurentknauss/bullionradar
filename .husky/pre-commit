@@ -1,0 +1,17 @@
+echo "🔍 Running pre-commit checks..."
+
+cd app
+
+# Lint-staged: auto-fix linting and formatting on staged files
+pnpm exec lint-staged || {
+  echo "❌ Lint-staged failed. Fix errors above."
+  exit 1
+}
+
+# TypeScript strict check
+pnpm exec tsc --noEmit --pretty || {
+  echo "❌ Type check failed. Fix type errors above."
+  exit 1
+}
+
+echo "✅ Pre-commit checks passed!"
