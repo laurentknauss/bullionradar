@@ -36,3 +36,4 @@ pnpm-debug.log*
 # Markdown docs (local only)
 *.md
 !README.md
+.playwright-mcp/
