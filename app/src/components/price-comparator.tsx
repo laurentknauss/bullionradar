@@ -1,6 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import {
+  getLatestPrices,
+  type DealerPrice as SupabaseDealerPrice,
+} from "@/lib/supabase";
 
 interface DealerPrice {
   dealer: string;
@@ -15,60 +20,37 @@ interface CoinPrice {
   dealers: DealerPrice[];
 }
 
-// Static data - will be replaced by API/Supabase later
-const PRICE_DATA: CoinPrice[] = [
-  {
-    slug: "krugerrand-1oz",
-    name: "Krugerrand 1 oz",
-    icon: "🥇",
-    dealers: [
-      {
-        dealer: "Godot & Fils",
-        price: 4175,
-        url: "https://www.achat-or-et-argent.fr/or/krugerrand/12",
-      },
-      {
-        dealer: "Pieces-Or.com",
-        price: 4173,
-        url: "https://www.pieces-or.com/achat-or-argent/5-Krugerrand.html",
-      },
-    ],
-  },
-  {
-    slug: "napoleon-20f",
-    name: "Napoleon 20 Francs",
-    icon: "🏛️",
-    dealers: [
-      {
-        dealer: "Godot & Fils",
-        price: 779,
-        url: "https://www.achat-or-et-argent.fr/or/20-francs-napoleon/6",
-      },
-      {
-        dealer: "Pieces-Or.com",
-        price: 816,
-        url: "https://www.pieces-or.com/achat-or-argent/1-Napoleon-20-Francs.html",
-      },
-    ],
-  },
-  {
-    slug: "souverain",
-    name: "Souverain",
-    icon: "👑",
-    dealers: [
-      {
-        dealer: "Godot & Fils",
-        price: 983,
-        url: "https://www.achat-or-et-argent.fr/or/souverain/14",
-      },
-      {
-        dealer: "Pieces-Or.com",
-        price: 982,
-        url: "https://www.pieces-or.com/achat-or-argent/3-Souverain.html",
-      },
-    ],
-  },
-];
+// Icons par slug de piece
+const COIN_ICONS: Record<string, string> = {
+  "krugerrand-1oz": "🥇",
+  "napoleon-20f": "🏛️",
+  souverain: "👑",
+};
+
+// Transforme les donnees Supabase en format CoinPrice[]
+function transformPrices(supabasePrices: SupabaseDealerPrice[]): CoinPrice[] {
+  const bySlug = new Map<string, CoinPrice>();
+
+  for (const row of supabasePrices) {
+    if (!bySlug.has(row.coin_slug)) {
+      bySlug.set(row.coin_slug, {
+        slug: row.coin_slug,
+        name: row.coin_name,
+        icon: COIN_ICONS[row.coin_slug] ?? "💰",
+        dealers: [],
+      });
+    }
+
+    const coin = bySlug.get(row.coin_slug)!;
+    coin.dealers.push({
+      dealer: row.dealer,
+      price: row.price_cents / 100, // cents -> euros
+      url: row.product_url ?? "#",
+    });
+  }
+
+  return Array.from(bySlug.values());
+}
 
 function formatPrice(price: number): string {
   return new Intl.NumberFormat("fr-FR", {
@@ -101,7 +83,7 @@ function CoinCard({ coin }: CoinCardProps) {
 
   return (
     <li className="min-h-[16rem] list-none">
-      <div className="relative h-full rounded-2xl border border-neutral-800 p-2 md:rounded-3xl md:p-3 bg-neutral-950">
+      <div className="relative h-full rounded-2xl border border-neutral-800 bg-neutral-950 p-2 md:rounded-3xl md:p-3">
         <GlowingEffect
           spread={40}
           glow={true}
@@ -110,14 +92,14 @@ function CoinCard({ coin }: CoinCardProps) {
           inactiveZone={0.01}
           borderWidth={2}
         />
-        <div className="relative flex h-full flex-col gap-4 overflow-hidden rounded-xl p-6 bg-gradient-to-br from-neutral-900 to-neutral-950">
+        <div className="relative flex h-full flex-col gap-4 overflow-hidden rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-950 p-6">
           {/* Header */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="text-3xl">{coin.icon}</span>
-              <h3 className="font-semibold text-xl text-white">{coin.name}</h3>
+              <h3 className="text-xl font-semibold text-white">{coin.name}</h3>
             </div>
-            <span className="text-xs text-neutral-500 bg-neutral-800 px-2 py-1 rounded">
+            <span className="rounded bg-neutral-800 px-2 py-1 text-xs text-neutral-500">
               Ecart {spread}%
             </span>
           </div>
@@ -134,15 +116,15 @@ function CoinCard({ coin }: CoinCardProps) {
                     href={dealer.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center justify-between p-3 rounded-lg transition-all hover:scale-[1.02] ${
+                    className={`flex items-center justify-between rounded-lg p-3 transition-all hover:scale-[1.02] ${
                       isBest
-                        ? "bg-gradient-to-r from-amber-500/20 to-yellow-500/10 border border-amber-500/30"
+                        ? "border border-amber-500/30 bg-gradient-to-r from-amber-500/20 to-yellow-500/10"
                         : "bg-neutral-800/50 hover:bg-neutral-800"
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <span
-                        className={`text-sm font-bold w-6 h-6 flex items-center justify-center rounded-full ${
+                        className={`flex h-6 w-6 items-center justify-center rounded-full text-sm font-bold ${
                           isBest
                             ? "bg-amber-500 text-black"
                             : "bg-neutral-700 text-neutral-400"
@@ -153,7 +135,7 @@ function CoinCard({ coin }: CoinCardProps) {
                       <span
                         className={
                           isBest
-                            ? "text-amber-100 font-medium"
+                            ? "font-medium text-amber-100"
                             : "text-neutral-300"
                         }
                       >
@@ -161,7 +143,7 @@ function CoinCard({ coin }: CoinCardProps) {
                       </span>
                     </div>
                     <span
-                      className={`font-bold text-lg ${
+                      className={`text-lg font-bold ${
                         isBest ? "text-amber-400" : "text-neutral-200"
                       }`}
                     >
@@ -178,35 +160,99 @@ function CoinCard({ coin }: CoinCardProps) {
 }
 
 export function PriceComparator() {
+  const [prices, setPrices] = useState<CoinPrice[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [lastUpdate, setLastUpdate] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchPrices() {
+      try {
+        const supabasePrices = await getLatestPrices();
+
+        if (supabasePrices.length === 0) {
+          setError("Aucun prix disponible");
+          return;
+        }
+
+        // Trouver la date la plus recente
+        const mostRecent = supabasePrices.reduce((latest, p) => {
+          const date = new Date(p.scraped_at);
+          return date > new Date(latest) ? p.scraped_at : latest;
+        }, supabasePrices[0].scraped_at);
+
+        setLastUpdate(
+          new Date(mostRecent).toLocaleDateString("fr-FR", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })
+        );
+
+        setPrices(transformPrices(supabasePrices));
+      } catch (err) {
+        setError("Erreur lors du chargement des prix");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPrices();
+  }, []);
+
   return (
-    <section className="w-full bg-neutral-950 py-16 px-4">
-      <div className="max-w-5xl mx-auto">
+    <section className="w-full bg-neutral-950 px-4 py-16">
+      <div className="mx-auto max-w-5xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">
+        <div className="mb-12 text-center">
+          <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
             Comparateur de prix{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">
+            <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
               Or
             </span>
           </h2>
-          <p className="text-neutral-400 max-w-xl mx-auto tracking-tight">
+          <p className="mx-auto max-w-xl tracking-tight text-neutral-400">
             Prix d&apos;achat chez les principaux dealers francais — Mis a jour
             quotidiennement
           </p>
         </div>
 
+        {/* Loading */}
+        {loading && (
+          <div className="flex items-center justify-center py-12">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-amber-500 border-t-transparent" />
+            <span className="ml-3 text-neutral-400">
+              Chargement des prix...
+            </span>
+          </div>
+        )}
+
+        {/* Error */}
+        {error && !loading && (
+          <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-6 text-center">
+            <p className="text-red-400">{error}</p>
+          </div>
+        )}
+
         {/* Cards Grid */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PRICE_DATA.map((coin) => (
-            <CoinCard key={coin.slug} coin={coin} />
-          ))}
-        </ul>
+        {!loading && !error && prices.length > 0 && (
+          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {prices.map((coin) => (
+              <CoinCard key={coin.slug} coin={coin} />
+            ))}
+          </ul>
+        )}
 
         {/* Footer */}
-        <p className="text-center text-neutral-500 text-sm mt-8">
-          <span className="inline-block w-3 h-3 bg-amber-500 rounded-full mr-2" />
-          Meilleur prix — Derniere mise a jour : 2 fevrier 2026
-        </p>
+        {lastUpdate && (
+          <p className="mt-8 text-center text-sm text-neutral-500">
+            <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
+            Meilleur prix — Derniere mise a jour : {lastUpdate}
+          </p>
+        )}
       </div>
     </section>
   );
