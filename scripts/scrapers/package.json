@@ -1,0 +1,19 @@
+{
+  "name": "dealer-scrapers",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "scrape:godot": "npx tsx scrape-godot.ts",
+    "scrape:pieces-or": "npx tsx scrape-pieces-or.ts",
+    "scrape:all": "npx tsx scrape-all.ts",
+    "test": "npx tsx scrape-godot.ts --test"
+  },
+  "dependencies": {
+    "playwright": "^1.41.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0",
+    "@types/node": "^25.2.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "coin-image-downloader",
+  "type": "module",
+  "scripts": {
+    "download": "tsx download-coins.ts",
+    "download:gold": "tsx download-coins.ts --metal=gold",
+    "download:silver": "tsx download-coins.ts --metal=silver",
+    "batch": "tsx batch-scrape-gold-fr.ts"
+  },
+  "dependencies": {
+    "@browserbasehq/sdk": "^2.0.0",
+    "dotenv": "^16.4.7",
+    "playwright-core": "^1.58.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.0.0"
+  }
+}

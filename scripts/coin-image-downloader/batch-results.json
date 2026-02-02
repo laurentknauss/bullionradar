@@ -1,0 +1,182 @@
+[
+  {
+    "coin": "krugerrand-1oz-or",
+    "obverse": true,
+    "reverse": true
+  },
+  {
+    "coin": "american-buffalo-1oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "american-eagle-1oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "britannia-1oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "kangourou-1oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "maple-leaf-1oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "philharmonique-1oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "panda-30g-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "britannia-1-2oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "kangourou-1-2oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "maple-leaf-1-2oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "philharmonique-1-2oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "britannia-1-4oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "kangourou-1-4oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "maple-leaf-1-4oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "philharmonique-1-4oz-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "panda-15g-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "panda-8g-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "napoleon-20f-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "20-francs-suisse-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "souverain-or",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "britannia-1oz-argent",
+    "obverse": true,
+    "reverse": true
+  },
+  {
+    "coin": "maple-leaf-1oz-argent",
+    "obverse": true,
+    "reverse": true
+  },
+  {
+    "coin": "philharmonique-1oz-argent",
+    "obverse": true,
+    "reverse": true
+  },
+  {
+    "coin": "kangourou-1oz-argent",
+    "obverse": true,
+    "reverse": true
+  },
+  {
+    "coin": "american-eagle-1oz-argent",
+    "obverse": true,
+    "reverse": false
+  },
+  {
+    "coin": "krugerrand-1oz-argent",
+    "obverse": true,
+    "reverse": true
+  },
+  {
+    "coin": "50-francs-hercule-argent",
+    "obverse": false,
+    "reverse": true
+  },
+  {
+    "coin": "10-francs-hercule-argent",
+    "obverse": false,
+    "reverse": true
+  },
+  {
+    "coin": "5-francs-semeuse-argent",
+    "obverse": false,
+    "reverse": true
+  },
+  {
+    "coin": "100-francs-pantheon-argent",
+    "obverse": false,
+    "reverse": true
+  },
+  {
+    "coin": "britannia-1-10oz-or",
+    "obverse": false,
+    "reverse": false
+  },
+  {
+    "coin": "kangourou-1-10oz-or",
+    "obverse": false,
+    "reverse": false
+  },
+  {
+    "coin": "maple-leaf-1-10oz-or",
+    "obverse": false,
+    "reverse": false
+  },
+  {
+    "coin": "philharmonique-1-10oz-or",
+    "obverse": false,
+    "reverse": false
+  },
+  {
+    "coin": "maple-leaf-1-20oz-or",
+    "obverse": false,
+    "reverse": false
+  }
+]

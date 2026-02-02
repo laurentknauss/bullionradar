@@ -6,7 +6,7 @@
   <title>labonnepiece.fr - Comparateur de pieces d'or et d'argent d'investissement</title>
   <meta name="description" content="Le guide francophone pour choisir la bonne piece d'or ou d'argent d'investissement. Comparatifs, fiscalite, liquidite.">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap');
 
     * {
       margin: 0;
@@ -34,7 +34,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Karla', sans-serif;
       background-color: var(--bg);
       color: var(--texte);
       min-height: 100vh;
@@ -55,7 +55,7 @@
     }
 
     .nav-brand {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-size: 1.3rem;
       font-weight: 900;
       color: var(--noir);
@@ -88,7 +88,7 @@
     }
 
     .hero-content h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 900;
       color: var(--noir);
@@ -145,7 +145,7 @@
     }
 
     .stat-number {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-size: 2.5rem;
       font-weight: 900;
       color: var(--noir);
@@ -189,7 +189,7 @@
     }
 
     .feature-card h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--noir);
@@ -219,7 +219,7 @@
     }
 
     .cta-section h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-size: clamp(1.4rem, 3.5vw, 2rem);
       color: var(--noir);
       margin-bottom: 0.75rem;
@@ -237,7 +237,7 @@
       padding: 0.85rem 2.5rem;
       background: var(--noir);
       color: var(--or-standard);
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-weight: 700;
       font-size: 1.05rem;
       border-radius: 4px;
@@ -263,7 +263,7 @@
       padding: 0.75rem 2rem;
       background: transparent;
       color: var(--noir);
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-weight: 700;
       font-size: 1rem;
       border: 2px solid var(--noir);
@@ -284,7 +284,7 @@
       padding: 0.75rem 2rem;
       background: var(--noir);
       color: var(--or-standard);
-      font-family: 'Playfair Display', serif;
+      font-family: 'Karla', sans-serif;
       font-weight: 700;
       font-size: 1rem;
       border: 2px solid var(--noir);
@@ -298,6 +298,114 @@
     .btn-signup:hover {
       background: var(--noir-doux);
       border-color: var(--noir-doux);
+    }
+
+    /* Price Comparison */
+    .price-comparison {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .price-comparison h2 {
+      font-family: 'Karla', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      color: var(--noir);
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-subtitle {
+      color: var(--texte-secondaire);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .comparison-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .comparison-table thead {
+      background: var(--noir);
+    }
+
+    .comparison-table th {
+      font-family: 'Karla', sans-serif;
+      font-weight: 700;
+      color: var(--or-standard);
+      padding: 1rem 1.25rem;
+      text-align: center;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .comparison-table th:first-child {
+      text-align: left;
+    }
+
+    .comparison-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tbody tr:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .coin-name {
+      text-align: left !important;
+      font-weight: 600;
+      color: var(--noir);
+      white-space: nowrap;
+    }
+
+    .coin-icon {
+      margin-right: 0.5rem;
+    }
+
+    .price {
+      font-family: 'Karla', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--texte);
+    }
+
+    .best-price {
+      color: #1a7f37;
+      background: rgba(26, 127, 55, 0.1);
+      border-radius: 4px;
+    }
+
+    .spread {
+      font-size: 0.85rem;
+      color: var(--texte-secondaire);
+      font-weight: 500;
+    }
+
+    .comparison-footer {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--texte-secondaire);
+    }
+
+    .best-price-legend {
+      color: #1a7f37;
+      margin-right: 0.25rem;
     }
 
     /* Footer */
@@ -324,6 +432,17 @@
       }
       .features {
         grid-template-columns: 1fr;
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.85rem;
+      }
+      .price {
+        font-size: 0.95rem;
+      }
+      .coin-icon {
+        display: none;
       }
     }
   </style>
@@ -394,11 +513,56 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2>Bientot disponible</h2>
-    <p>labonnepiece.fr est en cours de construction. Le guide comparatif de reference pour l'investisseur en <span class="text-or">or</span> et <span class="text-argent">argent</span> physique arrive prochainement.</p>
-    <a href="#" class="cta-badge">Lancement imminent</a>
+  <!-- Comparateur de prix -->
+  <section class="price-comparison">
+    <h2>Comparateur de prix <span class="text-or">Or</span></h2>
+    <p class="comparison-subtitle">Prix d'achat chez les principaux dealers francais — Mis a jour quotidiennement</p>
+
+    <div class="comparison-table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Piece</th>
+            <th>Godot & Fils</th>
+            <th>Pieces-Or.com</th>
+            <th>Ecart</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="coin-name">
+              <span class="coin-icon">🥇</span>
+              Krugerrand 1 oz
+            </td>
+            <td class="price">4 175 €</td>
+            <td class="price best-price">4 173 €</td>
+            <td class="spread">0.03%</td>
+          </tr>
+          <tr>
+            <td class="coin-name">
+              <span class="coin-icon">🏛️</span>
+              Napoleon 20 Francs
+            </td>
+            <td class="price best-price">779 €</td>
+            <td class="price">816 €</td>
+            <td class="spread">4.79%</td>
+          </tr>
+          <tr>
+            <td class="coin-name">
+              <span class="coin-icon">👑</span>
+              Souverain
+            </td>
+            <td class="price">983 €</td>
+            <td class="price best-price">982 €</td>
+            <td class="spread">0.07%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="comparison-footer">
+      <span class="best-price-legend">■</span> Meilleur prix — Derniere mise a jour : 2 fevrier 2026
+    </p>
   </section>
 
   <!-- Footer -->

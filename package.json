@@ -1,0 +1,10 @@
+{
+  "name": "labonnepiece",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --dir app dev",
+    "build": "pnpm --dir app build",
+    "start": "pnpm --dir app start",
+    "lint": "pnpm --dir app lint"
+  }
+}
