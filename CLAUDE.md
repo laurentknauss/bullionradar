@@ -579,3 +579,88 @@ generic contenant "En Stock" ou "En Attente De Stock"
 - Or.fr → Redirige vers GoldBroker (stockage)
 - gold.fr → Pas de prix d'achat direct (formulaire/agence)
 - AuCOFFRE → Stockage en coffre uniquement
+
+### Design base de données : INSERT (pas UPSERT)
+
+**Choix** : Chaque scrape ajoute de nouvelles lignes (INSERT), pas de mise à jour (UPSERT).
+
+**Pourquoi** :
+1. **Historique des prix** = valeur business (graphiques, tendances, alertes)
+2. **Modèle concurrents** : GoldSilver.ai et FindBullionPrices stockent l'historique
+3. **Volume négligeable** : 250 lignes/jour max = 91k/an, PostgreSQL gère des millions
+4. **Réversible** : on peut toujours nettoyer, mais on ne peut pas recréer l'historique perdu
+
+**Maintenance** : Nettoyer les données > 90 jours si besoin :
+```sql
+DELETE FROM dealer_prices WHERE scraped_at < NOW() - INTERVAL '90 days';
+```
+
+**Le composant `PriceComparator`** affiche les derniers prix via `ORDER BY scraped_at DESC`.
+
+**Note** : Le composant ne se rafraîchit pas automatiquement. L'utilisateur doit **recharger la page** pour voir les nouveaux prix après le scraping quotidien (11h).
+
+### Pièces candidates pour extension (à vérifier manuellement)
+
+| Pièce | Godot | Pieces-Or | À vérifier |
+|-------|-------|-----------|------------|
+| Napoléon 10 Francs | ? | ✅ | URLs |
+| Demi Souverain | ? | ✅ | URLs |
+| 20 Francs Suisse (Vreneli) | ? | ✅ | URLs |
+| 50 Pesos Mexicain | ✅ | ✅ | URLs |
+| Maple Leaf 1oz | ? | ✅ | URLs |
+| Philharmonique Vienne | ? | ✅ | URLs |
+| 20 Dollars US Liberty | ✅ | ? | URLs |
+| American Eagle | ? | ✅ | URLs |
+
+---
+
+## Alternatives Supabase (si limite projets gratuits atteinte)
+
+Supabase free tier = 2 projets max. Alternatives pour projets futurs :
+
+| Service | Free tier | Type | Notes |
+|---------|-----------|------|-------|
+| **Turso** | 500 DBs, 9GB total | SQLite edge | Ultra rapide, libSQL (fork SQLite) |
+| **Neon** | Illimité projets, 0.5GB/projet | PostgreSQL | Serverless, branching Git-like |
+| **Railway** | 5$/mois crédit | PostgreSQL | Simple, bon DX |
+| **PlanetScale** | 1 DB gratuite | MySQL | Branching, mais pas PostgreSQL |
+| **CockroachDB** | 10GB gratuit | PostgreSQL-compat | Distribué, enterprise |
+
+### Turso (recommandé pour projets légers)
+
+- **Technologie** : libSQL (fork SQLite par l'équipe originale)
+- **Avantage** : Base edge = latence ultra faible, réplication mondiale
+- **Gratuit** : 500 databases, 9GB stockage, 1 milliard row reads/mois
+- **ORM** : Compatible Drizzle, Prisma (adapter)
+- **Cas d'usage** : Apps légères, edge functions, projets perso
+
+```bash
+# Installation CLI
+curl -sSfL https://get.tur.so/install.sh | bash
+
+# Créer une DB
+turso db create mon-projet
+turso db show mon-projet --url
+```
+
+### Neon (recommandé si besoin PostgreSQL)
+
+- **Technologie** : PostgreSQL serverless
+- **Avantage** : Compatible 1:1 avec Supabase (même SQL)
+- **Gratuit** : Projets illimités, 0.5GB/projet, scale à zéro
+- **Migration** : `pg_dump` / `pg_restore` direct depuis Supabase
+
+### Turso vs Supabase (comparatif)
+
+| Critère | Supabase | Turso |
+|---------|----------|-------|
+| Free tier | 2 projets | **500 databases** |
+| Stockage | 500MB | 9GB |
+| Type | PostgreSQL | SQLite edge |
+| Latence | Bonne | **Ultra faible** (edge) |
+| Auth intégrée | ✅ Oui | ❌ Non |
+| Realtime | ✅ Oui | ❌ Non |
+
+**Quand choisir Turso** : projets légers, API simples, pas besoin d'auth/realtime intégrés.
+
+**Quand rester sur Supabase** : besoin d'auth, realtime, dashboard admin, PostgreSQL full.
