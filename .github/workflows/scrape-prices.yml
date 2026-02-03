@@ -1,0 +1,45 @@
+name: Scrape Dealer Prices
+
+on:
+  schedule:
+    # 11h France (10:00 UTC hiver, 09:00 UTC été)
+    # On utilise 10:00 UTC pour être safe
+    - cron: '0 10 * * *'
+  workflow_dispatch: # Permet de lancer manuellement
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Install dependencies
+        working-directory: scripts/scrapers
+        run: pnpm install
+
+      - name: Install Playwright browsers
+        working-directory: scripts/scrapers
+        run: pnpm exec playwright install chromium
+
+      - name: Run scrapers
+        working-directory: scripts/scrapers
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: pnpm exec tsx scrape-all.ts
+
+      - name: Report status
+        if: failure()
+        run: echo "Scraping failed - check logs above"
