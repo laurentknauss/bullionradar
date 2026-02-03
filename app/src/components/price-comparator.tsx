@@ -25,6 +25,7 @@ const COIN_ICONS: Record<string, string> = {
   "krugerrand-1oz": "🥇",
   "napoleon-20f": "🏛️",
   souverain: "👑",
+  "maple-leaf-1oz": "🍁",
 };
 
 // Transforme les donnees Supabase en format CoinPrice[]
@@ -239,7 +240,7 @@ export function PriceComparator() {
 
         {/* Cards Grid */}
         {!loading && !error && prices.length > 0 && (
-          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {prices.map((coin) => (
               <CoinCard key={coin.slug} coin={coin} />
             ))}
@@ -248,10 +249,16 @@ export function PriceComparator() {
 
         {/* Footer */}
         {lastUpdate && (
-          <p className="mt-8 text-center text-sm text-neutral-500">
-            <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
-            Meilleur prix — Derniere mise a jour : {lastUpdate}
-          </p>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-neutral-500">
+              <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
+              Meilleur prix — Derniere mise a jour : {lastUpdate}
+            </p>
+            <p className="mt-2 text-xs text-neutral-600">
+              Prix indicatifs pouvant varier de quelques euros par rapport aux
+              sites compares
+            </p>
+          </div>
         )}
       </div>
     </section>

@@ -31,6 +31,11 @@ const COINS_TO_SCRAPE: readonly CoinConfig[] = [
     name: "Souverain",
     url: "https://www.pieces-or.com/achat-or-argent/3-Souverain.html",
   },
+  {
+    slug: "maple-leaf-1oz",
+    name: "Maple Leaf 1 Once",
+    url: "https://www.pieces-or.com/achat-or-argent/29-Maple-Leaf.html",
+  },
 ] as const;
 
 /**
