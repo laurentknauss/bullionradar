@@ -6,20 +6,20 @@ export default function HomePage() {
     <main className="min-h-screen bg-[#BE943C]">
       {/* Nav */}
       <nav className="p-4">
-        <div className="max-w-[1000px] mx-auto flex justify-between items-center">
-          <span className="text-xl font-extrabold text-[#1a1a1a]">
+        <div className="mx-auto flex max-w-[1000px] items-center justify-between">
+          <span className="text-xl font-bold tracking-normal text-[#1a1a1a]">
             labonnepiece.fr
           </span>
           <div className="flex gap-3">
             <a
               href="#"
-              className="px-5 py-2 bg-transparent text-[#1a1a1a] font-bold border-2 border-[#1a1a1a] rounded hover:bg-[#1a1a1a] hover:text-[#FFD700] transition-colors"
+              className="rounded border-2 border-[#1a1a1a] bg-transparent px-5 py-2 font-bold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-[#FFD700]"
             >
               Connexion
             </a>
             <a
               href="#"
-              className="px-5 py-2 bg-[#1a1a1a] text-[#FFD700] font-bold border-2 border-[#1a1a1a] rounded hover:bg-[#2a2a2a] transition-colors"
+              className="rounded border-2 border-[#1a1a1a] bg-[#1a1a1a] px-5 py-2 font-bold text-[#FFD700] transition-colors hover:bg-[#2a2a2a]"
             >
               Creer un compte
             </a>
@@ -29,60 +29,60 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="w-full">
-        <div className="max-w-[900px] mx-auto">
+        <div className="mx-auto max-w-[900px]">
           <Image
             src="/images/header-labonnepiece.jpeg"
             alt="labonnepiece.fr - Comparateur de pieces d'or et d'argent"
             width={1390}
             height={780}
-            className="w-full h-auto"
+            className="h-auto w-full"
             priority
           />
         </div>
-        <div className="text-center px-6 py-10 max-w-[800px] mx-auto">
-          <h1 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-4 leading-tight">
+        <div className="mx-auto max-w-[800px] px-6 py-10 text-center">
+          <h1 className="mb-4 text-3xl leading-tight font-black text-[#1a1a1a] md:text-5xl">
             Le comparateur qui vous aide a trouver la bonne piece d&apos;
             <span className="text-[#8B6914]">or</span> et d&apos;
             <span className="text-[#5A5A5A]">argent</span>
           </h1>
-          <p className="text-lg text-[#3d3520] max-w-[620px] mx-auto leading-relaxed">
+          <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-[#3d3520]">
             Comparez des dizaines de pieces d&apos;
-            <span className="text-[#8B6914] font-bold">or</span> et d&apos;
-            <span className="text-[#5A5A5A] font-bold">argent</span>, et suivez
+            <span className="font-bold text-[#8B6914]">or</span> et d&apos;
+            <span className="font-bold text-[#5A5A5A]">argent</span>, et suivez
             la valeur de votre collection dans un tableau de bord personnel.
           </p>
         </div>
       </section>
 
       {/* Stats */}
-      <div className="flex justify-center gap-12 flex-wrap px-6 py-6 max-w-[800px] mx-auto">
+      <div className="mx-auto flex max-w-[800px] flex-wrap justify-center gap-12 px-6 py-6">
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">50+</div>
-          <div className="text-xs text-[#3d3520] mt-1 uppercase tracking-widest font-medium">
+          <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
             Pieces analysees
           </div>
         </div>
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">1 200+</div>
-          <div className="text-xs text-[#3d3520] mt-1 uppercase tracking-widest font-medium">
+          <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
             Comparatifs
           </div>
         </div>
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">3</div>
-          <div className="text-xs text-[#3d3520] mt-1 uppercase tracking-widest font-medium">
+          <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
             Pays couverts
           </div>
         </div>
       </div>
 
       {/* Separator */}
-      <div className="text-center my-10 text-2xl text-[#A8892A] tracking-[0.5rem]">
+      <div className="my-10 text-center text-2xl tracking-[0.5rem] text-[#A8892A]">
         — ◆ —
       </div>
 
       {/* Features */}
-      <section className="max-w-[1000px] mx-auto px-6 pb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="mx-auto grid max-w-[1000px] grid-cols-1 gap-6 px-6 pb-12 md:grid-cols-2">
         <FeatureCard
           icon="⚖"
           title="Comparatifs VS Or"
@@ -110,7 +110,7 @@ export default function HomePage() {
       <PriceComparator />
 
       {/* Footer */}
-      <footer className="border-t border-black/10 text-center py-8 px-6 text-[#3d3520] text-sm">
+      <footer className="border-t border-black/10 px-6 py-8 text-center text-sm text-[#3d3520]">
         <p>
           © 2026 <strong className="text-[#1a1a1a]">labonnepiece.fr</strong> —
           Guide independant d&apos;investissement en pieces d&apos;or et
@@ -131,19 +131,19 @@ interface FeatureCardProps {
 function FeatureCard({ icon, title, description, silver }: FeatureCardProps) {
   return (
     <div
-      className={`bg-black/[0.08] border rounded-lg p-8 transition-all hover:bg-black/[0.12] hover:-translate-y-1 ${
+      className={`rounded-lg border bg-black/[0.08] p-8 transition-all hover:-translate-y-1 hover:bg-black/[0.12] ${
         silver ? "border-[#5A5A5A]/20" : "border-black/15"
       }`}
     >
-      <div className="text-3xl mb-3">{icon}</div>
+      <div className="mb-3 text-3xl">{icon}</div>
       <h3
-        className={`text-xl font-bold mb-2 ${
+        className={`mb-2 text-xl font-bold ${
           silver ? "text-[#5A5A5A]" : "text-[#1a1a1a]"
         }`}
       >
         {title}
       </h3>
-      <p className="text-[#3d3520] text-sm leading-relaxed">{description}</p>
+      <p className="text-sm leading-relaxed text-[#3d3520]">{description}</p>
     </div>
   );
 }

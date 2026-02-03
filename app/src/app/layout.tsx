@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Karla } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const karla = Karla({
-  variable: "--font-karla",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${karla.variable} font-sans antialiased tracking-tight`}
+        className={`${inter.variable} font-sans tracking-tight antialiased`}
       >
         {children}
       </body>

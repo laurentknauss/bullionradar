@@ -7,20 +7,20 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       {/* Nav */}
       <nav className="px-4 py-4">
         <div className="mx-auto flex max-w-[1000px] items-center justify-between">
           <Link
             href="/dashboard"
-            className="font-[family-name:var(--font-playfair)] text-[1.3rem] font-black text-[#1a1a1a]"
+            className="text-xl font-bold tracking-normal text-[#1a1a1a]"
           >
             labonnepiece.fr
           </Link>
           <div className="flex items-center gap-3">
             <Link
               href="/dashboard"
-              className="inline-block rounded-[4px] border-2 border-[#1a1a1a] bg-transparent px-5 py-2 font-[family-name:var(--font-playfair)] text-sm font-bold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-[#FFD700]"
+              className="inline-block rounded-[4px] border-2 border-[#1a1a1a] bg-transparent px-5 py-2 text-sm font-bold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-[#FFD700]"
             >
               Portefeuille
             </Link>
