@@ -33,12 +33,12 @@ jobs:
         working-directory: scripts/scrapers
         run: pnpm exec playwright install chromium
 
-      - name: Run scrapers
+      - name: Run scrapers and insert into Supabase
         working-directory: scripts/scrapers
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: pnpm exec tsx scrape-all.ts
+        run: pnpm exec tsx setup-db.ts
 
       - name: Report status
         if: failure()
