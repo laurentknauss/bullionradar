@@ -36,6 +36,16 @@ const COINS_TO_SCRAPE: readonly CoinConfig[] = [
     name: "Maple Leaf 1 Once",
     url: "https://www.pieces-or.com/achat-or-argent/29-Maple-Leaf.html",
   },
+  {
+    slug: "20-francs-suisse",
+    name: "20 Francs Suisse",
+    url: "https://www.pieces-or.com/achat-or-argent/4-20-Francs-Suisse.html",
+  },
+  {
+    slug: "philharmonique-1oz",
+    name: "Philharmonique 1 Once",
+    url: "https://www.pieces-or.com/achat-or-argent/30-Philharmonique-de-Vienne.html",
+  },
 ] as const;
 
 /**

@@ -25,6 +25,7 @@
 import { supabase } from "./supabase-client";
 import { scrapeGodot } from "./scrape-godot";
 import { scrapePiecesOr } from "./scrape-pieces-or";
+import { scrapeOrFr } from "./scrape-orfr";
 import { type DealerPrice, sleep } from "./types";
 
 async function insertPrices(prices: DealerPrice[]): Promise<boolean> {
@@ -91,6 +92,12 @@ async function main(): Promise<void> {
   console.log("\n--- Scraping Pieces-Or ---");
   const piecesOrPrices = await scrapePiecesOr();
   allPrices.push(...piecesOrPrices);
+
+  await sleep(3000);
+
+  console.log("\n--- Scraping Or.fr ---");
+  const orfrPrices = await scrapeOrFr();
+  allPrices.push(...orfrPrices);
 
   // Insert into Supabase
   if (allPrices.length > 0) {

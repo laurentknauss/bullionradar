@@ -5,6 +5,7 @@
 
 import { scrapeGodot } from "./scrape-godot";
 import { scrapePiecesOr } from "./scrape-pieces-or";
+import { scrapeOrFr } from "./scrape-orfr";
 import { type DealerPrice, sleep } from "./types";
 
 interface ScraperConfig {
@@ -15,6 +16,7 @@ interface ScraperConfig {
 const SCRAPERS: readonly ScraperConfig[] = [
   { name: "Godot & Fils", scrape: scrapeGodot },
   { name: "Pieces-Or.com", scrape: scrapePiecesOr },
+  { name: "Or.fr", scrape: scrapeOrFr },
 ] as const;
 
 const DELAY_BETWEEN_DEALERS_MS = 3000;
@@ -89,7 +91,7 @@ async function scrapeAll(): Promise<DealerPrice[]> {
   console.log("+--------------------------------------------------+");
   console.log("|       PRICE COMPARATOR - DAILY SCRAPING          |");
   console.log("|                                                  |");
-  console.log("|  Dealers: Godot & Fils, Pieces-Or.com            |");
+  console.log("|  Dealers: Godot & Fils, Pieces-Or.com, Or.fr     |");
   console.log("+--------------------------------------------------+");
   console.log("\n");
 
