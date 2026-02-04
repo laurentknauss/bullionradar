@@ -68,3 +68,32 @@ export async function getPricesForCoin(
 
   return Array.from(latestByDealer.values());
 }
+
+// Mapping entre les IDs coins-data.ts et les slugs Supabase dealer_prices
+// coins-data.ts utilise "krugerrand-1oz-or", Supabase utilise "krugerrand-1oz"
+const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
+  // Or 1oz
+  "krugerrand-1oz-or": "krugerrand-1oz",
+  "maple-leaf-1oz-or": "maple-leaf-1oz",
+  "philharmonique-1oz-or": "philharmonique-1oz",
+  // Pièces françaises/suisses
+  "napoleon-20f-or": "napoleon-20f",
+  "souverain-or": "souverain",
+  "20-francs-suisse-or": "20-francs-suisse",
+};
+
+// Récupérer le slug Supabase à partir de l'ID coins-data
+export function getPriceSlugFromCoinId(coinId: string): string | null {
+  return COIN_ID_TO_PRICE_SLUG[coinId] ?? null;
+}
+
+// Récupérer les prix pour une pièce via son ID coins-data.ts
+export async function getPricesForCoinById(
+  coinId: string
+): Promise<DealerPrice[]> {
+  const priceSlug = getPriceSlugFromCoinId(coinId);
+  if (!priceSlug) {
+    return [];
+  }
+  return getPricesForCoin(priceSlug);
+}

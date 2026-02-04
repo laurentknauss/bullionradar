@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
+import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import type { Coin } from "@/types";
 
 // Images disponibles
@@ -16,9 +17,9 @@ const COIN_IMAGES: Record<string, string> = {
   "panda-30g-or": "/coins-v2/gold/panda-30g-or-avers.png",
   "panda-15g-or": "/coins-v2/gold/panda-15g-or-avers.png",
   "panda-8g-or": "/coins-v2/gold/panda-8g-or-avers.png",
-  "napoleon-20f-or": "/coins-v2/gold/napoleon-20f-or-avers.jpg",
-  "20-francs-suisse-or": "/coins-v2/gold/20-francs-suisse-or-avers.jpg",
-  "souverain-or": "/coins-v2/gold/souverain-or-avers.jpg",
+  "napoleon-20f-or": "/coins-v2/gold/napoleon-20f-or-avers.png",
+  "20-francs-suisse-or": "/coins-v2/gold/20-francs-suisse-or-avers.png",
+  "souverain-or": "/coins-v2/gold/souverain-or-avers.png",
   // Fractions déjà présentes
   "britannia-1-2oz-or": "/coins-v2/gold/britannia-1-2oz-or-avers.png",
   "britannia-1-4oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.png",
@@ -42,6 +43,15 @@ const COIN_IMAGES: Record<string, string> = {
   "libertad-1-4oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
   "libertad-1-10oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
   "libertad-1-20oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
+  // Libertad Argent (Mexique)
+  "libertad-1oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-2oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-4oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-10oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-20oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-2oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-5oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1kg-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
 };
 
 function slugify(name: string): string {
@@ -109,6 +119,77 @@ function ComparisonRow({
   );
 }
 
+function formatPrice(priceCents: number): string {
+  return new Intl.NumberFormat("fr-FR", {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(priceCents / 100);
+}
+
+interface DealerLinkProps {
+  dealer: DealerPrice;
+  isBest: boolean;
+}
+
+function DealerLink({ dealer, isBest }: DealerLinkProps) {
+  return (
+    <a
+      href={dealer.product_url ?? "#"}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-all hover:scale-[1.02] ${
+        isBest
+          ? "border border-amber-500/30 bg-gradient-to-r from-amber-500/20 to-yellow-500/10"
+          : "bg-neutral-800/50 hover:bg-neutral-800"
+      }`}
+    >
+      <span
+        className={isBest ? "font-medium text-amber-100" : "text-neutral-300"}
+      >
+        {dealer.dealer}
+      </span>
+      <span
+        className={`font-bold ${isBest ? "text-amber-400" : "text-neutral-200"}`}
+      >
+        {formatPrice(dealer.price_cents)}
+      </span>
+    </a>
+  );
+}
+
+interface CoinPricesSectionProps {
+  coinName: string;
+  prices: DealerPrice[];
+}
+
+function CoinPricesSection({ coinName, prices }: CoinPricesSectionProps) {
+  if (prices.length === 0) return null;
+
+  const sortedPrices = [...prices].sort(
+    (a, b) => a.price_cents - b.price_cents
+  );
+  const bestPrice = sortedPrices[0]?.price_cents;
+
+  return (
+    <div className="rounded-lg border border-neutral-700 bg-neutral-800/50 p-4">
+      <h4 className="mb-3 text-center text-sm font-semibold text-amber-400">
+        Où acheter {coinName.split(" ")[0]} ?
+      </h4>
+      <div className="space-y-2">
+        {sortedPrices.map((dealer) => (
+          <DealerLink
+            key={dealer.dealer}
+            dealer={dealer}
+            isBest={dealer.price_cents === bestPrice}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -131,6 +212,14 @@ export default async function VsPage({ params }: PageProps) {
 
   const image1 = COIN_IMAGES[coin1.id];
   const image2 = COIN_IMAGES[coin2.id];
+
+  // Fetch prices for both coins (in parallel)
+  const [prices1, prices2] = await Promise.all([
+    getPricesForCoinById(coin1.id),
+    getPricesForCoinById(coin2.id),
+  ]);
+
+  const hasPrices = prices1.length > 0 || prices2.length > 0;
 
   return (
     <main className="min-h-screen bg-[#1a1a1a] text-white">
@@ -308,6 +397,25 @@ export default async function VsPage({ params }: PageProps) {
               </ul>
             </div>
           </div>
+
+          {/* Prices section - only shown if at least one coin has prices */}
+          {hasPrices && (
+            <div className="mt-8 border-t border-neutral-700 pt-8">
+              <h3 className="mb-6 text-center text-lg font-bold text-white">
+                💰 Meilleurs prix dealers
+              </h3>
+              <div
+                className={`grid gap-6 ${
+                  prices1.length > 0 && prices2.length > 0
+                    ? "md:grid-cols-2"
+                    : "mx-auto max-w-sm"
+                }`}
+              >
+                <CoinPricesSection coinName={coin1.name} prices={prices1} />
+                <CoinPricesSection coinName={coin2.name} prices={prices2} />
+              </div>
+            </div>
+          )}
         </div>
 
         {/* CTA */}

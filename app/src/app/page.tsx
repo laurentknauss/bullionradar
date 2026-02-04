@@ -1,25 +1,26 @@
 import Image from "next/image";
 import { PriceComparator } from "@/components/price-comparator";
+import { CoinVsSelector } from "@/components/coin-vs-selector";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#BE943C]">
       {/* Nav */}
       <nav className="p-4">
-        <div className="mx-auto flex max-w-[1000px] items-center justify-between">
-          <span className="text-xl font-bold tracking-normal text-[#1a1a1a]">
+        <div className="mx-auto flex max-w-[1000px] flex-wrap items-center justify-between gap-2">
+          <span className="text-lg font-bold tracking-normal text-[#1a1a1a] sm:text-xl">
             labonnepiece.fr
           </span>
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3">
             <a
               href="#"
-              className="rounded border-2 border-[#1a1a1a] bg-transparent px-5 py-2 font-bold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-[#FFD700]"
+              className="rounded border-2 border-[#1a1a1a] bg-transparent px-3 py-1.5 text-sm font-bold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-[#FFD700] sm:px-5 sm:py-2 sm:text-base"
             >
               Connexion
             </a>
             <a
               href="#"
-              className="rounded border-2 border-[#1a1a1a] bg-[#1a1a1a] px-5 py-2 font-bold text-[#FFD700] transition-colors hover:bg-[#2a2a2a]"
+              className="rounded border-2 border-[#1a1a1a] bg-[#1a1a1a] px-3 py-1.5 text-sm font-bold text-[#FFD700] transition-colors hover:bg-[#2a2a2a] sm:px-5 sm:py-2 sm:text-base"
             >
               Creer un compte
             </a>
@@ -46,10 +47,11 @@ export default function HomePage() {
             <span className="text-[#5A5A5A]">argent</span>
           </h1>
           <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-[#3d3520]">
-            Comparez des dizaines de pieces d&apos;
-            <span className="font-bold text-[#8B6914]">or</span> et d&apos;
-            <span className="font-bold text-[#5A5A5A]">argent</span>, et suivez
-            la valeur de votre collection dans un tableau de bord personnel.
+            Comparez les <strong>caracteristiques</strong> de dizaines de pieces
+            d&apos;<span className="font-bold text-[#8B6914]">or</span> et
+            d&apos;
+            <span className="font-bold text-[#5A5A5A]">argent</span>, et trouvez
+            le <strong>meilleur prix</strong> chez les dealers francais.
           </p>
         </div>
       </section>
@@ -65,13 +67,13 @@ export default function HomePage() {
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">1 200+</div>
           <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
-            Comparatifs
+            Fiches VS
           </div>
         </div>
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">3</div>
           <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
-            Pays couverts
+            Dealers compares
           </div>
         </div>
       </div>
@@ -81,30 +83,8 @@ export default function HomePage() {
         — ◆ —
       </div>
 
-      {/* Features */}
-      <section className="mx-auto grid max-w-[1000px] grid-cols-1 gap-6 px-6 pb-12 md:grid-cols-2">
-        <FeatureCard
-          icon="⚖"
-          title="Comparatifs VS Or"
-          description="Krugerrand vs Maple Leaf ? Napoleon vs Vreneli ? Chaque paire de pieces d'or comparee point par point : prime, purete, liquidite."
-        />
-        <FeatureCard
-          icon="⚖"
-          title="Comparatifs VS Argent"
-          description="Silver Eagle vs Maple Leaf ? Philharmonique vs Britannia ? Les pieces d'argent aussi passees au crible pour l'investisseur."
-          silver
-        />
-        <FeatureCard
-          icon="★"
-          title="Scores Investisseur"
-          description="Des scores exclusifs : liquidite de revente, robustesse, risque de milk spots, regime fiscal. Pour l'or comme pour l'argent."
-        />
-        <FeatureCard
-          icon="€"
-          title="Fiscalite par pays"
-          description="France, Belgique, Suisse : chaque piece analysee selon le regime fiscal local. Cours legal, taxe forfaitaire ou plus-value."
-        />
-      </section>
+      {/* Coin VS Selector - Grid for selecting 2 coins to compare */}
+      <CoinVsSelector />
 
       {/* Price Comparator with Glowing Effect */}
       <PriceComparator />
@@ -118,32 +98,5 @@ export default function HomePage() {
         </p>
       </footer>
     </main>
-  );
-}
-
-interface FeatureCardProps {
-  icon: string;
-  title: string;
-  description: string;
-  silver?: boolean;
-}
-
-function FeatureCard({ icon, title, description, silver }: FeatureCardProps) {
-  return (
-    <div
-      className={`rounded-lg border bg-black/[0.08] p-8 transition-all hover:-translate-y-1 hover:bg-black/[0.12] ${
-        silver ? "border-[#5A5A5A]/20" : "border-black/15"
-      }`}
-    >
-      <div className="mb-3 text-3xl">{icon}</div>
-      <h3
-        className={`mb-2 text-xl font-bold ${
-          silver ? "text-[#5A5A5A]" : "text-[#1a1a1a]"
-        }`}
-      >
-        {title}
-      </h3>
-      <p className="text-sm leading-relaxed text-[#3d3520]">{description}</p>
-    </div>
   );
 }
