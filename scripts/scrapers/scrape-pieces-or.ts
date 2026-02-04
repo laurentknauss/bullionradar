@@ -14,8 +14,8 @@ import {
 const DEALER_NAME = "pieces-or";
 const BASE_URL = "https://www.pieces-or.com";
 
-// Direct product page URLs (discovered from catalog)
-const COINS_TO_SCRAPE: readonly CoinConfig[] = [
+// Gold coins to scrape from Pieces-Or
+const GOLD_COINS: readonly CoinConfig[] = [
   {
     slug: "krugerrand-1oz",
     name: "Krugerrand 1 Once",
@@ -46,6 +46,31 @@ const COINS_TO_SCRAPE: readonly CoinConfig[] = [
     name: "Philharmonique 1 Once",
     url: "https://www.pieces-or.com/achat-or-argent/30-Philharmonique-de-Vienne.html",
   },
+] as const;
+
+// Silver coins to scrape from Pieces-Or
+const SILVER_COINS: readonly CoinConfig[] = [
+  {
+    slug: "maple-leaf-1oz-argent",
+    name: "Maple Leaf 1 Once Argent",
+    url: "https://www.pieces-or.com/achat-or-argent/55-Maple-Leaf-Argent.html",
+  },
+  {
+    slug: "philharmonique-1oz-argent",
+    name: "Philharmonique 1 Once Argent",
+    url: "https://www.pieces-or.com/achat-or-argent/58-Philharmonique.html",
+  },
+  {
+    slug: "silver-eagle-1oz",
+    name: "Silver Eagle 1 Once",
+    url: "https://www.pieces-or.com/achat-or-argent/53-American-Eagle.html",
+  },
+] as const;
+
+// All coins to scrape
+const COINS_TO_SCRAPE: readonly CoinConfig[] = [
+  ...GOLD_COINS,
+  ...SILVER_COINS,
 ] as const;
 
 /**

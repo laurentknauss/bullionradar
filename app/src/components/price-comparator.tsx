@@ -22,12 +22,20 @@ interface CoinPrice {
 
 // Icons par slug de piece
 const COIN_ICONS: Record<string, string> = {
+  // Or
   "krugerrand-1oz": "🥇",
   "napoleon-20f": "🏛️",
   souverain: "👑",
   "maple-leaf-1oz": "🍁",
   "philharmonique-1oz": "🎻",
   "20-francs-suisse": "🇨🇭",
+  // Argent
+  "maple-leaf-1oz-argent": "🍁",
+  "philharmonique-1oz-argent": "🎻",
+  "britannia-1oz-argent": "🇬🇧",
+  "krugerrand-1oz-argent": "🦌",
+  "kangourou-1oz-argent": "🦘",
+  "silver-eagle-1oz": "🦅",
 };
 
 // Transforme les donnees Supabase en format CoinPrice[]

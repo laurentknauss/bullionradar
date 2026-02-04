@@ -80,6 +80,13 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   "napoleon-20f-or": "napoleon-20f",
   "souverain-or": "souverain",
   "20-francs-suisse-or": "20-francs-suisse",
+  // Argent 1oz
+  "maple-leaf-1oz-argent": "maple-leaf-1oz-argent",
+  "philharmonique-1oz-argent": "philharmonique-1oz-argent",
+  "britannia-1oz-argent": "britannia-1oz-argent",
+  "krugerrand-1oz-argent": "krugerrand-1oz-argent",
+  "kangourou-1oz-argent": "kangourou-1oz-argent",
+  "american-eagle-1oz-argent": "silver-eagle-1oz",
 };
 
 // Récupérer le slug Supabase à partir de l'ID coins-data

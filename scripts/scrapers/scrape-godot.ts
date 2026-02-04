@@ -13,8 +13,8 @@ import {
 
 const DEALER_NAME = "godot";
 
-// Coins to scrape from Godot
-const COINS_TO_SCRAPE: readonly CoinConfig[] = [
+// Gold coins to scrape from Godot
+const GOLD_COINS: readonly CoinConfig[] = [
   {
     slug: "krugerrand-1oz",
     name: "Krugerrand 1 Once",
@@ -45,6 +45,46 @@ const COINS_TO_SCRAPE: readonly CoinConfig[] = [
     name: "Philharmonique 1 Once",
     url: "https://www.achat-or-et-argent.fr/or/philharmonique-1-once-or/3207",
   },
+] as const;
+
+// Silver coins to scrape from Godot
+const SILVER_COINS: readonly CoinConfig[] = [
+  {
+    slug: "maple-leaf-1oz-argent",
+    name: "Maple Leaf 1 Once Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/maple-leaf-1-once/1668",
+  },
+  {
+    slug: "philharmonique-1oz-argent",
+    name: "Philharmonique 1 Once Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/philharmonique-1-once/1673",
+  },
+  {
+    slug: "britannia-1oz-argent",
+    name: "Britannia 1 Once Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/britannia-1-once/1648",
+  },
+  {
+    slug: "krugerrand-1oz-argent",
+    name: "Krugerrand 1 Once Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/krugerrand-1-once-argent/3507",
+  },
+  {
+    slug: "kangourou-1oz-argent",
+    name: "Kangourou 1 Once Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/kangourou-1-once/1571",
+  },
+  {
+    slug: "silver-eagle-1oz",
+    name: "Silver Eagle 1 Once",
+    url: "https://www.achat-or-et-argent.fr/argent/silver-eagle-1-once/1663",
+  },
+] as const;
+
+// All coins to scrape
+const COINS_TO_SCRAPE: readonly CoinConfig[] = [
+  ...GOLD_COINS,
+  ...SILVER_COINS,
 ] as const;
 
 /**
