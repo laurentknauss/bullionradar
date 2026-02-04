@@ -11,6 +11,7 @@ Nom de code : GoldBullionVS
 - `index.html` - Landing page statique (HTML/CSS pur, pas de framework)
 - `images/header-labonnepiece.jpeg` - Header avec personnage style Monopoly + logo
 - `product-requirement-document.md` - PRD complet (analyse marche + cahier des charges technique)
+- `comment-utiliser-browserbase-mcp.md` - **Guide scraping avec Browserbase** (lire avant de scraper des sites proteges)
 
 ## Charte graphique
 
@@ -248,6 +249,8 @@ Affiche clairement les dealers avec tableaux comparatifs :
 ---
 
 ## Architecture technique scraping (2026-02-02)
+
+> **Note** : Pour scraper des sites avec protection anti-bot (Cloudflare, etc.), lire `comment-utiliser-browserbase-mcp.md`
 
 ### Scope POC : 3 dealers FR (livraison physique uniquement)
 
@@ -545,18 +548,24 @@ generic contenant "En Stock" ou "En Attente De Stock"
 
 ### Scope POC révisé : 3 dealers FR
 
-| Dealer | Site | Krugerrand 1oz | Faisabilité |
-|--------|------|----------------|-------------|
-| **Godot & Fils** | achat-or-et-argent.fr | ~4 140 € | ✅ OUI |
-| **BullionByPost FR** | bullionbypost.fr | ~4 214 € | ✅ OUI |
-| **Pièces-Or.com** | pieces-or.com | 4 161 € | ✅ OUI |
+| Dealer | Site | Affiliation | Faisabilité |
+|--------|------|-------------|-------------|
+| **Godot & Fils** | achat-or-et-argent.fr | ✅ 0.5-2% | ✅ Scraper OK |
+| **Pièces-Or.com** | pieces-or.com | ❌ (à contacter) | ✅ Scraper OK |
+| **Or.fr** | or.fr (→ GoldBroker) | ✅ 0.2-0.4% + récurrent | ✅ Scraper OK |
 
-**Pièces-Or.com** (ajouté 2026-02-02) :
+**Pièces-Or.com** :
 - SARL française depuis 2010
 - Partenaire BRINK'S (livraison sécurisée)
-- UI professionnelle, prix achat/vente clairs
-- URL catalogue : `https://www.pieces-or.com/achat-or-argent.php`
-- Krugerrand : 4 161,49 € (format identique à Godot)
+- Pas d'affiliation publique, mais utile pour crédibilité comparateur
+
+**Or.fr / GoldBroker** (ajouté 2026-02-04) :
+- Portail français de GoldBroker.com (siège Londres)
+- Affiliation "Lifetime Revenue Share" : 0.2-0.4% achat + 0.1-0.2%/an stockage
+- Livraison physique disponible (`?serviceType=3`)
+- Prix en EUR, site en français
+- Deep linking : ajouter `#VOTRE_ID` à toute URL
+- ⚠️ Pas de Krugerrand ni Souverain individuels (tubes de 10 uniquement)
 
 ### Choix outil scraping : Playwright
 
@@ -576,9 +585,9 @@ generic contenant "En Stock" ou "En Attente De Stock"
 - Maintenu par Microsoft
 
 **Exclus** :
-- Or.fr → Redirige vers GoldBroker (stockage)
 - gold.fr → Pas de prix d'achat direct (formulaire/agence)
 - AuCOFFRE → Stockage en coffre uniquement
+- BullionByPost FR → Remplacé par Or.fr (meilleur programme affiliation)
 
 ### Design base de données : INSERT (pas UPSERT)
 
@@ -664,3 +673,96 @@ turso db show mon-projet --url
 **Quand choisir Turso** : projets légers, API simples, pas besoin d'auth/realtime intégrés.
 
 **Quand rester sur Supabase** : besoin d'auth, realtime, dashboard admin, PostgreSQL full.
+
+---
+
+## Session 2026-02-04 : Ajout Or.fr au comparateur
+
+### Ce qui a été fait
+
+1. **Inspection Or.fr via Browserbase** :
+   - or.fr redirige vers goldbroker.com mais propose un site FR avec EUR
+   - Livraison physique disponible (`?serviceType=3`)
+   - 23 pièces d'or disponibles en livraison
+
+2. **Scraper Or.fr créé** : `scripts/scrapers/scrape-orfr.ts`
+   - 6 pièces trackées : Maple Leaf, Philharmonique, Kangourou, American Eagle, 20F Marianne Coq, 20F Vreneli
+   - Prix en EUR, option livraison
+
+3. **scrape-all.ts mis à jour** : intègre maintenant 3 dealers
+
+### Prix Or.fr (2026-02-04, livraison)
+
+| Pièce | Prix EUR |
+|-------|----------|
+| Kangourou 1oz | 4 430 € |
+| Philharmonique 1oz | 4 447 € |
+| Maple Leaf 1oz | 4 475 € |
+| American Eagle 1oz | 4 561 € |
+| 20F Marianne Coq | 860 € |
+| 20F Vreneli | 849 € |
+
+### Limitations Or.fr
+
+- ❌ Pas de Krugerrand 1oz individuel (tubes de 10 uniquement)
+- ❌ Pas de Souverain
+- ❌ Pas de Napoléon 20F classique (mais 20F Marianne Coq similaire)
+
+### Tableau comparatif dealers
+
+| Critère | Godot | Pièces-Or | Or.fr |
+|---------|-------|-----------|-------|
+| **Affiliation** | ✅ 0.5-2% | ❌ Non | ✅ 0.2-0.4% + récurrent |
+| **Krugerrand 1oz** | ✅ | ✅ | ❌ |
+| **Napoleon 20F** | ✅ | ✅ | ⚠️ 20F Marianne |
+| **Souverain** | ✅ | ✅ | ❌ |
+| **Maple Leaf 1oz** | ✅ | ✅ | ✅ |
+| **Devise** | EUR | EUR | EUR |
+| **Cookie affil** | 1 an | - | 1 an |
+
+### Prochaines étapes
+
+- [x] Tester les 3 scrapers ensemble : `npx tsx scripts/scrapers/scrape-all.ts`
+- [x] Créer table Supabase `dealer_prices`
+- [x] Intégrer prix dealers dans pages VS
+- [x] Ajouter pièces argent aux scrapers
+
+---
+
+## Session 2026-02-04 : Pièces argent ajoutées aux scrapers
+
+### Ce qui a été fait
+
+1. **Recherche dealers via Browserbase** : Identification des pièces argent disponibles chez chaque dealer
+
+2. **6 pièces argent ajoutées au scraper Godot** :
+   - Maple Leaf 1oz Argent (115,40€)
+   - Philharmonique 1oz Argent (115,40€)
+   - Britannia 1oz Argent (115,40€)
+   - Krugerrand 1oz Argent (115,40€)
+   - Kangourou 1oz Argent (115,40€)
+   - Silver Eagle 1oz (118,40€)
+
+3. **3 pièces argent ajoutées au scraper Pieces-Or** :
+   - Maple Leaf 1oz Argent (92,31€)
+   - Philharmonique 1oz Argent (92,31€)
+   - Silver Eagle 1oz (92,31€)
+
+4. **Mapping supabase.ts mis à jour** pour afficher prix argent dans pages VS
+
+5. **GitHub Actions testé** : 25 prix insérés (12 Godot + 9 Pieces-Or + 4 Or.fr)
+
+### Tableau couverture pièces argent
+
+| Pièce Argent 1oz | Godot | Pieces-Or | Or.fr |
+|------------------|:-----:|:---------:|:-----:|
+| Maple Leaf | ✅ | ✅ | ❌ |
+| Philharmonique | ✅ | ✅ | ❌ |
+| Silver Eagle | ✅ | ✅ | ❌ |
+| Britannia | ✅ | ❌ | ❌ |
+| Krugerrand | ✅ | ❌ | ❌ |
+| Kangourou | ✅ | ❌ | ❌ |
+
+### Observation prix
+
+Pieces-Or ~20% moins cher que Godot sur les pièces argent (92€ vs 115€)
