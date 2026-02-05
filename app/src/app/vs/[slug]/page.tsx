@@ -23,12 +23,18 @@ const COIN_IMAGES: Record<string, string> = {
   // Fractions déjà présentes
   "britannia-1-2oz-or": "/coins-v2/gold/britannia-1-2oz-or-avers.png",
   "britannia-1-4oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.png",
+  "britannia-1-10oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.png",
   "kangourou-1-2oz-or": "/coins-v2/gold/kangourou-1-2oz-or-avers.png",
   "kangourou-1-4oz-or": "/coins-v2/gold/kangourou-1-4oz-or-avers.png",
+  "kangourou-1-10oz-or": "/coins-v2/gold/kangourou-1-4oz-or-avers.png",
   "maple-leaf-1-2oz-or": "/coins-v2/gold/maple-leaf-1-2oz-or-avers.png",
   "maple-leaf-1-4oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.png",
+  "maple-leaf-1-10oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.png",
+  "maple-leaf-1-20oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.png",
   "philharmonique-1-2oz-or": "/coins-v2/gold/philharmonique-1-2oz-or-avers.png",
   "philharmonique-1-4oz-or": "/coins-v2/gold/philharmonique-1-4oz-or-avers.png",
+  "philharmonique-1-10oz-or":
+    "/coins-v2/gold/philharmonique-1-4oz-or-avers.png",
   "britannia-1oz-argent": "/coins-v2/silver/britannia-1oz-argent-avers.png",
   "maple-leaf-1oz-argent": "/coins-v2/silver/maple-leaf-1oz-argent-avers.png",
   "philharmonique-1oz-argent":
@@ -37,6 +43,13 @@ const COIN_IMAGES: Record<string, string> = {
   "american-eagle-1oz-argent":
     "/coins-v2/silver/american-eagle-1oz-argent-avers.png",
   "krugerrand-1oz-argent": "/coins-v2/silver/krugerrand-1oz-argent-avers.png",
+  "kookaburra-1oz-argent": "/coins-v2/silver/kookaburra-1oz-argent-avers.png",
+  "koala-1oz-argent": "/coins-v2/silver/koala-1oz-argent-avers.png",
+  "panda-30g-argent": "/coins-v2/silver/panda-30g-argent-avers.png",
+  "noah-ark-1oz-argent": "/coins-v2/silver/noah-ark-1oz-argent-avers.png",
+  "lunar-1oz-argent": "/coins-v2/silver/lunar-1oz-argent-avers.png",
+  "buffalo-1oz-argent": "/coins-v2/silver/buffalo-1oz-argent-avers.png",
+  "turtle-1oz-argent": "/coins-v2/silver/turtle-1oz-argent-avers.png",
   // Libertad Or (Mexique)
   "libertad-1oz-or": "/coins-v2/gold/libertad-1oz-or-avers.png",
   "libertad-1-2oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
@@ -187,6 +200,107 @@ function CoinPricesSection({ coinName, prices }: CoinPricesSectionProps) {
         ))}
       </div>
     </div>
+  );
+}
+
+function ConclusionSection({ coin1, coin2 }: { coin1: Coin; coin2: Coin }) {
+  const conclusions: string[] = [];
+  const sameSeries = coin1.name.split(" ")[0] === coin2.name.split(" ")[0];
+
+  // Comparaison de poids
+  if (coin1.weight_oz !== coin2.weight_oz) {
+    const heavier = coin1.weight_oz > coin2.weight_oz ? coin1 : coin2;
+    const lighter = coin1.weight_oz > coin2.weight_oz ? coin2 : coin1;
+
+    if (sameSeries) {
+      conclusions.push(
+        `La ${heavier.name} (${heavier.weight_oz} oz) contient ${(heavier.weight_oz / lighter.weight_oz).toFixed(1)}x plus de métal que la ${lighter.name} (${lighter.weight_oz} oz).`
+      );
+      conclusions.push(
+        `Les fractions plus petites comme la ${lighter.name} ont généralement une prime plus élevée par gramme, mais offrent un ticket d'entrée plus accessible.`
+      );
+    } else {
+      conclusions.push(
+        `En termes de poids, la ${heavier.name} (${heavier.weight_oz} oz) contient plus de métal que la ${coin1.weight_oz > coin2.weight_oz ? coin2.name : coin1.name} (${lighter.weight_oz} oz).`
+      );
+    }
+  }
+
+  // Comparaison de prime
+  if (
+    coin1.estimated_premium_pct !== undefined &&
+    coin2.estimated_premium_pct !== undefined &&
+    coin1.estimated_premium_pct !== coin2.estimated_premium_pct
+  ) {
+    const lowerPremium =
+      coin1.estimated_premium_pct < coin2.estimated_premium_pct ? coin1 : coin2;
+    const higherPremium =
+      coin1.estimated_premium_pct < coin2.estimated_premium_pct ? coin2 : coin1;
+    conclusions.push(
+      `La ${lowerPremium.name} a une prime estimée plus basse (${lowerPremium.estimated_premium_pct}%) contre ${higherPremium.estimated_premium_pct}% pour la ${higherPremium.name}, ce qui la rend plus intéressante pour l'investissement pur.`
+    );
+  }
+
+  // Comparaison de liquidité
+  if (
+    coin1.liquidity !== undefined &&
+    coin2.liquidity !== undefined &&
+    coin1.liquidity !== coin2.liquidity
+  ) {
+    const moreLiquid = coin1.liquidity > coin2.liquidity ? coin1 : coin2;
+    const lessLiquid = coin1.liquidity > coin2.liquidity ? coin2 : coin1;
+    conclusions.push(
+      `La ${moreLiquid.name} est plus liquide (${moreLiquid.liquidity}/5) que la ${lessLiquid.name} (${lessLiquid.liquidity}/5), ce qui facilite la revente.`
+    );
+  }
+
+  // Comparaison pureté
+  if (coin1.fineness !== coin2.fineness) {
+    const purer =
+      parseFloat(coin1.fineness) > parseFloat(coin2.fineness) ? coin1 : coin2;
+    conclusions.push(
+      `La ${purer.name} a une pureté supérieure (${purer.fineness}).`
+    );
+  }
+
+  // Comparaison métal différent
+  if (coin1.metal !== coin2.metal) {
+    const goldCoin = coin1.metal === "gold" ? coin1 : coin2;
+    const silverCoin = coin1.metal === "gold" ? coin2 : coin1;
+    conclusions.push(
+      `La ${goldCoin.name} (or) est une valeur refuge traditionnelle, tandis que la ${silverCoin.name} (argent) offre un ticket d'entrée plus accessible avec un potentiel de hausse plus volatile.`
+    );
+  }
+
+  // Recommandation finale
+  if (sameSeries && coin1.weight_oz !== coin2.weight_oz) {
+    const larger = coin1.weight_oz > coin2.weight_oz ? coin1 : coin2;
+    const smaller = coin1.weight_oz > coin2.weight_oz ? coin2 : coin1;
+    conclusions.push(
+      `📌 Pour l'investissement : privilégiez la ${larger.name} (prime plus faible par gramme). Pour offrir ou débuter : la ${smaller.name} est un bon choix.`
+    );
+  } else if (!sameSeries) {
+    if (coin1.liquidity !== coin2.liquidity) {
+      const recommended =
+        (coin1.liquidity ?? 0) > (coin2.liquidity ?? 0) ? coin1 : coin2;
+      conclusions.push(
+        `📌 Pour un investissement classique, la ${recommended.name} est recommandée pour sa meilleure liquidité.`
+      );
+    }
+  }
+
+  if (conclusions.length === 0) {
+    conclusions.push(
+      "Ces deux pièces ont des caractéristiques très similaires. Le choix dépendra principalement du prix et de vos préférences personnelles."
+    );
+  }
+
+  return (
+    <>
+      {conclusions.map((c, i) => (
+        <p key={i}>{c}</p>
+      ))}
+    </>
   );
 }
 
@@ -368,35 +482,47 @@ export default async function VsPage({ params }: PageProps) {
             highlight="lower"
           />
 
-          {/* Highlights */}
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div>
-              <h3 className="mb-3 font-semibold text-amber-400">
-                Points forts {coin1.name.split(" ")[0]}
-              </h3>
-              <ul className="space-y-2 text-sm text-neutral-300">
-                {coin1.highlights?.map((h, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="text-amber-500">•</span>
-                    {h}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-3 font-semibold text-amber-400">
-                Points forts {coin2.name.split(" ")[0]}
-              </h3>
-              <ul className="space-y-2 text-sm text-neutral-300">
-                {coin2.highlights?.map((h, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="text-amber-500">•</span>
-                    {h}
-                  </li>
-                ))}
-              </ul>
+          {/* Conclusion dynamique */}
+          <div className="mt-8 border-t border-neutral-700 pt-8">
+            <h3 className="mb-4 text-center text-lg font-bold text-white">
+              🎯 Conclusion
+            </h3>
+            <div className="space-y-4 text-sm leading-relaxed text-neutral-300">
+              <ConclusionSection coin1={coin1} coin2={coin2} />
             </div>
           </div>
+
+          {/* Highlights - seulement si pièces différentes */}
+          {coin1.name.split(" ")[0] !== coin2.name.split(" ")[0] && (
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div>
+                <h3 className="mb-3 font-semibold text-amber-400">
+                  Points forts {coin1.name.split(" ")[0]}
+                </h3>
+                <ul className="space-y-2 text-sm text-neutral-300">
+                  {coin1.highlights?.map((h, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-amber-500">•</span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="mb-3 font-semibold text-amber-400">
+                  Points forts {coin2.name.split(" ")[0]}
+                </h3>
+                <ul className="space-y-2 text-sm text-neutral-300">
+                  {coin2.highlights?.map((h, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-amber-500">•</span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
 
           {/* Prices section - only shown if at least one coin has prices */}
           {hasPrices && (

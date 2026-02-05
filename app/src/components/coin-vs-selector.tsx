@@ -48,6 +48,13 @@ const COIN_IMAGES: Record<string, string> = {
   "american-eagle-1oz-argent":
     "/coins-v2/silver/american-eagle-1oz-argent-avers.png",
   "krugerrand-1oz-argent": "/coins-v2/silver/krugerrand-1oz-argent-avers.png",
+  "kookaburra-1oz-argent": "/coins-v2/silver/kookaburra-1oz-argent-avers.png",
+  "koala-1oz-argent": "/coins-v2/silver/koala-1oz-argent-avers.png",
+  "panda-30g-argent": "/coins-v2/silver/panda-30g-argent-avers.png",
+  "noah-ark-1oz-argent": "/coins-v2/silver/noah-ark-1oz-argent-avers.png",
+  "lunar-1oz-argent": "/coins-v2/silver/lunar-1oz-argent-avers.png",
+  "buffalo-1oz-argent": "/coins-v2/silver/buffalo-1oz-argent-avers.png",
+  "turtle-1oz-argent": "/coins-v2/silver/turtle-1oz-argent-avers.png",
   // Libertad Or (Mexique)
   "libertad-1oz-or": "/coins-v2/gold/libertad-1oz-or-avers.png",
   "libertad-1-2oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
