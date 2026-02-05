@@ -1,13 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import type { HoldingWithCoin, SpotPrices } from "@/types";
-import { estimateCoinValue } from "@/lib/spot-price";
+import type { HoldingWithCoin } from "@/types";
 import { SellCoinDialog } from "@/components/sell-coin-dialog";
 
 interface PortfolioTableProps {
   holdings: HoldingWithCoin[];
-  spotPrices: SpotPrices;
   onRemove: (holdingId: string) => void;
   onSell: (data: {
     holding_id: string;
@@ -18,7 +16,6 @@ interface PortfolioTableProps {
 
 export function PortfolioTable({
   holdings,
-  spotPrices,
   onRemove,
   onSell,
 }: PortfolioTableProps) {
@@ -43,51 +40,33 @@ export function PortfolioTable({
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-[rgba(0,0,0,0.12)]">
-              <th className="px-4 py-3 text-left font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-left text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Piece
               </th>
-              <th className="px-4 py-3 text-center font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-center text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Metal
               </th>
-              <th className="px-4 py-3 text-center font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-center text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Pays
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Qte
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
-                Prix unit. est.
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
+                Prix achat unit.
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
-                Valeur totale
-              </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
-                Prix achat
-              </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
-                P&amp;L
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
+                Total
               </th>
               <th className="w-24 px-2 py-3" />
             </tr>
           </thead>
           <tbody>
             {holdings.map((h, i) => {
-              const spotPrice =
-                h.coin.metal === "gold"
-                  ? spotPrices.gold_eur_oz
-                  : spotPrices.silver_eur_oz;
-              const unitValue = estimateCoinValue(
-                spotPrice,
-                h.coin.weight_oz,
-                h.coin.purity,
-                h.coin.estimated_premium_pct,
-              );
-              const totalValue = unitValue * h.quantity;
               const hasCost = h.purchase_price_eur !== null;
               const totalCost = hasCost
                 ? h.purchase_price_eur! * h.quantity
                 : null;
-              const pnl = totalCost !== null ? totalValue - totalCost : null;
 
               return (
                 <tr
@@ -117,25 +96,12 @@ export function PortfolioTable({
                     {h.quantity}
                   </td>
                   <td className="px-4 py-3 text-right text-[#3d3520]">
-                    {fmt(unitValue)} &euro;
+                    {hasCost
+                      ? `${fmt(h.purchase_price_eur!)} \u20AC`
+                      : "\u2014"}
                   </td>
                   <td className="px-4 py-3 text-right font-bold text-[#1a1a1a]">
-                    {fmt(totalValue)} &euro;
-                  </td>
-                  <td className="px-4 py-3 text-right text-[#3d3520]">
-                    {hasCost ? `${fmt(totalCost!)} \u20AC` : "\u2014"}
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    {pnl !== null ? (
-                      <span
-                        className={`text-sm font-bold ${pnl >= 0 ? "text-[#2d5016]" : "text-[#8b1a1a]"}`}
-                      >
-                        {pnl >= 0 ? "+" : ""}
-                        {fmt(pnl)} &euro;
-                      </span>
-                    ) : (
-                      <span className="text-[#3d3520]">&mdash;</span>
-                    )}
+                    {totalCost !== null ? `${fmt(totalCost)} \u20AC` : "\u2014"}
                   </td>
                   <td className="px-2 py-3">
                     <div className="flex items-center gap-1">

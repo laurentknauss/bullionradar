@@ -1,50 +1,97 @@
 import Image from "next/image";
+import Link from "next/link";
 import { PriceComparator } from "@/components/price-comparator";
 import { CoinVsSelector } from "@/components/coin-vs-selector";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#BE943C]">
-      {/* Nav */}
-      <nav className="p-4">
-        <div className="mx-auto flex max-w-[1000px] flex-wrap items-center justify-between gap-2">
-          <span className="text-lg font-bold tracking-normal text-[#1a1a1a] sm:text-xl">
-            labonnepiece.fr
-          </span>
-          <div className="flex gap-2 sm:gap-3">
-            <a
-              href="#"
-              className="rounded border-2 border-[#1a1a1a] bg-transparent px-3 py-1.5 text-sm font-bold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-[#FFD700] sm:px-5 sm:py-2 sm:text-base"
+      {/* Header noir avec cours */}
+      <header className="overflow-x-auto bg-[#1a1a1a] px-8 py-6">
+        <div className="flex items-center justify-between gap-8 whitespace-nowrap">
+          {/* Cours Or avec périodes */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/cours-or"
+              className="text-lg font-bold text-[#FFD700] hover:text-[#fff]"
             >
-              Connexion
-            </a>
-            <a
-              href="#"
-              className="rounded border-2 border-[#1a1a1a] bg-[#1a1a1a] px-3 py-1.5 text-sm font-bold text-[#FFD700] transition-colors hover:bg-[#2a2a2a] sm:px-5 sm:py-2 sm:text-base"
+              Cours Or
+            </Link>
+            <Link
+              href="/cours-or/1-an"
+              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
             >
-              Creer un compte
-            </a>
+              1 an
+            </Link>
+            <Link
+              href="/cours-or/5-ans"
+              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
+            >
+              5 ans
+            </Link>
+            <Link
+              href="/cours-or/10-ans"
+              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
+            >
+              10 ans
+            </Link>
+            <Link
+              href="/cours-or/20-ans"
+              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
+            >
+              20 ans
+            </Link>
+          </div>
+          {/* Cours Argent avec périodes */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/cours-argent"
+              className="text-lg font-bold text-gray-300 hover:text-white"
+            >
+              Cours Argent
+            </Link>
+            <Link
+              href="/cours-argent/1-an"
+              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+            >
+              1 an
+            </Link>
+            <Link
+              href="/cours-argent/5-ans"
+              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+            >
+              5 ans
+            </Link>
+            <Link
+              href="/cours-argent/10-ans"
+              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+            >
+              10 ans
+            </Link>
           </div>
         </div>
-      </nav>
+      </header>
 
       {/* Hero */}
       <section className="w-full">
         <div className="mx-auto max-w-[900px]">
           <Image
-            src="/images/header-labonnepiece.jpeg"
-            alt="labonnepiece.fr - Comparateur de pieces d'or et d'argent"
-            width={1390}
-            height={780}
-            className="h-auto w-full"
+            src="/images/header-bullionradar.jpeg"
+            alt="BullionRadar - Comparateur de pieces d'or et d'argent"
+            width={550}
+            height={768}
+            className="mx-auto h-auto w-full max-w-[200px]"
             priority
           />
         </div>
         <div className="mx-auto max-w-[800px] px-6 py-10 text-center">
-          <h1 className="mb-4 text-3xl leading-tight font-black text-[#1a1a1a] md:text-5xl">
-            Le comparateur qui vous aide a trouver la bonne piece d&apos;
+          <p className="mb-4 text-lg font-semibold tracking-wide text-[#1a1a1a]/80">
+            L&apos;unique comparatif indépendant de pièces d&apos;
             <span className="text-[#8B6914]">or</span> et d&apos;
-            <span className="text-[#5A5A5A]">argent</span>
+            <span className="text-[#5A5A5A]">argent</span> en France
+          </p>
+          <h1 className="mb-4 text-3xl leading-tight font-black text-[#1a1a1a] md:text-5xl">
+            Trouvez la bonne pièce au meilleur prix
           </h1>
           <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-[#3d3520]">
             Comparez les <strong>caracteristiques</strong> de dizaines de pieces
@@ -67,7 +114,7 @@ export default function HomePage() {
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">1 200+</div>
           <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
-            Fiches VS
+            Fiches comparatives
           </div>
         </div>
         <div className="text-center">
@@ -92,9 +139,8 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="border-t border-black/10 px-6 py-8 text-center text-sm text-[#3d3520]">
         <p>
-          © 2026 <strong className="text-[#1a1a1a]">labonnepiece.fr</strong> —
-          Guide independant d&apos;investissement en pieces d&apos;or et
-          d&apos;argent
+          © 2026 <strong className="text-[#1a1a1a]">BullionRadar</strong> —
+          Comparateur independant de pieces d&apos;or et d&apos;argent
         </p>
       </footer>
     </main>

@@ -21,9 +21,9 @@ const COIN_IMAGES: Record<string, string> = {
   "panda-30g-or": "/coins-v2/gold/panda-30g-or-avers.png",
   "panda-15g-or": "/coins-v2/gold/panda-15g-or-avers.png",
   "panda-8g-or": "/coins-v2/gold/panda-8g-or-avers.png",
-  "napoleon-20f-or": "/coins-v2/gold/napoleon-20f-or-avers.jpg",
-  "20-francs-suisse-or": "/coins-v2/gold/20-francs-suisse-or-avers.jpg",
-  "souverain-or": "/coins-v2/gold/souverain-or-avers.jpg",
+  "napoleon-20f-or": "/coins-v2/gold/napoleon-20f-or-avers.png",
+  "20-francs-suisse-or": "/coins-v2/gold/20-francs-suisse-or-avers.png",
+  "souverain-or": "/coins-v2/gold/souverain-or-avers.png",
   // Fractions déjà présentes
   "britannia-1-2oz-or": "/coins-v2/gold/britannia-1-2oz-or-avers.png",
   "britannia-1-4oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.png",
@@ -54,6 +54,15 @@ const COIN_IMAGES: Record<string, string> = {
   "libertad-1-4oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
   "libertad-1-10oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
   "libertad-1-20oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
+  // Libertad Argent (Mexique)
+  "libertad-1oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-2oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-4oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-10oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-20oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-2oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-5oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1kg-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
 };
 
 function slugify(name: string): string {
@@ -73,9 +82,12 @@ export function CoinVsSelector() {
   const allCoins = useMemo(() => [...getGoldCoins(), ...getSilverCoins()], []);
 
   const filteredCoins = useMemo(() => {
-    // Show all coins (with or without images)
-    if (metalFilter === "all") return allCoins;
-    return allCoins.filter((coin) => coin.metal === metalFilter);
+    // Filter by metal and sort alphabetically
+    const filtered =
+      metalFilter === "all"
+        ? allCoins
+        : allCoins.filter((coin) => coin.metal === metalFilter);
+    return filtered.sort((a, b) => a.name.localeCompare(b.name, "fr"));
   }, [allCoins, metalFilter]);
 
   const handleCoinClick = (coin: Coin) => {
@@ -240,25 +252,37 @@ export function CoinVsSelector() {
         </div>
       </div>
 
-      {/* Floating compare button popup */}
+      {/* Full screen popup when 2 coins selected */}
       {selectedCoins.length === 2 && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 fixed bottom-6 left-1/2 z-50 -translate-x-1/2 duration-300">
-          <button
-            onClick={handleCompare}
-            className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 px-6 py-3 text-sm font-bold text-black shadow-2xl transition-all hover:scale-105 hover:shadow-amber-500/40"
-          >
-            <span>Comparer</span>
-            <span className="max-w-[140px] truncate font-semibold">
-              {selectedCoins[0]?.name}
-            </span>
-            <span className="text-black/60">vs</span>
-            <span className="max-w-[140px] truncate font-semibold">
-              {selectedCoins[1]?.name}
-            </span>
-            <span className="text-lg transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="mx-4 flex flex-col items-center gap-6 rounded-3xl bg-[#1a1a1a] p-8 shadow-2xl sm:p-12">
+            <p className="text-lg text-neutral-400">Vous avez sélectionné</p>
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
+              <div className="text-center">
+                <div className="text-xl font-bold text-amber-400 sm:text-2xl">
+                  {selectedCoins[0]?.name}
+                </div>
+              </div>
+              <span className="text-3xl font-black text-neutral-500">VS</span>
+              <div className="text-center">
+                <div className="text-xl font-bold text-amber-400 sm:text-2xl">
+                  {selectedCoins[1]?.name}
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={handleCompare}
+              className="mt-4 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 px-12 py-5 text-xl font-black text-black shadow-2xl transition-all hover:scale-105 hover:shadow-amber-500/40"
+            >
+              COMPARER →
+            </button>
+            <button
+              onClick={() => setSelectedCoins([])}
+              className="text-sm text-neutral-500 hover:text-white"
+            >
+              Annuler
+            </button>
+          </div>
         </div>
       )}
     </section>

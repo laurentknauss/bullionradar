@@ -14,32 +14,32 @@ export function SalesHistory({ sales }: SalesHistoryProps) {
 
   return (
     <div className="space-y-3">
-      <h2 className="font-[family-name:var(--font-playfair)] text-xl font-black text-[#1a1a1a]">
+      <h2 className="text-xl font-black text-[#1a1a1a]">
         Historique des ventes
       </h2>
       <div className="overflow-x-auto rounded-lg border border-[rgba(0,0,0,0.15)] bg-[rgba(0,0,0,0.08)]">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-[rgba(0,0,0,0.12)]">
-              <th className="px-4 py-3 text-left font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-left text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Piece
               </th>
-              <th className="px-4 py-3 text-center font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-center text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Metal
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Qte
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Prix vente
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Prix achat
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 P&amp;L realise
               </th>
-              <th className="px-4 py-3 text-right font-[family-name:var(--font-playfair)] text-xs font-bold uppercase tracking-[2px] text-[#1a1a1a]">
+              <th className="px-4 py-3 text-right text-xs font-bold tracking-[2px] text-[#1a1a1a] uppercase">
                 Date
               </th>
             </tr>

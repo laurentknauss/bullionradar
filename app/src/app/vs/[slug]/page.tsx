@@ -175,7 +175,7 @@ function CoinPricesSection({ coinName, prices }: CoinPricesSectionProps) {
   return (
     <div className="rounded-lg border border-neutral-700 bg-neutral-800/50 p-4">
       <h4 className="mb-3 text-center text-sm font-semibold text-amber-400">
-        Où acheter {coinName.split(" ")[0]} ?
+        Où acheter {coinName.replace(/ Or$| Argent$/, "")} ?
       </h4>
       <div className="space-y-2">
         {sortedPrices.map((dealer) => (
@@ -230,7 +230,7 @@ export default async function VsPage({ params }: PageProps) {
             href="/"
             className="text-xl font-bold text-amber-400 hover:text-amber-300"
           >
-            labonnepiece.fr
+            BullionRadar
           </Link>
           <Link
             href="/"
@@ -450,7 +450,7 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${coin1.name} vs ${coin2.name} - Comparatif | labonnepiece.fr`,
+    title: `${coin1.name} vs ${coin2.name} - Comparatif | BullionRadar`,
     description: `Comparez ${coin1.name} et ${coin2.name} : poids, purete, prime, liquidite. Quel est le meilleur choix pour investir ?`,
   };
 }

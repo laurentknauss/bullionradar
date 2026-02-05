@@ -5,6 +5,7 @@
     "dev": "pnpm --dir app dev",
     "build": "pnpm --dir app build",
     "start": "pnpm --dir app start",
-    "lint": "pnpm --dir app lint"
+    "lint": "pnpm --dir app lint",
+    "prepare": "husky"
   }
 }

@@ -34,7 +34,7 @@ export function AddCoinDialog({ onAdd }: AddCoinDialogProps) {
   const [quantity, setQuantity] = useState("1");
   const [purchasePrice, setPurchasePrice] = useState("");
   const [metalFilter, setMetalFilter] = useState<"all" | "gold" | "silver">(
-    "all",
+    "all"
   );
 
   const filteredCoins =
@@ -63,13 +63,13 @@ export function AddCoinDialog({ onAdd }: AddCoinDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="inline-block rounded-[4px] border-2 border-[#1a1a1a] bg-[#1a1a1a] px-5 py-2 font-[family-name:var(--font-playfair)] text-sm font-bold tracking-[0.5px] text-[#FFD700] shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+        <button className="inline-block rounded-[4px] border-2 border-[#1a1a1a] bg-[#1a1a1a] px-5 py-2 text-sm font-bold tracking-[0.5px] text-[#FFD700] shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
           + Ajouter une piece
         </button>
       </DialogTrigger>
       <DialogContent className="border-[rgba(0,0,0,0.15)] bg-[#c9a44e] sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle className="font-[family-name:var(--font-playfair)] text-xl font-black text-[#1a1a1a]">
+          <DialogTitle className="text-xl font-black text-[#1a1a1a]">
             Ajouter une piece
           </DialogTitle>
         </DialogHeader>
@@ -162,7 +162,7 @@ export function AddCoinDialog({ onAdd }: AddCoinDialogProps) {
           <button
             type="submit"
             disabled={!coinId || !quantity}
-            className="w-full rounded-[4px] bg-[#1a1a1a] px-5 py-3 font-[family-name:var(--font-playfair)] text-sm font-bold tracking-[1px] text-[#FFD700] shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
+            className="w-full rounded-[4px] bg-[#1a1a1a] px-5 py-3 text-sm font-bold tracking-[1px] text-[#FFD700] shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
           >
             Ajouter au portefeuille
           </button>

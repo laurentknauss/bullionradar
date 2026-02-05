@@ -8,9 +8,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "labonnepiece.fr - Comparateur de pieces d'or et d'argent",
+  title: "BullionRadar | Unique Comparateur Indépendant Pièces Or & Argent",
   description:
-    "Le guide francophone pour choisir la bonne piece d'or ou d'argent d'investissement. Comparatifs, fiscalite, liquidite.",
+    "BullionRadar scanne les dealers FR quotidiennement et vous donne le meilleur deal du jour. 50+ pièces bullion, 1900+ comparatifs gratuits.",
 };
 
 export default function RootLayout({

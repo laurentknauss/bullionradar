@@ -58,7 +58,7 @@ export function SellCoinDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="border-[rgba(0,0,0,0.15)] bg-[#c9a44e] sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle className="font-[family-name:var(--font-playfair)] text-xl font-black text-[#1a1a1a]">
+          <DialogTitle className="text-xl font-black text-[#1a1a1a]">
             Vendre &mdash; {holding.coin.name}
           </DialogTitle>
         </DialogHeader>
@@ -104,7 +104,7 @@ export function SellCoinDialog({
             <div className="rounded-lg border border-[rgba(0,0,0,0.15)] bg-[rgba(0,0,0,0.08)] p-3">
               <p className="text-sm text-[#3d3520]">P&amp;L prevu</p>
               <p
-                className={`mt-1 font-[family-name:var(--font-playfair)] text-lg font-black ${
+                className={`mt-1 text-lg font-black ${
                   pnlPreview >= 0 ? "text-[#2d5016]" : "text-[#8b1a1a]"
                 }`}
               >
@@ -120,7 +120,7 @@ export function SellCoinDialog({
           <button
             type="submit"
             disabled={qty < 1 || qty > holding.quantity || price <= 0}
-            className="w-full rounded-[4px] bg-[#1a1a1a] px-5 py-3 font-[family-name:var(--font-playfair)] text-sm font-bold tracking-[1px] text-[#FFD700] shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
+            className="w-full rounded-[4px] bg-[#1a1a1a] px-5 py-3 text-sm font-bold tracking-[1px] text-[#FFD700] shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
           >
             Confirmer la vente
           </button>

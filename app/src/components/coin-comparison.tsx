@@ -123,10 +123,10 @@ export function CoinComparison() {
             setSelectedCoin(null);
           }}
           className={cn(
-            "rounded-none px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all",
+            "rounded-none px-6 py-3 text-sm font-bold tracking-wider uppercase transition-all",
             metalFilter === "silver"
               ? "bg-[#5A5A5A] text-white shadow-lg"
-              : "bg-[rgba(90,90,90,0.15)] text-[#5A5A5A] hover:bg-[rgba(90,90,90,0.25)]",
+              : "bg-[rgba(90,90,90,0.15)] text-[#5A5A5A] hover:bg-[rgba(90,90,90,0.25)]"
           )}
         >
           Argent
@@ -137,10 +137,10 @@ export function CoinComparison() {
             setSelectedCoin(null);
           }}
           className={cn(
-            "rounded-none px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all",
+            "rounded-none px-6 py-3 text-sm font-bold tracking-wider uppercase transition-all",
             metalFilter === "gold"
               ? "bg-[#8B6914] text-white shadow-lg"
-              : "bg-[rgba(139,105,20,0.15)] text-[#8B6914] hover:bg-[rgba(139,105,20,0.25)]",
+              : "bg-[rgba(139,105,20,0.15)] text-[#8B6914] hover:bg-[rgba(139,105,20,0.25)]"
           )}
         >
           Or
@@ -165,7 +165,7 @@ export function CoinComparison() {
                   ? "scale-[0.97] opacity-60 blur-[2px]"
                   : "scale-100 opacity-100",
                 selectedCoin?.id === coin.id &&
-                  "ring-2 ring-[#D4AF37] ring-offset-2 ring-offset-[#BE943C]",
+                  "ring-2 ring-[#D4AF37] ring-offset-2 ring-offset-[#BE943C]"
               )}
             >
               {/* Coin image */}
@@ -181,7 +181,7 @@ export function CoinComparison() {
               <div
                 className={cn(
                   "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 transition-opacity duration-300",
-                  hoveredIndex === index ? "opacity-100" : "opacity-0",
+                  hoveredIndex === index ? "opacity-100" : "opacity-0"
                 )}
               >
                 <div className="w-full">
@@ -194,7 +194,7 @@ export function CoinComparison() {
                 </div>
               </div>
               {/* Premium badge */}
-              <div className="absolute right-2 top-2 rounded-full bg-black/50 px-2 py-1 text-[10px] font-bold text-[#D4AF37]">
+              <div className="absolute top-2 right-2 rounded-full bg-black/50 px-2 py-1 text-[10px] font-bold text-[#D4AF37]">
                 +{coin.estimated_premium_pct}%
               </div>
             </div>
@@ -206,7 +206,7 @@ export function CoinComparison() {
       {selectedCoin && (
         <div className="mt-8 space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#1a1a1a]">
+            <h2 className="text-2xl font-bold text-[#1a1a1a]">
               {selectedCoin.name}
             </h2>
             <button
@@ -241,7 +241,7 @@ export function CoinComparison() {
 
             {/* Coin details */}
             <div className="rounded-xl border border-[rgba(0,0,0,0.1)] bg-white p-6 shadow-lg">
-              <h3 className="mb-4 font-[family-name:var(--font-playfair)] text-lg font-bold text-[#1a1a1a]">
+              <h3 className="mb-4 text-lg font-bold text-[#1a1a1a]">
                 Caractéristiques
               </h3>
               <dl className="space-y-3 text-sm">
@@ -294,7 +294,7 @@ export function CoinComparison() {
               {selectedCoin.highlights &&
                 selectedCoin.highlights.length > 0 && (
                   <div className="mt-6 border-t border-[rgba(0,0,0,0.1)] pt-4">
-                    <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[#3d3520]">
+                    <h4 className="mb-3 text-sm font-bold tracking-wider text-[#3d3520] uppercase">
                       Points forts
                     </h4>
                     <ul className="space-y-2">
