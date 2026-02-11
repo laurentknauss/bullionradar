@@ -38,37 +38,16 @@ export default function MentionsLegalesPage() {
             <h3 className="text-lg font-semibold text-[#FFFFF0]">
               Éditeur du site
             </h3>
-            <p>
-              Le site BullionRadar.fr est édité par :
-              <br />
-              <strong className="text-[#FFFFF0]">[Nom / Raison sociale]</strong>
-              <br />
-              [Adresse complète]
-              <br />
-              [Code postal, Ville]
-              <br />
-              Email : contact@bullionradar.fr
-            </p>
+            <p>Email : webmaster@bullionradar.fr</p>
 
             <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
               Hébergeur
             </h3>
             <p>
-              Ce site est hébergé par :
-              <br />
               <strong className="text-[#FFFFF0]">Vercel Inc.</strong>
-              <br />
-              440 N Barranca Ave #4133
-              <br />
-              Covina, CA 91723, États-Unis
               <br />
               Site web : vercel.com
             </p>
-
-            <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
-              Directeur de la publication
-            </h3>
-            <p>[Nom du directeur de publication]</p>
           </div>
         </section>
 
@@ -91,8 +70,7 @@ export default function MentionsLegalesPage() {
             </h3>
             <p>
               Le responsable du traitement des données collectées sur ce site
-              est : [Nom / Raison sociale], joignable à l&apos;adresse
-              contact@bullionradar.fr.
+              est joignable à l&apos;adresse webmaster@bullionradar.fr.
             </p>
 
             <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">

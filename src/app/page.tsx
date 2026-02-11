@@ -85,20 +85,17 @@ export default function HomePage() {
           />
         </div>
         <div className="mx-auto max-w-[800px] px-6 py-10 text-center">
-          <p className="mb-4 text-lg font-semibold tracking-wide text-[#1a1a1a]/80">
-            L&apos;unique comparatif indépendant de pièces d&apos;
-            <span className="text-[#8B6914]">or</span> et d&apos;
-            <span className="text-[#5A5A5A]">argent</span> en France
+          <p className="mb-4 text-lg font-semibold tracking-wide text-black">
+            L&apos;unique comparatif indépendant de pièces d&apos;or et
+            d&apos;argent en France
           </p>
           <h1 className="mb-4 text-3xl leading-tight font-black text-[#1a1a1a] md:text-5xl">
             Trouvez la bonne pièce au meilleur prix
           </h1>
-          <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-[#3d3520]">
-            Comparez les <strong>caracteristiques</strong> de dizaines de pieces
-            d&apos;<span className="font-bold text-[#8B6914]">or</span> et
-            d&apos;
-            <span className="font-bold text-[#5A5A5A]">argent</span>, et trouvez
-            le <strong>meilleur prix</strong> chez les dealers francais.
+          <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-black">
+            Comparez les caracteristiques de dizaines de pieces d&apos;or et
+            d&apos;argent, et trouvez le meilleur prix chez les dealers
+            francais.
           </p>
         </div>
       </section>
