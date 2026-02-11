@@ -38,16 +38,13 @@ pnpm-debug.log*
 !README.md
 .playwright-mcp/
 
-# Screenshots and test images at root
-*.jpg
-*.jpeg
-*.png
-!/app/public/**/*.jpg
-!/app/public/**/*.jpeg
-!/app/public/**/*.png
+# Images at root only (not in public/)
+/*.jpg
+/*.jpeg
+/*.png
 
-# Duplicate coins folder (use coins-v2)
-app/public/coins/
+# Old HTML prototype
+/index.html
 
-# Local images folder
-images/
+# Local images folder at root
+/images/
