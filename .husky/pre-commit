@@ -1,7 +1,5 @@
 echo "🔍 Running pre-commit checks..."
 
-cd app
-
 # Lint-staged: auto-fix linting and formatting on staged files
 pnpm exec lint-staged || {
   echo "❌ Lint-staged failed. Fix errors above."
