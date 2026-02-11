@@ -87,6 +87,13 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   "krugerrand-1oz-argent": "krugerrand-1oz-argent",
   "kangourou-1oz-argent": "kangourou-1oz-argent",
   "american-eagle-1oz-argent": "silver-eagle-1oz",
+  // Pieces francaises argent
+  "50-francs-hercule-argent": "50-francs-hercule-argent",
+  "10-francs-hercule-argent": "10-francs-hercule-argent",
+  "5-francs-semeuse-argent": "5-francs-semeuse-argent",
+  "20-francs-turin-argent": "20-francs-turin-argent",
+  "10-francs-turin-argent": "10-francs-turin-argent",
+  "5-francs-hercule-ecu-argent": "5-francs-hercule-ecu-argent",
 };
 
 // Récupérer le slug Supabase à partir de l'ID coins-data

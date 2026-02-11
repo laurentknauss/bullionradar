@@ -90,6 +90,68 @@ const AVAILABLE_IMAGES: Record<
     avers: "/coins-v2/silver/krugerrand-1oz-argent-avers.png",
     revers: "/coins-v2/silver/krugerrand-1oz-argent-revers.png",
   },
+  // Libertad Argent (Mexique)
+  "libertad-1-20oz-argent": {
+    avers: "/coins-v2/silver/libertad-1-20oz-argent-avers.png",
+    revers: "/coins-v2/silver/libertad-1-20oz-argent-revers.png",
+  },
+  "libertad-1-10oz-argent": {
+    avers: "/coins-v2/silver/libertad-1-10oz-argent-avers.png",
+    revers: "/coins-v2/silver/libertad-1-10oz-argent-revers.png",
+  },
+  "libertad-1-4oz-argent": {
+    avers: "/coins-v2/silver/libertad-1-4oz-argent-avers.png",
+    revers: "/coins-v2/silver/libertad-1-4oz-argent-revers.png",
+  },
+  "libertad-1-2oz-argent": {
+    avers: "/coins-v2/silver/libertad-1-2oz-argent-avers.png",
+    revers: "/coins-v2/silver/libertad-1-2oz-argent-revers.png",
+  },
+  "libertad-1oz-argent": {
+    avers: "/coins-v2/silver/libertad-1oz-argent-avers-v2.png",
+    revers: "/coins-v2/silver/libertad-1oz-argent-revers-v2.png",
+  },
+  "libertad-2oz-argent": {
+    avers: "/coins-v2/silver/libertad-2oz-argent-avers.png",
+    revers: "/coins-v2/silver/libertad-2oz-argent-revers.png",
+  },
+  "libertad-5oz-argent": {
+    avers: "/coins-v2/silver/libertad-5oz-argent-avers.png",
+    revers: "/coins-v2/silver/libertad-5oz-argent-revers.png",
+  },
+  "libertad-1kg-argent": {
+    avers: "/coins-v2/silver/libertad-1kg-argent-avers.png",
+    revers: "/coins-v2/silver/libertad-1kg-argent-revers.png",
+  },
+  // Autres pièces argent
+  "kookaburra-1oz-argent": {
+    avers: "/coins-v2/silver/kookaburra-1oz-argent-avers.jpg",
+    revers: "/coins-v2/silver/kookaburra-1oz-argent-revers.jpg",
+  },
+  "koala-1oz-argent": {
+    avers: "/coins-v2/silver/koala-1oz-argent-avers.jpg",
+    revers: "/coins-v2/silver/koala-1oz-argent-revers.jpg",
+  },
+  "panda-30g-argent": {
+    avers: "/coins-v2/silver/panda-30g-argent-avers.jpg",
+    revers: "/coins-v2/silver/panda-30g-argent-revers.jpg",
+  },
+  "noah-ark-1oz-argent": {
+    avers: "/coins-v2/silver/noah-ark-1oz-argent-avers.jpg",
+    revers: "/coins-v2/silver/noah-ark-1oz-argent-revers.jpg",
+  },
+  "lunar-1oz-argent": {
+    avers: "/coins-v2/silver/lunar-1oz-argent-avers.jpg",
+    revers: "/coins-v2/silver/lunar-1oz-argent-revers.jpg",
+  },
+  "buffalo-1oz-argent": {
+    avers: "/coins-v2/silver/buffalo-1oz-argent-avers.jpg",
+    revers: "/coins-v2/silver/buffalo-1oz-argent-revers.jpg",
+  },
+  "turtle-1oz-argent": {
+    avers: "/coins-v2/silver/turtle-1oz-argent-avers.jpg",
+    revers: "/coins-v2/silver/turtle-1oz-argent-revers.jpg",
+  },
 };
 
 export function CoinComparison() {

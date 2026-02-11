@@ -170,6 +170,11 @@ export default async function CoursArgentPeriodPage({ params }: PageProps) {
       {/* Footer */}
       <footer className="border-t border-neutral-800 px-6 py-8 text-center text-sm text-neutral-500">
         <p>© 2026 BullionRadar - Données fournies par TradingView</p>
+        <p className="mt-2">
+          <Link href="/mentions-legales" className="underline hover:text-white">
+            Mentions légales
+          </Link>
+        </p>
       </footer>
     </main>
   );

@@ -57,14 +57,27 @@ const COIN_IMAGES: Record<string, string> = {
   "libertad-1-10oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
   "libertad-1-20oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
   // Libertad Argent (Mexique)
-  "libertad-1oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
-  "libertad-1-2oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
-  "libertad-1-4oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
-  "libertad-1-10oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
-  "libertad-1-20oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
-  "libertad-2oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
-  "libertad-5oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
-  "libertad-1kg-argent": "/coins-v2/silver/libertad-1oz-argent-avers.png",
+  "libertad-1-20oz-argent": "/coins-v2/silver/libertad-1-20oz-argent-avers.png",
+  "libertad-1-10oz-argent": "/coins-v2/silver/libertad-1-10oz-argent-avers.png",
+  "libertad-1-4oz-argent": "/coins-v2/silver/libertad-1-4oz-argent-avers.png",
+  "libertad-1-2oz-argent": "/coins-v2/silver/libertad-1-2oz-argent-avers.png",
+  "libertad-1oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers-v2.png",
+  "libertad-2oz-argent": "/coins-v2/silver/libertad-2oz-argent-avers.png",
+  "libertad-5oz-argent": "/coins-v2/silver/libertad-5oz-argent-avers.png",
+  "libertad-1kg-argent": "/coins-v2/silver/libertad-1kg-argent-avers.png",
+  // Pieces francaises argent
+  "50-francs-hercule-argent":
+    "/coins-v2/silver/50-francs-hercule-argent-avers.webp",
+  "10-francs-hercule-argent":
+    "/coins-v2/silver/10-francs-hercule-argent-avers.webp",
+  "5-francs-semeuse-argent":
+    "/coins-v2/silver/5-francs-semeuse-argent-avers.webp",
+  "5-francs-hercule-ecu-argent":
+    "/coins-v2/silver/5-francs-hercule-ecu-argent-avers.webp",
+  "20-francs-turin-argent":
+    "/coins-v2/silver/20-francs-turin-argent-avers.webp",
+  "10-francs-turin-argent":
+    "/coins-v2/silver/10-francs-turin-argent-avers.webp",
 };
 
 function slugify(name: string): string {

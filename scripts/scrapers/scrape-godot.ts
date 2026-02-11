@@ -81,10 +81,45 @@ const SILVER_COINS: readonly CoinConfig[] = [
   },
 ] as const;
 
+// French silver coins to scrape from Godot
+const FRENCH_SILVER_COINS: readonly CoinConfig[] = [
+  {
+    slug: "50-francs-hercule-argent",
+    name: "50 Francs Hercule Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/50-francs-hercule/23",
+  },
+  {
+    slug: "10-francs-hercule-argent",
+    name: "10 Francs Hercule Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/10-francs-hercule-1964-1973/25",
+  },
+  {
+    slug: "5-francs-semeuse-argent",
+    name: "5 Francs Semeuse Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/5-francs-semeuse-1959-1969/22",
+  },
+  {
+    slug: "20-francs-turin-argent",
+    name: "20 Francs Turin Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/20-francs-turin-1929-1939/27",
+  },
+  {
+    slug: "10-francs-turin-argent",
+    name: "10 Francs Turin Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/10-francs-turin-1929-1939/26",
+  },
+  {
+    slug: "5-francs-hercule-ecu-argent",
+    name: "5 Francs Hercule (Ecu) Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/ecu-5-francs-1795---1889/28",
+  },
+] as const;
+
 // All coins to scrape
 const COINS_TO_SCRAPE: readonly CoinConfig[] = [
   ...GOLD_COINS,
   ...SILVER_COINS,
+  ...FRENCH_SILVER_COINS,
 ] as const;
 
 /**

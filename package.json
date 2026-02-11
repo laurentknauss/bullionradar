@@ -1,5 +1,5 @@
 {
-  "name": "labonnepiece",
+  "name": "bullionradar",
   "private": true,
   "scripts": {
     "dev": "pnpm --dir app dev",

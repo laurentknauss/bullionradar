@@ -142,6 +142,14 @@ export default function HomePage() {
           © 2026 <strong className="text-[#1a1a1a]">BullionRadar</strong> —
           Comparateur independant de pieces d&apos;or et d&apos;argent
         </p>
+        <p className="mt-2">
+          <Link
+            href="/mentions-legales"
+            className="underline hover:text-[#1a1a1a]"
+          >
+            Mentions légales & Politique de confidentialité
+          </Link>
+        </p>
       </footer>
     </main>
   );
