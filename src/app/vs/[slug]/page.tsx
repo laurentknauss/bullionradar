@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
+import { getDealerDisplayName } from "@/lib/utils";
 import type { Coin } from "@/types";
 
 // Images disponibles
@@ -174,7 +175,7 @@ function DealerLink({ dealer, isBest }: DealerLinkProps) {
       <span
         className={isBest ? "font-medium text-amber-100" : "text-neutral-300"}
       >
-        {dealer.dealer}
+        {getDealerDisplayName(dealer.dealer)}
       </span>
       <span
         className={`font-bold ${isBest ? "text-amber-400" : "text-neutral-200"}`}

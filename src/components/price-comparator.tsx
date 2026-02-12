@@ -6,6 +6,7 @@ import {
   getLatestPrices,
   type DealerPrice as SupabaseDealerPrice,
 } from "@/lib/supabase";
+import { getDealerDisplayName } from "@/lib/utils";
 
 interface DealerPrice {
   dealer: string;
@@ -153,7 +154,7 @@ function CoinCard({ coin }: CoinCardProps) {
                             : "text-neutral-300"
                         }`}
                       >
-                        {dealer.dealer}
+                        {getDealerDisplayName(dealer.dealer)}
                       </span>
                     </div>
                     <span
@@ -223,9 +224,9 @@ export function PriceComparator() {
         {/* Header */}
         <div className="mb-12 text-center">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            Comparateur de prix{" "}
+            Comparateur de pieces{" "}
             <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-              Or
+              Or et Argent
             </span>
           </h2>
           <p className="mx-auto max-w-xl tracking-tight text-neutral-400">
