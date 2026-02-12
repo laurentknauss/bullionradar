@@ -21,6 +21,13 @@ export function TradingViewWidget({
     // Clear previous widget
     containerRef.current.innerHTML = "";
 
+    // TradingView requires this inner div structure for autosize
+    const widgetDiv = document.createElement("div");
+    widgetDiv.className = "tradingview-widget-container__widget";
+    widgetDiv.style.height = "100%";
+    widgetDiv.style.width = "100%";
+    containerRef.current.appendChild(widgetDiv);
+
     const script = document.createElement("script");
     script.src =
       "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
