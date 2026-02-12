@@ -96,7 +96,7 @@ function slugify(name: string): string {
 
 export function CoinVsSelector() {
   const router = useRouter();
-  const [metalFilter, setMetalFilter] = useState<MetalFilter>("gold");
+  const [metalFilter, setMetalFilter] = useState<MetalFilter>("all");
   const [selectedCoins, setSelectedCoins] = useState<Coin[]>([]);
 
   const allCoins = useMemo(() => [...getGoldCoins(), ...getSilverCoins()], []);
