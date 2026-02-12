@@ -206,6 +206,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 11,
     face_value: "50 GBP",
+    highlights: [
+      "Securite anti-contrefacon comme la version 1 Oz",
+      "Bon compromis poids/prime pour investir",
+      "Exoneree de Capital Gains Tax au Royaume-Uni",
+    ],
   },
   {
     id: "kangourou-1-2oz-or",
@@ -225,6 +230,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 10,
     face_value: "50 AUD",
+    highlights: [
+      "Design du kangourou change chaque annee",
+      "Perth Mint garantit rachat a vie",
+      "Bon compromis poids/prime pour investir",
+    ],
   },
   {
     id: "maple-leaf-1-2oz-or",
@@ -244,6 +254,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 12,
     face_value: "25 CAD",
+    highlights: [
+      "Purete 999.9, lignee de la premiere piece bullion 4 neuf",
+      "Micro-gravure laser anti-contrefacon",
+      "Bon compromis poids/prime pour investir",
+    ],
   },
   {
     id: "philharmonique-1-2oz-or",
@@ -262,6 +277,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 9,
     face_value: "50 EUR",
+    highlights: [
+      "Seule piece bullion majeure en euros",
+      "Design inchange depuis 1989",
+      "Bon compromis poids/prime pour investir",
+    ],
   },
 
   // --- 1/4 Oz Or ---
@@ -283,6 +303,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 13,
     face_value: "25 GBP",
+    highlights: [
+      "Securite anti-contrefacon comme la version 1 Oz",
+      "Ticket d'entree accessible pour investir dans l'or",
+      "Exoneree de Capital Gains Tax au Royaume-Uni",
+    ],
   },
   {
     id: "kangourou-1-4oz-or",
@@ -302,6 +327,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 14,
     face_value: "25 AUD",
+    highlights: [
+      "Design du kangourou change chaque annee",
+      "Perth Mint garantit rachat a vie",
+      "Ticket d'entree accessible pour investir dans l'or",
+    ],
   },
   {
     id: "maple-leaf-1-4oz-or",
@@ -321,6 +351,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 15,
     face_value: "10 CAD",
+    highlights: [
+      "Purete 999.9, micro-gravure laser anti-contrefacon",
+      "Ticket d'entree accessible pour investir dans l'or",
+      "Une des pieces les plus pures du marche",
+    ],
   },
   {
     id: "philharmonique-1-4oz-or",
@@ -339,6 +374,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 15,
     face_value: "25 EUR",
+    highlights: [
+      "Seule piece bullion majeure en euros",
+      "Design inchange depuis 1989",
+      "Ticket d'entree accessible pour investir dans l'or",
+    ],
   },
 
   // --- 1/10 Oz Or ---
@@ -360,6 +400,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 21,
     face_value: "10 GBP",
+    highlights: [
+      "Securite anti-contrefacon comme la version 1 Oz",
+      "Format compact ideal pour offrir",
+      "Exoneree de Capital Gains Tax au Royaume-Uni",
+    ],
   },
   {
     id: "kangourou-1-10oz-or",
@@ -379,6 +424,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 20,
     face_value: "15 AUD",
+    highlights: [
+      "Design du kangourou change chaque annee",
+      "Perth Mint garantit rachat a vie",
+      "Format compact ideal pour offrir",
+    ],
   },
   {
     id: "maple-leaf-1-10oz-or",
@@ -398,6 +448,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 18,
     face_value: "5 CAD",
+    highlights: [
+      "Purete 999.9, micro-gravure laser anti-contrefacon",
+      "Format compact ideal pour offrir",
+      "Une des pieces les plus pures du marche",
+    ],
   },
   {
     id: "philharmonique-1-10oz-or",
@@ -416,6 +471,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 18,
     face_value: "10 EUR",
+    highlights: [
+      "Seule piece bullion majeure en euros",
+      "Design inchange depuis 1989",
+      "Format compact ideal pour offrir",
+    ],
   },
 
   // --- Fractionnelles & Panda Or ---
@@ -485,6 +545,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 12,
     face_value: "200 CNY",
+    highlights: [
+      "Design du panda change chaque annee (tres collectionne)",
+      "Poids en grammes (standard chinois depuis 2016)",
+      "Tres populaire aupres des collectionneurs asiatiques",
+    ],
   },
   {
     id: "panda-8g-or",
@@ -503,6 +568,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 13,
     face_value: "100 CNY",
+    highlights: [
+      "Design du panda change chaque annee (tres collectionne)",
+      "Plus petit format Panda or, ticket d'entree accessible",
+      "Poids en grammes (standard chinois depuis 2016)",
+    ],
   },
 
   // --- Pieces classiques cotees ---
@@ -982,6 +1052,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 80,
     face_value: null,
+    highlights: [
+      "Tirage tres limite, forte prime de rarete",
+      "Ange de l'Independance au revers",
+      "Aucune valeur faciale inscrite",
+    ],
   },
   {
     id: "libertad-1-4oz-argent",
@@ -1001,6 +1076,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 60,
     face_value: null,
+    highlights: [
+      "Tirage limite, prime de rarete significative",
+      "Ange de l'Independance au revers",
+      "Aucune valeur faciale inscrite",
+    ],
   },
   {
     id: "libertad-1-2oz-argent",
@@ -1020,6 +1100,11 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 50,
     face_value: null,
+    highlights: [
+      "Bon compromis taille/prime dans la gamme Libertad",
+      "Ange de l'Independance au revers",
+      "Aucune valeur faciale inscrite",
+    ],
   },
   {
     id: "libertad-1oz-argent",
