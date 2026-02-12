@@ -16,24 +16,20 @@ export function TradingViewWidget({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    // Clear previous widget
-    containerRef.current.innerHTML = "";
+    container.innerHTML = "";
 
-    // TradingView requires this inner div structure for autosize
-    const widgetDiv = document.createElement("div");
-    widgetDiv.className = "tradingview-widget-container__widget";
-    widgetDiv.style.height = "100%";
-    widgetDiv.style.width = "100%";
-    containerRef.current.appendChild(widgetDiv);
+    const chartHeight = Math.max(500, Math.round(window.innerHeight * 0.8));
 
     const script = document.createElement("script");
     script.src =
       "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.async = true;
     script.innerHTML = JSON.stringify({
-      autosize: true,
+      width: "100%",
+      height: chartHeight,
       symbol: `OANDA:${symbol}`,
       interval: interval,
       timezone: "Europe/Paris",
@@ -52,12 +48,10 @@ export function TradingViewWidget({
       ...(range && { range }),
     });
 
-    containerRef.current.appendChild(script);
+    container.appendChild(script);
 
     return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
+      container.innerHTML = "";
     };
   }, [symbol, interval, range]);
 
@@ -65,7 +59,7 @@ export function TradingViewWidget({
     <div
       ref={containerRef}
       className="tradingview-widget-container"
-      style={{ height: "80vh", minHeight: "500px", width: "100%" }}
+      style={{ width: "100%" }}
     />
   );
 }
