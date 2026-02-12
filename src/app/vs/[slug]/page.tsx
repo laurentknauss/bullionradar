@@ -563,10 +563,12 @@ export default async function VsPage({ params }: PageProps) {
                         new Date(b.scraped_at).getTime() -
                         new Date(a.scraped_at).getTime(),
                     )[0]?.scraped_at ?? "",
-                  ).toLocaleDateString("fr-FR", {
+                  ).toLocaleString("fr-FR", {
                     day: "numeric",
                     month: "long",
                     year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
                   })}
                 </p>
                 <p className="mt-2 text-xs text-neutral-600">
