@@ -37,8 +37,10 @@ export function TradingViewWidget({
       gridColor: "rgba(64, 64, 64, 0.3)",
       hide_top_toolbar: true,
       hide_legend: false,
+      hide_volume: true,
       save_image: false,
       calendar: false,
+      studies: [],
       support_host: "https://www.tradingview.com",
       ...(range && { range }),
     });
@@ -55,8 +57,7 @@ export function TradingViewWidget({
   return (
     <div
       ref={containerRef}
-      className="tradingview-widget-container"
-      style={{ height: "80vh", minHeight: "700px", width: "100%" }}
+      className="tradingview-widget-container h-[500px] w-full md:h-[700px] lg:h-[900px] xl:h-[1100px]"
     />
   );
 }

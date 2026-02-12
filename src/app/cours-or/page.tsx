@@ -72,7 +72,7 @@ export default function CoursOrPage() {
       </div>
 
       {/* TradingView Widget - Full width */}
-      <div className="px-4 pb-12">
+      <div className="px-4 pb-4">
         <div className="overflow-hidden rounded-xl border border-neutral-800">
           <TradingViewWidget symbol="XAUEUR" interval="D" />
         </div>
