@@ -553,6 +553,27 @@ export default async function VsPage({ params }: PageProps) {
                 <CoinPricesSection coinName={coin1.name} prices={prices1} />
                 <CoinPricesSection coinName={coin2.name} prices={prices2} />
               </div>
+              <div className="mt-8 text-center">
+                <p className="text-sm text-neutral-500">
+                  <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
+                  Meilleur prix — Derniere mise a jour :{" "}
+                  {new Date(
+                    [...prices1, ...prices2].sort(
+                      (a, b) =>
+                        new Date(b.scraped_at).getTime() -
+                        new Date(a.scraped_at).getTime(),
+                    )[0]?.scraped_at ?? "",
+                  ).toLocaleDateString("fr-FR", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
+                <p className="mt-2 text-xs text-neutral-600">
+                  Prix indicatifs pouvant varier de quelques euros par rapport
+                  aux sites compares
+                </p>
+              </div>
             </div>
           )}
         </div>
