@@ -86,6 +86,12 @@ export default async function CoursOrPeriodPage({ params }: PageProps) {
           </Link>
           <div className="flex gap-4">
             <Link
+              href="/"
+              className="text-sm text-neutral-400 hover:text-white"
+            >
+              Accueil
+            </Link>
+            <Link
               href="/cours-argent"
               className="text-sm text-neutral-400 hover:text-white"
             >
@@ -96,7 +102,7 @@ export default async function CoursOrPeriodPage({ params }: PageProps) {
       </nav>
 
       {/* Content */}
-      <div className="mx-auto max-w-6xl px-8 py-16">
+      <div className="mx-auto max-w-6xl px-8 pt-16 pb-8">
         <h1 className="mb-4 text-3xl font-semibold tracking-wide text-[#FFFFF0] md:text-4xl">
           {periodData.seoTitle}
         </h1>
@@ -121,16 +127,20 @@ export default async function CoursOrPeriodPage({ params }: PageProps) {
             </Link>
           ))}
         </div>
+      </div>
 
-        {/* TradingView Widget */}
-        <div className="mb-12 overflow-hidden rounded-xl border border-neutral-800">
+      {/* TradingView Widget - Full width */}
+      <div className="px-4 pb-12">
+        <div className="overflow-hidden rounded-xl border border-neutral-800">
           <TradingViewWidget
             symbol="XAUEUR"
             interval="W"
             range={periodData.range}
           />
         </div>
+      </div>
 
+      <div className="mx-auto max-w-6xl px-8 pb-16">
         {/* SEO Content */}
         <section className="max-w-none space-y-8">
           <h2 className="text-xl font-semibold tracking-wide text-[#FFFFF0]">
