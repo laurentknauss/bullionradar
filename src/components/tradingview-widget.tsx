@@ -57,7 +57,8 @@ export function TradingViewWidget({
   return (
     <div
       ref={containerRef}
-      className="tradingview-widget-container h-[500px] w-full md:h-[700px] lg:h-[900px] xl:h-[1100px]"
+      className="tradingview-widget-container"
+      style={{ height: "80vh", minHeight: "500px", width: "100%" }}
     />
   );
 }
