@@ -146,10 +146,10 @@ export default function MentionsLegalesPage() {
             <p className="pt-4">
               Pour exercer ces droits, contactez-nous à :{" "}
               <a
-                href="mailto:contact@bullionradar.fr"
+                href="mailto:webmaster@bullionradar.fr"
                 className="text-amber-400 underline hover:text-amber-300"
               >
-                contact@bullionradar.fr
+                webmaster@bullionradar.fr
               </a>
             </p>
             <p className="pt-2">
