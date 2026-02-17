@@ -113,62 +113,26 @@ async function scrapeCoinPrice(
     // Wait for page to fully load (JS content)
     await sleep(3000);
 
-    // The product price is in the "Livraison à domicile" section
-    // Look for "À partir de X €" near "Individuel" text
-    // NOT the spot gold price in the header!
+    // The product price is in the "Individuel" radio option
+    // NOT "Tube de 10" and NOT the spot gold price in the header!
     let priceText = "";
 
-    // Method 1: Find "À partir de" which contains product price
+    // Find the "Individuel" radio option which contains the unit price
     try {
-      const aPartirDe = page.locator("text=/À partir de \\d/").first();
-      if (await aPartirDe.isVisible({ timeout: 5000 })) {
-        priceText = (await aPartirDe.textContent()) || "";
+      const individuelRadio = page
+        .locator("label, div, span")
+        .filter({ hasText: /Individuel/ })
+        .filter({ hasText: /€/ })
+        .first();
+      if (await individuelRadio.isVisible({ timeout: 5000 })) {
+        const text = (await individuelRadio.textContent()) || "";
+        const match = text.match(/(\d[\d\s]*[.,]\d{2})\s*€/);
+        if (match) {
+          priceText = match[0];
+        }
       }
     } catch {
       // Not found
-    }
-
-    // Method 2: Look in the Livraison section specifically
-    if (!priceText) {
-      try {
-        // Find the section containing "Livraison" and get the price from there
-        const livraisonSection = page.locator("text=/Livraison/").first();
-        if (await livraisonSection.isVisible({ timeout: 3000 })) {
-          // Get parent container and find price within
-          const container = page
-            .locator("section, div")
-            .filter({ hasText: /Livraison à domicile/ })
-            .first();
-          const priceInSection = container
-            .locator("text=/\\d+[\\s,]\\d+.*€/")
-            .first();
-          if (await priceInSection.isVisible({ timeout: 3000 })) {
-            priceText = (await priceInSection.textContent()) || "";
-          }
-        }
-      } catch {
-        // Not found
-      }
-    }
-
-    // Method 3: Find price near "Individuel" text
-    if (!priceText) {
-      try {
-        const individuelRow = page.locator("text=/Individuel/").first();
-        if (await individuelRow.isVisible({ timeout: 3000 })) {
-          // Get the row/container with the price
-          const parent = individuelRow
-            .locator('xpath=ancestor::*[contains(., "€")]')
-            .first();
-          const text = (await parent.textContent()) || "";
-          const match = text.match(/(\d[\d\s]*[.,]\d{2})\s*€/);
-          if (match) {
-            priceText = match[0];
-          }
-        }
-      } catch {
-        // Not found
-      }
     }
 
     if (!priceText) {
