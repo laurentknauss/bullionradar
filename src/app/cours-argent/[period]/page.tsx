@@ -25,6 +25,12 @@ const PERIODS: Record<
     months: 120,
     seoTitle: "Cours de l'Argent sur 10 Ans",
   },
+  "20-ans": {
+    label: "20 Ans",
+    range: "ALL",
+    months: 240,
+    seoTitle: "Cours de l'Argent sur 20 Ans",
+  },
 };
 
 const ALL_PERIODS = [
@@ -32,6 +38,7 @@ const ALL_PERIODS = [
   { label: "1 An", href: "/cours-argent/1-an" },
   { label: "5 Ans", href: "/cours-argent/5-ans" },
   { label: "10 Ans", href: "/cours-argent/10-ans" },
+  { label: "20 Ans", href: "/cours-argent/20-ans" },
 ];
 
 interface PageProps {

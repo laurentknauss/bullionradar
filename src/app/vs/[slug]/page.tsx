@@ -612,8 +612,17 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "Comparatif non trouve" };
   }
 
+  // Canonical: always alphabetical order to avoid duplicate content
+  const slug1 = slugify(coin1.name);
+  const slug2 = slugify(coin2.name);
+  const canonicalSlug =
+    slug1 < slug2 ? `${slug1}-vs-${slug2}` : `${slug2}-vs-${slug1}`;
+
   return {
     title: `${coin1.name} vs ${coin2.name} - Comparatif | BullionRadar`,
     description: `Comparez ${coin1.name} et ${coin2.name} : poids, purete, prime, liquidite. Quel est le meilleur choix pour investir ?`,
+    alternates: {
+      canonical: `https://bullionradar.fr/vs/${canonicalSlug}`,
+    },
   };
 }
