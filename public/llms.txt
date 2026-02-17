@@ -1,0 +1,31 @@
+# BullionRadar
+> Comparateur independant de pieces d'or et d'argent d'investissement en France. Prix mis a jour quotidiennement aupres de dealers francais.
+
+## Pages principales
+- [Accueil](https://bullionradar.fr/): Selection et comparaison de 58 pieces bullion (or et argent)
+- [Cours de l'or](https://bullionradar.fr/cours-or): Graphique temps reel du cours de l'or en EUR (1 an, 5 ans, 10 ans, 20 ans)
+- [Cours de l'argent](https://bullionradar.fr/cours-argent): Graphique temps reel du cours de l'argent en EUR (1 an, 5 ans, 10 ans, 20 ans)
+- [A propos](https://bullionradar.fr/a-propos): Methodologie, engagements et contact
+- [Mentions legales](https://bullionradar.fr/mentions-legales): Informations legales
+
+## Donnees cles
+- 58 pieces analysees : 31 or, 27 argent
+- 3 dealers francais compares : Godot & Fils, Or.fr, Pieces-Or.com
+- Prix actualises chaque jour ouvre
+- 1200+ fiches comparatives (toutes les combinaisons de pieces)
+- Donnees techniques : poids, purete, diametre, epaisseur, pays d'origine, prime estimee, liquidite
+
+## Pieces or couvertes
+- Internationales 1 oz : Maple Leaf, Krugerrand, Philharmonique, American Eagle, American Buffalo, Britannia, Kangourou, Panda, Libertad
+- Fractions : 1/2 oz, 1/4 oz, 1/10 oz, 1/20 oz (Maple Leaf, Britannia, Kangourou, Philharmonique, Libertad, Panda)
+- Classiques : Napoleon 20F, Souverain, 20 Francs Suisse (Vreneli)
+
+## Pieces argent couvertes
+- Internationales 1 oz : Maple Leaf, Philharmonique, Kangourou, Britannia, American Eagle, Krugerrand, Kookaburra, Koala, Panda 30g, Noah's Ark, Lunar, Buffalo, Turtle
+- Libertad : 1/20 oz, 1/10 oz, 1/4 oz, 1/2 oz, 1 oz, 2 oz, 5 oz, 1 kg
+- Francaises : 50F Hercule, 10F Hercule, 5F Semeuse, 5F Hercule Ecu, 20F Turin, 10F Turin
+
+## Pages comparatives
+- Format URL : https://bullionradar.fr/vs/{piece1}-vs-{piece2}
+- Exemple : https://bullionradar.fr/vs/maple-leaf-1-oz-or-vs-krugerrand-1-oz-or
+- Chaque fiche compare caracteristiques techniques et prix chez les 3 dealers

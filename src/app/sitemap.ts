@@ -57,6 +57,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // A propos
+  urls.push({
+    url: `${BASE_URL}/a-propos`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.5,
+  });
+
   // Mentions legales
   urls.push({
     url: `${BASE_URL}/mentions-legales`,

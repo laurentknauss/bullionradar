@@ -68,6 +68,12 @@ export default function HomePage() {
             >
               10 ans
             </Link>
+            <Link
+              href="/cours-argent/20-ans"
+              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+            >
+              20 ans
+            </Link>
           </div>
         </div>
       </header>
@@ -77,7 +83,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[900px]">
           <Image
             src="/images/header-bullionradar.jpeg"
-            alt="BullionRadar - Comparateur de pieces d'or et d'argent"
+            alt="BullionRadar - Comparateur de pièces d'or et d'argent"
             width={550}
             height={768}
             className="mx-auto h-auto w-full max-w-[200px]"
@@ -93,9 +99,9 @@ export default function HomePage() {
             Trouvez la bonne pièce au meilleur prix
           </h1>
           <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-black">
-            Comparez les caracteristiques de dizaines de pieces d&apos;or et
+            Comparez les caractéristiques de dizaines de pièces d&apos;or et
             d&apos;argent, et trouvez le meilleur prix chez les dealers
-            francais.
+            français.
           </p>
         </div>
       </section>
@@ -105,7 +111,7 @@ export default function HomePage() {
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">50+</div>
           <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
-            Pieces analysees
+            Pièces analysées
           </div>
         </div>
         <div className="text-center">
@@ -117,7 +123,7 @@ export default function HomePage() {
         <div className="text-center">
           <div className="text-5xl font-black text-[#1a1a1a]">3</div>
           <div className="mt-1 text-xs font-medium tracking-widest text-[#3d3520] uppercase">
-            Dealers compares
+            Dealers comparés
           </div>
         </div>
       </div>
@@ -137,14 +143,18 @@ export default function HomePage() {
       <footer className="border-t border-black/10 px-6 py-8 text-center text-sm text-[#3d3520]">
         <p>
           © 2026 <strong className="text-[#1a1a1a]">BullionRadar</strong> —
-          Comparateur independant de pieces d&apos;or et d&apos;argent
+          Comparateur indépendant de pièces d&apos;or et d&apos;argent
         </p>
         <p className="mt-2">
+          <Link href="/a-propos" className="underline hover:text-[#1a1a1a]">
+            À propos
+          </Link>
+          {" · "}
           <Link
             href="/mentions-legales"
             className="underline hover:text-[#1a1a1a]"
           >
-            Mentions légales & Politique de confidentialité
+            Mentions légales
           </Link>
         </p>
       </footer>

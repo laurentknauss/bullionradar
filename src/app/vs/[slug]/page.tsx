@@ -6,67 +6,72 @@ import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
 import type { Coin } from "@/types";
 
-// Images disponibles
+// Images disponibles (WebP)
 const COIN_IMAGES: Record<string, string> = {
-  "krugerrand-1oz-or": "/coins-v2/gold/krugerrand-1oz-or-avers.png",
-  "american-buffalo-1oz-or": "/coins-v2/gold/american-buffalo-1oz-or-avers.png",
-  "american-eagle-1oz-or": "/coins-v2/gold/american-eagle-1oz-or-avers.png",
-  "britannia-1oz-or": "/coins-v2/gold/britannia-1oz-or-avers.png",
-  "kangourou-1oz-or": "/coins-v2/gold/kangourou-1oz-or-avers.png",
-  "maple-leaf-1oz-or": "/coins-v2/gold/maple-leaf-1oz-or-avers.png",
-  "philharmonique-1oz-or": "/coins-v2/gold/philharmonique-1oz-or-avers.png",
-  "panda-30g-or": "/coins-v2/gold/panda-30g-or-avers.png",
-  "panda-15g-or": "/coins-v2/gold/panda-15g-or-avers.png",
-  "panda-8g-or": "/coins-v2/gold/panda-8g-or-avers.png",
-  "napoleon-20f-or": "/coins-v2/gold/napoleon-20f-or-avers.png",
-  "20-francs-suisse-or": "/coins-v2/gold/20-francs-suisse-or-avers.png",
-  "souverain-or": "/coins-v2/gold/souverain-or-avers.png",
-  // Fractions déjà présentes
-  "britannia-1-2oz-or": "/coins-v2/gold/britannia-1-2oz-or-avers.png",
-  "britannia-1-4oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.png",
-  "britannia-1-10oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.png",
-  "kangourou-1-2oz-or": "/coins-v2/gold/kangourou-1-2oz-or-avers.png",
-  "kangourou-1-4oz-or": "/coins-v2/gold/kangourou-1-4oz-or-avers.png",
-  "kangourou-1-10oz-or": "/coins-v2/gold/kangourou-1-4oz-or-avers.png",
-  "maple-leaf-1-2oz-or": "/coins-v2/gold/maple-leaf-1-2oz-or-avers.png",
-  "maple-leaf-1-4oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.png",
-  "maple-leaf-1-10oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.png",
-  "maple-leaf-1-20oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.png",
-  "philharmonique-1-2oz-or": "/coins-v2/gold/philharmonique-1-2oz-or-avers.png",
-  "philharmonique-1-4oz-or": "/coins-v2/gold/philharmonique-1-4oz-or-avers.png",
+  "krugerrand-1oz-or": "/coins-v2/gold/krugerrand-1oz-or-avers.webp",
+  "american-buffalo-1oz-or":
+    "/coins-v2/gold/american-buffalo-1oz-or-avers.webp",
+  "american-eagle-1oz-or": "/coins-v2/gold/american-eagle-1oz-or-avers.webp",
+  "britannia-1oz-or": "/coins-v2/gold/britannia-1oz-or-avers.webp",
+  "kangourou-1oz-or": "/coins-v2/gold/kangourou-1oz-or-avers.webp",
+  "maple-leaf-1oz-or": "/coins-v2/gold/maple-leaf-1oz-or-avers.webp",
+  "philharmonique-1oz-or": "/coins-v2/gold/philharmonique-1oz-or-avers.webp",
+  "panda-30g-or": "/coins-v2/gold/panda-30g-or-avers.webp",
+  "panda-15g-or": "/coins-v2/gold/panda-15g-or-avers.webp",
+  "panda-8g-or": "/coins-v2/gold/panda-8g-or-avers.webp",
+  "napoleon-20f-or": "/coins-v2/gold/napoleon-20f-or-avers.webp",
+  "20-francs-suisse-or": "/coins-v2/gold/20-francs-suisse-or-avers.webp",
+  "souverain-or": "/coins-v2/gold/souverain-or-avers.webp",
+  // Fractions
+  "britannia-1-2oz-or": "/coins-v2/gold/britannia-1-2oz-or-avers.webp",
+  "britannia-1-4oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.webp",
+  "britannia-1-10oz-or": "/coins-v2/gold/britannia-1-4oz-or-avers.webp",
+  "kangourou-1-2oz-or": "/coins-v2/gold/kangourou-1-2oz-or-avers.webp",
+  "kangourou-1-4oz-or": "/coins-v2/gold/kangourou-1-4oz-or-avers.webp",
+  "kangourou-1-10oz-or": "/coins-v2/gold/kangourou-1-4oz-or-avers.webp",
+  "maple-leaf-1-2oz-or": "/coins-v2/gold/maple-leaf-1-2oz-or-avers.webp",
+  "maple-leaf-1-4oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.webp",
+  "maple-leaf-1-10oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.webp",
+  "maple-leaf-1-20oz-or": "/coins-v2/gold/maple-leaf-1-4oz-or-avers.webp",
+  "philharmonique-1-2oz-or":
+    "/coins-v2/gold/philharmonique-1-2oz-or-avers.webp",
+  "philharmonique-1-4oz-or":
+    "/coins-v2/gold/philharmonique-1-4oz-or-avers.webp",
   "philharmonique-1-10oz-or":
-    "/coins-v2/gold/philharmonique-1-4oz-or-avers.png",
-  "britannia-1oz-argent": "/coins-v2/silver/britannia-1oz-argent-avers.png",
-  "maple-leaf-1oz-argent": "/coins-v2/silver/maple-leaf-1oz-argent-avers.png",
+    "/coins-v2/gold/philharmonique-1-4oz-or-avers.webp",
+  "britannia-1oz-argent": "/coins-v2/silver/britannia-1oz-argent-avers.webp",
+  "maple-leaf-1oz-argent": "/coins-v2/silver/maple-leaf-1oz-argent-avers.webp",
   "philharmonique-1oz-argent":
-    "/coins-v2/silver/philharmonique-1oz-argent-avers.png",
-  "kangourou-1oz-argent": "/coins-v2/silver/kangourou-1oz-argent-avers.png",
+    "/coins-v2/silver/philharmonique-1oz-argent-avers.webp",
+  "kangourou-1oz-argent": "/coins-v2/silver/kangourou-1oz-argent-avers.webp",
   "american-eagle-1oz-argent":
-    "/coins-v2/silver/american-eagle-1oz-argent-avers.png",
-  "krugerrand-1oz-argent": "/coins-v2/silver/krugerrand-1oz-argent-avers.png",
-  "kookaburra-1oz-argent": "/coins-v2/silver/kookaburra-1oz-argent-avers.png",
-  "koala-1oz-argent": "/coins-v2/silver/koala-1oz-argent-avers.png",
-  "panda-30g-argent": "/coins-v2/silver/panda-30g-argent-avers.png",
-  "noah-ark-1oz-argent": "/coins-v2/silver/noah-ark-1oz-argent-avers.png",
-  "lunar-1oz-argent": "/coins-v2/silver/lunar-1oz-argent-avers.png",
-  "buffalo-1oz-argent": "/coins-v2/silver/buffalo-1oz-argent-avers.png",
-  "turtle-1oz-argent": "/coins-v2/silver/turtle-1oz-argent-avers.png",
+    "/coins-v2/silver/american-eagle-1oz-argent-avers.webp",
+  "krugerrand-1oz-argent": "/coins-v2/silver/krugerrand-1oz-argent-avers.webp",
+  "kookaburra-1oz-argent": "/coins-v2/silver/kookaburra-1oz-argent-avers.webp",
+  "koala-1oz-argent": "/coins-v2/silver/koala-1oz-argent-avers.webp",
+  "panda-30g-argent": "/coins-v2/silver/panda-30g-argent-avers.webp",
+  "noah-ark-1oz-argent": "/coins-v2/silver/noah-ark-1oz-argent-avers.webp",
+  "lunar-1oz-argent": "/coins-v2/silver/lunar-1oz-argent-avers.webp",
+  "buffalo-1oz-argent": "/coins-v2/silver/buffalo-1oz-argent-avers.webp",
+  "turtle-1oz-argent": "/coins-v2/silver/turtle-1oz-argent-avers.webp",
   // Libertad Or (Mexique)
-  "libertad-1oz-or": "/coins-v2/gold/libertad-1oz-or-avers.png",
-  "libertad-1-2oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
-  "libertad-1-4oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
-  "libertad-1-10oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
-  "libertad-1-20oz-or": "/coins-v2/gold/libertad-fractional-or-avers.png",
+  "libertad-1oz-or": "/coins-v2/gold/libertad-1oz-or-avers.webp",
+  "libertad-1-2oz-or": "/coins-v2/gold/libertad-fractional-or-avers.webp",
+  "libertad-1-4oz-or": "/coins-v2/gold/libertad-fractional-or-avers.webp",
+  "libertad-1-10oz-or": "/coins-v2/gold/libertad-fractional-or-avers.webp",
+  "libertad-1-20oz-or": "/coins-v2/gold/libertad-fractional-or-avers.webp",
   // Libertad Argent (Mexique)
-  "libertad-1-20oz-argent": "/coins-v2/silver/libertad-1-20oz-argent-avers.png",
-  "libertad-1-10oz-argent": "/coins-v2/silver/libertad-1-10oz-argent-avers.png",
-  "libertad-1-4oz-argent": "/coins-v2/silver/libertad-1-4oz-argent-avers.png",
-  "libertad-1-2oz-argent": "/coins-v2/silver/libertad-1-2oz-argent-avers.png",
-  "libertad-1oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers-v2.png",
-  "libertad-2oz-argent": "/coins-v2/silver/libertad-2oz-argent-avers.png",
-  "libertad-5oz-argent": "/coins-v2/silver/libertad-5oz-argent-avers.png",
-  "libertad-1kg-argent": "/coins-v2/silver/libertad-1kg-argent-avers.png",
-  // Pieces francaises argent
+  "libertad-1-20oz-argent":
+    "/coins-v2/silver/libertad-1-20oz-argent-avers.webp",
+  "libertad-1-10oz-argent":
+    "/coins-v2/silver/libertad-1-10oz-argent-avers.webp",
+  "libertad-1-4oz-argent": "/coins-v2/silver/libertad-1-4oz-argent-avers.webp",
+  "libertad-1-2oz-argent": "/coins-v2/silver/libertad-1-2oz-argent-avers.webp",
+  "libertad-1oz-argent": "/coins-v2/silver/libertad-1oz-argent-avers-v2.webp",
+  "libertad-2oz-argent": "/coins-v2/silver/libertad-2oz-argent-avers.webp",
+  "libertad-5oz-argent": "/coins-v2/silver/libertad-5oz-argent-avers.webp",
+  "libertad-1kg-argent": "/coins-v2/silver/libertad-1kg-argent-avers.webp",
+  // Pièces françaises argent
   "50-francs-hercule-argent":
     "/coins-v2/silver/50-francs-hercule-argent-avers.webp",
   "10-francs-hercule-argent":
@@ -349,8 +354,100 @@ export default async function VsPage({ params }: PageProps) {
 
   const hasPrices = prices1.length > 0 || prices2.length > 0;
 
+  // JSON-LD structured data for both coins
+  function buildProductJsonLd(
+    coin: Coin,
+    prices: DealerPrice[],
+    imageUrl?: string,
+  ) {
+    const sorted = [...prices].sort((a, b) => a.price_cents - b.price_cents);
+    const product: Record<string, unknown> = {
+      "@type": "Product",
+      name: coin.name,
+      description: `Pièce d'investissement en ${coin.metal === "gold" ? "or" : "argent"} ${coin.fineness}, ${coin.weight_oz} oz, ${coin.country}`,
+      category: `Pièces ${coin.metal === "gold" ? "d'or" : "d'argent"} d'investissement`,
+      material: coin.metal === "gold" ? "Or" : "Argent",
+      weight: {
+        "@type": "QuantitativeValue",
+        value: coin.weight_g,
+        unitCode: "GRM",
+      },
+      additionalProperty: [
+        { "@type": "PropertyValue", name: "Pureté", value: coin.fineness },
+        { "@type": "PropertyValue", name: "Pays", value: coin.country },
+        {
+          "@type": "PropertyValue",
+          name: "Première année",
+          value: String(coin.first_year),
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Liquidité",
+          value: `${coin.liquidity}/5`,
+        },
+      ],
+    };
+    if (imageUrl) {
+      product.image = `https://bullionradar.fr${imageUrl}`;
+    }
+    if (sorted.length > 0) {
+      product.offers = {
+        "@type": "AggregateOffer",
+        priceCurrency: "EUR",
+        lowPrice: (sorted[0].price_cents / 100).toFixed(2),
+        highPrice: (sorted[sorted.length - 1].price_cents / 100).toFixed(2),
+        offerCount: sorted.length,
+        offers: sorted.map((p) => ({
+          "@type": "Offer",
+          seller: {
+            "@type": "Organization",
+            name: getDealerDisplayName(p.dealer),
+          },
+          price: (p.price_cents / 100).toFixed(2),
+          priceCurrency: "EUR",
+          availability: "https://schema.org/InStock",
+        })),
+      };
+    }
+    return product;
+  }
+
+  const slug1 = slugify(coin1.name);
+  const slug2 = slugify(coin2.name);
+  const canonicalSlug =
+    slug1 < slug2 ? `${slug1}-vs-${slug2}` : `${slug2}-vs-${slug1}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Accueil",
+            item: "https://bullionradar.fr",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: `${coin1.name} vs ${coin2.name}`,
+            item: `https://bullionradar.fr/vs/${canonicalSlug}`,
+          },
+        ],
+      },
+      buildProductJsonLd(coin1, prices1, image1),
+      buildProductJsonLd(coin2, prices2, image2),
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[#1a1a1a] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <nav className="border-b border-neutral-800 p-4">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
@@ -377,7 +474,7 @@ export default async function VsPage({ params }: PageProps) {
           <span className="text-amber-400">{coin2.name}</span>
         </h1>
         <p className="mt-2 text-neutral-500">
-          Comparatif detaille des caracteristiques
+          Comparatif détaillé des caractéristiques
         </p>
       </div>
 
@@ -428,11 +525,11 @@ export default async function VsPage({ params }: PageProps) {
       <div className="mx-auto max-w-3xl px-4 pb-16">
         <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-6">
           <h2 className="mb-6 text-center text-xl font-bold text-white">
-            Caracteristiques
+            Caractéristiques
           </h2>
 
           <ComparisonRow
-            label="Metal"
+            label="Métal"
             value1={coin1.metal === "gold" ? "Or" : "Argent"}
             value2={coin2.metal === "gold" ? "Or" : "Argent"}
           />
@@ -447,18 +544,18 @@ export default async function VsPage({ params }: PageProps) {
             value2={coin2.weight_g?.toFixed(2)}
           />
           <ComparisonRow
-            label="Purete"
+            label="Pureté"
             value1={coin1.fineness}
             value2={coin2.fineness}
             highlight="higher"
           />
           <ComparisonRow
-            label="Diametre (mm)"
+            label="Diamètre (mm)"
             value1={coin1.diameter_mm}
             value2={coin2.diameter_mm}
           />
           <ComparisonRow
-            label="Epaisseur (mm)"
+            label="Épaisseur (mm)"
             value1={coin1.thickness_mm}
             value2={coin2.thickness_mm}
           />
@@ -468,7 +565,7 @@ export default async function VsPage({ params }: PageProps) {
             value2={coin2.country}
           />
           <ComparisonRow
-            label="Premiere annee"
+            label="Première année"
             value1={coin1.first_year}
             value2={coin2.first_year}
           />
@@ -478,13 +575,13 @@ export default async function VsPage({ params }: PageProps) {
             value2={coin2.face_value}
           />
           <ComparisonRow
-            label="Liquidite (1-5)"
+            label="Liquidité (1-5)"
             value1={coin1.liquidity}
             value2={coin2.liquidity}
             highlight="higher"
           />
           <ComparisonRow
-            label="Prime estimee (%)"
+            label="Prime estimée (%)"
             value1={coin1.estimated_premium_pct}
             value2={coin2.estimated_premium_pct}
             highlight="lower"
@@ -557,7 +654,7 @@ export default async function VsPage({ params }: PageProps) {
               <div className="mt-8 text-center">
                 <p className="text-sm text-neutral-500">
                   <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
-                  Meilleur prix — Derniere mise a jour :{" "}
+                  Meilleur prix — Dernière mise à jour :{" "}
                   {new Date(
                     [...prices1, ...prices2].sort(
                       (a, b) =>
@@ -574,7 +671,7 @@ export default async function VsPage({ params }: PageProps) {
                 </p>
                 <p className="mt-2 text-xs text-neutral-600">
                   Prix indicatifs pouvant varier de quelques euros par rapport
-                  aux sites compares
+                  aux sites comparés
                 </p>
               </div>
             </div>

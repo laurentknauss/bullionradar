@@ -2,155 +2,122 @@
 
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { Compare } from "@/components/ui/compare";
 import { getSilverCoins, getGoldCoins } from "@/lib/coins-data";
 import type { Coin } from "@/types";
 
 type MetalFilter = "all" | "gold" | "silver";
 
-// Map of coins that have images available (from coins-v2 folder)
-const AVAILABLE_IMAGES: Record<
-  string,
-  { avers: string; revers?: string } | undefined
-> = {
+// Map of coins that have images available (WebP, avers only)
+const AVAILABLE_IMAGES: Record<string, { avers: string } | undefined> = {
   // Gold 1oz
-  "krugerrand-1oz-or": {
-    avers: "/coins-v2/gold/krugerrand-1oz-or-avers.jpg",
-    revers: "/coins-v2/gold/krugerrand-1oz-or-revers.jpg",
-  },
+  "krugerrand-1oz-or": { avers: "/coins-v2/gold/krugerrand-1oz-or-avers.webp" },
   "american-buffalo-1oz-or": {
-    avers: "/coins-v2/gold/american-buffalo-1oz-or-avers.png",
+    avers: "/coins-v2/gold/american-buffalo-1oz-or-avers.webp",
   },
   "american-eagle-1oz-or": {
-    avers: "/coins-v2/gold/american-eagle-1oz-or-avers.png",
+    avers: "/coins-v2/gold/american-eagle-1oz-or-avers.webp",
   },
-  "britannia-1oz-or": { avers: "/coins-v2/gold/britannia-1oz-or-avers.png" },
-  "kangourou-1oz-or": { avers: "/coins-v2/gold/kangourou-1oz-or-avers.png" },
-  "maple-leaf-1oz-or": { avers: "/coins-v2/gold/maple-leaf-1oz-or-avers.png" },
+  "britannia-1oz-or": { avers: "/coins-v2/gold/britannia-1oz-or-avers.webp" },
+  "kangourou-1oz-or": { avers: "/coins-v2/gold/kangourou-1oz-or-avers.webp" },
+  "maple-leaf-1oz-or": { avers: "/coins-v2/gold/maple-leaf-1oz-or-avers.webp" },
   "philharmonique-1oz-or": {
-    avers: "/coins-v2/gold/philharmonique-1oz-or-avers.png",
+    avers: "/coins-v2/gold/philharmonique-1oz-or-avers.webp",
   },
-  "panda-30g-or": { avers: "/coins-v2/gold/panda-30g-or-avers.png" },
+  "panda-30g-or": { avers: "/coins-v2/gold/panda-30g-or-avers.webp" },
   // Gold 1/2oz
   "britannia-1-2oz-or": {
-    avers: "/coins-v2/gold/britannia-1-2oz-or-avers.png",
+    avers: "/coins-v2/gold/britannia-1-2oz-or-avers.webp",
   },
   "kangourou-1-2oz-or": {
-    avers: "/coins-v2/gold/kangourou-1-2oz-or-avers.png",
+    avers: "/coins-v2/gold/kangourou-1-2oz-or-avers.webp",
   },
   "maple-leaf-1-2oz-or": {
-    avers: "/coins-v2/gold/maple-leaf-1-2oz-or-avers.png",
+    avers: "/coins-v2/gold/maple-leaf-1-2oz-or-avers.webp",
   },
   "philharmonique-1-2oz-or": {
-    avers: "/coins-v2/gold/philharmonique-1-2oz-or-avers.png",
+    avers: "/coins-v2/gold/philharmonique-1-2oz-or-avers.webp",
   },
   // Gold 1/4oz
   "britannia-1-4oz-or": {
-    avers: "/coins-v2/gold/britannia-1-4oz-or-avers.png",
+    avers: "/coins-v2/gold/britannia-1-4oz-or-avers.webp",
   },
   "kangourou-1-4oz-or": {
-    avers: "/coins-v2/gold/kangourou-1-4oz-or-avers.png",
+    avers: "/coins-v2/gold/kangourou-1-4oz-or-avers.webp",
   },
   "maple-leaf-1-4oz-or": {
-    avers: "/coins-v2/gold/maple-leaf-1-4oz-or-avers.jpg",
+    avers: "/coins-v2/gold/maple-leaf-1-4oz-or-avers.webp",
   },
   "philharmonique-1-4oz-or": {
-    avers: "/coins-v2/gold/philharmonique-1-4oz-or-avers.png",
+    avers: "/coins-v2/gold/philharmonique-1-4oz-or-avers.webp",
   },
   // Gold Panda fractional
-  "panda-15g-or": { avers: "/coins-v2/gold/panda-15g-or-avers.png" },
-  "panda-8g-or": { avers: "/coins-v2/gold/panda-8g-or-avers.png" },
+  "panda-15g-or": { avers: "/coins-v2/gold/panda-15g-or-avers.webp" },
+  "panda-8g-or": { avers: "/coins-v2/gold/panda-8g-or-avers.webp" },
   // Gold classics
-  "napoleon-20f-or": { avers: "/coins-v2/gold/napoleon-20f-or-avers.jpg" },
+  "napoleon-20f-or": { avers: "/coins-v2/gold/napoleon-20f-or-avers.webp" },
   "20-francs-suisse-or": {
-    avers: "/coins-v2/gold/20-francs-suisse-or-avers.jpg",
+    avers: "/coins-v2/gold/20-francs-suisse-or-avers.webp",
   },
-  "souverain-or": { avers: "/coins-v2/gold/souverain-or-avers.jpg" },
-  // Silver 1oz (PNG fond transparent)
+  "souverain-or": { avers: "/coins-v2/gold/souverain-or-avers.webp" },
+  // Silver 1oz
   "britannia-1oz-argent": {
-    avers: "/coins-v2/silver/britannia-1oz-argent-avers.png",
-    revers: "/coins-v2/silver/britannia-1oz-argent-revers.png",
+    avers: "/coins-v2/silver/britannia-1oz-argent-avers.webp",
   },
   "maple-leaf-1oz-argent": {
-    avers: "/coins-v2/silver/maple-leaf-1oz-argent-avers.png",
-    revers: "/coins-v2/silver/maple-leaf-1oz-argent-revers.png",
+    avers: "/coins-v2/silver/maple-leaf-1oz-argent-avers.webp",
   },
   "philharmonique-1oz-argent": {
-    avers: "/coins-v2/silver/philharmonique-1oz-argent-avers.png",
-    revers: "/coins-v2/silver/philharmonique-1oz-argent-revers.png",
+    avers: "/coins-v2/silver/philharmonique-1oz-argent-avers.webp",
   },
   "kangourou-1oz-argent": {
-    avers: "/coins-v2/silver/kangourou-1oz-argent-avers.png",
-    revers: "/coins-v2/silver/kangourou-1oz-argent-revers.png",
+    avers: "/coins-v2/silver/kangourou-1oz-argent-avers.webp",
   },
   "american-eagle-1oz-argent": {
-    avers: "/coins-v2/silver/american-eagle-1oz-argent-avers.png",
+    avers: "/coins-v2/silver/american-eagle-1oz-argent-avers.webp",
   },
   "krugerrand-1oz-argent": {
-    avers: "/coins-v2/silver/krugerrand-1oz-argent-avers.png",
-    revers: "/coins-v2/silver/krugerrand-1oz-argent-revers.png",
+    avers: "/coins-v2/silver/krugerrand-1oz-argent-avers.webp",
   },
   // Libertad Argent (Mexique)
   "libertad-1-20oz-argent": {
-    avers: "/coins-v2/silver/libertad-1-20oz-argent-avers.png",
-    revers: "/coins-v2/silver/libertad-1-20oz-argent-revers.png",
+    avers: "/coins-v2/silver/libertad-1-20oz-argent-avers.webp",
   },
   "libertad-1-10oz-argent": {
-    avers: "/coins-v2/silver/libertad-1-10oz-argent-avers.png",
-    revers: "/coins-v2/silver/libertad-1-10oz-argent-revers.png",
+    avers: "/coins-v2/silver/libertad-1-10oz-argent-avers.webp",
   },
   "libertad-1-4oz-argent": {
-    avers: "/coins-v2/silver/libertad-1-4oz-argent-avers.png",
-    revers: "/coins-v2/silver/libertad-1-4oz-argent-revers.png",
+    avers: "/coins-v2/silver/libertad-1-4oz-argent-avers.webp",
   },
   "libertad-1-2oz-argent": {
-    avers: "/coins-v2/silver/libertad-1-2oz-argent-avers.png",
-    revers: "/coins-v2/silver/libertad-1-2oz-argent-revers.png",
+    avers: "/coins-v2/silver/libertad-1-2oz-argent-avers.webp",
   },
   "libertad-1oz-argent": {
-    avers: "/coins-v2/silver/libertad-1oz-argent-avers-v2.png",
-    revers: "/coins-v2/silver/libertad-1oz-argent-revers-v2.png",
+    avers: "/coins-v2/silver/libertad-1oz-argent-avers-v2.webp",
   },
   "libertad-2oz-argent": {
-    avers: "/coins-v2/silver/libertad-2oz-argent-avers.png",
-    revers: "/coins-v2/silver/libertad-2oz-argent-revers.png",
+    avers: "/coins-v2/silver/libertad-2oz-argent-avers.webp",
   },
   "libertad-5oz-argent": {
-    avers: "/coins-v2/silver/libertad-5oz-argent-avers.png",
-    revers: "/coins-v2/silver/libertad-5oz-argent-revers.png",
+    avers: "/coins-v2/silver/libertad-5oz-argent-avers.webp",
   },
   "libertad-1kg-argent": {
-    avers: "/coins-v2/silver/libertad-1kg-argent-avers.png",
-    revers: "/coins-v2/silver/libertad-1kg-argent-revers.png",
+    avers: "/coins-v2/silver/libertad-1kg-argent-avers.webp",
   },
   // Autres pièces argent
   "kookaburra-1oz-argent": {
-    avers: "/coins-v2/silver/kookaburra-1oz-argent-avers.jpg",
-    revers: "/coins-v2/silver/kookaburra-1oz-argent-revers.jpg",
+    avers: "/coins-v2/silver/kookaburra-1oz-argent-avers.webp",
   },
-  "koala-1oz-argent": {
-    avers: "/coins-v2/silver/koala-1oz-argent-avers.jpg",
-    revers: "/coins-v2/silver/koala-1oz-argent-revers.jpg",
-  },
-  "panda-30g-argent": {
-    avers: "/coins-v2/silver/panda-30g-argent-avers.jpg",
-    revers: "/coins-v2/silver/panda-30g-argent-revers.jpg",
-  },
+  "koala-1oz-argent": { avers: "/coins-v2/silver/koala-1oz-argent-avers.webp" },
+  "panda-30g-argent": { avers: "/coins-v2/silver/panda-30g-argent-avers.webp" },
   "noah-ark-1oz-argent": {
-    avers: "/coins-v2/silver/noah-ark-1oz-argent-avers.jpg",
-    revers: "/coins-v2/silver/noah-ark-1oz-argent-revers.jpg",
+    avers: "/coins-v2/silver/noah-ark-1oz-argent-avers.webp",
   },
-  "lunar-1oz-argent": {
-    avers: "/coins-v2/silver/lunar-1oz-argent-avers.jpg",
-    revers: "/coins-v2/silver/lunar-1oz-argent-revers.jpg",
-  },
+  "lunar-1oz-argent": { avers: "/coins-v2/silver/lunar-1oz-argent-avers.webp" },
   "buffalo-1oz-argent": {
-    avers: "/coins-v2/silver/buffalo-1oz-argent-avers.jpg",
-    revers: "/coins-v2/silver/buffalo-1oz-argent-revers.jpg",
+    avers: "/coins-v2/silver/buffalo-1oz-argent-avers.webp",
   },
   "turtle-1oz-argent": {
-    avers: "/coins-v2/silver/turtle-1oz-argent-avers.jpg",
-    revers: "/coins-v2/silver/turtle-1oz-argent-revers.jpg",
+    avers: "/coins-v2/silver/turtle-1oz-argent-avers.webp",
   },
 };
 
@@ -280,25 +247,15 @@ export function CoinComparison() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            {/* Compare component for avers/revers */}
+            {/* Coin image */}
             <div className="flex justify-center">
-              {getCoinImages(selectedCoin)?.revers ? (
-                <Compare
-                  firstImage={getCoinImages(selectedCoin)?.avers || ""}
-                  secondImage={getCoinImages(selectedCoin)?.revers || ""}
-                  className="h-[400px] w-[400px] rounded-2xl border border-[rgba(0,0,0,0.1)] shadow-xl"
-                  slideMode="hover"
-                  showHandlebar={true}
+              <div className="flex h-[400px] w-[400px] items-center justify-center rounded-2xl border border-[rgba(0,0,0,0.1)] bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] shadow-xl">
+                <img
+                  src={getCoinImages(selectedCoin)?.avers}
+                  alt={selectedCoin.name}
+                  className="h-[320px] w-[320px] object-contain"
                 />
-              ) : (
-                <div className="flex h-[400px] w-[400px] items-center justify-center rounded-2xl border border-[rgba(0,0,0,0.1)] bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] shadow-xl">
-                  <img
-                    src={getCoinImages(selectedCoin)?.avers}
-                    alt={selectedCoin.name}
-                    className="h-[320px] w-[320px] object-contain"
-                  />
-                </div>
-              )}
+              </div>
             </div>
 
             {/* Coin details */}
