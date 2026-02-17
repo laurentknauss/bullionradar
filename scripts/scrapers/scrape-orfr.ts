@@ -113,26 +113,60 @@ async function scrapeCoinPrice(
     // Wait for page to fully load (JS content)
     await sleep(3000);
 
-    // The product price is in the "Individuel" radio option
-    // NOT "Tube de 10" and NOT the spot gold price in the header!
+    // Get the unit price from the "Individuel" option
+    // Or.fr pages have radio buttons: "Tube de 10" and "Individuel"
+    // The price is loaded via AJAX into a span next to the radio
+    // We find the radio labeled "Individuel" and get the price from its row
     let priceText = "";
 
-    // Find the "Individuel" radio option which contains the unit price
     try {
-      const individuelRadio = page
-        .locator("label, div, span")
-        .filter({ hasText: /Individuel/ })
-        .filter({ hasText: /€/ })
+      // The "Individuel" radio is inside a container that also has the price
+      // Use the radio input for delivery (id contains "delivery") that is NOT the tube
+      // Product IDs: individual = coin.url product ID, tube = different ID
+      const individuelContainer = page
+        .locator(".form-check")
+        .filter({ has: page.locator('input[id*="delivery"]') })
+        .filter({
+          has: page.locator(
+            'input[id*="' + coin.url.match(/(\d+)\?/)?.[1] + '"]',
+          ),
+        })
+        .locator(
+          'xpath=ancestor::*[contains(@class,"d-flex") or contains(@class,"align-items")]',
+        )
         .first();
-      if (await individuelRadio.isVisible({ timeout: 5000 })) {
-        const text = (await individuelRadio.textContent()) || "";
+
+      if (await individuelContainer.isVisible({ timeout: 5000 })) {
+        const text = (await individuelContainer.textContent()) || "";
         const match = text.match(/(\d[\d\s]*[.,]\d{2})\s*€/);
         if (match) {
           priceText = match[0];
         }
       }
     } catch {
-      // Not found
+      // Fallback: find the row containing "Individuel" text and extract price
+    }
+
+    // Fallback: get the radio by role name containing "Individuel"
+    if (!priceText) {
+      try {
+        const individuelRadio = page.getByRole("radio", {
+          name: /Individuel/i,
+        });
+        if (await individuelRadio.isVisible({ timeout: 3000 })) {
+          // Navigate up to the row container that includes the price
+          const row = individuelRadio
+            .locator('xpath=ancestor::*[contains(@class,"d-flex")]')
+            .first();
+          const text = (await row.textContent()) || "";
+          const match = text.match(/(\d[\d\s]*[.,]\d{2})\s*€/);
+          if (match) {
+            priceText = match[0];
+          }
+        }
+      } catch {
+        // Not found
+      }
     }
 
     if (!priceText) {
