@@ -96,7 +96,7 @@ export default function HomePage() {
             d&apos;argent en France
           </p>
           <h1 className="mb-4 text-3xl leading-tight font-black text-[#1a1a1a] md:text-5xl">
-            Trouvez la bonne pièce au meilleur prix
+            Comparez les pièces d&apos;or et d&apos;argent au meilleur prix
           </h1>
           <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-black">
             Comparez les caractéristiques de dizaines de pièces d&apos;or et

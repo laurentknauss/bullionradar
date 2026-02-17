@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
@@ -483,11 +482,10 @@ export default async function VsPage({ params }: PageProps) {
         <div className="text-center">
           <div className="relative mx-auto h-32 w-32 md:h-40 md:w-40">
             {image1 ? (
-              <Image
+              <img
                 src={image1}
                 alt={coin1.name}
-                fill
-                className="object-contain"
+                className="absolute inset-0 h-full w-full object-contain"
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-800 text-5xl">
@@ -504,11 +502,10 @@ export default async function VsPage({ params }: PageProps) {
         <div className="text-center">
           <div className="relative mx-auto h-32 w-32 md:h-40 md:w-40">
             {image2 ? (
-              <Image
+              <img
                 src={image2}
                 alt={coin2.name}
-                fill
-                className="object-contain"
+                className="absolute inset-0 h-full w-full object-contain"
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-800 text-5xl">

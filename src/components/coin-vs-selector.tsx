@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { getSilverCoins, getGoldCoins } from "@/lib/coins-data";
 import type { Coin } from "@/types";
@@ -236,12 +235,10 @@ export function CoinVsSelector() {
                 {/* Coin image */}
                 <div className="relative mb-2 h-16 w-16 sm:h-20 sm:w-20">
                   {imageSrc ? (
-                    <Image
+                    <img
                       src={imageSrc}
                       alt={coin.name}
-                      fill
-                      className="object-contain"
-                      sizes="80px"
+                      className="absolute inset-0 h-full w-full object-contain"
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-800 text-2xl">

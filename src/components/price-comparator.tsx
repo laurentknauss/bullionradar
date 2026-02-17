@@ -224,13 +224,13 @@ export function PriceComparator() {
         {/* Header */}
         <div className="mb-12 text-center">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            Comparateur de pieces{" "}
+            Comparateur de pièces{" "}
             <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
               Or et Argent
             </span>
           </h2>
           <p className="mx-auto max-w-xl tracking-tight text-neutral-400">
-            Prix d&apos;achat chez les principaux dealers francais — Mis a jour
+            Prix d&apos;achat chez les principaux dealers français — Mis à jour
             quotidiennement
           </p>
         </div>
@@ -264,13 +264,13 @@ export function PriceComparator() {
         {/* Footer */}
         {lastUpdate && (
           <div className="mt-8 text-center">
-            <p className="text-sm text-neutral-500">
+            <p className="text-sm text-white">
               <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
-              Meilleur prix — Derniere mise a jour : {lastUpdate}
+              Meilleur prix — Dernière mise à jour : {lastUpdate}
             </p>
-            <p className="mt-2 text-xs text-neutral-600">
-              Prix indicatifs pouvant varier de quelques euros par rapport aux
-              sites compares
+            <p className="mt-2 text-xs text-neutral-300">
+              Prix pouvant varier de quelques euros selon l&apos;heure de la
+              journée
             </p>
           </div>
         )}
