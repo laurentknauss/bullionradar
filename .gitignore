@@ -48,3 +48,6 @@ pnpm-debug.log*
 
 # Local images folder at root
 /images/
+
+# Google Search Console exports
+*.zip

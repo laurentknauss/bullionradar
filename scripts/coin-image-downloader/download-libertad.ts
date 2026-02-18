@@ -1,6 +1,6 @@
 import "dotenv/config";
 import Browserbase from "@browserbasehq/sdk";
-import { chromium } from "playwright-core";
+import { chromium, type Page } from "playwright-core";
 import { writeFileSync } from "fs";
 import { join } from "path";
 
@@ -46,7 +46,7 @@ const LIBERTAD_COINS = [
   },
 ];
 
-function extractApmexImages(page: any) {
+function extractApmexImages(page: Page) {
   return page.evaluate(() => {
     const urls: string[] = [];
     document.querySelectorAll("img").forEach((img: HTMLImageElement) => {
@@ -83,7 +83,7 @@ function cleanUrl(url: string): string {
 }
 
 async function downloadImage(
-  page: any,
+  page: Page,
   url: string,
   outputPath: string,
 ): Promise<boolean> {

@@ -80,14 +80,6 @@ function formatPrice(price: number): string {
   }).format(price);
 }
 
-function getSpread(dealers: DealerPrice[]): string {
-  const prices = dealers.map((d) => d.price);
-  const min = Math.min(...prices);
-  const max = Math.max(...prices);
-  const spread = ((max - min) / min) * 100;
-  return spread.toFixed(2);
-}
-
 function getBestPrice(dealers: DealerPrice[]): number {
   return Math.min(...dealers.map((d) => d.price));
 }
