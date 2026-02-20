@@ -8,6 +8,7 @@ import type { Coin } from "@/types";
 
 type MetalFilter = "all" | "gold" | "silver";
 type SelectionMode = "single" | "compare";
+type VatFilter = "all" | "0" | "20";
 
 // Images disponibles (WebP)
 const COIN_IMAGES: Record<string, string> = {
@@ -102,19 +103,29 @@ function slugify(name: string): string {
 export function CoinVsSelector() {
   const router = useRouter();
   const [metalFilter, setMetalFilter] = useState<MetalFilter>("all");
+  const [vatFilter, setVatFilter] = useState<VatFilter>("all");
+  const [countryFilter, setCountryFilter] = useState<string>("all");
   const [mode, setMode] = useState<SelectionMode>("compare");
   const [selectedCoins, setSelectedCoins] = useState<Coin[]>([]);
 
   const allCoins = useMemo(() => [...getGoldCoins(), ...getSilverCoins()], []);
 
+  const countries = useMemo(() => {
+    const set = new Set(allCoins.map((c) => c.country));
+    return ["all", ...Array.from(set).sort((a, b) => a.localeCompare(b, "fr"))];
+  }, [allCoins]);
+
   const filteredCoins = useMemo(() => {
-    // Filter by metal and sort alphabetically
-    const filtered =
-      metalFilter === "all"
-        ? allCoins
-        : allCoins.filter((coin) => coin.metal === metalFilter);
+    const filtered = allCoins.filter((coin) => {
+      if (metalFilter !== "all" && coin.metal !== metalFilter) return false;
+      if (vatFilter !== "all" && String(coin.vat_fr_pct) !== vatFilter)
+        return false;
+      if (countryFilter !== "all" && coin.country !== countryFilter)
+        return false;
+      return true;
+    });
     return filtered.sort((a, b) => a.name.localeCompare(b.name, "fr"));
-  }, [allCoins, metalFilter]);
+  }, [allCoins, metalFilter, vatFilter, countryFilter]);
 
   const handleCoinClick = (coin: Coin) => {
     if (mode === "single") {
@@ -217,6 +228,44 @@ export function CoinVsSelector() {
               {metal === "gold" ? "Or" : metal === "silver" ? "Argent" : "Tous"}
             </button>
           ))}
+        </div>
+
+        {/* Filtres secondaires : TVA, Pays, Budget */}
+        <div className="mb-6 flex flex-wrap justify-center gap-4 text-sm">
+          {/* TVA */}
+          <div className="flex items-center gap-2">
+            <span className="text-neutral-500">TVA</span>
+            {(["all", "0", "20"] as VatFilter[]).map((v) => (
+              <button
+                key={v}
+                onClick={() => setVatFilter(v)}
+                className={cn(
+                  "rounded-full px-3 py-1 text-xs font-medium transition-all",
+                  vatFilter === v
+                    ? "bg-neutral-200 text-black"
+                    : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700",
+                )}
+              >
+                {v === "all" ? "Toutes" : `${v}%`}
+              </button>
+            ))}
+          </div>
+
+          {/* Pays */}
+          <div className="flex items-center gap-2">
+            <span className="text-neutral-500">Pays</span>
+            <select
+              value={countryFilter}
+              onChange={(e) => setCountryFilter(e.target.value)}
+              className="rounded-full bg-neutral-800 px-3 py-1 text-xs text-neutral-300 focus:outline-none"
+            >
+              {countries.map((c) => (
+                <option key={c} value={c}>
+                  {c === "all" ? "Tous" : c}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Selected coins indicator */}

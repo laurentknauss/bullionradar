@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
+import { Footer } from "@/components/footer";
 import { formatFineness, formatRelativeTime } from "@/lib/format";
 import type { Coin } from "@/types";
 
@@ -179,7 +180,7 @@ function BestPriceBadge({ prices, scrapedAt }: BestPriceBadgeProps) {
   if (prices.length === 0) return null;
   const best = [...prices].sort((a, b) => a.price_cents - b.price_cents)[0];
   return (
-    <div className="mt-3 rounded-lg border border-amber-500/40 bg-amber-500/15 px-3 py-2 text-center">
+    <div className="mt-3 rounded-lg border border-amber-500/40 bg-[#BE943C]/15 px-3 py-2 text-center">
       <div className="text-xs font-medium text-amber-300">
         Meilleur prix aujourd&apos;hui
       </div>
@@ -207,13 +208,15 @@ function StickyBuyCTA({ prices, coinName }: StickyBuyCTAProps) {
   if (prices.length === 0) return null;
   const best = [...prices].sort((a, b) => a.price_cents - b.price_cents)[0];
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-neutral-700 bg-neutral-900/95 backdrop-blur-sm">
+    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-amber-700/30 bg-[#BE943C]">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
         <div className="min-w-0">
-          <div className="truncate text-xs text-neutral-500">{coinName}</div>
-          <div className="font-bold text-amber-400">
+          <div className="truncate text-xs font-medium text-black/60">
+            {coinName}
+          </div>
+          <div className="font-bold text-black">
             {formatPrice(best.price_cents)}{" "}
-            <span className="text-xs font-normal text-neutral-400">
+            <span className="text-xs font-normal text-black/70">
               chez {getDealerDisplayName(best.dealer)}
             </span>
           </div>
@@ -222,7 +225,7 @@ function StickyBuyCTA({ prices, coinName }: StickyBuyCTAProps) {
           href={best.product_url ?? "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 rounded-full bg-amber-500 px-5 py-2 text-sm font-bold text-black transition-colors hover:bg-amber-400"
+          className="shrink-0 rounded-full bg-black px-5 py-2 text-sm font-bold text-[#BE943C] transition-colors hover:bg-neutral-800"
         >
           Acheter maintenant →
         </a>
@@ -371,132 +374,140 @@ export default async function CoinPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav className="border-b border-neutral-800 p-4">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <Link
-            href="/"
-            className="text-xl font-bold text-amber-400 hover:text-amber-300"
-          >
-            BullionRadar
+      <header className="mb-10 border-b border-amber-600/30 bg-[#BE943C]">
+        <div className="mx-auto flex max-w-5xl items-center gap-6 px-4 py-4">
+          <Link href="/" className="shrink-0">
+            <img
+              src="/images/header-bullionradar.jpeg"
+              alt="BullionRadar"
+              className="h-24 w-auto rounded-lg md:h-32"
+            />
           </Link>
-          <Link
-            href="/"
-            className="rounded-full bg-neutral-800 px-4 py-2 text-sm text-neutral-300 hover:bg-neutral-700"
-          >
-            ← Retour
-          </Link>
-        </div>
-      </nav>
-
-      <div className="mx-auto max-w-5xl px-4 py-10">
-        <div className="grid gap-10 md:grid-cols-[220px_1fr]">
-          <div className="text-center">
-            <div className="relative mx-auto h-40 w-40">
-              {image ? (
-                <img
-                  src={image}
-                  alt={coin.name}
-                  className="absolute inset-0 h-full w-full object-contain"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-800 text-5xl">
-                  {coin.metal === "gold" ? "🥇" : "🥈"}
-                </div>
-              )}
-            </div>
-            <p className="mt-4 text-lg font-semibold text-amber-400">
-              {coin.name}
-            </p>
-            <p className="text-sm text-neutral-500">{coin.country}</p>
-            <BestPriceBadge prices={prices} scrapedAt={latestScrapedAt} />
+          <div className="flex flex-1 items-center justify-between">
+            <Link
+              href="/"
+              className="text-2xl font-black text-black hover:text-neutral-800 md:text-3xl"
+            >
+              BullionRadar
+            </Link>
+            <Link
+              href="/"
+              className="rounded-full bg-black/10 px-4 py-2 text-sm font-semibold text-black hover:bg-black/20"
+            >
+              ← Retour
+            </Link>
           </div>
+        </div>
+      </header>
 
-          <div>
-            <h1 className="text-3xl font-black md:text-4xl">Fiche complète</h1>
-            <p className="mt-2 text-neutral-500">
-              Caractéristiques détaillées de la pièce
-            </p>
-
-            <div className="mt-6 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
-              <h2 className="mb-4 text-lg font-bold text-white">
-                Caractéristiques
-              </h2>
-              <SpecRow
-                label="Métal"
-                value={coin.metal === "gold" ? "Or" : "Argent"}
+      <div className="mx-auto max-w-3xl px-4 py-10">
+        {/* Coin hero — image + nom + prix */}
+        <div className="mb-10 text-center">
+          <div className="relative mx-auto h-48 w-48 md:h-56 md:w-56">
+            {image ? (
+              <img
+                src={image}
+                alt={coin.name}
+                className="absolute inset-0 h-full w-full object-contain"
               />
-              <SpecRow label="Poids (oz)" value={coin.weight_oz} />
-              <SpecRow label="Poids (g)" value={coin.weight_g?.toFixed(2)} />
-              <SpecRow label="Pureté" value={formatFineness(coin.fineness)} />
-              <SpecRow label="Diamètre (mm)" value={coin.diameter_mm} />
-              <SpecRow label="Épaisseur (mm)" value={coin.thickness_mm} />
-              <SpecRow label="Pays" value={coin.country} />
-              <SpecRow label="Première année" value={coin.first_year} />
-              {coin.mintage && <SpecRow label="Tirage" value={coin.mintage} />}
-              <SpecRow label="Valeur faciale" value={coin.face_value} />
-              <SpecRow label="Liquidité (1-5)" value={coin.liquidity} />
-              <SpecRow
-                label="Prime estimée (%)"
-                value={coin.estimated_premium_pct}
-              />
-              <SpecRow label="TVA France (%)" value={coin.vat_fr_pct} />
-            </div>
-
-            {coin.highlights?.length ? (
-              <div className="mt-6 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
-                <h2 className="mb-4 text-lg font-bold text-white">
-                  Points forts
-                </h2>
-                <ul className="space-y-2 text-sm text-neutral-300">
-                  {coin.highlights.map((h, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className="text-amber-500">•</span>
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
-            {hasPrices && (
-              <div className="mt-6 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
-                <h2 className="mb-6 text-center text-lg font-bold text-white">
-                  💰 Meilleurs prix dealers
-                </h2>
-                <div className="mx-auto max-w-sm">
-                  <CoinPricesSection coinName={coin.name} prices={prices} />
-                </div>
-                <div className="mt-6 text-center">
-                  <p className="text-sm text-neutral-500">
-                    <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
-                    Dernière mise à jour :{" "}
-                    {new Date(latestScrapedAt ?? "").toLocaleString("fr-FR", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </p>
-                  <p className="mt-2 text-xs text-neutral-600">
-                    Prix indicatifs pouvant varier de quelques euros par rapport
-                    aux sites comparés
-                  </p>
-                </div>
+            ) : (
+              <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-800 text-5xl">
+                {coin.metal === "gold" ? "🥇" : "🥈"}
               </div>
             )}
-
-            <div className="mt-8">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-bold text-black transition-all hover:bg-amber-400"
-              >
-                Créer un comparatif →
-              </Link>
-            </div>
+          </div>
+          <h1 className="mt-6 text-3xl font-black text-white md:text-4xl">
+            {coin.name}
+          </h1>
+          <p className="mt-1 text-neutral-500">{coin.country}</p>
+          <div className="mx-auto max-w-xs">
+            <BestPriceBadge prices={prices} scrapedAt={latestScrapedAt} />
           </div>
         </div>
+
+        {/* Caractéristiques */}
+        <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-6">
+          <h2 className="mb-4 text-center text-lg font-bold text-white">
+            Caractéristiques
+          </h2>
+          <SpecRow
+            label="Métal"
+            value={coin.metal === "gold" ? "Or" : "Argent"}
+          />
+          <SpecRow label="Poids (oz)" value={coin.weight_oz} />
+          <SpecRow label="Poids (g)" value={coin.weight_g?.toFixed(2)} />
+          <SpecRow label="Pureté" value={formatFineness(coin.fineness)} />
+          <SpecRow label="Diamètre (mm)" value={coin.diameter_mm} />
+          <SpecRow label="Épaisseur (mm)" value={coin.thickness_mm} />
+          <SpecRow label="Pays" value={coin.country} />
+          <SpecRow label="Première année" value={coin.first_year} />
+          {coin.mintage && <SpecRow label="Tirage" value={coin.mintage} />}
+          <SpecRow label="Valeur faciale" value={coin.face_value} />
+          <SpecRow label="Liquidité (1-5)" value={coin.liquidity} />
+          <SpecRow
+            label="Prime estimée (%)"
+            value={coin.estimated_premium_pct}
+          />
+          <SpecRow label="TVA France (%)" value={coin.vat_fr_pct} />
+        </div>
+
+        {/* Points forts */}
+        {coin.highlights?.length ? (
+          <div className="mt-6 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
+            <h2 className="mb-4 text-center text-lg font-bold text-white">
+              Points forts
+            </h2>
+            <ul className="space-y-2 text-sm text-neutral-300">
+              {coin.highlights.map((h, i) => (
+                <li key={i} className="flex gap-2">
+                  <span className="text-amber-500">•</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {/* Meilleurs prix dealers */}
+        {hasPrices && (
+          <div className="mt-6 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
+            <h2 className="mb-6 text-center text-lg font-bold text-white">
+              Meilleurs prix dealers
+            </h2>
+            <div className="mx-auto max-w-sm">
+              <CoinPricesSection coinName={coin.name} prices={prices} />
+            </div>
+            <div className="mt-6 text-center">
+              <p className="text-sm text-neutral-500">
+                <span className="mr-2 inline-block h-3 w-3 rounded-full bg-[#BE943C]" />
+                Dernière mise à jour :{" "}
+                {new Date(latestScrapedAt ?? "").toLocaleString("fr-FR", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </p>
+              <p className="mt-2 text-xs text-neutral-600">
+                Prix indicatifs pouvant varier de quelques euros par rapport aux
+                sites comparés
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="mt-8 text-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-full bg-[#BE943C] px-6 py-3 font-bold text-black transition-all hover:bg-amber-400"
+          >
+            Créer un comparatif →
+          </Link>
+        </div>
       </div>
+      <Footer />
       <StickyBuyCTA prices={prices} coinName={coin.name} />
     </main>
   );
@@ -516,6 +527,18 @@ export async function generateMetadata({ params }: PageProps) {
     description: `Découvrez la fiche complète de la ${coin.name} : poids, pureté, liquidité, prime et caractéristiques clés.`,
     alternates: {
       canonical: `https://bullionradar.fr/coin/${slugify(coin.name)}`,
+    },
+    openGraph: {
+      title: `${coin.name} - Fiche complète | BullionRadar`,
+      description: `Découvrez la fiche complète de la ${coin.name} : poids, pureté, liquidité, prime et caractéristiques clés.`,
+      url: `https://bullionradar.fr/coin/${slugify(coin.name)}`,
+      images: [
+        {
+          url: "https://bullionradar.fr/images/og-bullionradar.jpg",
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   };
 }
