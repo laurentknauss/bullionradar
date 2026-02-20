@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
-import { formatFineness } from "@/lib/format";
+import { formatFineness, formatRelativeTime } from "@/lib/format";
 import type { Coin } from "@/types";
 
 // Images disponibles (WebP)
@@ -170,6 +170,67 @@ function CoinPricesSection({ coinName, prices }: CoinPricesSectionProps) {
   );
 }
 
+interface BestPriceBadgeProps {
+  prices: DealerPrice[];
+  scrapedAt?: string;
+}
+
+function BestPriceBadge({ prices, scrapedAt }: BestPriceBadgeProps) {
+  if (prices.length === 0) return null;
+  const best = [...prices].sort((a, b) => a.price_cents - b.price_cents)[0];
+  return (
+    <div className="mt-3 rounded-lg border border-amber-500/40 bg-amber-500/15 px-3 py-2 text-center">
+      <div className="text-xs font-medium text-amber-300">
+        Meilleur prix aujourd&apos;hui
+      </div>
+      <div className="text-xl font-bold text-amber-400">
+        {formatPrice(best.price_cents)}
+      </div>
+      <div className="text-xs text-neutral-200">
+        chez {getDealerDisplayName(best.dealer)}
+      </div>
+      {scrapedAt && (
+        <div className="mt-1 text-xs text-neutral-400">
+          {formatRelativeTime(scrapedAt)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+interface StickyBuyCTAProps {
+  prices: DealerPrice[];
+  coinName: string;
+}
+
+function StickyBuyCTA({ prices, coinName }: StickyBuyCTAProps) {
+  if (prices.length === 0) return null;
+  const best = [...prices].sort((a, b) => a.price_cents - b.price_cents)[0];
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-neutral-700 bg-neutral-900/95 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
+        <div className="min-w-0">
+          <div className="truncate text-xs text-neutral-500">{coinName}</div>
+          <div className="font-bold text-amber-400">
+            {formatPrice(best.price_cents)}{" "}
+            <span className="text-xs font-normal text-neutral-400">
+              chez {getDealerDisplayName(best.dealer)}
+            </span>
+          </div>
+        </div>
+        <a
+          href={best.product_url ?? "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 rounded-full bg-amber-500 px-5 py-2 text-sm font-bold text-black transition-colors hover:bg-amber-400"
+        >
+          Acheter maintenant →
+        </a>
+      </div>
+    </div>
+  );
+}
+
 interface SpecRowProps {
   label: string;
   value: string | number | null | undefined;
@@ -305,7 +366,7 @@ export default async function CoinPage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a] text-white">
+    <main className="min-h-screen bg-[#1a1a1a] pb-20 text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -347,6 +408,7 @@ export default async function CoinPage({ params }: PageProps) {
               {coin.name}
             </p>
             <p className="text-sm text-neutral-500">{coin.country}</p>
+            <BestPriceBadge prices={prices} scrapedAt={latestScrapedAt} />
           </div>
 
           <div>
@@ -429,12 +491,13 @@ export default async function CoinPage({ params }: PageProps) {
                 href="/"
                 className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-bold text-black transition-all hover:bg-amber-400"
               >
-                ← Comparer d&apos;autres pièces
+                Créer un comparatif →
               </Link>
             </div>
           </div>
         </div>
       </div>
+      <StickyBuyCTA prices={prices} coinName={coin.name} />
     </main>
   );
 }
