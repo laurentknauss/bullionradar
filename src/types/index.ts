@@ -32,6 +32,7 @@ export interface Coin {
   estimated_premium_pct: number;
   image_url?: string;
   face_value?: string | null; // "5 CAD", "1 USD", null pour Libertad
+  mintage?: string; // Tirage (ex: "51 612 474")
   highlights?: string[]; // Particularités uniques de la pièce
 }
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
+import { formatFineness } from "@/lib/format";
 import type { Coin } from "@/types";
 
 // Images disponibles (WebP)
@@ -218,7 +219,7 @@ export default async function CoinPage({ params }: PageProps) {
     const product: Record<string, unknown> = {
       "@type": "Product",
       name: current.name,
-      description: `Pièce d'investissement en ${current.metal === "gold" ? "or" : "argent"} ${current.fineness}, ${current.weight_oz} oz, ${current.country}`,
+      description: `Pièce d'investissement en ${current.metal === "gold" ? "or" : "argent"} ${formatFineness(current.fineness)}, ${current.weight_oz} oz, ${current.country}`,
       category: `Pièces ${current.metal === "gold" ? "d'or" : "d'argent"} d'investissement`,
       material: current.metal === "gold" ? "Or" : "Argent",
       weight: {
@@ -227,7 +228,11 @@ export default async function CoinPage({ params }: PageProps) {
         unitCode: "GRM",
       },
       additionalProperty: [
-        { "@type": "PropertyValue", name: "Pureté", value: current.fineness },
+        {
+          "@type": "PropertyValue",
+          name: "Pureté",
+          value: formatFineness(current.fineness),
+        },
         { "@type": "PropertyValue", name: "Pays", value: current.country },
         {
           "@type": "PropertyValue",
@@ -239,6 +244,15 @@ export default async function CoinPage({ params }: PageProps) {
           name: "Liquidité",
           value: `${current.liquidity}/5`,
         },
+        ...(current.mintage
+          ? [
+              {
+                "@type": "PropertyValue",
+                name: "Tirage",
+                value: current.mintage,
+              },
+            ]
+          : []),
       ],
     };
     if (imageUrl) {
@@ -351,11 +365,12 @@ export default async function CoinPage({ params }: PageProps) {
               />
               <SpecRow label="Poids (oz)" value={coin.weight_oz} />
               <SpecRow label="Poids (g)" value={coin.weight_g?.toFixed(2)} />
-              <SpecRow label="Pureté" value={coin.fineness} />
+              <SpecRow label="Pureté" value={formatFineness(coin.fineness)} />
               <SpecRow label="Diamètre (mm)" value={coin.diameter_mm} />
               <SpecRow label="Épaisseur (mm)" value={coin.thickness_mm} />
               <SpecRow label="Pays" value={coin.country} />
               <SpecRow label="Première année" value={coin.first_year} />
+              {coin.mintage && <SpecRow label="Tirage" value={coin.mintage} />}
               <SpecRow label="Valeur faciale" value={coin.face_value} />
               <SpecRow label="Liquidité (1-5)" value={coin.liquidity} />
               <SpecRow

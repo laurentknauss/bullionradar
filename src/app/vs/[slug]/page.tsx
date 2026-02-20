@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
+import { formatFineness } from "@/lib/format";
 import type { Coin } from "@/types";
 
 // Images disponibles (WebP)
@@ -277,7 +278,7 @@ function ConclusionSection({ coin1, coin2 }: { coin1: Coin; coin2: Coin }) {
     const purer =
       parseFloat(coin1.fineness) > parseFloat(coin2.fineness) ? coin1 : coin2;
     conclusions.push(
-      `La ${purer.name} a une pureté supérieure (${purer.fineness}).`,
+      `La ${purer.name} a une pureté supérieure (${formatFineness(purer.fineness)}).`,
     );
   }
 
@@ -363,7 +364,7 @@ export default async function VsPage({ params }: PageProps) {
     const product: Record<string, unknown> = {
       "@type": "Product",
       name: coin.name,
-      description: `Pièce d'investissement en ${coin.metal === "gold" ? "or" : "argent"} ${coin.fineness}, ${coin.weight_oz} oz, ${coin.country}`,
+      description: `Pièce d'investissement en ${coin.metal === "gold" ? "or" : "argent"} ${formatFineness(coin.fineness)}, ${coin.weight_oz} oz, ${coin.country}`,
       category: `Pièces ${coin.metal === "gold" ? "d'or" : "d'argent"} d'investissement`,
       material: coin.metal === "gold" ? "Or" : "Argent",
       weight: {
@@ -372,7 +373,11 @@ export default async function VsPage({ params }: PageProps) {
         unitCode: "GRM",
       },
       additionalProperty: [
-        { "@type": "PropertyValue", name: "Pureté", value: coin.fineness },
+        {
+          "@type": "PropertyValue",
+          name: "Pureté",
+          value: formatFineness(coin.fineness),
+        },
         { "@type": "PropertyValue", name: "Pays", value: coin.country },
         {
           "@type": "PropertyValue",
@@ -384,6 +389,15 @@ export default async function VsPage({ params }: PageProps) {
           name: "Liquidité",
           value: `${coin.liquidity}/5`,
         },
+        ...(coin.mintage
+          ? [
+              {
+                "@type": "PropertyValue",
+                name: "Tirage",
+                value: coin.mintage,
+              },
+            ]
+          : []),
       ],
     };
     if (imageUrl) {
@@ -542,8 +556,8 @@ export default async function VsPage({ params }: PageProps) {
           />
           <ComparisonRow
             label="Pureté"
-            value1={coin1.fineness}
-            value2={coin2.fineness}
+            value1={formatFineness(coin1.fineness)}
+            value2={formatFineness(coin2.fineness)}
             highlight="higher"
           />
           <ComparisonRow
@@ -566,6 +580,13 @@ export default async function VsPage({ params }: PageProps) {
             value1={coin1.first_year}
             value2={coin2.first_year}
           />
+          {(coin1.mintage || coin2.mintage) && (
+            <ComparisonRow
+              label="Tirage"
+              value1={coin1.mintage}
+              value2={coin2.mintage}
+            />
+          )}
           <ComparisonRow
             label="Valeur faciale"
             value1={coin1.face_value}

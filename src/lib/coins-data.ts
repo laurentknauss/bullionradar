@@ -178,6 +178,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 7,
     face_value: null,
+    mintage: "44 556 584",
     highlights: [
       "Premiere piece bullion moderne au monde (1967)",
       "Aucune valeur faciale inscrite",
@@ -658,6 +659,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 6,
     face_value: "20 CHF",
+    mintage: "58 900 000",
     highlights: [
       "Surnommee 'Vreneli' (petit visage de femme)",
       "Meme poids et titre que le Napoleon 20F",
@@ -1276,6 +1278,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 13,
     face_value: "50 FRF",
+    mintage: "46 410 266",
     highlights: [
       "Design Hercule (3 personnages: Liberte, Egalite, Fraternite)",
       "Frappee de 1974 a 1980",
@@ -1300,6 +1303,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 12,
     face_value: "10 FRF",
+    mintage: "39 088 557",
     highlights: [
       "Meme design Hercule que la 50 Francs",
       "Frappee de 1964 a 1973",
@@ -1323,6 +1327,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 6,
     face_value: "5 FRF",
+    mintage: "195 282 126",
     highlights: [
       "Design de la Semeuse (Oscar Roty)",
       "Frappee de 1960 a 1969",
@@ -1347,6 +1352,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 4,
     face_value: "20 FRF",
+    mintage: "51 612 474",
     highlights: [
       "Design de Pierre Turin",
       "Titre 680/1000 (alliage billon)",
@@ -1371,6 +1377,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 4,
     face_value: "10 FRF",
+    mintage: "98 223 600",
     highlights: [
       "Meme design que la 20 Francs Turin",
       "Titre 680/1000",
