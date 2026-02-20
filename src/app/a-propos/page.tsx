@@ -46,11 +46,10 @@ export default function AProposPage() {
               pour les investisseurs français.
             </p>
             <p>
-              Nous ne vendons aucune pièce. Nous ne sommes affiliés à aucun
-              dealer. Notre seul objectif est de vous fournir une{" "}
-              <strong>information objective et à jour</strong> pour vous aider à
-              prendre les meilleures décisions d&apos;investissement en métaux
-              précieux.
+              Nous ne vendons aucune pièce. Notre seul objectif est de vous
+              fournir une <strong>information objective et à jour</strong> pour
+              vous aider à prendre les meilleures décisions
+              d&apos;investissement en métaux précieux.
             </p>
             <p>
               Avec plus de <strong>50 pièces bullion analysées</strong> et{" "}
