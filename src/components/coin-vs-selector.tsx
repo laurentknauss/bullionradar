@@ -7,6 +7,7 @@ import { getSilverCoins, getGoldCoins } from "@/lib/coins-data";
 import type { Coin } from "@/types";
 
 type MetalFilter = "all" | "gold" | "silver";
+type SelectionMode = "single" | "compare";
 
 // Images disponibles (WebP)
 const COIN_IMAGES: Record<string, string> = {
@@ -101,6 +102,7 @@ function slugify(name: string): string {
 export function CoinVsSelector() {
   const router = useRouter();
   const [metalFilter, setMetalFilter] = useState<MetalFilter>("all");
+  const [mode, setMode] = useState<SelectionMode>("compare");
   const [selectedCoins, setSelectedCoins] = useState<Coin[]>([]);
 
   const allCoins = useMemo(() => [...getGoldCoins(), ...getSilverCoins()], []);
@@ -115,6 +117,10 @@ export function CoinVsSelector() {
   }, [allCoins, metalFilter]);
 
   const handleCoinClick = (coin: Coin) => {
+    if (mode === "single") {
+      router.push(`/coin/${slugify(coin.name)}`);
+      return;
+    }
     setSelectedCoins((prev) => {
       // If already selected, remove it
       if (prev.some((c) => c.id === coin.id)) {
@@ -142,18 +148,52 @@ export function CoinVsSelector() {
     selectedCoins.findIndex((c) => c.id === coin.id) + 1;
 
   return (
-    <section className="w-full bg-[#1a1a1a] px-4 py-16">
+    <section className="w-full bg-[#1a1a1a] px-4 py-20">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="mb-10 text-center">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            Comparez deux{" "}
-            <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-              pieces
-            </span>
+            Portail des Pièces
           </h2>
+          <div className="mb-4 text-sm text-[#C8A04A]">✦ ◆ ✦</div>
           <p className="mx-auto max-w-xl text-neutral-400">
-            Selectionnez 2 pieces pour comparer leurs caracteristiques
+            Choisissez une option : consulter la fiche complète d&apos;une pièce
+            ou comparer deux pièces.
+          </p>
+          <div className="mt-20 grid w-full max-w-5xl mx-auto gap-4 sm:grid-cols-2">
+            <button
+              onClick={() => {
+                setMode("single");
+                setSelectedCoins([]);
+              }}
+              className={cn(
+                "w-full rounded-full px-8 py-4 text-base font-black tracking-wide shadow-lg transition-all sm:px-10 sm:py-5 sm:text-lg",
+                "bg-amber-500 text-black hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-amber-500/40",
+                "focus-visible:ring-2 focus-visible:ring-amber-200",
+                mode === "single" ? "ring-2 ring-amber-200" : "opacity-85",
+              )}
+            >
+              Voir la fiche d&apos;une pièce
+            </button>
+            <button
+              onClick={() => {
+                setMode("compare");
+                setSelectedCoins([]);
+              }}
+              className={cn(
+                "w-full rounded-full px-8 py-4 text-base font-black tracking-wide shadow-lg transition-all sm:px-10 sm:py-5 sm:text-lg",
+                "bg-amber-500 text-black hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-amber-500/40",
+                "focus-visible:ring-2 focus-visible:ring-amber-200",
+                mode === "compare" ? "ring-2 ring-amber-200" : "opacity-85",
+              )}
+            >
+              Comparer 2 pièces
+            </button>
+          </div>
+          <p className="mx-auto mt-10 max-w-xl text-base font-medium text-neutral-400">
+            {mode === "single"
+              ? "Choisissez 1 pièce pour ouvrir sa fiche complète."
+              : "Sélectionnez 2 pièces pour lancer le comparatif détaillé."}
           </p>
         </div>
 
@@ -180,7 +220,7 @@ export function CoinVsSelector() {
         </div>
 
         {/* Selected coins indicator */}
-        {selectedCoins.length > 0 && (
+        {mode === "compare" && selectedCoins.length > 0 && (
           <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
             {selectedCoins.map((coin, idx) => (
               <div
@@ -208,7 +248,7 @@ export function CoinVsSelector() {
         )}
 
         {/* Coins grid */}
-        <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+        <div className="mt-16 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
           {filteredCoins.map((coin) => {
             const selected = isSelected(coin);
             const index = selectionIndex(coin);
@@ -275,7 +315,7 @@ export function CoinVsSelector() {
       </div>
 
       {/* Full screen popup when 2 coins selected */}
-      {selectedCoins.length === 2 && (
+      {mode === "compare" && selectedCoins.length === 2 && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
           <div className="mx-4 flex flex-col items-center gap-6 rounded-3xl bg-[#1a1a1a] p-8 shadow-2xl sm:p-12">
             <p className="text-lg text-neutral-400">Vous avez sélectionné</p>
