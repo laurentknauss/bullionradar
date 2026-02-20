@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+import "@fontsource/inter/latin.css";
 
 export const metadata: Metadata = {
   title: "BullionRadar — Comparateur Pièces Or & Argent en France",
@@ -83,9 +78,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body
-        className={`${inter.variable} font-sans tracking-tight antialiased`}
-      >
+      <body className="font-sans tracking-tight antialiased">
         {children}
         <Analytics />
         <SpeedInsights />
