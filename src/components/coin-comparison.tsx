@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { formatFineness } from "@/lib/format";
 import { getSilverCoins, getGoldCoins } from "@/lib/coins-data";
 import type { Coin } from "@/types";
 
@@ -218,7 +219,7 @@ export function CoinComparison() {
                     {coin.name}
                   </p>
                   <p className="mt-1 text-center text-xs text-white/70">
-                    {coin.country} • {coin.fineness}
+                    {coin.country} • {formatFineness(coin.fineness)}
                   </p>
                 </div>
               </div>
@@ -279,7 +280,7 @@ export function CoinComparison() {
                 <div className="flex justify-between border-b border-dashed border-[rgba(0,0,0,0.1)] pb-2">
                   <dt className="text-[#3d3520]">Pureté</dt>
                   <dd className="font-mono font-medium text-[#1a1a1a]">
-                    {selectedCoin.fineness}
+                    {formatFineness(selectedCoin.fineness)}
                   </dd>
                 </div>
                 <div className="flex justify-between border-b border-dashed border-[rgba(0,0,0,0.1)] pb-2">

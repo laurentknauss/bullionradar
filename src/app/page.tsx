@@ -2,75 +2,76 @@ import Image from "next/image";
 import Link from "next/link";
 import { PriceComparator } from "@/components/price-comparator";
 import { CoinVsSelector } from "@/components/coin-vs-selector";
+import { Footer } from "@/components/footer";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#BE943C]">
       {/* Header noir avec cours */}
-      <header className="overflow-x-auto bg-[#1a1a1a] px-8 py-6">
-        <div className="flex items-center justify-between gap-8 whitespace-nowrap">
+      <header className="overflow-x-auto bg-[#1a1a1a] px-4 py-3 md:px-8 md:py-6">
+        <div className="flex flex-col items-start gap-2 whitespace-nowrap md:flex-row md:items-center md:justify-between md:gap-8">
           {/* Cours Or avec périodes */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/cours-or"
-              className="text-lg font-bold text-[#FFD700] hover:text-[#fff]"
+              className="text-sm font-bold text-[#FFD700] hover:text-[#fff] md:text-lg"
             >
               Cours Or
             </Link>
             <Link
               href="/cours-or/1-an"
-              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
+              className="rounded-lg bg-[#FFD700]/20 px-2 py-1 text-xs font-semibold text-[#FFD700] hover:bg-[#FFD700]/30 md:px-4 md:py-2 md:text-base"
             >
               1 an
             </Link>
             <Link
               href="/cours-or/5-ans"
-              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
+              className="rounded-lg bg-[#FFD700]/20 px-2 py-1 text-xs font-semibold text-[#FFD700] hover:bg-[#FFD700]/30 md:px-4 md:py-2 md:text-base"
             >
               5 ans
             </Link>
             <Link
               href="/cours-or/10-ans"
-              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
+              className="rounded-lg bg-[#FFD700]/20 px-2 py-1 text-xs font-semibold text-[#FFD700] hover:bg-[#FFD700]/30 md:px-4 md:py-2 md:text-base"
             >
               10 ans
             </Link>
             <Link
               href="/cours-or/20-ans"
-              className="rounded-lg bg-[#FFD700]/20 px-4 py-2 text-base font-semibold text-[#FFD700] hover:bg-[#FFD700]/30"
+              className="rounded-lg bg-[#FFD700]/20 px-2 py-1 text-xs font-semibold text-[#FFD700] hover:bg-[#FFD700]/30 md:px-4 md:py-2 md:text-base"
             >
               20 ans
             </Link>
           </div>
           {/* Cours Argent avec périodes */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/cours-argent"
-              className="text-lg font-bold text-gray-300 hover:text-white"
+              className="text-sm font-bold text-gray-300 hover:text-white md:text-lg"
             >
               Cours Argent
             </Link>
             <Link
               href="/cours-argent/1-an"
-              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+              className="rounded-lg bg-gray-300/20 px-2 py-1 text-xs font-semibold text-gray-300 hover:bg-gray-300/30 md:px-4 md:py-2 md:text-base"
             >
               1 an
             </Link>
             <Link
               href="/cours-argent/5-ans"
-              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+              className="rounded-lg bg-gray-300/20 px-2 py-1 text-xs font-semibold text-gray-300 hover:bg-gray-300/30 md:px-4 md:py-2 md:text-base"
             >
               5 ans
             </Link>
             <Link
               href="/cours-argent/10-ans"
-              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+              className="rounded-lg bg-gray-300/20 px-2 py-1 text-xs font-semibold text-gray-300 hover:bg-gray-300/30 md:px-4 md:py-2 md:text-base"
             >
               10 ans
             </Link>
             <Link
               href="/cours-argent/20-ans"
-              className="rounded-lg bg-gray-300/20 px-4 py-2 text-base font-semibold text-gray-300 hover:bg-gray-300/30"
+              className="rounded-lg bg-gray-300/20 px-2 py-1 text-xs font-semibold text-gray-300 hover:bg-gray-300/30 md:px-4 md:py-2 md:text-base"
             >
               20 ans
             </Link>
@@ -82,11 +83,11 @@ export default function HomePage() {
       <section className="w-full">
         <div className="mx-auto max-w-[900px]">
           <Image
-            src="/images/header-bullionradar.jpeg"
+            src="/images/bonhomme-coffre-fort.jpeg"
             alt="BullionRadar - Comparateur de pièces d'or et d'argent"
-            width={550}
-            height={768}
-            className="mx-auto h-auto w-full max-w-[200px]"
+            width={1024}
+            height={512}
+            className="mx-auto h-auto w-full max-w-[500px]"
             priority
           />
         </div>
@@ -139,25 +140,37 @@ export default function HomePage() {
       {/* Price Comparator with Glowing Effect */}
       <PriceComparator />
 
-      {/* Footer */}
-      <footer className="border-t border-black/10 px-6 py-8 text-center text-sm text-[#3d3520]">
-        <p>
-          © 2026 <strong className="text-[#1a1a1a]">BullionRadar</strong> —
-          Comparateur indépendant de pièces d&apos;or et d&apos;argent
-        </p>
-        <p className="mt-2">
-          <Link href="/a-propos" className="underline hover:text-[#1a1a1a]">
-            À propos
-          </Link>
-          {" · "}
-          <Link
-            href="/mentions-legales"
-            className="underline hover:text-[#1a1a1a]"
-          >
-            Mentions légales
-          </Link>
-        </p>
-      </footer>
+      {/* Guide gratuit CTA */}
+      <section className="bg-[#1a1a1a] px-6 py-16">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 md:flex-row">
+          <img
+            src="/docs/cover-guide-stacker.jpg"
+            alt="Le Petit Guide du Stacker — BullionRadar"
+            className="w-48 rounded-lg shadow-2xl md:w-56"
+          />
+          <div className="text-center md:text-left">
+            <h2 className="text-2xl font-black text-white md:text-3xl">
+              Le Petit Guide du Stacker
+            </h2>
+            <p className="mt-3 text-neutral-400">
+              Tout ce qu&apos;il faut savoir pour investir dans les pièces
+              d&apos;or et d&apos;argent en France. Fiscalité, pièces
+              incontournables, stratégies, dealers — 40 pages de contenu gratuit
+              et actualisé.
+            </p>
+            <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
+              <Link
+                href="/guide"
+                className="inline-flex items-center gap-2 rounded-full bg-[#BE943C] px-6 py-3 font-bold text-black transition-colors hover:bg-amber-400"
+              >
+                Lire et télécharger gratuitement →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   );
 }

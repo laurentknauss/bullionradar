@@ -51,3 +51,8 @@ pnpm-debug.log*
 
 # Google Search Console exports
 *.zip
+
+# LaTeX auxiliary files
+*.aux
+*.toc
+*.out

@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+import "@fontsource/inter/latin.css";
 
 export const metadata: Metadata = {
   title: "BullionRadar — Comparateur Pièces Or & Argent en France",
   description:
-    "Comparez 58 pièces d'or et d'argent chez Godot & Fils, Or.fr et Pièces-Or.com. Prix mis à jour chaque jour. 100% indépendant et gratuit.",
+    "Comparez 58 pièces d'or et d'argent chez les principaux dealers français. Prix mis à jour chaque jour. 100% indépendant et gratuit.",
   metadataBase: new URL("https://bullionradar.fr"),
   alternates: {
     canonical: "https://bullionradar.fr",
@@ -83,9 +78,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body
-        className={`${inter.variable} font-sans tracking-tight antialiased`}
-      >
+      <body className="font-sans tracking-tight antialiased">
         {children}
         <Analytics />
         <SpeedInsights />

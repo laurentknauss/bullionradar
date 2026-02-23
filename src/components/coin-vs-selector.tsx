@@ -7,6 +7,7 @@ import { getSilverCoins, getGoldCoins } from "@/lib/coins-data";
 import type { Coin } from "@/types";
 
 type MetalFilter = "all" | "gold" | "silver";
+type SelectionMode = "single" | "compare";
 
 // Images disponibles (WebP)
 const COIN_IMAGES: Record<string, string> = {
@@ -101,20 +102,32 @@ function slugify(name: string): string {
 export function CoinVsSelector() {
   const router = useRouter();
   const [metalFilter, setMetalFilter] = useState<MetalFilter>("all");
+  const [countryFilter, setCountryFilter] = useState<string>("all");
+  const [mode, setMode] = useState<SelectionMode>("compare");
   const [selectedCoins, setSelectedCoins] = useState<Coin[]>([]);
 
   const allCoins = useMemo(() => [...getGoldCoins(), ...getSilverCoins()], []);
 
+  const countries = useMemo(() => {
+    const set = new Set(allCoins.map((c) => c.country));
+    return ["all", ...Array.from(set).sort((a, b) => a.localeCompare(b, "fr"))];
+  }, [allCoins]);
+
   const filteredCoins = useMemo(() => {
-    // Filter by metal and sort alphabetically
-    const filtered =
-      metalFilter === "all"
-        ? allCoins
-        : allCoins.filter((coin) => coin.metal === metalFilter);
+    const filtered = allCoins.filter((coin) => {
+      if (metalFilter !== "all" && coin.metal !== metalFilter) return false;
+      if (countryFilter !== "all" && coin.country !== countryFilter)
+        return false;
+      return true;
+    });
     return filtered.sort((a, b) => a.name.localeCompare(b.name, "fr"));
-  }, [allCoins, metalFilter]);
+  }, [allCoins, metalFilter, countryFilter]);
 
   const handleCoinClick = (coin: Coin) => {
+    if (mode === "single") {
+      router.push(`/coin/${slugify(coin.name)}`);
+      return;
+    }
     setSelectedCoins((prev) => {
       // If already selected, remove it
       if (prev.some((c) => c.id === coin.id)) {
@@ -142,18 +155,51 @@ export function CoinVsSelector() {
     selectedCoins.findIndex((c) => c.id === coin.id) + 1;
 
   return (
-    <section className="w-full bg-[#1a1a1a] px-4 py-16">
+    <section className="w-full bg-[#1a1a1a] px-4 py-20">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="mb-10 text-center">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            Comparez deux{" "}
-            <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-              pieces
-            </span>
+            Portail des Pièces
           </h2>
           <p className="mx-auto max-w-xl text-neutral-400">
-            Selectionnez 2 pieces pour comparer leurs caracteristiques
+            Choisissez une option : consulter la fiche complète d&apos;une pièce
+            ou comparer deux pièces.
+          </p>
+          <div className="mx-auto mt-6 grid w-full max-w-5xl gap-4 sm:grid-cols-2">
+            <button
+              onClick={() => {
+                setMode("single");
+                setSelectedCoins([]);
+              }}
+              className={cn(
+                "w-full rounded-full px-8 py-4 text-base font-semibold transition-colors",
+                mode === "single"
+                  ? "bg-amber-500 text-black"
+                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700",
+              )}
+            >
+              Voir la fiche d&apos;une pièce
+            </button>
+            <button
+              onClick={() => {
+                setMode("compare");
+                setSelectedCoins([]);
+              }}
+              className={cn(
+                "w-full rounded-full px-8 py-4 text-base font-semibold transition-colors",
+                mode === "compare"
+                  ? "bg-amber-500 text-black"
+                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700",
+              )}
+            >
+              Comparer 2 pièces
+            </button>
+          </div>
+          <p className="mx-auto mt-10 max-w-xl text-base font-medium text-neutral-400">
+            {mode === "single"
+              ? "Choisissez 1 pièce pour ouvrir sa fiche complète."
+              : "Sélectionnez 2 pièces pour lancer le comparatif détaillé."}
           </p>
         </div>
 
@@ -179,8 +225,26 @@ export function CoinVsSelector() {
           ))}
         </div>
 
+        {/* Filtre Pays */}
+        <div className="mb-6 flex justify-center text-sm">
+          <div className="flex items-center gap-3">
+            <span className="text-base font-semibold text-[#BE943C]">Pays</span>
+            <select
+              value={countryFilter}
+              onChange={(e) => setCountryFilter(e.target.value)}
+              className="rounded-full bg-neutral-800 px-5 py-2 text-base font-medium text-white focus:outline-none"
+            >
+              {countries.map((c) => (
+                <option key={c} value={c}>
+                  {c === "all" ? "Tous les pays" : c}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
         {/* Selected coins indicator */}
-        {selectedCoins.length > 0 && (
+        {mode === "compare" && selectedCoins.length > 0 && (
           <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
             {selectedCoins.map((coin, idx) => (
               <div
@@ -208,7 +272,7 @@ export function CoinVsSelector() {
         )}
 
         {/* Coins grid */}
-        <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+        <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
           {filteredCoins.map((coin) => {
             const selected = isSelected(coin);
             const index = selectionIndex(coin);
@@ -219,7 +283,7 @@ export function CoinVsSelector() {
                 key={coin.id}
                 onClick={() => handleCoinClick(coin)}
                 className={cn(
-                  "group relative flex flex-col items-center rounded-xl border-2 bg-neutral-900 p-3 transition-all hover:scale-105",
+                  "group relative flex flex-col items-center rounded-xl border-2 bg-neutral-900 p-3 transition-colors",
                   selected
                     ? "border-amber-500 bg-amber-500/10"
                     : "border-neutral-800 hover:border-neutral-600",
@@ -275,28 +339,28 @@ export function CoinVsSelector() {
       </div>
 
       {/* Full screen popup when 2 coins selected */}
-      {selectedCoins.length === 2 && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="mx-4 flex flex-col items-center gap-6 rounded-3xl bg-[#1a1a1a] p-8 shadow-2xl sm:p-12">
-            <p className="text-lg text-neutral-400">Vous avez sélectionné</p>
+      {mode === "compare" && selectedCoins.length === 2 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+          <div className="mx-4 flex flex-col items-center gap-6 rounded-xl border border-neutral-700 bg-[#1a1a1a] p-8 sm:p-12">
+            <p className="text-sm text-neutral-400">Vous avez sélectionné</p>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
               <div className="text-center">
-                <div className="text-xl font-bold text-amber-400 sm:text-2xl">
+                <div className="text-xl font-bold text-amber-400">
                   {selectedCoins[0]?.name}
                 </div>
               </div>
-              <span className="text-3xl font-black text-neutral-500">VS</span>
+              <span className="text-2xl font-bold text-neutral-500">VS</span>
               <div className="text-center">
-                <div className="text-xl font-bold text-amber-400 sm:text-2xl">
+                <div className="text-xl font-bold text-amber-400">
                   {selectedCoins[1]?.name}
                 </div>
               </div>
             </div>
             <button
               onClick={handleCompare}
-              className="mt-4 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 px-12 py-5 text-xl font-black text-black shadow-2xl transition-all hover:scale-105 hover:shadow-amber-500/40"
+              className="rounded-full bg-amber-500 px-10 py-4 text-lg font-bold text-black transition-colors hover:bg-amber-400"
             >
-              COMPARER →
+              Comparer →
             </button>
             <button
               onClick={() => setSelectedCoins([])}

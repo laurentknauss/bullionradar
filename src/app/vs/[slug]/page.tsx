@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
+import { Footer } from "@/components/footer";
+import { formatFineness } from "@/lib/format";
 import type { Coin } from "@/types";
 
 // Images disponibles (WebP)
@@ -277,7 +279,7 @@ function ConclusionSection({ coin1, coin2 }: { coin1: Coin; coin2: Coin }) {
     const purer =
       parseFloat(coin1.fineness) > parseFloat(coin2.fineness) ? coin1 : coin2;
     conclusions.push(
-      `La ${purer.name} a une pureté supérieure (${purer.fineness}).`,
+      `La ${purer.name} a une pureté supérieure (${formatFineness(purer.fineness)}).`,
     );
   }
 
@@ -363,7 +365,7 @@ export default async function VsPage({ params }: PageProps) {
     const product: Record<string, unknown> = {
       "@type": "Product",
       name: coin.name,
-      description: `Pièce d'investissement en ${coin.metal === "gold" ? "or" : "argent"} ${coin.fineness}, ${coin.weight_oz} oz, ${coin.country}`,
+      description: `Pièce d'investissement en ${coin.metal === "gold" ? "or" : "argent"} ${formatFineness(coin.fineness)}, ${coin.weight_oz} oz, ${coin.country}`,
       category: `Pièces ${coin.metal === "gold" ? "d'or" : "d'argent"} d'investissement`,
       material: coin.metal === "gold" ? "Or" : "Argent",
       weight: {
@@ -372,7 +374,11 @@ export default async function VsPage({ params }: PageProps) {
         unitCode: "GRM",
       },
       additionalProperty: [
-        { "@type": "PropertyValue", name: "Pureté", value: coin.fineness },
+        {
+          "@type": "PropertyValue",
+          name: "Pureté",
+          value: formatFineness(coin.fineness),
+        },
         { "@type": "PropertyValue", name: "Pays", value: coin.country },
         {
           "@type": "PropertyValue",
@@ -384,6 +390,15 @@ export default async function VsPage({ params }: PageProps) {
           name: "Liquidité",
           value: `${coin.liquidity}/5`,
         },
+        ...(coin.mintage
+          ? [
+              {
+                "@type": "PropertyValue",
+                name: "Tirage",
+                value: coin.mintage,
+              },
+            ]
+          : []),
       ],
     };
     if (imageUrl) {
@@ -448,22 +463,31 @@ export default async function VsPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Header */}
-      <nav className="border-b border-neutral-800 p-4">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <Link
-            href="/"
-            className="text-xl font-bold text-amber-400 hover:text-amber-300"
-          >
-            BullionRadar
+      <header className="mb-10 border-b border-amber-600/30 bg-[#BE943C]">
+        <div className="mx-auto flex max-w-5xl items-center gap-6 px-4 py-4">
+          <Link href="/" className="shrink-0">
+            <img
+              src="/images/header-bullionradar.jpeg"
+              alt="BullionRadar"
+              className="h-24 w-auto rounded-lg md:h-32"
+            />
           </Link>
-          <Link
-            href="/"
-            className="rounded-full bg-neutral-800 px-4 py-2 text-sm text-neutral-300 hover:bg-neutral-700"
-          >
-            ← Retour
-          </Link>
+          <div className="flex flex-1 items-center justify-between">
+            <Link
+              href="/"
+              className="text-2xl font-black text-black hover:text-neutral-800 md:text-3xl"
+            >
+              BullionRadar
+            </Link>
+            <Link
+              href="/"
+              className="rounded-full bg-black/10 px-4 py-2 text-sm font-semibold text-black hover:bg-black/20"
+            >
+              ← Retour
+            </Link>
+          </div>
         </div>
-      </nav>
+      </header>
 
       {/* Title */}
       <div className="mx-auto max-w-5xl px-4 py-8 text-center">
@@ -542,8 +566,8 @@ export default async function VsPage({ params }: PageProps) {
           />
           <ComparisonRow
             label="Pureté"
-            value1={coin1.fineness}
-            value2={coin2.fineness}
+            value1={formatFineness(coin1.fineness)}
+            value2={formatFineness(coin2.fineness)}
             highlight="higher"
           />
           <ComparisonRow
@@ -566,6 +590,13 @@ export default async function VsPage({ params }: PageProps) {
             value1={coin1.first_year}
             value2={coin2.first_year}
           />
+          {(coin1.mintage || coin2.mintage) && (
+            <ComparisonRow
+              label="Tirage"
+              value1={coin1.mintage}
+              value2={coin2.mintage}
+            />
+          )}
           <ComparisonRow
             label="Valeur faciale"
             value1={coin1.face_value}
@@ -650,7 +681,7 @@ export default async function VsPage({ params }: PageProps) {
               </div>
               <div className="mt-8 text-center">
                 <p className="text-sm text-neutral-500">
-                  <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
+                  <span className="mr-2 inline-block h-3 w-3 rounded-full bg-[#BE943C]" />
                   Meilleur prix — Dernière mise à jour :{" "}
                   {new Date(
                     [...prices1, ...prices2].sort(
@@ -679,12 +710,13 @@ export default async function VsPage({ params }: PageProps) {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-bold text-black transition-all hover:bg-amber-400"
+            className="inline-flex items-center gap-2 rounded-full bg-[#BE943C] px-6 py-3 font-bold text-black transition-all hover:bg-amber-400"
           >
             ← Comparer d&apos;autres pieces
           </Link>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
@@ -717,6 +749,18 @@ export async function generateMetadata({ params }: PageProps) {
     description: `Comparez ${coin1.name} et ${coin2.name} : poids, purete, prime, liquidite. Quel est le meilleur choix pour investir ?`,
     alternates: {
       canonical: `https://bullionradar.fr/vs/${canonicalSlug}`,
+    },
+    openGraph: {
+      title: `${coin1.name} vs ${coin2.name} - Comparatif | BullionRadar`,
+      description: `Comparez ${coin1.name} et ${coin2.name} : poids, purete, prime, liquidite. Quel est le meilleur choix pour investir ?`,
+      url: `https://bullionradar.fr/vs/${canonicalSlug}`,
+      images: [
+        {
+          url: "https://bullionradar.fr/images/og-bullionradar.jpg",
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   };
 }
