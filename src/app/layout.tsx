@@ -7,7 +7,7 @@ import "@fontsource/inter/latin.css";
 export const metadata: Metadata = {
   title: "BullionRadar — Comparateur Pièces Or & Argent en France",
   description:
-    "Comparez 58 pièces d'or et d'argent chez Godot & Fils, Or.fr et Pièces-Or.com. Prix mis à jour chaque jour. 100% indépendant et gratuit.",
+    "Comparez 58 pièces d'or et d'argent chez les principaux dealers français. Prix mis à jour chaque jour. 100% indépendant et gratuit.",
   metadataBase: new URL("https://bullionradar.fr"),
   alternates: {
     canonical: "https://bullionradar.fr",

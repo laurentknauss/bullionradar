@@ -48,3 +48,8 @@ pnpm-debug.log*
 
 # Local images folder at root
 /images/
+
+# LaTeX auxiliary files
+*.aux
+*.toc
+*.out

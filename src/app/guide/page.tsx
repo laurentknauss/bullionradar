@@ -68,7 +68,7 @@ export default function GuidePage() {
 
       {/* PDF Viewer */}
       <div className="pb-16">
-        <PdfViewerWrapper file="/docs/guide-rentier-dore-argente.pdf" />
+        <PdfViewerWrapper file="/docs/petit-guide-du-stacker.pdf" />
       </div>
 
       <Footer />

@@ -15,16 +15,13 @@ export function Footer() {
 
         {/* Colonne 2 — Guide */}
         <div>
-          <p className="mb-3 font-semibold text-white">
+          <p className="mb-3 text-lg font-bold text-amber-400">
             Le Petit Guide du Stacker
           </p>
           <ul className="space-y-2">
             <li>
-              <Link
-                href="/guide"
-                className="font-semibold text-amber-400 hover:text-amber-300"
-              >
-                Lire et telecharger le guide gratuit (PDF)
+              <Link href="/guide" className="text-white hover:text-amber-400">
+                Lire et telecharger le guide gratuit (PDF ou EPUB)
               </Link>
             </li>
           </ul>
@@ -32,15 +29,23 @@ export function Footer() {
 
         {/* Colonne 3 — Cours */}
         <div>
-          <p className="mb-3 font-semibold text-white">Cours en temps réel</p>
+          <p className="mb-3 text-lg font-bold text-amber-400">
+            Cours en temps réel
+          </p>
           <ul className="space-y-2">
             <li>
-              <Link href="/cours-or" className="hover:text-amber-400">
+              <Link
+                href="/cours-or"
+                className="text-white hover:text-amber-400"
+              >
                 Cours de l&apos;or
               </Link>
             </li>
             <li>
-              <Link href="/cours-argent" className="hover:text-amber-400">
+              <Link
+                href="/cours-argent"
+                className="text-white hover:text-amber-400"
+              >
                 Cours de l&apos;argent
               </Link>
             </li>
@@ -49,23 +54,29 @@ export function Footer() {
 
         {/* Colonne 4 — Infos */}
         <div>
-          <p className="mb-3 font-semibold text-white">Informations</p>
+          <p className="mb-3 text-lg font-bold text-amber-400">Informations</p>
           <ul className="space-y-2">
             <li>
               <Link
                 href="/solutions-stockage"
-                className="font-semibold text-amber-400 hover:text-amber-300"
+                className="text-white hover:text-amber-400"
               >
                 Solutions de stockage
               </Link>
             </li>
             <li>
-              <Link href="/a-propos" className="hover:text-amber-400">
+              <Link
+                href="/a-propos"
+                className="text-white hover:text-amber-400"
+              >
                 À propos
               </Link>
             </li>
             <li>
-              <Link href="/mentions-legales" className="hover:text-amber-400">
+              <Link
+                href="/mentions-legales"
+                className="text-white hover:text-amber-400"
+              >
                 Mentions légales
               </Link>
             </li>

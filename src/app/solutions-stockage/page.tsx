@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { AffiliateLink } from "@/components/affiliate-link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -260,23 +261,15 @@ export default function SolutionsStockagePage() {
               ))}
             </div>
 
-            {/* CTA affilié */}
+            {/* CTA */}
             <div className="rounded-lg border border-[#BE943C]/40 bg-[#BE943C]/10 p-4 text-center">
-              <p className="mb-1 text-sm text-neutral-400">
-                Lien affilié — 10% de réduction pour les lecteurs BullionRadar
-              </p>
-              <a
+              <AffiliateLink
                 href="https://dirtymansafe.com"
-                target="_blank"
-                rel="noopener noreferrer sponsored"
+                name="dirty_man_safe"
                 className="inline-flex items-center gap-2 rounded-full bg-[#BE943C] px-8 py-3 font-black text-black transition-colors hover:bg-amber-400"
               >
                 Commander le Dirty Man Safe →
-              </a>
-              <p className="mt-2 text-xs text-neutral-600">
-                * Lien affilié — BullionRadar perçoit une commission sans
-                surcoût pour vous
-              </p>
+              </AffiliateLink>
             </div>
           </div>
         </div>

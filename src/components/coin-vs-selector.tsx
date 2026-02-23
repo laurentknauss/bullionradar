@@ -166,22 +166,21 @@ export function CoinVsSelector() {
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
             Portail des Pièces
           </h2>
-          <div className="mb-4 text-sm text-[#C8A04A]">✦ ◆ ✦</div>
           <p className="mx-auto max-w-xl text-neutral-400">
             Choisissez une option : consulter la fiche complète d&apos;une pièce
             ou comparer deux pièces.
           </p>
-          <div className="mt-20 grid w-full max-w-5xl mx-auto gap-4 sm:grid-cols-2">
+          <div className="mx-auto mt-6 grid w-full max-w-5xl gap-4 sm:grid-cols-2">
             <button
               onClick={() => {
                 setMode("single");
                 setSelectedCoins([]);
               }}
               className={cn(
-                "w-full rounded-full px-8 py-4 text-base font-black tracking-wide shadow-lg transition-all sm:px-10 sm:py-5 sm:text-lg",
-                "bg-amber-500 text-black hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-amber-500/40",
-                "focus-visible:ring-2 focus-visible:ring-amber-200",
-                mode === "single" ? "ring-2 ring-amber-200" : "opacity-85",
+                "w-full rounded-full px-8 py-4 text-base font-semibold transition-colors",
+                mode === "single"
+                  ? "bg-amber-500 text-black"
+                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700",
               )}
             >
               Voir la fiche d&apos;une pièce
@@ -192,10 +191,10 @@ export function CoinVsSelector() {
                 setSelectedCoins([]);
               }}
               className={cn(
-                "w-full rounded-full px-8 py-4 text-base font-black tracking-wide shadow-lg transition-all sm:px-10 sm:py-5 sm:text-lg",
-                "bg-amber-500 text-black hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-amber-500/40",
-                "focus-visible:ring-2 focus-visible:ring-amber-200",
-                mode === "compare" ? "ring-2 ring-amber-200" : "opacity-85",
+                "w-full rounded-full px-8 py-4 text-base font-semibold transition-colors",
+                mode === "compare"
+                  ? "bg-amber-500 text-black"
+                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700",
               )}
             >
               Comparer 2 pièces
@@ -297,7 +296,7 @@ export function CoinVsSelector() {
         )}
 
         {/* Coins grid */}
-        <div className="mt-16 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+        <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
           {filteredCoins.map((coin) => {
             const selected = isSelected(coin);
             const index = selectionIndex(coin);
@@ -308,7 +307,7 @@ export function CoinVsSelector() {
                 key={coin.id}
                 onClick={() => handleCoinClick(coin)}
                 className={cn(
-                  "group relative flex flex-col items-center rounded-xl border-2 bg-neutral-900 p-3 transition-all hover:scale-105",
+                  "group relative flex flex-col items-center rounded-xl border-2 bg-neutral-900 p-3 transition-colors",
                   selected
                     ? "border-amber-500 bg-amber-500/10"
                     : "border-neutral-800 hover:border-neutral-600",
@@ -365,27 +364,27 @@ export function CoinVsSelector() {
 
       {/* Full screen popup when 2 coins selected */}
       {mode === "compare" && selectedCoins.length === 2 && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="mx-4 flex flex-col items-center gap-6 rounded-3xl bg-[#1a1a1a] p-8 shadow-2xl sm:p-12">
-            <p className="text-lg text-neutral-400">Vous avez sélectionné</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+          <div className="mx-4 flex flex-col items-center gap-6 rounded-xl border border-neutral-700 bg-[#1a1a1a] p-8 sm:p-12">
+            <p className="text-sm text-neutral-400">Vous avez sélectionné</p>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
               <div className="text-center">
-                <div className="text-xl font-bold text-amber-400 sm:text-2xl">
+                <div className="text-xl font-bold text-amber-400">
                   {selectedCoins[0]?.name}
                 </div>
               </div>
-              <span className="text-3xl font-black text-neutral-500">VS</span>
+              <span className="text-2xl font-bold text-neutral-500">VS</span>
               <div className="text-center">
-                <div className="text-xl font-bold text-amber-400 sm:text-2xl">
+                <div className="text-xl font-bold text-amber-400">
                   {selectedCoins[1]?.name}
                 </div>
               </div>
             </div>
             <button
               onClick={handleCompare}
-              className="mt-4 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 px-12 py-5 text-xl font-black text-black shadow-2xl transition-all hover:scale-105 hover:shadow-amber-500/40"
+              className="rounded-full bg-amber-500 px-10 py-4 text-lg font-bold text-black transition-colors hover:bg-amber-400"
             >
-              COMPARER →
+              Comparer →
             </button>
             <button
               onClick={() => setSelectedCoins([])}
