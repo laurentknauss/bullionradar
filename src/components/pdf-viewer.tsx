@@ -116,6 +116,7 @@ export function PdfViewer({ file, title }: PdfViewerProps) {
             onLoadSuccess={onDocumentLoadSuccess}
             loading={null}
             className="flex justify-center"
+            onItemClick={({ pageNumber }) => setPageNumber(pageNumber)}
           >
             <Page
               pageNumber={pageNumber}

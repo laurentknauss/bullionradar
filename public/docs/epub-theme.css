@@ -1,0 +1,27 @@
+body {
+  color: #1a1a1a;
+  background-color: #ffffff;
+  font-family: Georgia, serif;
+  line-height: 1.6;
+}
+h1,
+h2,
+h3 {
+  color: #be943c;
+}
+a {
+  color: #be943c;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: left;
+}
+th {
+  background-color: #f5f0e8;
+}

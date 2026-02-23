@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
-import { AffiliateLink } from "@/components/affiliate-link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -263,13 +262,14 @@ export default function SolutionsStockagePage() {
 
             {/* CTA */}
             <div className="rounded-lg border border-[#BE943C]/40 bg-[#BE943C]/10 p-4 text-center">
-              <AffiliateLink
+              <a
                 href="https://dirtymansafe.com"
-                name="dirty_man_safe"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[#BE943C] px-8 py-3 font-black text-black transition-colors hover:bg-amber-400"
               >
                 Commander le Dirty Man Safe →
-              </AffiliateLink>
+              </a>
             </div>
           </div>
         </div>
