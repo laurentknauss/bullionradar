@@ -2,7 +2,7 @@
 % Le Petit Guide du Stacker — BullionRadar.fr
 % Édition 2026
 % =============================================================================
-\documentclass[11pt,a4paper]{article}
+\documentclass[14pt,a4paper]{extarticle}
 
 % --- Encodage et langue (xelatex) ---
 \usepackage{fontspec}
@@ -13,6 +13,7 @@
 % --- Mise en page ---
 \usepackage[margin=2.5cm,headheight=22pt]{geometry}
 \usepackage{setspace}
+\onehalfspacing
 \usepackage{parskip}
 \usepackage{enumitem}
 
@@ -49,50 +50,9 @@
 
 % --- Titres en couleur or ---
 \usepackage{titlesec}
-\titleformat{\section}{\Large\bfseries\color{gold}}{}{0em}{}
-\titleformat{\subsection}{\large\bfseries}{}{0em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries}{}{0em}{}
-
-% --- Commande pour diagramme technique de pièce ---
-\newcommand{\coindiagram}[8]{%
-  % #1 = Titre (ex: KRUGERRAND 1 OZ — OR)
-  % #2 = Diamètre texte (ex: 32.77 mm)
-  % #3 = Épaisseur texte (ex: 2.84 mm)
-  % #4 = Poids (ex: 33.93g)
-  % #5 = Pureté (ex: 916,7‰)
-  % #6 = Pays (ex: Afrique du Sud)
-  % #7 = Depuis (ex: Depuis: 1967)
-  % #8 = Info supplémentaire (ex: Liquidité: 5/5)
-  \begin{center}
-  \begin{tikzpicture}
-    % Fond sombre
-    \fill[darkbg, rounded corners=8pt] (-4.5,-3.2) rectangle (4.5,3.8);
-
-    % Titre
-    \node[text=gold, font=\small\bfseries] at (0,3.3) {#1};
-
-    % Diamètre
-    \node[text=lightgold, font=\scriptsize] at (-1.2,2.7) {#2};
-    \draw[lightgold, <->] (-2.5,2.5) -- (0.1,2.5);
-
-    % Cercle pièce (vue de face)
-    \draw[lightgold, dashed] (0,0.5) circle (2cm);
-    \draw[lightgold] (-0.3,0.5) -- (0.3,0.5);
-    \draw[lightgold] (0,0.2) -- (0,0.8);
-    \node[text=lightgold, font=\tiny] at (-2.0,-1.8) {VUE DE FACE};
-
-    % Vue de profil
-    \draw[lightgold] (3.0,0.8) rectangle (3.6,0.2);
-    \draw[lightgold, <->] (3.9,0.8) -- (3.9,0.2);
-    \node[text=lightgold, font=\scriptsize, anchor=west] at (4.0,0.5) {#3};
-    \node[text=lightgold, font=\tiny] at (3.3,-1.8) {VUE DE PROFIL};
-
-    % Barre d'info en bas
-    \fill[darkcard] (-4.3,-2.8) rectangle (4.3,-2.2);
-    \node[text=lightgold, font=\tiny] at (0,-2.5) {Poids: #4~~|~~Pureté: #5~~|~~Pays: #6~~|~~#7~~|~~#8};
-  \end{tikzpicture}
-  \end{center}
-}
+\titleformat{\section}{\LARGE\bfseries\color{gold}}{}{0em}{}
+\titleformat{\subsection}{\Large\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\large\bfseries}{}{0em}{}
 
 % --- Séparateur décoratif ---
 \newcommand{\goldsep}{%
@@ -140,7 +100,11 @@
 \end{titlepage}
 
 % Table des matières
+{
+\setlength{\parskip}{6pt}
+\renewcommand{\baselinestretch}{1.8}\normalsize
 \tableofcontents
+}
 \newpage
 
 % =============================================================================
@@ -172,18 +136,25 @@ L'or et l'argent sont des \textbf{valeurs refuges depuis des millénaires}. Aujo
 
 \subsection{Le debasement trade}
 
-Le \textit{debasement} --- la dévaluation progressive des monnaies fiduciaires --- n'est pas un phénomène nouveau. Depuis que Nixon a mis fin à la convertibilité du dollar en or en 1971, toutes les monnaies du monde sont des monnaies \textit{fiat}, sans ancrage à un actif tangible.
+Le 15 août 1971, le président Nixon met fin unilatéralement aux accords de Bretton Woods~: le dollar n'est plus convertible en or. Ce jour-là, toutes les monnaies du monde deviennent des monnaies \textit{fiat} (du latin \textit{fiat} --- «~qu'il en soit ainsi~»), c'est-à-dire des monnaies \textbf{sans aucune contrepartie physique}. Leur valeur ne repose plus que sur la confiance dans les gouvernements qui les émettent.
+
+\textbf{Qu'est-ce que cela signifie concrètement~?} Depuis 1971, les banques centrales peuvent imprimer autant de billets qu'elles le souhaitent, sans contrainte. Et c'est exactement ce qu'elles font~: la masse monétaire M2 aux États-Unis est passée de 600 milliards de dollars en 1971 à plus de \textbf{21\,000 milliards en 2026} --- une multiplication par 35. La BCE n'est pas en reste~: entre 2015 et 2023, elle a injecté plus de \textbf{5\,000 milliards d'euros} dans le système via ses programmes de rachat d'actifs (\textit{Quantitative Easing}).
+
+Chaque billet imprimé sans contrepartie de richesse réelle \textbf{dilue la valeur de tous les billets déjà en circulation}. C'est la définition même du \textit{debasement} --- la dévaluation progressive et silencieuse de votre épargne.
 
 \textbf{Les chiffres parlent d'eux-mêmes~:}
 \begin{itemize}
   \item Depuis 1971, le dollar a perdu \textbf{plus de 98\% de son pouvoir d'achat} mesuré en or
   \item L'euro a perdu environ \textbf{85\% de sa valeur} face à l'or depuis sa création en 1999
-  \item En 2000, une once d'or valait $\sim$300\,€. En 2026, elle dépasse les 2\,500\,€
+  \item En 2000, une once d'or valait $\sim$300\,€. En 2026, elle dépasse les 5\,000\,€
+  \item 100\,€ placés sur un livret A en 2000 valent environ 65\,€ en pouvoir d'achat réel aujourd'hui
 \end{itemize}
 
-Le \textit{debasement trade} consiste à se positionner sur des actifs réels (or, argent physique) pour se protéger de cette érosion monétaire structurelle. Ce n'est pas de la spéculation --- c'est de la préservation de patrimoine.
+\textbf{La spirale de la dette~:} les pays occidentaux sont endettés à des niveaux sans précédent en temps de paix. La France dépasse les \textbf{110\% du PIB} de dette publique (plus de 3\,200 milliards d'euros), les États-Unis les \textbf{130\%} (36\,000 milliards de dollars), le Japon les \textbf{260\%}. Ces dettes ne seront jamais remboursées au sens classique du terme. La seule issue politiquement acceptable est de les \textbf{diluer par l'inflation et la création monétaire} --- c'est-à-dire en imprimant encore plus de billets, ce qui accélère encore la perte de valeur des monnaies fiat.
 
-\textbf{Pourquoi c'est structurel~:} les États sont endettés à des niveaux historiques (120\% du PIB en France, 130\% aux USA). La seule façon politiquement acceptable de réduire cette dette est de la diluer par l'inflation et la création monétaire. L'or est la couverture naturelle contre cette politique.
+C'est un cercle vicieux~: plus de dette $\rightarrow$ plus d'impression monétaire $\rightarrow$ plus d'inflation $\rightarrow$ plus de dette pour financer les déficits\ldots
+
+Le \textit{debasement trade} consiste à se positionner sur des actifs réels (or, argent physique) pour se protéger de cette érosion monétaire structurelle. Ce n'est pas de la spéculation --- c'est de la \textbf{préservation de patrimoine}. Quand les monnaies fiat perdent de la valeur, l'or et l'argent en gagnent mécaniquement, car leur quantité est limitée par la nature~: on ne peut pas «~imprimer~» de l'or.
 
 \subsection{L'inflation rampante}
 
@@ -247,7 +218,7 @@ Avoir 5 à 15\% de son patrimoine en métaux précieux physiques n'est pas un pa
 
 \subsection{La vision contrarian}
 
-Le consensus mainstream (banques, médias financiers, conseillers patrimoniaux) a \textbf{systématiquement sous-estimé l'or} depuis 20 ans. En 2000, l'once était à 300\,€ et «~personne n'en voulait~». En 2026, elle dépasse 2\,500\,€.
+Le consensus mainstream (banques, médias financiers, conseillers patrimoniaux) a \textbf{systématiquement sous-estimé l'or} depuis 20 ans. En 2000, l'once était à 300\,€ et «~personne n'en voulait~». En 2026, elle dépasse 5\,000\,€.
 
 \textbf{Pourquoi le consensus se trompe~:}
 \begin{itemize}
@@ -289,7 +260,6 @@ Voici les pièces d'or bullion incontournables, celles que tout stacker devrait 
 
 \textit{Pourquoi la stacker~:} Liquidité absolue, reconnue partout dans le monde. Pas de valeur faciale --- sa valeur est purement celle de son contenu en or. Le standard historique du bullion.
 
-\coindiagram{KRUGERRAND 1 OZ --- OR}{32.77 mm}{2.84 mm}{33.93g}{916,7\permil{}}{Afrique du Sud}{Depuis: 1967}{Liquidité: 5/5}
 
 \goldsep
 
@@ -301,7 +271,6 @@ La Maple Leaf a été la \textbf{première pièce bullion en or pur 999,9} au mo
 
 \textit{Pourquoi la stacker~:} Pureté maximale (999,9), sécurité anti-contrefaçon de pointe, prime raisonnable. Le choix naturel du stacker qui veut de l'or le plus pur possible.
 
-\coindiagram{MAPLE LEAF 1 OZ --- OR --- CANADA}{30.00 mm}{2.87 mm}{31.10g}{999,9\permil{}}{Canada}{Depuis: 1979}{Liquidité: 5/5}
 
 \goldsep
 
@@ -313,7 +282,6 @@ L'Eagle est la \textbf{pièce d'or la plus vendue aux États-Unis}. Alliage 22 c
 
 \textit{Pourquoi la stacker~:} Liquidité maximale sur le marché américain et international. Seule pièce d'or éligible aux IRA (comptes retraite) américains. La référence absolue outre-Atlantique.
 
-\coindiagram{AMERICAN EAGLE 1 OZ --- OR --- USA}{32.70 mm}{2.87 mm}{33.93g}{916,7\permil{}}{États-Unis}{Depuis: 1986}{Liquidité: 5/5}
 
 \goldsep
 
@@ -325,7 +293,6 @@ Or pur 24 carats. \textbf{La pièce d'or la plus stackée en Europe.} Émise par
 
 \textit{Pourquoi la stacker~:} Aucun portrait de monarque (instruments de musique), libellée en euros, prime parmi les plus basses du marché. Le choix rationnel du stacker européen.
 
-\coindiagram{PHILHARMONIQUE 1 OZ --- OR --- AUTRICHE}{37.00 mm}{2.00 mm}{31.10g}{999,9\permil{}}{Autriche}{Depuis: 1989}{Liquidité: 5/5}
 
 \goldsep
 
@@ -337,7 +304,6 @@ Britannia, figure allégorique de la Grande-Bretagne depuis l'époque romaine, o
 
 \textit{Pourquoi la stacker~:} Sécurité anti-contrefaçon de pointe, prime compétitive ($\sim$6,5\%), design iconique qui évolue chaque année. Exonérée de CGT au Royaume-Uni.
 
-\coindiagram{BRITANNIA 1 OZ --- OR --- ROYAUME-UNI}{38.61 mm}{2.98 mm}{31.10g}{999,9\permil{}}{Royaume-Uni}{Depuis: 1987}{Liquidité: 5/5}
 
 \goldsep
 
@@ -349,7 +315,6 @@ Lancée en 2006, le Buffalo est la \textbf{première pièce d'or américaine en 
 
 \textit{Pourquoi la stacker~:} La pureté de la Maple Leaf combinée au prestige américain. Design historique parmi les plus beaux de la numismatique US. Liquidité excellente.
 
-\coindiagram{AMERICAN BUFFALO 1 OZ --- OR --- USA}{32.70 mm}{2.95 mm}{31.10g}{999,9\permil{}}{États-Unis}{Depuis: 2006}{Liquidité: 5/5}
 
 \goldsep
 
@@ -361,7 +326,6 @@ Originellement appelée «~Gold Nugget~» (1986--1989), cette pièce a été ren
 
 \textit{Pourquoi la stacker~:} Pureté maximale (999,9), design annuel attractif, garantie Perth Mint. Excellente alternative pour diversifier son stack géographiquement.
 
-\coindiagram{KANGOUROU 1 OZ --- OR --- AUSTRALIE}{32.10 mm}{2.65 mm}{31.10g}{999,9\permil{}}{Australie}{Depuis: 1986}{Liquidité: 5/5}
 
 \goldsep
 
@@ -373,7 +337,6 @@ La Libertad est frappée par la \textbf{plus ancienne monnaie des Amériques} (f
 
 \textit{Pourquoi la stacker~:} La pièce la plus artistique du marché. Tirages limités qui génèrent des primes à la revente. Disponible en 8 tailles (1/20 oz à 1 kg).
 
-\coindiagram{LIBERTAD 1 OZ --- OR --- MEXIQUE}{34.50 mm}{2.69 mm}{31.10g}{999\permil{}}{Mexique}{Depuis: 1981}{Liquidité: 4/5}
 
 \newpage
 
@@ -517,7 +480,6 @@ La Maple Leaf est souvent la \textbf{première pièce que tout stacker acquiert}
 
 \textit{Pourquoi la stacker~:} TVA 0\% en France, prime basse, reconnue partout dans le monde. La reine du stack argent.
 
-\coindiagram{MAPLE LEAF 1 OZ ARGENT --- CANADA}{38.00 mm}{3.15 mm}{31.10g}{999,9\permil{}}{Canada}{Depuis: 1988}{TVA: 0\%}
 
 \goldsep
 
@@ -529,7 +491,6 @@ Lancée en 1986, l'Eagle est la \textbf{pièce d'argent la plus vendue au monde}
 
 \textit{Pourquoi la stacker~:} Liquidité absolue, primes raisonnables, seule pièce éligible aux IRA américains sans conditions. TVA 0\% en France.
 
-\coindiagram{SILVER EAGLE 1 OZ --- ÉTATS-UNIS}{40.60 mm}{2.98 mm}{31.10g}{999\permil{}}{États-Unis}{Depuis: 1986}{TVA: 0\%}
 
 \goldsep
 
@@ -541,7 +502,6 @@ La Philharmonique d'argent existe depuis 2008 --- 19 ans après la version or. E
 
 \textit{Pourquoi la stacker~:} Le choix naturel du stacker européen. TVA 0\%, prime compétitive, très liquide sur le vieux continent.
 
-\coindiagram{PHILHARMONIQUE 1 OZ ARGENT --- AUTRICHE}{37.00 mm}{3.20 mm}{31.10g}{999\permil{}}{Autriche}{Depuis: 2008}{TVA: 0\%}
 
 \goldsep
 
@@ -613,7 +573,6 @@ L'Hercule est \textbf{le trésor des familles françaises}. Frappé entre 1974 e
 
 \textit{Pourquoi la stacker~:} Patrimoine culturel français, très abondant sur le marché secondaire (vide-greniers, notaires, particuliers), souvent disponible sous le cours chez des non-spécialistes.
 
-\coindiagram{50 FRANCS HERCULE --- FRANCE}{41.00 mm}{3.00 mm}{30.0g}{900\permil{} (27g Ag pur)}{France}{1974--1980}{TVA: 20\%}
 
 \newpage
 
