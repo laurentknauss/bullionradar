@@ -224,15 +224,12 @@ export function PriceComparator() {
         {/* Header */}
         <div className="mb-12 text-center">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            Comparateur de pièces{" "}
+            Exemples de prix parmi les pièces les plus populaires{" "}
             <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-              Or et Argent
+              chez les dealers
             </span>
           </h2>
-          <p className="mx-auto max-w-xl tracking-tight text-neutral-400">
-            Prix d&apos;achat chez les principaux dealers français — Mis à jour
-            quotidiennement
-          </p>
+          <p className="text-3xl text-neutral-400">↓</p>
         </div>
 
         {/* Loading */}

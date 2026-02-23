@@ -3,7 +3,7 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="bg-[#1a1a1a] px-6 py-14 text-sm text-neutral-400">
-      <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-4">
+      <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-3">
         {/* Colonne 1 — Marque */}
         <div>
           <p className="text-lg font-bold text-amber-400">BullionRadar</p>
@@ -13,21 +13,7 @@ export function Footer() {
           </p>
         </div>
 
-        {/* Colonne 2 — Guide */}
-        <div>
-          <p className="mb-3 text-lg font-bold text-amber-400">
-            Le Petit Guide du Stacker
-          </p>
-          <ul className="space-y-2">
-            <li>
-              <Link href="/guide" className="text-white hover:text-amber-400">
-                Lire et telecharger le guide gratuit (PDF ou EPUB)
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Colonne 3 — Cours */}
+        {/* Colonne 2 — Cours */}
         <div>
           <p className="mb-3 text-lg font-bold text-amber-400">
             Cours en temps réel
@@ -52,7 +38,7 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Colonne 4 — Infos */}
+        {/* Colonne 3 — Infos */}
         <div>
           <p className="mb-3 text-lg font-bold text-amber-400">Informations</p>
           <ul className="space-y-2">
