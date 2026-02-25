@@ -77,6 +77,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <meta
+          name="gb-site-verification"
+          content="dd215eab2c6e54af896c0da31e2957a1fd983aad"
+        />
       </head>
       <body className="font-sans tracking-tight antialiased">
         {children}
