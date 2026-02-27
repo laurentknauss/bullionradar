@@ -43,6 +43,21 @@ const COINS_TO_SCRAPE: readonly CoinConfig[] = [
     name: "Philharmonique 1 Once",
     url: "https://or.fr/produits/acheter-or/pieces-or/philharmonique-or-1-once-2026-austrian-mint-477?serviceType=3",
   },
+  {
+    slug: "britannia-1oz-or",
+    name: "Britannia 1 Oz Or",
+    url: "https://or.fr/produits/acheter-or/pieces-or/britannia-or-1once-2026-royal-mint-445?serviceType=3",
+  },
+  {
+    slug: "britannia-1-2oz-or",
+    name: "Britannia 1/2 Oz Or",
+    url: "https://or.fr/produits/acheter-or/pieces-or/britannia-or-1-2-once-2026-royal-mint-447?serviceType=3",
+  },
+  {
+    slug: "britannia-1-10oz-or",
+    name: "Britannia 1/10 Oz Or",
+    url: "https://or.fr/produits/acheter-or/pieces-or/britannia-or-1-10-once-2026-royal-mint-449?serviceType=3",
+  },
 ] as const;
 
 /**
