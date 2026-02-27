@@ -57,6 +57,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Fiscalite
+  urls.push({
+    url: `${BASE_URL}/fiscalite`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  });
+
+  // Solutions stockage
+  urls.push({
+    url: `${BASE_URL}/solutions-stockage`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  });
+
+  // Guide
+  urls.push({
+    url: `${BASE_URL}/guide`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  });
+
   // A propos
   urls.push({
     url: `${BASE_URL}/a-propos`,

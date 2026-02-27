@@ -44,6 +44,14 @@ export function Footer() {
           <ul className="space-y-2">
             <li>
               <Link
+                href="/fiscalite"
+                className="text-white hover:text-amber-400"
+              >
+                Fiscalité
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/solutions-stockage"
                 className="text-white hover:text-amber-400"
               >
