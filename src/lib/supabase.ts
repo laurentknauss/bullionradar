@@ -76,6 +76,9 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   "krugerrand-1oz-or": "krugerrand-1oz",
   "maple-leaf-1oz-or": "maple-leaf-1oz",
   "philharmonique-1oz-or": "philharmonique-1oz",
+  "britannia-1oz-or": "britannia-1oz-or",
+  "britannia-1-2oz-or": "britannia-1-2oz-or",
+  "britannia-1-10oz-or": "britannia-1-10oz-or",
   // Pièces françaises/suisses
   "napoleon-20f-or": "napoleon-20f",
   "souverain-or": "souverain",
