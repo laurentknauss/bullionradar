@@ -7,6 +7,7 @@ import {
   type DealerPrice as SupabaseDealerPrice,
 } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
+import { AffiliateLink } from "@/components/affiliate-link";
 
 interface DealerPrice {
   dealer: string;
@@ -118,11 +119,11 @@ function CoinCard({ coin }: CoinCardProps) {
               .map((dealer, index) => {
                 const isBest = dealer.price === bestPrice;
                 return (
-                  <a
+                  <AffiliateLink
                     key={dealer.dealer}
                     href={dealer.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    dealer={dealer.dealer}
+                    coinName={coin.name}
                     className={`flex items-center justify-between rounded-lg px-3 py-2 transition-all hover:scale-[1.02] ${
                       isBest
                         ? "border border-amber-500/30 bg-gradient-to-r from-amber-500/20 to-yellow-500/10"
@@ -156,7 +157,7 @@ function CoinCard({ coin }: CoinCardProps) {
                     >
                       {formatPrice(dealer.price)}
                     </span>
-                  </a>
+                  </AffiliateLink>
                 );
               })}
           </div>

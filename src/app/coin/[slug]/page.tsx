@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
+import { AffiliateLink } from "@/components/affiliate-link";
 import { Footer } from "@/components/footer";
 import { formatFineness, formatRelativeTime } from "@/lib/format";
 import type { Coin } from "@/types";
@@ -112,14 +113,15 @@ function formatPrice(priceCents: number): string {
 interface DealerLinkProps {
   dealer: DealerPrice;
   isBest: boolean;
+  coinName: string;
 }
 
-function DealerLink({ dealer, isBest }: DealerLinkProps) {
+function DealerLink({ dealer, isBest, coinName }: DealerLinkProps) {
   return (
-    <a
+    <AffiliateLink
       href={dealer.product_url ?? "#"}
-      target="_blank"
-      rel="noopener noreferrer"
+      dealer={dealer.dealer}
+      coinName={coinName}
       className={`flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-all hover:scale-[1.02] ${
         isBest
           ? "border border-amber-500/30 bg-gradient-to-r from-amber-500/20 to-yellow-500/10"
@@ -136,7 +138,7 @@ function DealerLink({ dealer, isBest }: DealerLinkProps) {
       >
         {formatPrice(dealer.price_cents)}
       </span>
-    </a>
+    </AffiliateLink>
   );
 }
 
@@ -164,6 +166,7 @@ function CoinPricesSection({ coinName, prices }: CoinPricesSectionProps) {
             key={dealer.dealer}
             dealer={dealer}
             isBest={dealer.price_cents === bestPrice}
+            coinName={coinName}
           />
         ))}
       </div>
@@ -221,14 +224,14 @@ function StickyBuyCTA({ prices, coinName }: StickyBuyCTAProps) {
             </span>
           </div>
         </div>
-        <a
+        <AffiliateLink
           href={best.product_url ?? "#"}
-          target="_blank"
-          rel="noopener noreferrer"
+          dealer={best.dealer}
+          coinName={coinName}
           className="shrink-0 rounded-full bg-black px-5 py-2 text-sm font-bold text-[#BE943C] transition-colors hover:bg-neutral-800"
         >
           Acheter maintenant →
-        </a>
+        </AffiliateLink>
       </div>
     </div>
   );
