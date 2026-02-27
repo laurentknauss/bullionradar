@@ -101,7 +101,7 @@ function slugify(name: string): string {
 
 export function CoinVsSelector() {
   const router = useRouter();
-  const [metalFilter, setMetalFilter] = useState<MetalFilter>("all");
+  const [metalFilter, setMetalFilter] = useState<MetalFilter>("gold");
   const [countryFilter, setCountryFilter] = useState<string>("all");
   const [mode, setMode] = useState<SelectionMode>("compare");
   const [selectedCoins, setSelectedCoins] = useState<Coin[]>([]);
