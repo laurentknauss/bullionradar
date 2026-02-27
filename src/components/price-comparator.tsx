@@ -171,7 +171,7 @@ export function PriceComparator() {
   const [prices, setPrices] = useState<CoinPrice[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [lastUpdate, setLastUpdate] = useState<string | null>(null);
+  const [hasData, setHasData] = useState(false);
 
   useEffect(() => {
     async function fetchPrices() {
@@ -183,22 +183,7 @@ export function PriceComparator() {
           return;
         }
 
-        // Trouver la date la plus recente
-        const mostRecent = supabasePrices.reduce((latest, p) => {
-          const date = new Date(p.scraped_at);
-          return date > new Date(latest) ? p.scraped_at : latest;
-        }, supabasePrices[0].scraped_at);
-
-        setLastUpdate(
-          new Date(mostRecent).toLocaleDateString("fr-FR", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-        );
-
+        setHasData(true);
         setPrices(transformPrices(supabasePrices));
       } catch (err) {
         setError("Erreur lors du chargement des prix");
@@ -252,15 +237,12 @@ export function PriceComparator() {
         )}
 
         {/* Footer */}
-        {lastUpdate && (
+        {hasData && (
           <div className="mt-8 text-center">
             <p className="text-sm text-white">
               <span className="mr-2 inline-block h-3 w-3 rounded-full bg-amber-500" />
-              Meilleur prix — Dernière mise à jour : {lastUpdate}
-            </p>
-            <p className="mt-2 text-xs text-neutral-300">
-              Prix pouvant varier de quelques euros selon l&apos;heure de la
-              journée
+              Prix actualisés plusieurs fois par jour pour coller au plus près
+              du marché
             </p>
           </div>
         )}
