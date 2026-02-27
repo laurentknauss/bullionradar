@@ -1,0 +1,40 @@
+name: Scrape Or.fr Prices (Light)
+
+on:
+  schedule:
+    # Toutes les 30 minutes
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # Permet de lancer manuellement
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Install dependencies
+        working-directory: scripts/scrapers
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run Or.fr light scraper
+        working-directory: scripts/scrapers
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: pnpm exec tsx setup-db-orfr-light.ts
+
+      - name: Report status
+        if: failure()
+        run: echo "Or.fr light scraping failed - check logs above"
