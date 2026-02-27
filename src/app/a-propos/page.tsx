@@ -62,6 +62,35 @@ export default function AProposPage() {
           </div>
         </section>
 
+        {/* Transparence & Modèle économique */}
+        <section className="mb-12 space-y-6">
+          <h2 className="text-2xl font-semibold tracking-wide text-[#FFD700]">
+            Transparence & Modèle économique
+          </h2>
+          <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
+            <p>
+              L&apos;utilisation de BullionRadar est{" "}
+              <strong>totalement gratuite</strong> pour les utilisateurs.
+            </p>
+            <p>
+              Pour assurer la pérennité technique du projet, BullionRadar a
+              postulé aux programmes d&apos;affiliation de dealers reconnus tels
+              que <strong>Godot & Fils</strong> et <strong>Or.fr</strong>.
+            </p>
+            <p>
+              À ce jour, ces demandes sont en cours d&apos;étude. Si elles sont
+              validées, BullionRadar pourrait percevoir une commission sur les
+              transactions initiées via le site.{" "}
+              <strong>
+                Ce modèle n&apos;impacte jamais le prix final payé par
+                l&apos;investisseur
+              </strong>{" "}
+              et n&apos;altère en rien l&apos;objectivité de nos algorithmes de
+              comparaison de prix.
+            </p>
+          </div>
+        </section>
+
         {/* Méthodologie */}
         <section className="mb-12 space-y-6">
           <h2 className="text-2xl font-semibold tracking-wide text-[#FFD700]">
@@ -81,12 +110,6 @@ export default function AProposPage() {
               frappe, liquidité sur le marché secondaire et prime estimée par
               rapport au cours spot.
             </p>
-            <p>
-              Les fiches comparatives sont générées automatiquement à partir de
-              données vérifiées, issues des spécifications officielles des
-              ateliers monétaires (Royal Canadian Mint, South African Mint,
-              Perth Mint, Monnaie de Paris, etc.).
-            </p>
           </div>
         </section>
 
@@ -98,22 +121,17 @@ export default function AProposPage() {
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <ul className="list-disc space-y-3 pl-6">
               <li>
-                <strong>Indépendance</strong> — Nous ne vendons pas de pièces et
-                ne privilégions aucun dealer dans nos comparaisons.
+                <strong>Indépendance</strong> — Aucun dealer n&apos;est
+                privilégié. Le tri est strictement basé sur le prix.
               </li>
               <li>
-                <strong>Transparence</strong> — Les prix affichés proviennent
-                directement des sites des dealers. Les écarts éventuels sont
-                indiqués.
+                <strong>Transparence</strong> — Les prix proviennent directement
+                des sources dealers. Notre modèle économique est exposé en toute
+                clarté.
               </li>
               <li>
-                <strong>Mise à jour quotidienne</strong> — Les prix sont
-                actualisés chaque jour pour refléter les conditions réelles du
-                marché.
-              </li>
-              <li>
-                <strong>Gratuité</strong> — L&apos;accès à toutes les fiches
-                comparatives et au comparateur de prix est entièrement gratuit.
+                <strong>Mise à jour quotidienne</strong> — Les prix reflètent
+                l&apos;état réel du marché chaque jour.
               </li>
             </ul>
           </div>
@@ -126,8 +144,7 @@ export default function AProposPage() {
           </h2>
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <p>
-              Une question, une suggestion ou un signalement d&apos;erreur ?
-              Contactez-nous à{" "}
+              Une question ou une suggestion ? Contactez-nous à{" "}
               <a
                 href="mailto:webmaster@bullionradar.fr"
                 className="text-amber-400 underline hover:text-amber-300"

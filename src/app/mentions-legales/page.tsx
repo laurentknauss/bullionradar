@@ -19,6 +19,12 @@ export default function MentionsLegalesPage() {
           >
             BullionRadar
           </Link>
+          <Link
+            href="/"
+            className="rounded-full bg-neutral-800 px-4 py-2 text-sm text-neutral-300 hover:bg-neutral-700"
+          >
+            ← Accueil
+          </Link>
         </div>
       </nav>
 
@@ -27,6 +33,40 @@ export default function MentionsLegalesPage() {
         <h1 className="mb-8 text-3xl font-semibold tracking-wide text-[#FFFFF0] md:text-4xl">
           Mentions Légales & Politique de Confidentialité
         </h1>
+
+        {/* Note de Transparence sur l'Affiliation */}
+        <section className="mb-12 rounded-lg border border-amber-500/30 bg-amber-500/5 p-6">
+          <h2 className="mb-4 text-xl font-semibold text-amber-400">
+            Note sur la transparence et l&apos;indépendance
+          </h2>
+          <div className="space-y-4 leading-relaxed text-[#FFFFF0]/90">
+            <p>
+              BullionRadar est un projet indépendant dont l&apos;objectif est de
+              fournir une information gratuite et objective aux investisseurs en
+              métaux précieux.
+            </p>
+            <p>
+              À ce jour, le site ne génère aucun revenu publicitaire ou
+              commercial. Dans une optique de pérennisation du service
+              (couverture des frais d&apos;hébergement et maintenance
+              technique),{" "}
+              <strong>
+                BullionRadar a officiellement déposé des candidatures auprès de
+                programmes d&apos;affiliation reconnus
+              </strong>
+              , notamment ceux des enseignes <strong>Godot & Fils</strong> et{" "}
+              <strong>Or.fr</strong>.
+            </p>
+            <p>
+              Si ces partenariats sont validés, nous pourrons percevoir une
+              commission sur les achats effectués via certains liens sortants,
+              sans aucun surcoût pour l&apos;utilisateur. Cette éventuelle
+              rémunération future n&apos;influencera en rien l&apos;impartialité
+              de nos comparatifs de prix, qui sont basés sur des données
+              mathématiques factuelles collectées quotidiennement.
+            </p>
+          </div>
+        </section>
 
         {/* Mentions Légales */}
         <section className="mb-12 space-y-6">
@@ -38,15 +78,48 @@ export default function MentionsLegalesPage() {
             <h3 className="text-lg font-semibold text-[#FFFFF0]">
               Éditeur du site
             </h3>
-            <p>Email : webmaster@bullionradar.fr</p>
+            <p>
+              Le site <strong>BullionRadar.fr</strong> est édité par une
+              personne physique agissant à titre non professionnel. Conformément
+              à l&apos;article 6-III-2 de la Loi n° 2004-575 du 21 juin 2004
+              pour la confiance dans l&apos;économie numérique (LCEN),
+              l&apos;éditeur a choisi de conserver son anonymat vis-à-vis du
+              public.
+            </p>
+            <p>
+              Les coordonnées complètes de l&apos;éditeur ont été transmises de
+              manière exacte à l&apos;hébergeur du site. Pour toute question,
+              vous pouvez nous joindre par email à :{" "}
+              <a
+                href="mailto:webmaster@bullionradar.fr"
+                className="text-amber-400 underline"
+              >
+                webmaster@bullionradar.fr
+              </a>
+              .
+            </p>
 
             <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
-              Hébergeur
+              Hébergeur du site
             </h3>
             <p>
-              <strong className="text-[#FFFFF0]">Vercel Inc.</strong>
+              Le site est hébergé par la société{" "}
+              <strong className="text-[#FFFFF0]">Vercel Inc.</strong>, dont le
+              siège social est situé :
               <br />
-              Site web : vercel.com
+              440 N Barranca Ave #4133
+              <br />
+              Covina, CA 91723, États-Unis
+              <br />
+              Site web :{" "}
+              <a
+                href="https://vercel.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-amber-400"
+              >
+                vercel.com
+              </a>
             </p>
           </div>
         </section>
@@ -54,115 +127,43 @@ export default function MentionsLegalesPage() {
         {/* RGPD */}
         <section className="mb-12 space-y-6">
           <h2 className="text-2xl font-semibold tracking-wide text-[#FFD700]">
-            2. Protection des Données Personnelles (RGPD)
+            2. Politique de Confidentialité (RGPD)
           </h2>
 
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <p>
-              Conformément au Règlement Général sur la Protection des Données
-              (RGPD - Règlement UE 2016/679) et à la loi Informatique et
-              Libertés du 6 janvier 1978 modifiée, vous disposez de droits sur
-              vos données personnelles.
-            </p>
-
-            <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
-              Responsable du traitement
-            </h3>
-            <p>
-              Le responsable du traitement des données collectées sur ce site
-              est joignable à l&apos;adresse webmaster@bullionradar.fr.
+              BullionRadar respecte votre vie privée. Nous nous engageons à ce
+              que le traitement de vos données soit conforme au Règlement
+              Général sur la Protection des Données (RGPD).
             </p>
 
             <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
               Données collectées
             </h3>
-            <p>BullionRadar collecte uniquement les données suivantes :</p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>
-                <strong>Données de navigation</strong> : adresse IP, type de
-                navigateur, pages visitées (à des fins d&apos;analyse
-                statistique anonymisée)
-              </li>
-              <li>
-                <strong>Cookies techniques</strong> : nécessaires au
-                fonctionnement du site
-              </li>
-            </ul>
-            <p className="pt-2">
-              Aucune donnée personnelle nominative n&apos;est collectée sans
-              votre consentement explicite.
-            </p>
-
-            <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
-              Finalités du traitement
-            </h3>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>Améliorer l&apos;expérience utilisateur</li>
-              <li>Établir des statistiques de fréquentation anonymes</li>
-              <li>Assurer le bon fonctionnement technique du site</li>
-            </ul>
-
-            <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
-              Durée de conservation
-            </h3>
             <p>
-              Les données de navigation sont conservées pendant une durée
-              maximale de 13 mois, conformément aux recommandations de la CNIL.
+              Actuellement, BullionRadar ne collecte aucune donnée nominative
+              (nom, email, etc.) sans votre accord. Les seules données traitées
+              sont :
             </p>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                <strong>Données de navigation anonymisées</strong> : Pour
+                mesurer l&apos;audience (Vercel Analytics).
+              </li>
+              <li>
+                <strong>Cookies techniques</strong> : Indispensables au
+                fonctionnement du site.
+              </li>
+            </ul>
 
             <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
               Vos droits
             </h3>
             <p>
-              Conformément au RGPD, vous disposez des droits suivants sur vos
-              données :
-            </p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>
-                <strong>Droit d&apos;accès</strong> : obtenir confirmation du
-                traitement de vos données et en recevoir une copie
-              </li>
-              <li>
-                <strong>Droit de rectification</strong> : corriger des données
-                inexactes ou incomplètes
-              </li>
-              <li>
-                <strong>Droit à l&apos;effacement</strong> : demander la
-                suppression de vos données
-              </li>
-              <li>
-                <strong>Droit à la limitation</strong> : restreindre le
-                traitement de vos données
-              </li>
-              <li>
-                <strong>Droit à la portabilité</strong> : recevoir vos données
-                dans un format structuré
-              </li>
-              <li>
-                <strong>Droit d&apos;opposition</strong> : vous opposer au
-                traitement de vos données
-              </li>
-            </ul>
-            <p className="pt-4">
-              Pour exercer ces droits, contactez-nous à :{" "}
-              <a
-                href="mailto:webmaster@bullionradar.fr"
-                className="text-amber-400 underline hover:text-amber-300"
-              >
-                webmaster@bullionradar.fr
-              </a>
-            </p>
-            <p className="pt-2">
-              Vous pouvez également introduire une réclamation auprès de la CNIL
-              :{" "}
-              <a
-                href="https://www.cnil.fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-amber-400 underline hover:text-amber-300"
-              >
-                www.cnil.fr
-              </a>
+              Vous disposez des droits d&apos;accès, de rectification et de
+              suppression. Étant donné l&apos;absence de comptes utilisateurs,
+              ces droits s&apos;exercent principalement via la gestion de vos
+              cookies.
             </p>
           </div>
         </section>
@@ -170,46 +171,31 @@ export default function MentionsLegalesPage() {
         {/* Cookies */}
         <section className="mb-12 space-y-6">
           <h2 className="text-2xl font-semibold tracking-wide text-[#FFD700]">
-            3. Politique de Cookies
+            3. Politique relative aux Cookies
           </h2>
 
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <p>
-              Un cookie est un petit fichier texte déposé sur votre terminal
-              (ordinateur, tablette, smartphone) lors de la visite d&apos;un
-              site internet.
+              Un cookie est un petit fichier texte déposé sur votre terminal.
             </p>
-
-            <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
-              Cookies utilisés sur BullionRadar
-            </h3>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>
-                <strong>Cookies strictement nécessaires</strong> :
-                indispensables au fonctionnement du site, ils ne peuvent pas
-                être désactivés
-              </li>
-              <li>
-                <strong>Cookies analytiques</strong> : permettent de mesurer
-                l&apos;audience du site de manière anonymisée (Vercel Analytics)
-              </li>
-            </ul>
-
-            <h3 className="pt-4 text-lg font-semibold text-[#FFFFF0]">
-              Gestion des cookies
+            <h3 className="pt-2 text-lg font-semibold text-[#FFFFF0]">
+              Cookies d&apos;analyse
             </h3>
             <p>
-              Vous pouvez à tout moment gérer vos préférences de cookies via les
-              paramètres de votre navigateur. Voici comment procéder :
+              Vercel Analytics nous permet de suivre l&apos;audience du site de
+              manière anonyme.
             </p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>
-                Chrome : Paramètres → Confidentialité et sécurité → Cookies
-              </li>
-              <li>Firefox : Options → Vie privée et sécurité → Cookies</li>
-              <li>Safari : Préférences → Confidentialité → Cookies</li>
-              <li>Edge : Paramètres → Confidentialité → Cookies</li>
-            </ul>
+            <h3 className="pt-2 text-lg font-semibold text-[#FFFFF0]">
+              Note sur l&apos;affiliation (Partenariats en attente)
+            </h3>
+            <p>
+              Dans le cadre des candidatures d&apos;affiliation déposées (Godot
+              & Fils, Or.fr), des cookies de suivi tiers pourraient être déposés
+              si vous cliquez sur un lien partenaire une fois ces collaborations
+              actives. Ces cookies servent uniquement à l&apos;attribution de la
+              mise en relation. Vous pouvez les refuser via les réglages de
+              votre navigateur.
+            </p>
           </div>
         </section>
 
@@ -221,92 +207,34 @@ export default function MentionsLegalesPage() {
 
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <p>
-              L&apos;ensemble du contenu de ce site (textes, images, graphismes,
-              logo, icônes, etc.) est protégé par le droit d&apos;auteur et le
-              droit des marques.
-            </p>
-            <p>
-              Toute reproduction, représentation, modification, publication,
-              transmission ou dénaturation, totale ou partielle du site ou de
-              son contenu, par quelque procédé que ce soit, sans
-              l&apos;autorisation préalable écrite de l&apos;éditeur, est
-              interdite et constituerait une contrefaçon sanctionnée par les
-              articles L.335-2 et suivants du Code de la propriété
-              intellectuelle.
-            </p>
-            <p>
-              Les images des pièces de monnaie présentées sur ce site sont
-              utilisées à titre illustratif et appartiennent à leurs
+              Les textes et la structure du comparateur sont la propriété de
+              l&apos;éditeur. Les visuels des pièces sont utilisés à des fins
+              d&apos;illustration pédagogique et appartiennent à leurs
               propriétaires respectifs.
             </p>
           </div>
         </section>
 
-        {/* Limitation de responsabilité */}
+        {/* Avertissement Risque */}
         <section className="mb-12 space-y-6">
           <h2 className="text-2xl font-semibold tracking-wide text-[#FFD700]">
-            5. Limitation de Responsabilité
+            5. Avertissement sur les risques
           </h2>
 
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <p>
-              BullionRadar est un comparateur indépendant. Les informations
-              présentées (prix, caractéristiques des pièces, disponibilité) sont
-              fournies à titre indicatif et peuvent évoluer.
-            </p>
-            <p>
-              <strong className="text-[#FFFFF0]">
-                BullionRadar ne vend pas de pièces d&apos;or ou d&apos;argent.
-              </strong>{" "}
-              Les liens vers les sites marchands sont fournis à titre
-              informatif. Nous déclinons toute responsabilité quant aux
-              transactions effectuées sur les sites tiers.
-            </p>
-            <p>
-              Nous nous efforçons d&apos;assurer l&apos;exactitude des
-              informations, mais ne pouvons garantir l&apos;absence
-              d&apos;erreurs ou d&apos;omissions. L&apos;investissement dans les
-              métaux précieux comporte des risques. Nous recommandons de
-              consulter un conseiller financier avant tout investissement.
-            </p>
-          </div>
-        </section>
-
-        {/* Liens externes */}
-        <section className="mb-12 space-y-6">
-          <h2 className="text-2xl font-semibold tracking-wide text-[#FFD700]">
-            6. Liens Externes
-          </h2>
-
-          <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
-            <p>
-              Ce site peut contenir des liens hypertextes vers d&apos;autres
-              sites internet. BullionRadar n&apos;exerce aucun contrôle sur ces
-              sites et décline toute responsabilité quant à leur contenu.
-            </p>
-            <p>
-              Certains liens peuvent être des liens d&apos;affiliation. Cela
-              signifie que nous pouvons percevoir une commission si vous
-              effectuez un achat via ces liens, sans coût supplémentaire pour
-              vous.
+              L&apos;achat de métaux précieux comporte des risques. Les cours
+              sont sujets à des fluctuations importantes. Les informations sur
+              BullionRadar ne constituent pas un conseil en investissement.
             </p>
           </div>
         </section>
 
         {/* Mise à jour */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-semibold tracking-wide text-[#FFD700]">
-            7. Mise à Jour
-          </h2>
-
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
-            <p>
-              Les présentes mentions légales et politique de confidentialité
-              peuvent être modifiées à tout moment. Nous vous invitons à les
-              consulter régulièrement.
-            </p>
-            <p className="pt-2 text-sm text-neutral-500">
-              Dernière mise à jour : Février 2026
+            <p className="text-sm text-neutral-500 italic">
+              Dernière mise à jour : 27 février 2026
             </p>
           </div>
         </section>
