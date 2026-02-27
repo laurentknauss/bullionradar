@@ -77,8 +77,31 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   "maple-leaf-1oz-or": "maple-leaf-1oz",
   "philharmonique-1oz-or": "philharmonique-1oz",
   "britannia-1oz-or": "britannia-1oz-or",
+  "kangourou-1oz-or": "kangourou-1oz-or",
+  "american-eagle-1oz-or": "american-eagle-1oz-or",
+  // Or 1/2oz
   "britannia-1-2oz-or": "britannia-1-2oz-or",
+  "krugerrand-1-2oz-or": "krugerrand-1-2oz-or",
+  "kangourou-1-2oz-or": "kangourou-1-2oz-or",
+  "maple-leaf-1-2oz-or": "maple-leaf-1-2oz-or",
+  "philharmonique-1-2oz-or": "philharmonique-1-2oz-or",
+  "american-eagle-1-2oz-or": "american-eagle-1-2oz-or",
+  // Or 1/4oz
+  "britannia-1-4oz-or": "britannia-1-4oz-or",
+  "krugerrand-1-4oz-or": "krugerrand-1-4oz-or",
+  "kangourou-1-4oz-or": "kangourou-1-4oz-or",
+  "maple-leaf-1-4oz-or": "maple-leaf-1-4oz-or",
+  "philharmonique-1-4oz-or": "philharmonique-1-4oz-or",
+  "american-eagle-1-4oz-or": "american-eagle-1-4oz-or",
+  // Or 1/10oz
   "britannia-1-10oz-or": "britannia-1-10oz-or",
+  "krugerrand-1-10oz-or": "krugerrand-1-10oz-or",
+  "kangourou-1-10oz-or": "kangourou-1-10oz-or",
+  "maple-leaf-1-10oz-or": "maple-leaf-1-10oz-or",
+  "philharmonique-1-10oz-or": "philharmonique-1-10oz-or",
+  "american-eagle-1-10oz-or": "american-eagle-1-10oz-or",
+  // Or 1/20oz
+  "maple-leaf-1-20oz-or": "maple-leaf-1-20oz-or",
   // Pièces françaises/suisses
   "napoleon-20f-or": "napoleon-20f",
   "souverain-or": "souverain",

@@ -19,24 +19,19 @@ import {
 const DEALER_NAME = "orfr";
 const BASE_URL = "https://or.fr";
 
-// Coins to scrape from Or.fr (URLs verified 2026-02-04)
-// Only coins available on ALL 3 dealers (Or.fr, Godot, Pièces-Or)
-// Note: Or.fr doesn't have Krugerrand or Souverain for shipping
+// Coins to scrape from Or.fr (URLs verified 2026-02-27)
+// All gold bullion coins available on Or.fr for shipping
 const COINS_TO_SCRAPE: readonly CoinConfig[] = [
+  // === 1 oz ===
+  {
+    slug: "krugerrand-1oz",
+    name: "Krugerrand 1 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/krugerrand-or-1-once-2026-south-african-mint-498?serviceType=3",
+  },
   {
     slug: "maple-leaf-1oz",
     name: "Maple Leaf 1 Once",
     url: "https://or.fr/produits/acheter-or/pieces-or/maple-leaf-or-1-once-2026-royal-canadian-mint-470?serviceType=3",
-  },
-  {
-    slug: "napoleon-20f",
-    name: "Napoleon 20 Francs",
-    url: "https://or.fr/produits/acheter-or/pieces-or/20-francs-marianne-coq-napoleon-433?serviceType=3",
-  },
-  {
-    slug: "20-francs-suisse",
-    name: "20 Francs Suisse",
-    url: "https://or.fr/produits/acheter-or/pieces-or/20-francs-suisse-vreneli-439?serviceType=3",
   },
   {
     slug: "philharmonique-1oz",
@@ -49,14 +44,104 @@ const COINS_TO_SCRAPE: readonly CoinConfig[] = [
     url: "https://or.fr/produits/acheter-or/pieces-or/britannia-or-1once-2026-royal-mint-445?serviceType=3",
   },
   {
+    slug: "kangourou-1oz-or",
+    name: "Kangourou 1 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/kangourou-or-1-once-2026-perth-mint-464?serviceType=3",
+  },
+  {
+    slug: "american-eagle-1oz-or",
+    name: "American Eagle 1 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/american-eagle-or-1-once-2026-us-mint-483?serviceType=3",
+  },
+  // === 1/2 oz ===
+  {
     slug: "britannia-1-2oz-or",
     name: "Britannia 1/2 Oz Or",
     url: "https://or.fr/produits/acheter-or/pieces-or/britannia-or-1-2-once-2026-royal-mint-447?serviceType=3",
   },
   {
+    slug: "krugerrand-1-2oz-or",
+    name: "Krugerrand 1/2 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/krugerrand-or-1-2-once-2026-south-african-mint-496?serviceType=3",
+  },
+  {
+    slug: "kangourou-1-2oz-or",
+    name: "Kangourou 1/2 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/kangourou-or-1-2-onces-2026-perth-mint-466?serviceType=3",
+  },
+  {
+    slug: "maple-leaf-1-2oz-or",
+    name: "Maple Leaf 1/2 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/maple-leaf-or-1-2-once-2026-royal-canadian-mint-491?serviceType=3",
+  },
+  {
+    slug: "american-eagle-1-2oz-or",
+    name: "American Eagle 1/2 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/american-eagle-or-1-2-once-2026-us-mint-485?serviceType=3",
+  },
+  // === 1/4 oz ===
+  {
+    slug: "krugerrand-1-4oz-or",
+    name: "Krugerrand 1/4 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/krugerrand-or-1-4-once-2026-south-african-mint-495?serviceType=3",
+  },
+  {
+    slug: "kangourou-1-4oz-or",
+    name: "Kangourou 1/4 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/kangourou-or-1-4-once-2026-perth-mint-467?serviceType=3",
+  },
+  {
+    slug: "maple-leaf-1-4oz-or",
+    name: "Maple Leaf 1/4 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/maple-leaf-or-1-4-once-2026-royal-canadian-mint-492?serviceType=3",
+  },
+  {
+    slug: "american-eagle-1-4oz-or",
+    name: "American Eagle 1/4 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/american-eagle-or-1-4-once-2026-us-mint-486?serviceType=3",
+  },
+  // === 1/10 oz ===
+  {
     slug: "britannia-1-10oz-or",
     name: "Britannia 1/10 Oz Or",
     url: "https://or.fr/produits/acheter-or/pieces-or/britannia-or-1-10-once-2026-royal-mint-449?serviceType=3",
+  },
+  {
+    slug: "krugerrand-1-10oz-or",
+    name: "Krugerrand 1/10 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/krugerrand-or-1-10-once-2026-south-african-mint-497?serviceType=3",
+  },
+  {
+    slug: "kangourou-1-10oz-or",
+    name: "Kangourou 1/10 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/kangourou-or-1-10-once-2026-perth-mint-468?serviceType=3",
+  },
+  {
+    slug: "maple-leaf-1-10oz-or",
+    name: "Maple Leaf 1/10 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/maple-leaf-or-1-10-once-2026-royal-canadian-mint-493?serviceType=3",
+  },
+  {
+    slug: "american-eagle-1-10oz-or",
+    name: "American Eagle 1/10 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/american-eagle-or-1-10-once-2026-us-mint-473?serviceType=3",
+  },
+  // === 1/20 oz ===
+  {
+    slug: "maple-leaf-1-20oz-or",
+    name: "Maple Leaf 1/20 Once",
+    url: "https://or.fr/produits/acheter-or/pieces-or/maple-leaf-or-1-20-once-2026-royal-canadian-mint-501?serviceType=3",
+  },
+  // === Pièces françaises/suisses ===
+  {
+    slug: "napoleon-20f",
+    name: "Napoleon 20 Francs",
+    url: "https://or.fr/produits/acheter-or/pieces-or/20-francs-marianne-coq-napoleon-433?serviceType=3",
+  },
+  {
+    slug: "20-francs-suisse",
+    name: "20 Francs Suisse",
+    url: "https://or.fr/produits/acheter-or/pieces-or/20-francs-suisse-vreneli-439?serviceType=3",
   },
 ] as const;
 
