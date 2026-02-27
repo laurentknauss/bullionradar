@@ -47,7 +47,7 @@ export function Footer() {
                 href="/fiscalite"
                 className="text-white hover:text-amber-400"
               >
-                Fiscalité
+                Fiscalité des métaux précieux or et argent
               </Link>
             </li>
             <li>
