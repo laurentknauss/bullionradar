@@ -14,7 +14,7 @@ export default function HomePage() {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/cours-or"
-              className="text-sm font-bold text-[#FFD700] hover:text-[#fff] md:text-lg"
+              className="rounded-lg bg-[#FFD700]/20 px-2 py-1 text-xs font-bold text-[#FFD700] hover:bg-[#FFD700]/30 hover:text-white md:px-4 md:py-2 md:text-base"
             >
               Cours Or aujourd&apos;hui
             </Link>
@@ -47,7 +47,7 @@ export default function HomePage() {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/cours-argent"
-              className="text-sm font-bold text-gray-300 hover:text-white md:text-lg"
+              className="rounded-lg bg-gray-300/20 px-2 py-1 text-xs font-bold text-gray-300 hover:bg-gray-300/30 hover:text-white md:px-4 md:py-2 md:text-base"
             >
               Cours Argent aujourd&apos;hui
             </Link>
