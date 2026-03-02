@@ -3,9 +3,18 @@ import Link from "next/link";
 import { TradingViewWidget } from "@/components/tradingview-widget";
 
 export const metadata: Metadata = {
-  title: "Cours de l'Or en Direct | Graphique Temps Réel | BullionRadar",
+  title: "Cours de l'or aujourd'hui en direct (XAU/EUR) | BullionRadar",
   description:
-    "Suivez le cours de l'or en temps réel. Graphique interactif, historique sur 1 an, 5 ans, 10 ans, 20 ans. Prix du gramme et de l'once en euros.",
+    "Suivez le cours de l'or aujourd'hui en temps réel. Prix de l'once et du gramme en euro, graphique live et historique 1 an, 5 ans, 10 ans, 20 ans.",
+  alternates: {
+    canonical: "https://bullionradar.fr/cours-or",
+  },
+  openGraph: {
+    title: "Cours de l'or aujourd'hui en direct",
+    description:
+      "Cours de l'or aujourd'hui: prix live XAU/EUR, once et gramme en euro, avec graphique en temps réel.",
+    url: "https://bullionradar.fr/cours-or",
+  },
 };
 
 const TIME_PERIODS = [
@@ -47,11 +56,11 @@ export default function CoursOrPage() {
       {/* Content */}
       <div className="mx-auto max-w-6xl px-8 pt-16 pb-8">
         <h1 className="mb-4 text-3xl font-semibold tracking-wide text-[#FFFFF0] md:text-4xl">
-          Cours de l&apos;Or en Direct
+          Cours de l&apos;or aujourd&apos;hui en direct
         </h1>
         <p className="mb-8 font-semibold tracking-wide text-[#FFFFF0]/80">
-          Prix de l&apos;or (XAU/EUR) en temps réel. Dernière mise à jour
-          automatique.
+          Prix de l&apos;or aujourd&apos;hui (XAU/EUR) en temps réel. Dernière
+          mise à jour automatique.
         </p>
 
         {/* Time Period Selector */}
@@ -74,13 +83,21 @@ export default function CoursOrPage() {
       {/* TradingView Widget - Full width */}
       <div className="px-4 pb-4">
         <div className="overflow-hidden rounded-xl border border-neutral-800">
-          <TradingViewWidget symbol="XAUEUR" interval="D" />
+          <TradingViewWidget symbol="OANDA:XAUEUR" interval="D" />
         </div>
       </div>
 
       <div className="mx-auto max-w-6xl px-8 pb-16">
         {/* SEO Content */}
         <section className="max-w-none space-y-8">
+          <h2 className="text-xl font-semibold tracking-wide text-[#FFFFF0]">
+            Cours de l&apos;or aujourd&apos;hui : prix live en euro
+          </h2>
+          <p className="leading-relaxed tracking-wide text-[#FFFFF0]/70">
+            Cette page affiche le cours de l&apos;or aujourd&apos;hui en direct,
+            avec variation intraday et référence du marché spot en euro.
+          </p>
+
           <h2 className="text-xl font-semibold tracking-wide text-[#FFFFF0]">
             Comment lire le cours de l&apos;or ?
           </h2>
