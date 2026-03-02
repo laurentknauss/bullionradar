@@ -52,6 +52,14 @@ export function Footer() {
             </li>
             <li>
               <Link
+                href="/vente-or"
+                className="text-white hover:text-amber-400"
+              >
+                Vente d&apos;or : fiscalité et taxe
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/solutions-stockage"
                 className="text-white hover:text-amber-400"
               >

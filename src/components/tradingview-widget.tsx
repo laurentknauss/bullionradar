@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 interface TradingViewWidgetProps {
-  symbol: string; // XAUEUR, XAGEUR
+  symbol: string; // XAUEUR, XAGEUR ou FX_IDC:XAUEUR
   interval?: string; // D, W, M
   range?: string; // 1D, 1W, 1M, 6M, 12M, 60M, 120M, ALL
 }
@@ -22,6 +22,7 @@ export function TradingViewWidget({
     container.innerHTML = "";
 
     const chartHeight = Math.max(500, Math.round(window.innerHeight * 0.8));
+    const resolvedSymbol = symbol.includes(":") ? symbol : `OANDA:${symbol}`;
 
     const script = document.createElement("script");
     script.src =
@@ -30,7 +31,7 @@ export function TradingViewWidget({
     script.innerHTML = JSON.stringify({
       width: "100%",
       height: chartHeight,
-      symbol: `OANDA:${symbol}`,
+      symbol: resolvedSymbol,
       interval: interval,
       timezone: "Europe/Paris",
       theme: "dark",

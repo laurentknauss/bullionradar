@@ -133,7 +133,7 @@ export default async function CoursArgentPeriodPage({ params }: PageProps) {
       <div className="px-4 pb-4">
         <div className="overflow-hidden rounded-xl border border-neutral-800">
           <TradingViewWidget
-            symbol="XAGEUR"
+            symbol="OANDA:XAGEUR"
             interval="W"
             range={periodData.range}
           />

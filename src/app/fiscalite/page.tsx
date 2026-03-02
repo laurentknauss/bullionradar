@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Fiscalité des métaux précieux en France : TMP, plus-values et donations | BullionRadar",
+    "Fiscalité or : taxe sur l'or, vente d'or, TMP et plus-values | BullionRadar",
   description:
-    "Guide complet de la fiscalité de l'or et de l'argent d'investissement en France. Taxe forfaitaire (TMP 11,5%), régime des plus-values (TPV 36,2%), abattements par durée de détention et fiscalité des donations.",
+    "Guide complet fiscalité or et argent en France : taxe métaux précieux (TMP 11,5%), taxe sur l'or à la revente, plus-values (TPV 36,2%), vente d'or anonyme, certificat et succession.",
   alternates: {
     canonical: "https://bullionradar.fr/fiscalite",
   },
@@ -25,6 +25,33 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+const FAQ_ITEMS = [
+  {
+    q: "Quelle est la fiscalité de l'or en France ?",
+    a: "La fiscalité de l'or à la revente repose sur deux régimes : la taxe sur les métaux précieux (TMP, 11,5% du prix de vente) ou la taxe sur la plus-value (TPV, 36,2% de la plus-value), avec abattement de 5% par an à partir de la 3ème année.",
+  },
+  {
+    q: "Quelle taxe sur l'or s'applique en cas de vente ?",
+    a: "Par défaut, la vente d'or est soumise à la TMP. Vous pouvez opter pour la TPV si vous pouvez prouver votre prix et date d'achat avec une facture.",
+  },
+  {
+    q: "Peut-on faire une vente d'or anonyme ?",
+    a: "En France, le paiement en espèces est plafonné et les professionnels appliquent les obligations de conformité. Une vente d'or anonyme est donc fortement encadrée en pratique.",
+  },
+  {
+    q: "Peut-on vendre un lingot d'or sans certificat ?",
+    a: "Oui, mais la liquidité peut être réduite selon le professionnel. Sans justificatif d'achat, vous risquez d'être imposé au régime TMP par défaut.",
+  },
+  {
+    q: "Lingot d'or non déclaré dans une succession : que faire ?",
+    a: "Il faut régulariser la situation successorale avec un professionnel du droit (notaire/avocat fiscaliste). La fiscalité dépend du cadre de déclaration et de transmission retenu.",
+  },
+  {
+    q: "Quelle fiscalité pour la vente de pièces d'or ?",
+    a: "La fiscalité de la vente de pièces d'or suit les mêmes règles : TMP 11,5% sur le prix total ou TPV 36,2% sur la plus-value avec abattement selon la durée de détention.",
+  },
+];
 
 const TPV_TABLE = [
   { year: 0, abatement: 0 },
@@ -72,8 +99,25 @@ const DONATION_TABLE = [
 ];
 
 export default function FiscalitePage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <main className="min-h-screen bg-[#1a1a1a] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Header */}
       <header className="mb-10 border-b border-amber-600/30 bg-[#BE943C]">
         <div className="mx-auto flex max-w-5xl items-center gap-6 px-4 py-4">
@@ -581,6 +625,41 @@ export default function FiscalitePage() {
               condition d&apos;anticiper.
             </p>
           </div>
+        </div>
+
+        <div className="mb-8 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
+          <h2 className="mb-2 text-lg font-bold text-white">
+            FAQ fiscalité or, taxe or et vente d&apos;or
+          </h2>
+          <p className="mb-4 text-sm text-neutral-400">
+            Réponses rapides aux recherches les plus fréquentes sur la fiscalité
+            de l&apos;or physique en France.
+          </p>
+          <p className="mb-4 text-xs text-neutral-500">
+            Requêtes couvertes : vente or, vendre de l&apos;or, fiscalité vente
+            or, taxe vente or, achat et vente d&apos;or, vente or anonyme
+            fiscalité, réglementation vente d&apos;or, vente de pièces d&apos;or
+            fiscalité.
+          </p>
+          <div className="space-y-4">
+            {FAQ_ITEMS.map((item) => (
+              <div key={item.q} className="rounded-lg bg-neutral-800 p-4">
+                <h3 className="text-sm font-semibold text-white">{item.q}</h3>
+                <p className="mt-2 text-sm text-neutral-300">{item.a}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-sm text-neutral-400">
+            Pour aller plus loin, consulte aussi le{" "}
+            <Link href="/guide" className="text-[#BE943C] underline">
+              guide d&apos;investissement
+            </Link>{" "}
+            et le{" "}
+            <Link href="/" className="text-[#BE943C] underline">
+              comparateur de pièces
+            </Link>
+            .
+          </p>
         </div>
 
         {/* CTA */}

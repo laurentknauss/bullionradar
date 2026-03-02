@@ -65,6 +65,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   });
 
+  // Vente or
+  urls.push({
+    url: `${BASE_URL}/vente-or`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  });
+
   // Solutions stockage
   urls.push({
     url: `${BASE_URL}/solutions-stockage`,
