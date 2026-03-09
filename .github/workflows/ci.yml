@@ -1,0 +1,54 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+
+jobs:
+  security:
+    name: Security Scan (Snyk)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: npm install -g snyk
+      - run: snyk test --severity-threshold=high --file=package.json
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  deploy_production:
+    name: Deploy Production
+    needs: [security]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://bullionradar.com
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install -g vercel
+      - run: vercel deploy --prod --force --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  deploy_preview:
+    name: Deploy Preview
+    needs: [security]
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: preview
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install -g vercel
+      - run: vercel deploy --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

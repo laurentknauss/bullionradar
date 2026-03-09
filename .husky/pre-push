@@ -16,6 +16,14 @@ pnpm audit --audit-level=high --production || {
   echo "⚠️  Security vulnerabilities found. Review and update dependencies."
 }
 
+# SAST scan (pattern-based security analysis)
+if [ -f "scripts/security-scan.sh" ]; then
+  bash scripts/security-scan.sh || {
+    echo "❌ SAST scan found critical issues. Fix them before pushing."
+    exit 1
+  }
+fi
+
 # Secret detection (basic grep)
 if git diff --cached --name-only | grep -E '\.(env|key|pem|credentials)$'; then
   echo "⚠️  Warning: You're committing files that may contain secrets!"
