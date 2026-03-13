@@ -194,6 +194,10 @@ export function PriceComparator() {
     }
 
     fetchPrices();
+
+    // Auto-refresh toutes les 5 minutes (Or.fr scrape toutes les 30 min)
+    const interval = setInterval(fetchPrices, 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return (

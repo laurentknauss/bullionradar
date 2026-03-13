@@ -20,11 +20,14 @@ export interface DealerPrice {
 }
 
 // Récupérer les derniers prix pour toutes les pièces
+// Note: le scraper Or.fr tourne toutes les 30 min (~1056 rows/jour),
+// il faut un limit suffisant pour inclure aussi Godot et Pieces-Or (1x/jour)
 export async function getLatestPrices(): Promise<DealerPrice[]> {
   const { data, error } = await supabase
     .from("dealer_prices")
     .select("*")
-    .order("scraped_at", { ascending: false });
+    .order("scraped_at", { ascending: false })
+    .limit(5000);
 
   if (error) {
     console.error("Error fetching prices:", error);
