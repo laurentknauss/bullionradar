@@ -79,6 +79,7 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   "britannia-1oz-or": "britannia-1oz-or",
   "kangourou-1oz-or": "kangourou-1oz-or",
   "american-eagle-1oz-or": "american-eagle-1oz-or",
+  "american-buffalo-1oz-or": "american-buffalo-1oz-or",
   // Or 1/2oz
   "britannia-1-2oz-or": "britannia-1-2oz-or",
   "krugerrand-1-2oz-or": "krugerrand-1-2oz-or",
