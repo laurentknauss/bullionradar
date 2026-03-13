@@ -230,9 +230,11 @@ export function PriceComparator() {
         {/* Cards Grid */}
         {!loading && !error && prices.length > 0 && (
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {prices.map((coin) => (
-              <CoinCard key={coin.slug} coin={coin} />
-            ))}
+            {prices
+              .sort((a, b) => a.name.localeCompare(b.name, "fr"))
+              .map((coin) => (
+                <CoinCard key={coin.slug} coin={coin} />
+              ))}
           </ul>
         )}
 
