@@ -14,11 +14,42 @@ import {
 const DEALER_NAME = "godot";
 
 // Gold coins to scrape from Godot
-const GOLD_COINS: readonly CoinConfig[] = [
+// === 1 oz ===
+const GOLD_1OZ: readonly CoinConfig[] = [
   {
     slug: "krugerrand-1oz",
     name: "Krugerrand 1 Once",
     url: "https://www.achat-or-et-argent.fr/or/krugerrand/12",
+  },
+  {
+    slug: "maple-leaf-1oz",
+    name: "Maple Leaf 1 Once",
+    url: "https://www.achat-or-et-argent.fr/or/maple-leaf-1-once-or/3192",
+  },
+  {
+    slug: "philharmonique-1oz",
+    name: "Philharmonique 1 Once",
+    url: "https://www.achat-or-et-argent.fr/or/philharmonique-1-once-or/3207",
+  },
+  {
+    slug: "britannia-1oz-or",
+    name: "Britannia 1 Oz Or",
+    url: "https://www.achat-or-et-argent.fr/or/britannia-1-once-or/3220",
+  },
+  {
+    slug: "kangourou-1oz-or",
+    name: "Kangourou 1 Once",
+    url: "https://www.achat-or-et-argent.fr/or/kangourou-1-once-or/3296",
+  },
+  {
+    slug: "american-eagle-1oz-or",
+    name: "American Eagle 1 Once",
+    url: "https://www.achat-or-et-argent.fr/or/american-eagle-1-once-or/3215",
+  },
+  {
+    slug: "american-buffalo-1oz-or",
+    name: "American Buffalo 1 Once",
+    url: "https://www.achat-or-et-argent.fr/or/american-buffalo-1-once-or/3219",
   },
   {
     slug: "napoleon-20f",
@@ -31,20 +62,119 @@ const GOLD_COINS: readonly CoinConfig[] = [
     url: "https://www.achat-or-et-argent.fr/or/souverain/14",
   },
   {
-    slug: "maple-leaf-1oz",
-    name: "Maple Leaf 1 Once",
-    url: "https://www.achat-or-et-argent.fr/or/maple-leaf-1-once-or/3192",
-  },
-  {
     slug: "20-francs-suisse",
     name: "20 Francs Suisse",
     url: "https://www.achat-or-et-argent.fr/or/20-francs-suisse/15",
   },
+] as const;
+
+// === 1/2 oz ===
+const GOLD_HALF: readonly CoinConfig[] = [
   {
-    slug: "philharmonique-1oz",
-    name: "Philharmonique 1 Once",
-    url: "https://www.achat-or-et-argent.fr/or/philharmonique-1-once-or/3207",
+    slug: "krugerrand-1-2oz-or",
+    name: "Krugerrand 1/2 Once",
+    url: "https://www.achat-or-et-argent.fr/or/krugerrand-1-2-once/668",
   },
+  {
+    slug: "maple-leaf-1-2oz-or",
+    name: "Maple Leaf 1/2 Once",
+    url: "https://www.achat-or-et-argent.fr/or/maple-leaf-1-2-once-or/3194",
+  },
+  {
+    slug: "philharmonique-1-2oz-or",
+    name: "Philharmonique 1/2 Once",
+    url: "https://www.achat-or-et-argent.fr/or/philharmonique-1-2-once-or/3206",
+  },
+  {
+    slug: "britannia-1-2oz-or",
+    name: "Britannia 1/2 Oz Or",
+    url: "https://www.achat-or-et-argent.fr/or/britannia-1-2-once-or/3295",
+  },
+  {
+    slug: "kangourou-1-2oz-or",
+    name: "Kangourou 1/2 Once",
+    url: "https://www.achat-or-et-argent.fr/or/nugget-1-2-once-or/3297",
+  },
+  {
+    slug: "american-eagle-1-2oz-or",
+    name: "American Eagle 1/2 Once",
+    url: "https://www.achat-or-et-argent.fr/or/american-eagle-1-2-once-or/3217",
+  },
+] as const;
+
+// === 1/4 oz ===
+const GOLD_QUARTER: readonly CoinConfig[] = [
+  {
+    slug: "krugerrand-1-4oz-or",
+    name: "Krugerrand 1/4 Once",
+    url: "https://www.achat-or-et-argent.fr/or/krugerrand-1-4-once/667",
+  },
+  {
+    slug: "maple-leaf-1-4oz-or",
+    name: "Maple Leaf 1/4 Once",
+    url: "https://www.achat-or-et-argent.fr/or/maple-leaf-1-4-once-or/3195",
+  },
+  {
+    slug: "philharmonique-1-4oz-or",
+    name: "Philharmonique 1/4 Once",
+    url: "https://www.achat-or-et-argent.fr/or/philharmonique-1-4-once-or/3205",
+  },
+  {
+    slug: "britannia-1-4oz-or",
+    name: "Britannia 1/4 Oz Or",
+    url: "https://www.achat-or-et-argent.fr/or/britannia-1-4-once-or/3293",
+  },
+  {
+    slug: "kangourou-1-4oz-or",
+    name: "Kangourou 1/4 Once",
+    url: "https://www.achat-or-et-argent.fr/or/nugget-1-4-once/1698",
+  },
+  {
+    slug: "american-eagle-1-4oz-or",
+    name: "American Eagle 1/4 Once",
+    url: "https://www.achat-or-et-argent.fr/or/american-eagle-1-4-once-or/3216",
+  },
+] as const;
+
+// === 1/10 oz ===
+const GOLD_TENTH: readonly CoinConfig[] = [
+  {
+    slug: "krugerrand-1-10oz-or",
+    name: "Krugerrand 1/10 Once",
+    url: "https://www.achat-or-et-argent.fr/or/krugerrand-1-10-once/1055",
+  },
+  {
+    slug: "maple-leaf-1-10oz-or",
+    name: "Maple Leaf 1/10 Once",
+    url: "https://www.achat-or-et-argent.fr/or/maple-leaf-1-10-once-or/3193",
+  },
+  {
+    slug: "philharmonique-1-10oz-or",
+    name: "Philharmonique 1/10 Once",
+    url: "https://www.achat-or-et-argent.fr/or/philharmonique-1-10-once-or/3208",
+  },
+  {
+    slug: "britannia-1-10oz-or",
+    name: "Britannia 1/10 Oz Or",
+    url: "https://www.achat-or-et-argent.fr/or/britannia-1-10-once-or/3294",
+  },
+  {
+    slug: "kangourou-1-10oz-or",
+    name: "Kangourou 1/10 Once",
+    url: "https://www.achat-or-et-argent.fr/or/nugget-1-10-once-or/3299",
+  },
+  {
+    slug: "american-eagle-1-10oz-or",
+    name: "American Eagle 1/10 Once",
+    url: "https://www.achat-or-et-argent.fr/or/american-eagle-1-10-once-or/3218",
+  },
+] as const;
+
+const GOLD_COINS: readonly CoinConfig[] = [
+  ...GOLD_1OZ,
+  ...GOLD_HALF,
+  ...GOLD_QUARTER,
+  ...GOLD_TENTH,
 ] as const;
 
 // Silver coins to scrape from Godot
