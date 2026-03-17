@@ -6,6 +6,8 @@ import { getDealerDisplayName } from "@/lib/utils";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { Footer } from "@/components/footer";
 import { formatFineness, formatRelativeTime } from "@/lib/format";
+import { hasVideo } from "@/components/remotion/coin-images";
+import { CoinVideoSection } from "@/components/remotion/CoinVideoSection";
 import type { Coin } from "@/types";
 
 // Images disponibles (WebP)
@@ -427,6 +429,11 @@ export default async function CoinPage({ params }: PageProps) {
             <BestPriceBadge prices={prices} scrapedAt={latestScrapedAt} />
           </div>
         </div>
+
+        {/* Video vue d'ensemble */}
+        {hasVideo(coin.id) && (
+          <CoinVideoSection slug={coin.id} coinName={coin.name} />
+        )}
 
         {/* Caractéristiques */}
         <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-6">
