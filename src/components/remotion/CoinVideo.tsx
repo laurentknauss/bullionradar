@@ -11,7 +11,7 @@ import {
   Img,
   staticFile,
 } from "remotion";
-import { COLORS, fadeIn, slideUp, slideLeft, accentColor } from "./helpers";
+import { COLORS, fadeIn, slideLeft, accentColor } from "./helpers";
 import type { Coin } from "@/types";
 
 // ─── Scene 1 : Intro / Hero (6s) ───
@@ -367,8 +367,6 @@ function OutroScene({ coin }: { coin: Coin }) {
   const pulse = interpolate(frame, [0, fps], [1, 1.03], {
     extrapolateRight: "clamp",
   });
-
-  const slug = coin.id;
 
   return (
     <AbsoluteFill

@@ -33,61 +33,61 @@ scan_file() {
   # CRITICAL: SQL Injection
   if echo "$content" | grep -nP '(query|execute|sql)\s*\(.*\$\{|`SELECT.*\$\{|`INSERT.*\$\{|`UPDATE.*\$\{|`DELETE.*\$\{' 2>/dev/null; then
     echo -e "${RED}[CRITICAL] SQL Injection risk in $file${NC}"
-    ((ISSUES++))
+    ISSUES=$((ISSUES + 1))
   fi
 
   # CRITICAL: eval / Function constructor
   if echo "$content" | grep -nP '\beval\s*\(|\bnew\s+Function\s*\(' 2>/dev/null; then
     echo -e "${RED}[CRITICAL] eval() or new Function() in $file${NC}"
-    ((ISSUES++))
+    ISSUES=$((ISSUES + 1))
   fi
 
   # HIGH: XSS - dangerouslySetInnerHTML
   if echo "$content" | grep -nP 'dangerouslySetInnerHTML' 2>/dev/null; then
     echo -e "${YELLOW}[HIGH] dangerouslySetInnerHTML in $file — verify input is sanitized${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
   fi
 
   # HIGH: Hardcoded secrets
   if echo "$content" | grep -nPi '(api_key|apikey|secret|password|token|private_key)\s*[:=]\s*["\x27][A-Za-z0-9+/=_-]{8,}' 2>/dev/null; then
     echo -e "${RED}[CRITICAL] Possible hardcoded secret in $file${NC}"
-    ((ISSUES++))
+    ISSUES=$((ISSUES + 1))
   fi
 
   # HIGH: Unvalidated redirect
   if echo "$content" | grep -nP 'redirect\(.*req\.(query|params|body)' 2>/dev/null; then
     echo -e "${YELLOW}[HIGH] Open redirect risk in $file${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
   fi
 
   # HIGH: Prototype pollution
   if echo "$content" | grep -nP 'Object\.assign\(.*req\.' 2>/dev/null; then
     echo -e "${YELLOW}[HIGH] Prototype pollution risk in $file${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
   fi
 
   # MEDIUM: console.log in production code (not in test files)
   if [[ ! "$file" =~ (test|spec|__test__) ]] && echo "$content" | grep -nP 'console\.(log|debug)\(' 2>/dev/null | head -3; then
     echo -e "${YELLOW}[MEDIUM] console.log in production code: $file${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
   fi
 
   # HIGH: innerHTML assignment
   if echo "$content" | grep -nP '\.innerHTML\s*=' 2>/dev/null; then
     echo -e "${YELLOW}[HIGH] Direct innerHTML assignment in $file — XSS risk${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
   fi
 
   # HIGH: Insecure crypto
   if echo "$content" | grep -nP "createHash\(['\"]md5['\"]|createHash\(['\"]sha1['\"]" 2>/dev/null; then
     echo -e "${YELLOW}[HIGH] Weak hash algorithm (md5/sha1) in $file${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
   fi
 
   # MEDIUM: HTTP instead of HTTPS
   if echo "$content" | grep -nP "http://(?!localhost|127\.0\.0\.1|0\.0\.0\.0)" 2>/dev/null | head -3; then
     echo -e "${YELLOW}[MEDIUM] Insecure HTTP URL in $file${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
   fi
 }
 
