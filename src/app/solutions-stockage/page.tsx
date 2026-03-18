@@ -190,17 +190,28 @@ export default function SolutionsStockagePage() {
                   Le <strong className="text-white">Dirty Man Safe</strong> est
                   la solution que les stackers américains les plus avisés
                   utilisent depuis des années. Le principe : un tube étanche en
-                  PVC renforcé, conçu pour être{" "}
+                  PVC renforcé de qualité militaire, conçu pour être{" "}
                   <strong className="text-[#BE943C]">
                     enterré dans le sol de votre jardin
                   </strong>
-                  .
+                  . Ni détectable au détecteur de métaux, ni visible — vos
+                  pièces disparaissent littéralement du radar.
+                </p>
+                <p className="mb-3 text-neutral-300">
+                  Là où un coffre-fort classique dit{" "}
+                  <em>&quot;il y a quelque chose de précieux ici&quot;</em>, le
+                  Dirty Man Safe dit{" "}
+                  <em>&quot;il n&apos;y a rien à voler&quot;</em>. Aucun
+                  cambrioleur ne peut forcer ce qu&apos;il ne trouve pas.
+                  C&apos;est la raison pour laquelle cette solution est devenue{" "}
+                  <strong className="text-white">la référence absolue</strong>{" "}
+                  dans la communauté des stackers.
                 </p>
                 <p className="text-neutral-300">
-                  Invisible, imperméable, résistant à la corrosion — c&apos;est
-                  littéralement un coffre-fort enfoui sous terre. Aucun
-                  cambrioleur ne peut le trouver s&apos;il ne sait pas où
-                  creuser.
+                  Étanche, résistant à la corrosion, aux variations de
+                  température et aux incendies (protégé par la terre) — vos
+                  pièces restent en parfait état pendant des décennies. Un achat
+                  unique, zéro frais récurrent, zéro contrepartie.
                 </p>
               </div>
             </div>
@@ -260,8 +271,20 @@ export default function SolutionsStockagePage() {
               ))}
             </div>
 
-            {/* CTA */}
-            <div className="rounded-lg border border-[#BE943C]/40 bg-[#BE943C]/10 p-4 text-center">
+            {/* Promo code + CTA */}
+            <div className="rounded-lg border border-[#BE943C]/40 bg-[#BE943C]/10 p-5 text-center">
+              <div className="mb-4">
+                <p className="mb-1 text-sm font-semibold text-[#BE943C]">
+                  Offre exclusive lecteurs BullionRadar
+                </p>
+                <div className="inline-flex items-center gap-3 rounded-lg border-2 border-dashed border-[#BE943C] bg-black/30 px-5 py-3">
+                  <span className="text-sm text-neutral-300">Code promo :</span>
+                  <span className="rounded bg-[#BE943C] px-3 py-1 font-mono text-lg font-black text-black">
+                    bullion10
+                  </span>
+                  <span className="text-sm font-bold text-green-400">-10%</span>
+                </div>
+              </div>
               <a
                 href="https://dirtymansafe.com"
                 target="_blank"
@@ -270,6 +293,12 @@ export default function SolutionsStockagePage() {
               >
                 Commander le Dirty Man Safe →
               </a>
+              <p className="mt-3 text-xs text-neutral-500">
+                Entrez le code{" "}
+                <strong className="text-neutral-400">bullion10</strong> au
+                moment du paiement pour bénéficier de 10% de réduction sur votre
+                commande.
+              </p>
             </div>
           </div>
         </div>
