@@ -130,7 +130,7 @@ export function PdfViewer({ file, title }: PdfViewerProps) {
       </div>
 
       {title && (
-        <p className="mt-4 text-center text-sm text-neutral-500">{title}</p>
+        <p className="mt-4 text-center text-sm text-neutral-400">{title}</p>
       )}
     </div>
   );

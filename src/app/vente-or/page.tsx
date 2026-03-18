@@ -76,13 +76,13 @@ export default function VenteOrPage() {
           <div className="flex gap-4">
             <Link
               href="/"
-              className="text-sm text-neutral-400 hover:text-white"
+              className="text-sm text-neutral-300 hover:text-white"
             >
               Accueil
             </Link>
             <Link
               href="/fiscalite"
-              className="text-sm text-neutral-400 hover:text-white"
+              className="text-sm text-neutral-300 hover:text-white"
             >
               Fiscalité
             </Link>

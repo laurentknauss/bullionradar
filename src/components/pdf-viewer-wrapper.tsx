@@ -7,7 +7,7 @@ const PdfViewer = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-[400px] items-center justify-center text-neutral-400">
+      <div className="flex h-[400px] items-center justify-center text-neutral-300">
         Chargement du lecteur PDF...
       </div>
     ),

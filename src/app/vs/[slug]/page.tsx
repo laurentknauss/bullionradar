@@ -147,7 +147,7 @@ function ComparisonRow({
   return (
     <div className="grid grid-cols-3 border-b border-neutral-800 py-3">
       <div className={`text-center ${getHighlightClass(true)}`}>{v1}</div>
-      <div className="text-center text-sm text-neutral-500">{label}</div>
+      <div className="text-center text-sm text-neutral-400">{label}</div>
       <div className={`text-center ${getHighlightClass(false)}`}>{v2}</div>
     </div>
   );
@@ -496,10 +496,10 @@ export default async function VsPage({ params }: PageProps) {
       <div className="mx-auto max-w-5xl px-4 py-8 text-center">
         <h1 className="text-3xl font-black md:text-4xl">
           <span className="text-amber-400">{coin1.name}</span>
-          <span className="mx-4 text-neutral-500">vs</span>
+          <span className="mx-4 text-neutral-400">vs</span>
           <span className="text-amber-400">{coin2.name}</span>
         </h1>
-        <p className="mt-2 text-neutral-500">
+        <p className="mt-2 text-neutral-400">
           Comparatif détaillé des caractéristiques
         </p>
       </div>
@@ -521,7 +521,7 @@ export default async function VsPage({ params }: PageProps) {
             )}
           </div>
           <p className="mt-3 font-semibold text-amber-400">{coin1.name}</p>
-          <p className="text-sm text-neutral-500">{coin1.country}</p>
+          <p className="text-sm text-neutral-400">{coin1.country}</p>
         </div>
 
         <div className="text-4xl text-neutral-600">⚔️</div>
@@ -541,7 +541,7 @@ export default async function VsPage({ params }: PageProps) {
             )}
           </div>
           <p className="mt-3 font-semibold text-amber-400">{coin2.name}</p>
-          <p className="text-sm text-neutral-500">{coin2.country}</p>
+          <p className="text-sm text-neutral-400">{coin2.country}</p>
         </div>
       </div>
 
@@ -683,7 +683,7 @@ export default async function VsPage({ params }: PageProps) {
                 <CoinPricesSection coinName={coin2.name} prices={prices2} />
               </div>
               <div className="mt-8 text-center">
-                <p className="text-sm text-neutral-500">
+                <p className="text-sm text-neutral-400">
                   <span className="mr-2 inline-block h-3 w-3 rounded-full bg-[#BE943C]" />
                   Meilleur prix — Dernière mise à jour :{" "}
                   {new Date(

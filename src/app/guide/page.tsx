@@ -60,7 +60,7 @@ export default function GuidePage() {
         <h1 className="text-3xl font-black md:text-4xl">
           Le Petit Guide du Stacker
         </h1>
-        <p className="mt-3 text-neutral-400">
+        <p className="mt-3 text-neutral-300">
           Tout ce qu&apos;il faut savoir pour investir dans les pièces d&apos;or
           et d&apos;argent en France.
         </p>

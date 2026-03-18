@@ -152,7 +152,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-black text-white md:text-3xl">
               Le Petit Guide du Stacker
             </h2>
-            <p className="mt-3 text-neutral-400">
+            <p className="mt-3 text-neutral-300">
               Tout ce qu&apos;il faut savoir pour investir dans les pièces
               d&apos;or et d&apos;argent en France. Fiscalité, pièces
               incontournables, stratégies, dealers — 40 pages de contenu gratuit

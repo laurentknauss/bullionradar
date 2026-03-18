@@ -151,7 +151,7 @@ export default function FiscalitePage() {
           <h1 className="text-3xl font-black md:text-4xl">
             Fiscalité des métaux précieux en France
           </h1>
-          <p className="mt-3 text-neutral-400">
+          <p className="mt-3 text-neutral-300">
             Tout ce qu&apos;il faut savoir avant de revendre vos pièces
             d&apos;or ou d&apos;argent.
           </p>
@@ -249,7 +249,7 @@ export default function FiscalitePage() {
             </p>
           </div>
 
-          <p className="mt-4 text-sm text-neutral-500">
+          <p className="mt-4 text-sm text-neutral-400">
             <strong className="text-neutral-300">Référence :</strong> Art. 150
             VI du Code Général des Impôts
           </p>
@@ -350,7 +350,7 @@ export default function FiscalitePage() {
               </p>
             </div>
 
-            <p className="mt-4 text-sm text-neutral-500">
+            <p className="mt-4 text-sm text-neutral-400">
               <strong className="text-neutral-300">Référence :</strong> Art. 150
               VL, 150 VM et 150 VC du Code Général des Impôts
             </p>
@@ -415,7 +415,7 @@ export default function FiscalitePage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-center text-xs text-neutral-500">
+          <p className="mt-3 text-center text-xs text-neutral-400">
             Art. 150 VL du CGI — Décote de 5% par an à partir de la 3ème année
           </p>
         </div>
@@ -551,7 +551,7 @@ export default function FiscalitePage() {
                     <td className="py-2 text-white">
                       <span className="font-medium">{row.beneficiary}</span>
                       {row.note && (
-                        <span className="ml-2 text-xs text-neutral-500">
+                        <span className="ml-2 text-xs text-neutral-400">
                           ({row.note})
                         </span>
                       )}
@@ -577,14 +577,14 @@ export default function FiscalitePage() {
             </p>
           </div>
 
-          <p className="mt-4 text-sm text-neutral-500">
+          <p className="mt-4 text-sm text-neutral-400">
             <strong className="text-neutral-300">Attention :</strong> les
             concubins et les personnes sans lien de parenté ne bénéficient
             d&apos;aucun abattement — la donation est taxée à 60% dès le premier
             euro.
           </p>
 
-          <p className="mt-2 text-sm text-neutral-500">
+          <p className="mt-2 text-sm text-neutral-400">
             <strong className="text-neutral-300">Référence :</strong> Art. 790
             B, 790 C, 790 D, 790 E et 790 F du Code Général des Impôts
           </p>
@@ -631,11 +631,11 @@ export default function FiscalitePage() {
           <h2 className="mb-2 text-lg font-bold text-white">
             FAQ fiscalité or, taxe or et vente d&apos;or
           </h2>
-          <p className="mb-4 text-sm text-neutral-400">
+          <p className="mb-4 text-sm text-neutral-300">
             Réponses rapides aux recherches les plus fréquentes sur la fiscalité
             de l&apos;or physique en France.
           </p>
-          <p className="mb-4 text-xs text-neutral-500">
+          <p className="mb-4 text-xs text-neutral-400">
             Requêtes couvertes : vente or, vendre de l&apos;or, fiscalité vente
             or, taxe vente or, achat et vente d&apos;or, vente or anonyme
             fiscalité, réglementation vente d&apos;or, vente de pièces d&apos;or
@@ -649,7 +649,7 @@ export default function FiscalitePage() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-sm text-neutral-400">
+          <p className="mt-4 text-sm text-neutral-300">
             Pour aller plus loin, consulte aussi le{" "}
             <Link href="/guide" className="text-[#BE943C] underline">
               guide d&apos;investissement
@@ -664,7 +664,7 @@ export default function FiscalitePage() {
 
         {/* CTA */}
         <div className="text-center">
-          <p className="mb-3 text-sm text-neutral-500">
+          <p className="mb-3 text-sm text-neutral-400">
             Comparez les prix avant d&apos;acheter vos pièces
           </p>
           <Link
@@ -677,7 +677,7 @@ export default function FiscalitePage() {
 
         {/* Sources */}
         <div className="mt-12 border-t border-neutral-800 pt-6">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-400">
             Sources
           </p>
           <ul className="space-y-1 text-xs text-neutral-600">

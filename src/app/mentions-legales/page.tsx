@@ -233,7 +233,7 @@ export default function MentionsLegalesPage() {
         {/* Mise à jour */}
         <section className="space-y-6">
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
-            <p className="text-sm text-neutral-500 italic">
+            <p className="text-sm text-neutral-400 italic">
               Dernière mise à jour : 27 février 2026
             </p>
           </div>
@@ -251,7 +251,7 @@ export default function MentionsLegalesPage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-800 px-6 py-8 text-center text-sm text-neutral-500">
+      <footer className="border-t border-neutral-800 px-6 py-8 text-center text-sm text-neutral-400">
         <p>
           © 2026 BullionRadar - Comparateur indépendant de pièces d&apos;or et
           d&apos;argent

@@ -196,7 +196,7 @@ function BestPriceBadge({ prices, scrapedAt }: BestPriceBadgeProps) {
         chez {getDealerDisplayName(best.dealer)}
       </div>
       {scrapedAt && (
-        <div className="mt-1 text-xs text-neutral-400">
+        <div className="mt-1 text-xs text-neutral-300">
           {formatRelativeTime(scrapedAt)}
         </div>
       )}
@@ -247,7 +247,7 @@ interface SpecRowProps {
 function SpecRow({ label, value }: SpecRowProps) {
   return (
     <div className="grid grid-cols-2 border-b border-neutral-800 py-3 text-sm">
-      <div className="text-neutral-500">{label}</div>
+      <div className="text-neutral-400">{label}</div>
       <div className="text-right text-white">{value ?? "-"}</div>
     </div>
   );
@@ -424,7 +424,7 @@ export default async function CoinPage({ params }: PageProps) {
           <h1 className="mt-6 text-3xl font-black text-white md:text-4xl">
             {coin.name}
           </h1>
-          <p className="mt-1 text-neutral-500">{coin.country}</p>
+          <p className="mt-1 text-neutral-400">{coin.country}</p>
           <div className="mx-auto max-w-xs">
             <BestPriceBadge prices={prices} scrapedAt={latestScrapedAt} />
           </div>
@@ -488,7 +488,7 @@ export default async function CoinPage({ params }: PageProps) {
               <CoinPricesSection coinName={coin.name} prices={prices} />
             </div>
             <div className="mt-6 text-center">
-              <p className="text-sm text-neutral-500">
+              <p className="text-sm text-neutral-400">
                 <span className="mr-2 inline-block h-3 w-3 rounded-full bg-[#BE943C]" />
                 Dernière mise à jour :{" "}
                 {new Date(latestScrapedAt ?? "").toLocaleString("fr-FR", {

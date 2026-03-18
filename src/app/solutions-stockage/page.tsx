@@ -60,7 +60,7 @@ export default function SolutionsStockagePage() {
           <h1 className="text-3xl font-black md:text-4xl">
             Conserver son stack en sécurité
           </h1>
-          <p className="mt-3 text-neutral-400">
+          <p className="mt-3 text-neutral-300">
             Vous avez acheté vos pièces. Maintenant, où les mettre ?
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function SolutionsStockagePage() {
               <p className="mb-2 text-sm font-semibold text-green-400">
                 ✓ Avantages
               </p>
-              <ul className="space-y-1 text-sm text-neutral-400">
+              <ul className="space-y-1 text-sm text-neutral-300">
                 <li>Sécurité maximale, assurance incluse</li>
                 <li>Pas de risque de vol à domicile</li>
                 <li>Revente facilitée (le dealer a déjà les pièces)</li>
@@ -96,14 +96,14 @@ export default function SolutionsStockagePage() {
               <p className="mb-2 text-sm font-semibold text-red-400">
                 ✗ Inconvénients
               </p>
-              <ul className="space-y-1 text-sm text-neutral-400">
+              <ul className="space-y-1 text-sm text-neutral-300">
                 <li>Frais annuels (0,5 – 1% de la valeur)</li>
                 <li>Vos pièces ne sont pas chez vous</li>
                 <li>Risque de contrepartie (faillite)</li>
               </ul>
             </div>
           </div>
-          <p className="mt-4 text-sm text-neutral-500">
+          <p className="mt-4 text-sm text-neutral-400">
             <strong className="text-neutral-300">Pour qui ?</strong> Stacks
             importants (&gt; 10 000 €) ou absence de solution sécurisée à
             domicile.
@@ -154,7 +154,7 @@ export default function SolutionsStockagePage() {
               </div>
             ))}
           </div>
-          <p className="text-sm text-neutral-500">
+          <p className="text-sm text-neutral-400">
             <strong className="text-neutral-300">Pour qui ?</strong> La majorité
             des stackers avec un stack entre 1 000 € et 50 000 €.
           </p>
@@ -245,7 +245,7 @@ export default function SolutionsStockagePage() {
                   >
                     <p className="font-bold text-[#BE943C]">{m.name}</p>
                     <p className="text-sm text-white">{m.capacity}</p>
-                    <p className="text-xs text-neutral-500">{m.dim}</p>
+                    <p className="text-xs text-neutral-400">{m.dim}</p>
                   </div>
                 ))}
               </div>
@@ -293,9 +293,9 @@ export default function SolutionsStockagePage() {
               >
                 Commander le Dirty Man Safe →
               </a>
-              <p className="mt-3 text-xs text-neutral-500">
+              <p className="mt-3 text-xs text-neutral-400">
                 Entrez le code{" "}
-                <strong className="text-neutral-400">bullion10</strong> au
+                <strong className="text-neutral-300">bullion10</strong> au
                 moment du paiement pour bénéficier de 10% de réduction sur votre
                 commande.
               </p>
@@ -386,7 +386,7 @@ export default function SolutionsStockagePage() {
 
         {/* CTA guide */}
         <div className="mt-8 text-center">
-          <p className="mb-3 text-sm text-neutral-500">
+          <p className="mb-3 text-sm text-neutral-400">
             Ces conseils sont tirés du guide gratuit BullionRadar
           </p>
           <Link

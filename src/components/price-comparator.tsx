@@ -135,7 +135,7 @@ function CoinCard({ coin }: CoinCardProps) {
                         className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
                           isBest
                             ? "bg-amber-500 text-black"
-                            : "bg-neutral-700 text-neutral-400"
+                            : "bg-neutral-700 text-neutral-300"
                         }`}
                       >
                         {index + 1}
@@ -211,14 +211,14 @@ export function PriceComparator() {
               chez les dealers
             </span>
           </h2>
-          <p className="text-3xl text-neutral-400">↓</p>
+          <p className="text-3xl text-neutral-300">↓</p>
         </div>
 
         {/* Loading */}
         {loading && (
           <div className="flex items-center justify-center py-12">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-amber-500 border-t-transparent" />
-            <span className="ml-3 text-neutral-400">
+            <span className="ml-3 text-neutral-300">
               Chargement des prix...
             </span>
           </div>

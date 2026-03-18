@@ -162,7 +162,7 @@ export function CoinVsSelector() {
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
             Portail des Pièces
           </h2>
-          <p className="mx-auto max-w-xl text-neutral-400">
+          <p className="mx-auto max-w-xl text-neutral-300">
             Choisissez une option : consulter la fiche complète d&apos;une pièce
             ou comparer deux pièces.
           </p>
@@ -196,7 +196,7 @@ export function CoinVsSelector() {
               Comparer 2 pièces
             </button>
           </div>
-          <p className="mx-auto mt-10 max-w-xl text-base font-medium text-neutral-400">
+          <p className="mx-auto mt-10 max-w-xl text-base font-medium text-neutral-300">
             {mode === "single"
               ? "Choisissez 1 pièce pour ouvrir sa fiche complète."
               : "Sélectionnez 2 pièces pour lancer le comparatif détaillé."}
@@ -217,7 +217,7 @@ export function CoinVsSelector() {
                     : metal === "silver"
                       ? "bg-neutral-400 text-black"
                       : "bg-white text-black"
-                  : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700",
+                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700",
               )}
             >
               {metal === "gold" ? "Or" : metal === "silver" ? "Argent" : "Tous"}
@@ -264,7 +264,7 @@ export function CoinVsSelector() {
               </div>
             ))}
             {selectedCoins.length === 1 && (
-              <span className="text-sm text-neutral-500">
+              <span className="text-sm text-neutral-400">
                 Selectionnez une 2e piece
               </span>
             )}
@@ -327,7 +327,7 @@ export function CoinVsSelector() {
                     "mt-1 text-[10px]",
                     coin.metal === "gold"
                       ? "text-amber-500/60"
-                      : "text-neutral-500",
+                      : "text-neutral-400",
                   )}
                 >
                   {coin.metal === "gold" ? "Or" : "Argent"}
@@ -342,14 +342,14 @@ export function CoinVsSelector() {
       {mode === "compare" && selectedCoins.length === 2 && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
           <div className="mx-4 flex flex-col items-center gap-6 rounded-xl border border-neutral-700 bg-[#1a1a1a] p-8 sm:p-12">
-            <p className="text-sm text-neutral-400">Vous avez sélectionné</p>
+            <p className="text-sm text-neutral-300">Vous avez sélectionné</p>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
               <div className="text-center">
                 <div className="text-xl font-bold text-amber-400">
                   {selectedCoins[0]?.name}
                 </div>
               </div>
-              <span className="text-2xl font-bold text-neutral-500">VS</span>
+              <span className="text-2xl font-bold text-neutral-400">VS</span>
               <div className="text-center">
                 <div className="text-xl font-bold text-amber-400">
                   {selectedCoins[1]?.name}
@@ -364,7 +364,7 @@ export function CoinVsSelector() {
             </button>
             <button
               onClick={() => setSelectedCoins([])}
-              className="text-sm text-neutral-500 hover:text-white"
+              className="text-sm text-neutral-400 hover:text-white"
             >
               Annuler
             </button>

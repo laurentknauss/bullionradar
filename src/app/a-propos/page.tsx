@@ -157,7 +157,7 @@ export default function AProposPage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-800 px-6 py-8 text-center text-sm text-neutral-500">
+      <footer className="border-t border-neutral-800 px-6 py-8 text-center text-sm text-neutral-400">
         <p>
           © 2026 BullionRadar - Comparateur indépendant de pièces d&apos;or et
           d&apos;argent

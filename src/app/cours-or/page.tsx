@@ -39,13 +39,13 @@ export default function CoursOrPage() {
           <div className="flex gap-4">
             <Link
               href="/"
-              className="text-sm text-neutral-400 hover:text-white"
+              className="text-sm text-neutral-300 hover:text-white"
             >
               Accueil
             </Link>
             <Link
               href="/cours-argent"
-              className="text-sm text-neutral-400 hover:text-white"
+              className="text-sm text-neutral-300 hover:text-white"
             >
               Cours Argent
             </Link>
@@ -127,7 +127,7 @@ export default function CoursOrPage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-800 px-6 py-8 text-center text-sm text-neutral-500">
+      <footer className="border-t border-neutral-800 px-6 py-8 text-center text-sm text-neutral-400">
         <p>© 2026 BullionRadar - Données fournies par TradingView</p>
         <p className="mt-2">
           <Link href="/mentions-legales" className="underline hover:text-white">
