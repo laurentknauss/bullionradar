@@ -38,7 +38,7 @@ function formatEur(value: number): string {
 }
 
 export function SilverPriceCalculator() {
-  const [spotPerOz, setSpotPerOz] = useState<string>("31.00");
+  const [spotPerOz, setSpotPerOz] = useState<string>("");
   const [weight, setWeight] = useState<string>("100");
   const [unit, setUnit] = useState<"g" | "kg" | "oz">("g");
   const [purityIndex, setPurityIndex] = useState(0);
@@ -68,6 +68,7 @@ export function SilverPriceCalculator() {
               step="0.01"
               min="0"
               value={spotPerOz}
+              placeholder="Ex : 31.50"
               onChange={(e) => setSpotPerOz(e.target.value)}
               className="w-full rounded-lg border border-neutral-700 bg-neutral-800 px-4 py-4 text-2xl font-bold text-white focus:border-[#BE943C] focus:outline-none"
             />
@@ -76,14 +77,15 @@ export function SilverPriceCalculator() {
             </span>
           </div>
         </div>
-        <p className="mt-3 text-base text-neutral-400">
-          Vérifiez le cours actuel sur{" "}
+        <p className="mt-3 text-base text-amber-200/70">
+          Récupérez le cours actuel sur{" "}
           <Link
             href="/cours-argent"
             className="text-[#BE943C] underline hover:text-amber-300"
           >
             notre page cours de l&apos;argent en direct
-          </Link>
+          </Link>{" "}
+          et collez-le ci-dessus.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
           <div className="rounded-lg bg-neutral-800 px-4 py-3 text-center">
@@ -117,15 +119,26 @@ export function SilverPriceCalculator() {
       <div className="rounded-xl border-2 border-[#BE943C]/60 bg-neutral-900">
         <div className="bg-[#BE943C] px-6 py-3 text-center">
           <span className="text-base font-black text-black">
-            CALCULATEUR DE VALEUR
+            CALCULATEUR DE VALEUR MÉTAL
           </span>
         </div>
 
         <div className="p-6">
+          <p className="mb-6 text-base leading-relaxed text-amber-100/80">
+            Vous possédez des pièces d&apos;argent, des couverts ou de
+            l&apos;argenterie et vous souhaitez connaître leur valeur ? Entrez
+            le poids total et sélectionnez la pureté (si vous la connaissez) de
+            votre argent. Le calculateur vous donne la{" "}
+            <strong className="text-white">valeur métal</strong> (ce que
+            l&apos;argent contenu vaut au cours actuel) ainsi qu&apos;une{" "}
+            <strong className="text-white">estimation de prix de rachat</strong>{" "}
+            par un professionnel.
+          </p>
+
           {/* Poids */}
           <div className="mb-8">
             <label className="mb-3 block text-base font-semibold text-neutral-300">
-              Poids
+              Poids total de votre argent
             </label>
             <div className="flex gap-3">
               <input
