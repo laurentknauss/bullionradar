@@ -66,6 +66,25 @@ export default function GuidePage() {
         </p>
       </div>
 
+      {/* Guides thématiques */}
+      <div className="mx-auto mb-12 max-w-3xl px-4">
+        <h2 className="mb-4 text-xl font-bold text-amber-400">
+          Guides thématiques
+        </h2>
+        <Link
+          href="/guide/nettoyer-pieces-argent"
+          className="block rounded-xl border border-neutral-800 bg-neutral-900 p-5 transition-colors hover:border-amber-600/40"
+        >
+          <p className="font-semibold text-white">
+            Comment nettoyer une pièce en argent
+          </p>
+          <p className="mt-1 text-sm text-neutral-400">
+            Méthodes douces, erreurs à éviter et conseils de conservation pour
+            vos pièces d&apos;argent.
+          </p>
+        </Link>
+      </div>
+
       {/* PDF Viewer */}
       <div className="pb-16">
         <PdfViewerWrapper file="/docs/petit-guide-du-stacker.pdf" />

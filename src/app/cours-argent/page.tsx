@@ -3,16 +3,17 @@ import Link from "next/link";
 import { TradingViewWidget } from "@/components/tradingview-widget";
 
 export const metadata: Metadata = {
-  title: "Cours de l'argent aujourd'hui en direct (XAG/EUR) | BullionRadar",
+  title:
+    "Cours de l'argent aujourd'hui en direct — Cours pièces argent & valeur | BullionRadar",
   description:
-    "Suivez le cours de l'argent aujourd'hui en temps réel. Prix de l'once et du gramme en euro, graphique live et historique sur 1 an, 5 ans, 10 ans.",
+    "Cours de l'argent aujourd'hui en temps réel (XAG/EUR). Prix du gramme et de l'once en euro, cours des pièces d'argent, valeur des pièces en argent et historique sur 1 an, 5 ans, 10 ans.",
   alternates: {
     canonical: "https://bullionradar.fr/cours-argent",
   },
   openGraph: {
-    title: "Cours de l'argent aujourd'hui en direct",
+    title: "Cours de l'argent aujourd'hui — Cours pièces argent en direct",
     description:
-      "Cours de l'argent aujourd'hui: prix live XAG/EUR, once et gramme en euro, avec graphique en temps réel.",
+      "Cours de l'argent en temps réel, valeur des pièces en argent (Maple Leaf, Hercule, Philharmonique) et prix live XAG/EUR.",
     url: "https://bullionradar.fr/cours-argent",
   },
 };
@@ -113,13 +114,46 @@ export default function CoursArgentPage() {
           </p>
 
           <h2 className="pt-4 text-xl font-semibold tracking-wide text-[#FFFFF0]">
+            Cours des pièces d&apos;argent et valeur
+          </h2>
+          <p className="leading-relaxed tracking-wide text-[#FFFFF0]/70">
+            La valeur d&apos;une pièce en argent dépend de deux facteurs : le
+            cours spot (ci-dessus) et la{" "}
+            <strong className="text-[#FFFFF0]">prime dealer</strong>,
+            c&apos;est-à-dire la marge appliquée par le vendeur. Pour les pièces
+            bullion internationales (Maple Leaf, Philharmonique, Britannia,
+            Eagle), la prime varie généralement entre 15% et 30% au-dessus du
+            spot.
+          </p>
+          <p className="leading-relaxed tracking-wide text-[#FFFFF0]/70">
+            Pour les pièces françaises en argent (50 Francs Hercule, 10 Francs
+            Hercule, 5 Francs Semeuse), la valeur des pièces en argent se
+            calcule en fonction de leur poids en argent pur et du cours actuel.
+            Par exemple, un 50 Francs Hercule contient 27g d&apos;argent 900 —
+            sa valeur métal évolue directement avec le cours affiché ci-dessus.
+          </p>
+          <p className="leading-relaxed tracking-wide text-[#FFFFF0]/70">
+            <Link
+              href="/"
+              className="text-amber-400 underline hover:text-amber-300"
+            >
+              Comparez les prix des pièces d&apos;argent
+            </Link>{" "}
+            chez les principaux dealers français pour trouver la meilleure prime
+            sur chaque pièce.
+          </p>
+
+          <h2 className="pt-4 text-xl font-semibold tracking-wide text-[#FFFFF0]">
             Facteurs influençant le cours de l&apos;argent
           </h2>
           <ul className="list-disc space-y-3 pl-6 leading-relaxed tracking-wide text-[#FFFFF0]/70">
             <li>Demande industrielle (électronique, panneaux solaires)</li>
             <li>Ratio or/argent historique (actuellement ~80:1)</li>
             <li>Production minière mondiale</li>
-            <li>Demande d&apos;investissement (pièces, lingots, ETF)</li>
+            <li>
+              Demande d&apos;investissement et achat d&apos;argent physique
+              (pièces, lingots, ETF)
+            </li>
             <li>Cours de l&apos;or (corrélation forte)</li>
           </ul>
         </section>

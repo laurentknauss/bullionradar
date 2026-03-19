@@ -101,8 +101,8 @@ export default function HomePage() {
           </h1>
           <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-black">
             Comparez les caractéristiques de dizaines de pièces d&apos;or et
-            d&apos;argent, et trouvez le meilleur prix chez les dealers
-            français.
+            d&apos;argent, et trouvez le meilleur prix pour votre achat
+            d&apos;argent ou d&apos;or chez les dealers français.
           </p>
         </div>
       </section>

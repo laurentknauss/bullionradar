@@ -57,6 +57,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Prix argent (calculateur)
+  urls.push({
+    url: `${BASE_URL}/prix-argent`,
+    lastModified: new Date(),
+    changeFrequency: "daily",
+    priority: 0.9,
+  });
+
   // Fiscalite
   urls.push({
     url: `${BASE_URL}/fiscalite`,
@@ -87,6 +95,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.7,
+  });
+
+  // Guide — Nettoyage pièces argent
+  urls.push({
+    url: `${BASE_URL}/guide/nettoyer-pieces-argent`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
   });
 
   // A propos

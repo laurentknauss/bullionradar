@@ -532,15 +532,24 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "Pièce non trouvée" };
   }
 
+  const isSilver = coin.metal === "silver";
+  const description = isSilver
+    ? `${coin.name} : valeur, cours et prix chez les dealers français. Poids ${coin.weight_g}g, pureté ${coin.fineness}, comparatif des primes pour l'achat d'argent.`
+    : `${coin.name} : fiche complète, poids ${coin.weight_g}g, pureté ${coin.fineness}, prix dealers et comparatif des primes.`;
+
   return {
-    title: `${coin.name} - Fiche complète | BullionRadar`,
-    description: `Découvrez la fiche complète de la ${coin.name} : poids, pureté, liquidité, prime et caractéristiques clés.`,
+    title: isSilver
+      ? `${coin.name} — Valeur pièce argent & prix | BullionRadar`
+      : `${coin.name} — Fiche complète & prix | BullionRadar`,
+    description,
     alternates: {
       canonical: `https://bullionradar.fr/coin/${slugify(coin.name)}`,
     },
     openGraph: {
-      title: `${coin.name} - Fiche complète | BullionRadar`,
-      description: `Découvrez la fiche complète de la ${coin.name} : poids, pureté, liquidité, prime et caractéristiques clés.`,
+      title: isSilver
+        ? `${coin.name} — Cours pièce argent & valeur`
+        : `${coin.name} — Fiche complète | BullionRadar`,
+      description,
       url: `https://bullionradar.fr/coin/${slugify(coin.name)}`,
       images: [
         {

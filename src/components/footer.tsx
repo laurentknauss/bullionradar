@@ -35,6 +35,14 @@ export function Footer() {
                 Cours de l&apos;argent
               </Link>
             </li>
+            <li>
+              <Link
+                href="/prix-argent"
+                className="text-white hover:text-amber-400"
+              >
+                Prix de l&apos;argent au gramme
+              </Link>
+            </li>
           </ul>
         </div>
 
