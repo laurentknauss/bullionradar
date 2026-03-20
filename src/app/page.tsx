@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#BE943C]">
       {/* Header noir avec cours */}
-      <header className="overflow-x-auto bg-[#1a1a1a] px-4 py-3 md:px-8 md:py-6">
+      <header className="overflow-x-auto bg-bg-dark px-4 py-3 md:px-8 md:py-6">
         <div className="flex flex-col items-start gap-2 whitespace-nowrap md:flex-row md:items-center md:justify-between md:gap-8">
           {/* Cours Or avec périodes */}
           <div className="flex items-center gap-2 md:gap-3">
@@ -141,7 +141,7 @@ export default function HomePage() {
       <PriceComparator />
 
       {/* Guide gratuit CTA */}
-      <section className="bg-[#1a1a1a] px-6 py-16">
+      <section className="bg-bg-dark px-6 py-16">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 md:flex-row">
           <img
             src="/docs/cover-guide-stacker.jpg"

@@ -108,7 +108,7 @@ export default function NettoyagePiecesArgentPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a] text-white">
+    <main className="min-h-screen bg-bg-dark text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -298,6 +298,18 @@ export default function NettoyagePiecesArgentPage() {
                 l&apos;aluminium se sulfure à sa place. Aucune perte de métal.
               </p>
             </div>
+
+            <div className="mt-4 rounded-lg border border-red-500/30 bg-red-900/10 px-4 py-3">
+              <p className="text-sm text-neutral-300">
+                <strong className="text-red-400">Attention :</strong> le
+                bicarbonate doit être{" "}
+                <strong className="text-white">dissous dans l&apos;eau</strong>,
+                jamais frotté directement sur la pièce. Le bicarbonate sec est
+                abrasif et laisse des micro-rayures invisibles à l&apos;œil nu
+                mais visibles au microscope. C&apos;est la réaction
+                électrolytique qui nettoie, pas le frottement.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -396,6 +408,80 @@ export default function NettoyagePiecesArgentPage() {
         </div>
 
         {/* ========================= */}
+        {/* METHODE 4 — Bac à ultrasons */}
+        {/* ========================= */}
+        <div className="mb-8 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#BE943C] text-lg font-black text-black">
+              4
+            </span>
+            <h2 className="text-xl font-bold text-white">
+              Nettoyeur à ultrasons
+            </h2>
+          </div>
+
+          <p className="mb-4 text-neutral-300">
+            Le bac à ultrasons utilise des ondes sonores à haute fréquence
+            (35–45 kHz) pour créer des microbulles qui implosent au contact de
+            la pièce (cavitation). Ce procédé décolle saletés, graisses et
+            dépôts sans aucun frottement mécanique. Particulièrement efficace
+            pour atteindre les reliefs et recoins inaccessibles à la main.
+          </p>
+
+          <div className="mb-4 grid gap-3 md:grid-cols-2">
+            {[
+              { label: "Durée", value: "1–3 minutes par cycle" },
+              { label: "Coût", value: "30–80 € (appareil domestique)" },
+              {
+                label: "Risque pour la pièce",
+                value: "Faible (pièces bullion)",
+              },
+              {
+                label: "Idéal pour",
+                value: "Pièces encrassées, terre, graisse",
+              },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-lg bg-neutral-800 px-3 py-2"
+              >
+                <p className="text-xs font-semibold text-[#BE943C]">
+                  {item.label}
+                </p>
+                <p className="text-sm text-neutral-300">{item.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="space-y-3">
+            {[
+              "Remplissez la cuve avec de l'eau distillée. Ajoutez éventuellement une goutte de savon doux neutre (pas de vinaigre, pas de javel).",
+              "Placez la pièce dans le panier fourni — jamais directement au fond de la cuve, où les vibrations sont trop intenses.",
+              "Lancez un cycle court (1 à 3 minutes maximum). Inspectez le résultat. Relancez un cycle si nécessaire.",
+              "Rincez à l'eau distillée et séchez en tapotant avec un chiffon microfibre.",
+            ].map((step, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-2 text-sm text-neutral-300"
+              >
+                <span className="mt-0.5 shrink-0 text-[#BE943C]">{i + 1}.</span>
+                {step}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 rounded-lg border border-red-500/30 bg-red-900/10 px-4 py-3">
+            <p className="text-sm text-neutral-300">
+              <strong className="text-red-400">Pièces numismatiques :</strong>{" "}
+              ne nettoyez jamais une pièce de collection ou proof aux ultrasons.
+              La cavitation peut altérer la patine et les finitions miroir, ce
+              qui sera immédiatement détecté par un grading professionnel et
+              divisera la valeur de la pièce.
+            </p>
+          </div>
+        </div>
+
+        {/* ========================= */}
         {/* ERREURS A EVITER */}
         {/* ========================= */}
         <div className="mb-8 rounded-xl border-2 border-red-500/40 bg-neutral-900 p-6">
@@ -405,6 +491,10 @@ export default function NettoyagePiecesArgentPage() {
 
           <div className="space-y-4">
             {[
+              {
+                error: "Frotter au bicarbonate de soude sec",
+                why: "Souvent recommandé à tort sur Internet. Le bicarbonate en poudre est abrasif et laisse des micro-rayures sur l'argent. Il ne doit être utilisé que dissous dans l'eau, dans le cadre de la méthode électrolytique avec aluminium.",
+              },
               {
                 error: "Frotter avec du dentifrice",
                 why: "Abrasif : laisse des micro-rayures visibles sur l'argent. La pièce paraît propre mais est définitivement endommagée en surface.",
@@ -445,7 +535,7 @@ export default function NettoyagePiecesArgentPage() {
         <div className="mb-8 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
           <div className="mb-4 flex items-center gap-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#BE943C] text-lg font-black text-black">
-              4
+              5
             </span>
             <h2 className="text-xl font-bold text-white">
               Conserver ses pièces en argent : prévenir plutôt que guérir
@@ -588,7 +678,7 @@ export default function NettoyagePiecesArgentPage() {
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-400">
             Sources
           </p>
-          <ul className="space-y-1 text-xs text-neutral-600">
+          <ul className="space-y-1 text-xs text-neutral-400">
             <li>
               Chimie des réactions d&apos;oxydo-réduction argent/aluminium —
               Sulfure d&apos;argent (Ag<sub>2</sub>S) et réduction

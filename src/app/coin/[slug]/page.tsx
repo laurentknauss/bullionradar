@@ -374,7 +374,7 @@ export default async function CoinPage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a] pb-20 text-white">
+    <main className="min-h-screen bg-bg-dark pb-20 text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -26,7 +26,7 @@ const TIME_PERIODS = [
 
 export default function CoursArgentPage() {
   return (
-    <main className="min-h-screen bg-[#1a1a1a] text-white">
+    <main className="min-h-screen bg-bg-dark text-white">
       {/* Header */}
       <nav className="border-b border-neutral-800 p-4">
         <div className="mx-auto flex max-w-5xl items-center justify-between">

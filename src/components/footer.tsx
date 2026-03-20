@@ -102,6 +102,14 @@ export function Footer() {
             </li>
             <li>
               <Link
+                href="/guide/nettoyer-pieces-argent"
+                className="text-white hover:text-amber-400"
+              >
+                Nettoyage pièces d&apos;argent
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/a-propos"
                 className="text-white hover:text-amber-400"
               >

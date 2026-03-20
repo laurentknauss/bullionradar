@@ -84,7 +84,7 @@ export default function PrixArgentPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a] text-white">
+    <main className="min-h-screen bg-bg-dark text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

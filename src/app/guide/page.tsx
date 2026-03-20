@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function GuidePage() {
   return (
-    <main className="min-h-screen bg-[#1a1a1a] text-white">
+    <main className="min-h-screen bg-bg-dark text-white">
       {/* Header */}
       <header className="mb-10 border-b border-amber-600/30 bg-[#BE943C]">
         <div className="mx-auto flex max-w-5xl items-center gap-6 px-4 py-4">
