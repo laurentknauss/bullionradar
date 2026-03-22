@@ -102,6 +102,14 @@ export function Footer() {
             </li>
             <li>
               <Link
+                href="/bullionvault"
+                className="text-white hover:text-amber-400"
+              >
+                Investir l&#39;or dès 1g sans livraison
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/guide/nettoyer-pieces-argent"
                 className="text-white hover:text-amber-400"
               >
