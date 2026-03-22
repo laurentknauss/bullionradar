@@ -172,7 +172,7 @@ export function CoinVsSelector() {
                 setMode("single");
                 setSelectedCoins([]);
               }}
-              className="w-full rounded-full bg-neutral-800 px-8 py-4 text-base font-semibold text-neutral-300 transition-colors hover:bg-amber-500 hover:text-black"
+              className="w-full rounded-full bg-amber-500 px-8 py-4 text-base font-semibold text-black transition-colors hover:bg-amber-600"
             >
               Voir la fiche d&apos;une pièce
             </button>
@@ -181,7 +181,7 @@ export function CoinVsSelector() {
                 setMode("compare");
                 setSelectedCoins([]);
               }}
-              className="w-full rounded-full bg-neutral-800 px-8 py-4 text-base font-semibold text-neutral-300 transition-colors hover:bg-amber-500 hover:text-black"
+              className="w-full rounded-full bg-amber-500 px-8 py-4 text-base font-semibold text-black transition-colors hover:bg-amber-600"
             >
               Comparer 2 pièces
             </button>
