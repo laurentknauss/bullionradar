@@ -176,7 +176,7 @@ export function CoinVsSelector() {
                 "w-full rounded-full px-8 py-4 text-base font-semibold transition-colors",
                 mode === "single"
                   ? "bg-amber-500 text-black"
-                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700",
+                  : "bg-neutral-800 text-neutral-300 hover:bg-amber-500 hover:text-black",
               )}
             >
               Voir la fiche d&apos;une pièce
@@ -190,7 +190,7 @@ export function CoinVsSelector() {
                 "w-full rounded-full px-8 py-4 text-base font-semibold transition-colors",
                 mode === "compare"
                   ? "bg-amber-500 text-black"
-                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700",
+                  : "bg-neutral-800 text-neutral-300 hover:bg-amber-500 hover:text-black",
               )}
             >
               Comparer 2 pièces
