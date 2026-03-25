@@ -255,7 +255,7 @@ export default function BullionVaultPage() {
 
           <div className="rounded-lg bg-amber-600/10 p-4 text-sm text-gray-300">
             <strong className="text-amber-400">Exemple concret :</strong> Vous
-            achetez 100g d'or à 50€/g = 5 000€. Frais achat : 25€ (0,5%).
+            achetez 100g d&apos;or à 50€/g = 5 000€. Frais achat : 25€ (0,5%).
             Stockage : 0,05€/mois (0,01% de 5000€). Vous revendez 6 mois plus
             tard : frais vente 25€. <strong>Total coûts : 55€</strong> pour 6
             mois de stockage sécurisé avec assurance.
@@ -371,7 +371,7 @@ export default function BullionVaultPage() {
             de 1 gramme d&apos;or. Aucun engagement.
           </p>
           <a
-            href="https://www.bullionvault.com/fr"
+            href="https://www.bullionvaultaffiliate.com/actionargent/fr"
             className="inline-block rounded-lg bg-black px-8 py-3 font-bold text-[#FFD700] hover:bg-black/90"
             rel="nofollow"
             target="_blank"
