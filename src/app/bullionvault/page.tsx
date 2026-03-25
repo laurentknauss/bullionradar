@@ -136,50 +136,6 @@ export default function BullionVaultPage() {
           </div>
         </section>
 
-        {/* How It Works */}
-        <section className="mb-12 rounded-lg border border-amber-600/30 bg-black/50 p-8">
-          <h2 className="mb-6 text-2xl font-bold text-[#FFD700]">
-            Comment ça marche en 4 étapes
-          </h2>
-          <div className="grid gap-6 md:grid-cols-4">
-            {[
-              {
-                step: "1",
-                title: "S'inscrire",
-                desc: "Créez un compte en 5 minutes",
-              },
-              {
-                step: "2",
-                title: "Approvisionner",
-                desc: "Virement bancaire vers nos comptes en Angleterre",
-              },
-              {
-                step: "3",
-                title: "Acheter",
-                desc: "Or, argent ou platine, à partir de 1g, au meilleur prix",
-              },
-              {
-                step: "4",
-                title: "Stocker",
-                desc: "Coffres professionnels. Assurance incluse. Audit quotidien.",
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-lg border border-amber-600/20 bg-[#0f0f0f] p-6 text-center"
-              >
-                <div className="mb-3 text-3xl font-black text-[#FFD700]">
-                  {item.step}
-                </div>
-                <h3 className="mb-2 font-bold">{item.title}</h3>
-                <p className="text-base font-medium text-[#E8DCC8]">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Key Features */}
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-[#FFD700]">
