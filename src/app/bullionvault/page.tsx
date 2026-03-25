@@ -59,28 +59,42 @@ export default function BullionVaultPage() {
       <div className="mx-auto max-w-5xl px-4 pb-20">
         {/* Hero Section */}
         <div className="mb-16 text-center">
-          <h1 className="mb-4 text-4xl font-black md:text-5xl">
-            Investissez dans l&apos;Or dès{" "}
-            <span className="text-[#FFD700]">1 gramme</span>
-          </h1>
-          <p className="mb-6 text-lg text-gray-300">
-            Accès direct au marché professionnel. Sans pièces physiques. Sans
-            livraison à domicile.
-            <br />
-            Juste de l&apos;or, de l&apos;argent et du platine, 100% sécurisés.
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-amber-400">
+            Partenaire recommandé par BullionRadar
           </p>
-          <p className="text-sm text-amber-400">
-            L&apos;alternative idéale aux pièces bullion pour ceux qui veulent
-            l&apos;exposition sans la complexité
+          <h1 className="mb-4 text-4xl font-black md:text-5xl">
+            Vous voulez de l&apos;or, mais pas{" "}
+            <span className="text-[#FFD700]">
+              les contraintes des pièces physiques ?
+            </span>
+          </h1>
+          <p className="mb-6 text-lg text-[#E8DCC8]">
+            Stockage à domicile, frais de livraison, spread à la revente, ticket
+            d&apos;entrée élevé…
+            <br />
+            Il existe une alternative utilisée par plus de 125 000 investisseurs
+            dans 175 pays.
+          </p>
+          <p className="text-base font-semibold text-white">
+            Cette alternative, c&apos;est{" "}
+            <span className="text-[#FFD700]">BullionVault</span> — accès direct
+            au marché professionnel de l&apos;or, dès 1 gramme.
           </p>
         </div>
 
         {/* The Offer */}
         <section className="mb-12 rounded-lg border border-amber-600/30 bg-gradient-to-br from-black/50 to-black/30 p-8">
           <h2 className="mb-6 text-2xl font-bold text-[#FFD700]">
-            Pourquoi BullionVault si vous aimez les pièces bullion ?
+            Pourquoi BullionVault plutôt que des pièces physiques ?
           </h2>
-          <div className="space-y-4 text-gray-300">
+          <div className="space-y-4 text-[#E8DCC8]">
+            <p>
+              BullionVault est une plateforme britannique fondée en 2005 qui
+              permet d&apos;acheter, vendre et stocker de l&apos;or, de
+              l&apos;argent et du platine{" "}
+              <strong>dans des coffres professionnels certifiés</strong>, au
+              prix du marché, sans intermédiaire.
+            </p>
             <p>
               Vous comparez les prix des <strong>pièces bullion</strong> sur
               BullionRadar (Napoléon, Maple Leaf, Krugerrand…). Mais vous
@@ -131,7 +145,7 @@ export default function BullionVaultPage() {
             {[
               {
                 step: "1",
-                title: "S&apos;inscrire",
+                title: "S'inscrire",
                 desc: "Créez un compte en 5 minutes",
               },
               {
@@ -147,7 +161,7 @@ export default function BullionVaultPage() {
               {
                 step: "4",
                 title: "Stocker",
-                desc: "Coffrés profesionnels. Assurance incluse. Audit quotidien.",
+                desc: "Coffres professionnels. Assurance incluse. Audit quotidien.",
               },
             ].map((item, idx) => (
               <div
@@ -158,7 +172,9 @@ export default function BullionVaultPage() {
                   {item.step}
                 </div>
                 <h3 className="mb-2 font-bold">{item.title}</h3>
-                <p className="text-sm text-gray-400">{item.desc}</p>
+                <p className="text-base font-medium text-[#E8DCC8]">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -203,62 +219,11 @@ export default function BullionVaultPage() {
                 <h3 className="mb-2 font-bold text-[#FFD700]">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-400">{feature.desc}</p>
+                <p className="text-base font-medium text-[#E8DCC8]">
+                  {feature.desc}
+                </p>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* Tarification Détaillée */}
-        <section className="mb-12 rounded-lg border border-amber-600/30 bg-black/50 p-8">
-          <h2 className="mb-6 text-2xl font-bold text-[#FFD700]">
-            Tarification claire
-          </h2>
-
-          <div className="mb-8">
-            <h3 className="mb-4 font-bold text-white">Frais de transaction</h3>
-            <div className="space-y-3 text-gray-300">
-              <div className="flex justify-between border-b border-amber-600/20 pb-3">
-                <span>Commission achat</span>
-                <span className="font-semibold text-[#FFD700]">0,5%</span>
-              </div>
-              <div className="flex justify-between border-b border-amber-600/20 pb-3">
-                <span>Commission vente</span>
-                <span className="font-semibold text-[#FFD700]">0,5%</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Retrait bancaire (SEPA/euros)</span>
-                <span className="font-semibold text-[#FFD700]">5€ fixe</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-8 border-t border-amber-600/20 pt-8">
-            <h3 className="mb-4 font-bold text-white">
-              Frais de stockage (assurance incluse)
-            </h3>
-            <div className="space-y-3 text-gray-300">
-              <div className="flex justify-between border-b border-amber-600/20 pb-3">
-                <span>Or</span>
-                <span className="font-semibold text-[#FFD700]">
-                  0,01% par mois (min. 4$/mois)
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span>Argent / Platine</span>
-                <span className="font-semibold text-[#FFD700]">
-                  0,04% par mois (min. 8$/mois)
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-lg bg-amber-600/10 p-4 text-sm text-gray-300">
-            <strong className="text-amber-400">Exemple concret :</strong> Vous
-            achetez 100g d&apos;or à 50€/g = 5 000€. Frais achat : 25€ (0,5%).
-            Stockage : 0,05€/mois (0,01% de 5000€). Vous revendez 6 mois plus
-            tard : frais vente 25€. <strong>Total coûts : 55€</strong> pour 6
-            mois de stockage sécurisé avec assurance.
           </div>
         </section>
 
@@ -267,14 +232,14 @@ export default function BullionVaultPage() {
           <h2 className="mb-6 text-2xl font-bold text-[#FFD700]">
             Sécurité et transparence totales
           </h2>
-          <div className="space-y-4 text-gray-300">
+          <div className="space-y-4 text-[#E8DCC8]">
             <div className="flex items-start gap-3">
               <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-[#FFD700]"></span>
               <div>
                 <strong className="text-white">
                   Audit quotidien indépendant
                 </strong>
-                <p className="text-sm text-gray-400">
+                <p className="text-base font-medium text-[#E8DCC8]">
                   Chaque jour, des auditeurs externes vérifient les stocks et
                   publient les résultats. Transparence totale.
                 </p>
@@ -286,7 +251,7 @@ export default function BullionVaultPage() {
                 <strong className="text-white">
                   Propriété physique garantie
                 </strong>
-                <p className="text-sm text-gray-400">
+                <p className="text-base font-medium text-[#E8DCC8]">
                   Votre or n&apos;est jamais sur les livres de BullionVault. En
                   cas de faillite, vos avoirs sont protégés.
                 </p>
@@ -296,7 +261,7 @@ export default function BullionVaultPage() {
               <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-[#FFD700]"></span>
               <div>
                 <strong className="text-white">Coffres-forts certifiés</strong>
-                <p className="text-sm text-gray-400">
+                <p className="text-base font-medium text-[#E8DCC8]">
                   Zurich, Londres, New York, Singapour, Toronto. Tous assurés et
                   accrédités internationalement.
                 </p>
@@ -306,7 +271,7 @@ export default function BullionVaultPage() {
               <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-[#FFD700]"></span>
               <div>
                 <strong className="text-white">Standard professionnel</strong>
-                <p className="text-sm text-gray-400">
+                <p className="text-base font-medium text-[#E8DCC8]">
                   Barres de &quot;bonne livraison&quot; (normes de Londres).
                   Aucune pureté compromise.
                 </p>
@@ -316,7 +281,7 @@ export default function BullionVaultPage() {
               <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-[#FFD700]"></span>
               <div>
                 <strong className="text-white">75 000+ utilisateurs</strong>
-                <p className="text-sm text-gray-400">
+                <p className="text-base font-medium text-[#E8DCC8]">
                   Depuis 20+ ans. Plus de 37 tonnes d&apos;or stockés. Confiance
                   établie.
                 </p>
@@ -350,11 +315,13 @@ export default function BullionVaultPage() {
                 className="rounded-lg border border-amber-600/20 bg-[#0f0f0f] p-4"
               >
                 <h3 className="mb-2 font-bold text-[#FFD700]">{item.metal}</h3>
-                <p className="text-sm text-gray-400">{item.desc}</p>
+                <p className="text-base font-medium text-[#E8DCC8]">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
-          <p className="mt-4 text-sm text-gray-400">
+          <p className="mt-4 text-base font-medium text-[#E8DCC8]">
             <strong>Important :</strong> BullionVault ne propose que des barres
             professionnelles, pas de pièces. C&apos;est le standard du marché
             professionnel (meilleur prix, liquidité maximale).
@@ -362,7 +329,7 @@ export default function BullionVaultPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="rounded-lg border border-amber-600/30 bg-gradient-to-r from-[#BE943C] to-[#FFD700]/30 p-8 text-center">
+        <section className="rounded-lg border border-amber-600/30 bg-[#BE943C] p-8 text-center">
           <h2 className="mb-4 text-2xl font-bold text-black">
             Vous êtes prêt à commencer ?
           </h2>
@@ -382,70 +349,6 @@ export default function BullionVaultPage() {
             Lien affilié BullionRadar — Commission sans coût supplémentaire pour
             vous
           </p>
-        </section>
-
-        {/* FAQ Summary */}
-        <section className="mt-12 rounded-lg border border-amber-600/30 bg-black/50 p-8">
-          <h2 className="mb-6 text-2xl font-bold text-[#FFD700]">
-            Questions fréquentes
-          </h2>
-          <div className="space-y-4 text-gray-300">
-            <details className="group">
-              <summary className="cursor-pointer font-bold text-white hover:text-[#FFD700]">
-                Puis-je retirer mon or physiquement ?
-              </summary>
-              <p className="mt-2 text-sm text-gray-400">
-                Oui, mais BullionVault ne recommande pas la livraison car elle
-                sortla l&apos;or du circuit professionnel et entraîne des frais
-                élevés. L&apos;idée est de stocker sécurisé et liquide dans les
-                coffres.
-              </p>
-            </details>
-
-            <details className="group">
-              <summary className="cursor-pointer font-bold text-white hover:text-[#FFD700]">
-                Que se passe-t-il si BullionVault fait faillite ?
-              </summary>
-              <p className="mt-2 text-sm text-gray-400">
-                Votre or n&apos;est pas affecté. Il n&apos;est jamais sur les
-                livres de BullionVault. Les avoirs des clients sont ségrégués
-                légalement et assurés. C&apos;est garanti par audit indépendant
-                quotidien.
-              </p>
-            </details>
-
-            <details className="group">
-              <summary className="cursor-pointer font-bold text-white hover:text-[#FFD700]">
-                Quelle est la fiscalité ?
-              </summary>
-              <p className="mt-2 text-sm text-gray-400">
-                Ça dépend de votre pays. BullionVault a des clients dans 175
-                pays. En France, l&apos;or physique est soumis à des règles
-                spécifiques (TMP 11,5%, TPV 36,2%). Consultez un expert fiscal.
-              </p>
-            </details>
-
-            <details className="group">
-              <summary className="cursor-pointer font-bold text-white hover:text-[#FFD700]">
-                Puis-je acheter et revendre rapidement ?
-              </summary>
-              <p className="mt-2 text-sm text-gray-400">
-                Oui, totalement. Achat/vente 24H/24 7J/7. Pas de délai. Frais
-                fixes à 0,5% chacun. C&apos;est la liquidité professionnelle.
-              </p>
-            </details>
-
-            <details className="group">
-              <summary className="cursor-pointer font-bold text-white hover:text-[#FFD700]">
-                Comment je valide mon compte ?
-              </summary>
-              <p className="mt-2 text-sm text-gray-400">
-                Envoi d&apos;une pièce d&apos;identité + RIB. Obligatoire pour
-                respecter la législation anti-blanchiment. Vous avez 15 jours
-                après le premier approvisionnement.
-              </p>
-            </details>
-          </div>
         </section>
       </div>
 
