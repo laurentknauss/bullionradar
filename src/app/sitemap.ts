@@ -89,6 +89,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   });
 
+  // BullionVault (page affiliation / or alloué)
+  urls.push({
+    url: `${BASE_URL}/bullionvault`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  });
+
   // Guide
   urls.push({
     url: `${BASE_URL}/guide`,
@@ -121,13 +129,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   });
 
-  // VS pages - toutes les combinaisons
+  // Fiches coin - 58 pièces (contenu unique, priorité haute pour Google)
+  for (const coin of COINS) {
+    urls.push({
+      url: `${BASE_URL}/coin/${slugify(coin.name)}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    });
+  }
+
+  // VS pages - ordre alphabétique uniquement (dédup des duplicates A-vs-B / B-vs-A).
+  // La canonical est définie sur l'ordre alphabétique dans generateMetadata(),
+  // on ne soumet donc à Google que cette version canonique pour éviter le signal
+  // "duplicate content" qui faisait rejeter l'ensemble des pages /vs/.
   for (let i = 0; i < COINS.length; i++) {
-    for (let j = 0; j < COINS.length; j++) {
-      if (i === j) continue;
-      const slug = `${slugify(COINS[i].name)}-vs-${slugify(COINS[j].name)}`;
+    for (let j = i + 1; j < COINS.length; j++) {
+      const slug1 = slugify(COINS[i]!.name);
+      const slug2 = slugify(COINS[j]!.name);
+      const canonicalSlug =
+        slug1 < slug2 ? `${slug1}-vs-${slug2}` : `${slug2}-vs-${slug1}`;
       urls.push({
-        url: `${BASE_URL}/vs/${slug}`,
+        url: `${BASE_URL}/vs/${canonicalSlug}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.6,
