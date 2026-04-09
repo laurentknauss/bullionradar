@@ -86,6 +86,49 @@ const COIN_IMAGES: Record<string, string> = {
     "/coins-v2/silver/20-francs-turin-argent-avers.webp",
   "10-francs-turin-argent":
     "/coins-v2/silver/10-francs-turin-argent-avers.webp",
+  // Pièces historiques / semi-numismatiques (Godot)
+  "10-francs-napoleon-or": "/coins-v2/gold/10-francs-napoleon-or-avers.webp",
+  "10-francs-marianne-coq-or":
+    "/coins-v2/gold/10-francs-marianne-coq-or-avers.webp",
+  "20-francs-marianne-coq-or":
+    "/coins-v2/gold/20-francs-marianne-coq-or-avers.webp",
+  "union-latine-or": "/coins-v2/gold/union-latine-or-avers.webp",
+  "louis-dor-20-francs-or": "/coins-v2/gold/louis-dor-20-francs-or-avers.webp",
+  "50-francs-napoleon-iii-or":
+    "/coins-v2/gold/50-francs-napoleon-iii-or-avers.webp",
+  "demi-souverain-or": "/coins-v2/gold/demi-souverain-or-avers.webp",
+  "demi-souverain-elisabeth-ii-or":
+    "/coins-v2/gold/demi-souverain-elisabeth-ii-or-avers.webp",
+  "5-dollars-us-or": "/coins-v2/gold/5-dollars-us-or-avers.webp",
+  "10-dollars-us-or": "/coins-v2/gold/10-dollars-us-or-avers.webp",
+  "20-dollars-us-or": "/coins-v2/gold/20-dollars-us-or-avers.webp",
+  "50-pesos-or": "/coins-v2/gold/50-pesos-or-avers.webp",
+  "4-ducats-or": "/coins-v2/gold/4-ducats-or-avers.webp",
+  "1-ducat-or": "/coins-v2/gold/1-ducat-or-avers.webp",
+  "100-corona-or": "/coins-v2/gold/100-corona-or-avers.webp",
+  "20-reichsmarks-or": "/coins-v2/gold/20-reichsmarks-or-avers.webp",
+  "20-francs-tunisie-or": "/coins-v2/gold/20-francs-tunisie-or-avers.webp",
+  "10-florins-or": "/coins-v2/gold/10-florins-or-avers.webp",
+  "100-kurush-or": "/coins-v2/gold/100-kurush-or-avers.webp",
+  // Zodiac Monnaie de Paris + Austerlitz
+  "zodiac-taureau-2026-or": "/coins-v2/gold/zodiac-taureau-2026-or-avers.webp",
+  "zodiac-gemeaux-2026-or": "/coins-v2/gold/zodiac-gemeaux-2026-or-avers.webp",
+  "zodiac-cancer-2026-or": "/coins-v2/gold/zodiac-cancer-2026-or-avers.webp",
+  "zodiac-lion-2026-or": "/coins-v2/gold/zodiac-lion-2026-or-avers.webp",
+  "zodiac-vierge-2026-or": "/coins-v2/gold/zodiac-vierge-2026-or-avers.webp",
+  "zodiac-balance-2026-or": "/coins-v2/gold/zodiac-balance-2026-or-avers.webp",
+  "zodiac-sagittaire-2026-or":
+    "/coins-v2/gold/zodiac-sagittaire-2026-or-avers.webp",
+  "austerlitz-2025-or": "/coins-v2/gold/austerlitz-2025-or-avers.webp",
+  // Panda 3g
+  "panda-3g-or": "/coins-v2/gold/panda-3g-or-avers.webp",
+  // Argent manquantes (Godot)
+  "walking-liberty-1oz-argent":
+    "/coins-v2/silver/walking-liberty-1oz-argent-avers.webp",
+  "hokusai-grande-vague-1oz-argent":
+    "/coins-v2/silver/hokusai-grande-vague-1oz-argent-avers.webp",
+  "100-francs-argent-1982-2002":
+    "/coins-v2/silver/100-francs-argent-1982-2002-avers.webp",
 };
 
 function slugify(name: string): string {
