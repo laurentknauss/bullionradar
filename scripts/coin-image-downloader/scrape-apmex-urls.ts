@@ -5,10 +5,6 @@ import { chromium } from "playwright-core";
 // Pièces argent manquantes avec leurs URLs APMEX (URLs vérifiées 2026-02)
 const COINS_TO_SCRAPE = [
   {
-    id: "kookaburra-1oz-argent",
-    url: "https://www.apmex.com/product/25772/australia-1-oz-silver-kookaburra-bu-random-year",
-  },
-  {
     id: "koala-1oz-argent",
     url: "https://www.apmex.com/product/102420/1-oz-australian-silver-koala-bu-random-year",
   },

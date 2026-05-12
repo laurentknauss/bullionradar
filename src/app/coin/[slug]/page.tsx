@@ -2,12 +2,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
+import { filterUntrackedGodot } from "@/lib/godot-affiliate";
 import { getDealerDisplayName } from "@/lib/utils";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { Footer } from "@/components/footer";
 import { formatFineness, formatRelativeTime } from "@/lib/format";
-import { hasVideo } from "@/components/remotion/coin-images";
-import { CoinVideoSection } from "@/components/remotion/CoinVideoSection";
+// Vidéos Remotion désactivées sur le site (les vidéos sont pour YouTube uniquement).
+// Réactiver : décommenter ces imports + le bloc <CoinVideoSection> plus bas.
+// import { hasVideo } from "@/components/remotion/coin-images";
+// import { CoinVideoSection } from "@/components/remotion/CoinVideoSection";
 import type { Coin } from "@/types";
 
 // Images disponibles (WebP)
@@ -51,7 +54,6 @@ const COIN_IMAGES: Record<string, string> = {
   "american-eagle-1oz-argent":
     "/coins-v2/silver/american-eagle-1oz-argent-avers.webp",
   "krugerrand-1oz-argent": "/coins-v2/silver/krugerrand-1oz-argent-avers.webp",
-  "kookaburra-1oz-argent": "/coins-v2/silver/kookaburra-1oz-argent-avers.webp",
   "koala-1oz-argent": "/coins-v2/silver/koala-1oz-argent-avers.webp",
   "panda-30g-argent": "/coins-v2/silver/panda-30g-argent-avers.webp",
   "noah-ark-1oz-argent": "/coins-v2/silver/noah-ark-1oz-argent-avers.webp",
@@ -96,22 +98,16 @@ const COIN_IMAGES: Record<string, string> = {
     "/coins-v2/gold/20-francs-marianne-coq-or-avers.webp",
   "union-latine-or": "/coins-v2/gold/union-latine-or-avers.webp",
   "louis-dor-20-francs-or": "/coins-v2/gold/louis-dor-20-francs-or-avers.webp",
-  "50-francs-napoleon-iii-or":
-    "/coins-v2/gold/50-francs-napoleon-iii-or-avers.webp",
   "demi-souverain-or": "/coins-v2/gold/demi-souverain-or-avers.webp",
-  "demi-souverain-elisabeth-ii-or":
-    "/coins-v2/gold/demi-souverain-elisabeth-ii-or-avers.webp",
   "5-dollars-us-or": "/coins-v2/gold/5-dollars-us-or-avers.webp",
   "10-dollars-us-or": "/coins-v2/gold/10-dollars-us-or-avers.webp",
   "20-dollars-us-or": "/coins-v2/gold/20-dollars-us-or-avers.webp",
   "50-pesos-or": "/coins-v2/gold/50-pesos-or-avers.webp",
   "4-ducats-or": "/coins-v2/gold/4-ducats-or-avers.webp",
   "1-ducat-or": "/coins-v2/gold/1-ducat-or-avers.webp",
-  "100-corona-or": "/coins-v2/gold/100-corona-or-avers.webp",
   "20-reichsmarks-or": "/coins-v2/gold/20-reichsmarks-or-avers.webp",
   "20-francs-tunisie-or": "/coins-v2/gold/20-francs-tunisie-or-avers.webp",
   "10-florins-or": "/coins-v2/gold/10-florins-or-avers.webp",
-  "100-kurush-or": "/coins-v2/gold/100-kurush-or-avers.webp",
   // Zodiac Monnaie de Paris + Austerlitz
   "zodiac-taureau-2026-or": "/coins-v2/gold/zodiac-taureau-2026-or-avers.webp",
   "zodiac-gemeaux-2026-or": "/coins-v2/gold/zodiac-gemeaux-2026-or-avers.webp",
@@ -121,14 +117,9 @@ const COIN_IMAGES: Record<string, string> = {
   "zodiac-balance-2026-or": "/coins-v2/gold/zodiac-balance-2026-or-avers.webp",
   "zodiac-sagittaire-2026-or":
     "/coins-v2/gold/zodiac-sagittaire-2026-or-avers.webp",
-  "austerlitz-2025-or": "/coins-v2/gold/austerlitz-2025-or-avers.webp",
   // Panda 3g
   "panda-3g-or": "/coins-v2/gold/panda-3g-or-avers.webp",
   // Argent manquantes (Godot)
-  "walking-liberty-1oz-argent":
-    "/coins-v2/silver/walking-liberty-1oz-argent-avers.webp",
-  "hokusai-grande-vague-1oz-argent":
-    "/coins-v2/silver/hokusai-grande-vague-1oz-argent-avers.webp",
   "100-francs-argent-1982-2002":
     "/coins-v2/silver/100-francs-argent-1982-2002-avers.webp",
 };
@@ -311,7 +302,7 @@ export default async function CoinPage({ params }: PageProps) {
   }
 
   const image = COIN_IMAGES[coin.id];
-  const prices = await getPricesForCoinById(coin.id);
+  const prices = filterUntrackedGodot(await getPricesForCoinById(coin.id));
   const hasPrices = prices.length > 0;
   const latestScrapedAt = hasPrices
     ? [...prices].sort(
@@ -473,10 +464,10 @@ export default async function CoinPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Video vue d'ensemble */}
-        {hasVideo(coin.id) && (
+        {/* Video vue d'ensemble — DÉSACTIVÉE (vidéos pour YouTube uniquement, pas pour le site) */}
+        {/* {hasVideo(coin.id) && (
           <CoinVideoSection slug={coin.id} coinName={coin.name} />
-        )}
+        )} */}
 
         {/* Caractéristiques */}
         <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-6">

@@ -198,19 +198,9 @@ const GOLD_HISTORIC: readonly CoinConfig[] = [
     url: "https://www.achat-or-et-argent.fr/or/louis-d-or-20-francs-or/5231",
   },
   {
-    slug: "50-francs-napoleon-iii-or",
-    name: "50 Francs Napoleon III",
-    url: "https://www.achat-or-et-argent.fr/or/50-francs-napoleon-iii/1208",
-  },
-  {
     slug: "demi-souverain-or",
     name: "Demi Souverain",
     url: "https://www.achat-or-et-argent.fr/or/demi-souverain/49",
-  },
-  {
-    slug: "demi-souverain-elisabeth-ii-or",
-    name: "Demi Souverain Elisabeth II",
-    url: "https://www.achat-or-et-argent.fr/or/demi-souverain-elisabeth-ii/4691",
   },
   {
     slug: "5-dollars-us-or",
@@ -243,11 +233,6 @@ const GOLD_HISTORIC: readonly CoinConfig[] = [
     url: "https://www.achat-or-et-argent.fr/or/1-ducat-or-francois-joseph-1915/4767",
   },
   {
-    slug: "100-corona-or",
-    name: "100 Corona Francois-Joseph 1915",
-    url: "https://www.achat-or-et-argent.fr/or/100-corona-francois-joseph-1915-vienne/2916",
-  },
-  {
     slug: "20-reichsmarks-or",
     name: "20 Reichsmarks",
     url: "https://www.achat-or-et-argent.fr/or/20-reichsmarks/34",
@@ -261,11 +246,6 @@ const GOLD_HISTORIC: readonly CoinConfig[] = [
     slug: "10-florins-or",
     name: "10 Florins (Pays-Bas)",
     url: "https://www.achat-or-et-argent.fr/or/10-florins/18",
-  },
-  {
-    slug: "100-kurush-or",
-    name: "Empire Ottoman 100 Kurush",
-    url: "https://www.achat-or-et-argent.fr/or/empire-ottoman-turquie-100-kurush-1844-1923/5041",
   },
 ] as const;
 
@@ -325,11 +305,6 @@ const GOLD_ZODIAC: readonly CoinConfig[] = [
     name: "Signe du Zodiaque Sagittaire 2026",
     url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-sagittaire-2026/23254",
   },
-  {
-    slug: "austerlitz-2025-or",
-    name: "Austerlitz 1805-2025 (Monnaie de Paris)",
-    url: "https://www.achat-or-et-argent.fr/or/austerlitz-1805-2025/23662",
-  },
 ] as const;
 
 const GOLD_COINS: readonly CoinConfig[] = [
@@ -380,24 +355,9 @@ const SILVER_COINS: readonly CoinConfig[] = [
     url: "https://www.achat-or-et-argent.fr/argent/american-buffalo-1-once/1653",
   },
   {
-    slug: "kookaburra-1oz-argent",
-    name: "Kookaburra 1 Once Argent",
-    url: "https://www.achat-or-et-argent.fr/argent/kookaburra-1-once/1660",
-  },
-  {
     slug: "panda-30g-argent",
     name: "Panda 30g Argent",
     url: "https://www.achat-or-et-argent.fr/argent/panda-30g/3286",
-  },
-  {
-    slug: "walking-liberty-1oz-argent",
-    name: "Walking Liberty 1 Once Argent",
-    url: "https://www.achat-or-et-argent.fr/argent/walking-liberty-1-once/1808",
-  },
-  {
-    slug: "hokusai-grande-vague-1oz-argent",
-    name: "Hokusai Grande Vague 1 Once Argent",
-    url: "https://www.achat-or-et-argent.fr/argent/hokusai-grande-vague-1-once/2503",
   },
 ] as const;
 
@@ -436,7 +396,7 @@ const FRENCH_SILVER_COINS: readonly CoinConfig[] = [
   {
     slug: "100-francs-argent-1982-2002",
     name: "100 Francs Argent 1982-2002",
-    url: "https://www.achat-or-et-argent.fr/argent/100-francs-argent-1982-2002/24",
+    url: "https://www.achat-or-et-argent.fr/argent/100-francs-argent-1982-2002/14",
   },
 ] as const;
 

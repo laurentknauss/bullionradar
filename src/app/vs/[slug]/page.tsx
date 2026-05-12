@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getGoldCoins, getSilverCoins } from "@/lib/coins-data";
 import { getPricesForCoinById, type DealerPrice } from "@/lib/supabase";
+import { filterUntrackedGodot } from "@/lib/godot-affiliate";
 import { getDealerDisplayName } from "@/lib/utils";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { Footer } from "@/components/footer";
@@ -49,7 +50,6 @@ const COIN_IMAGES: Record<string, string> = {
   "american-eagle-1oz-argent":
     "/coins-v2/silver/american-eagle-1oz-argent-avers.webp",
   "krugerrand-1oz-argent": "/coins-v2/silver/krugerrand-1oz-argent-avers.webp",
-  "kookaburra-1oz-argent": "/coins-v2/silver/kookaburra-1oz-argent-avers.webp",
   "koala-1oz-argent": "/coins-v2/silver/koala-1oz-argent-avers.webp",
   "panda-30g-argent": "/coins-v2/silver/panda-30g-argent-avers.webp",
   "noah-ark-1oz-argent": "/coins-v2/silver/noah-ark-1oz-argent-avers.webp",
@@ -94,22 +94,16 @@ const COIN_IMAGES: Record<string, string> = {
     "/coins-v2/gold/20-francs-marianne-coq-or-avers.webp",
   "union-latine-or": "/coins-v2/gold/union-latine-or-avers.webp",
   "louis-dor-20-francs-or": "/coins-v2/gold/louis-dor-20-francs-or-avers.webp",
-  "50-francs-napoleon-iii-or":
-    "/coins-v2/gold/50-francs-napoleon-iii-or-avers.webp",
   "demi-souverain-or": "/coins-v2/gold/demi-souverain-or-avers.webp",
-  "demi-souverain-elisabeth-ii-or":
-    "/coins-v2/gold/demi-souverain-elisabeth-ii-or-avers.webp",
   "5-dollars-us-or": "/coins-v2/gold/5-dollars-us-or-avers.webp",
   "10-dollars-us-or": "/coins-v2/gold/10-dollars-us-or-avers.webp",
   "20-dollars-us-or": "/coins-v2/gold/20-dollars-us-or-avers.webp",
   "50-pesos-or": "/coins-v2/gold/50-pesos-or-avers.webp",
   "4-ducats-or": "/coins-v2/gold/4-ducats-or-avers.webp",
   "1-ducat-or": "/coins-v2/gold/1-ducat-or-avers.webp",
-  "100-corona-or": "/coins-v2/gold/100-corona-or-avers.webp",
   "20-reichsmarks-or": "/coins-v2/gold/20-reichsmarks-or-avers.webp",
   "20-francs-tunisie-or": "/coins-v2/gold/20-francs-tunisie-or-avers.webp",
   "10-florins-or": "/coins-v2/gold/10-florins-or-avers.webp",
-  "100-kurush-or": "/coins-v2/gold/100-kurush-or-avers.webp",
   // Zodiac Monnaie de Paris + Austerlitz
   "zodiac-taureau-2026-or": "/coins-v2/gold/zodiac-taureau-2026-or-avers.webp",
   "zodiac-gemeaux-2026-or": "/coins-v2/gold/zodiac-gemeaux-2026-or-avers.webp",
@@ -119,14 +113,9 @@ const COIN_IMAGES: Record<string, string> = {
   "zodiac-balance-2026-or": "/coins-v2/gold/zodiac-balance-2026-or-avers.webp",
   "zodiac-sagittaire-2026-or":
     "/coins-v2/gold/zodiac-sagittaire-2026-or-avers.webp",
-  "austerlitz-2025-or": "/coins-v2/gold/austerlitz-2025-or-avers.webp",
   // Panda 3g
   "panda-3g-or": "/coins-v2/gold/panda-3g-or-avers.webp",
   // Argent manquantes (Godot)
-  "walking-liberty-1oz-argent":
-    "/coins-v2/silver/walking-liberty-1oz-argent-avers.webp",
-  "hokusai-grande-vague-1oz-argent":
-    "/coins-v2/silver/hokusai-grande-vague-1oz-argent-avers.webp",
   "100-francs-argent-1982-2002":
     "/coins-v2/silver/100-francs-argent-1982-2002-avers.webp",
 };
@@ -394,10 +383,12 @@ export default async function VsPage({ params }: PageProps) {
   const image2 = COIN_IMAGES[coin2.id];
 
   // Fetch prices for both coins (in parallel)
-  const [prices1, prices2] = await Promise.all([
+  const [prices1Raw, prices2Raw] = await Promise.all([
     getPricesForCoinById(coin1.id),
     getPricesForCoinById(coin2.id),
   ]);
+  const prices1 = filterUntrackedGodot(prices1Raw);
+  const prices2 = filterUntrackedGodot(prices2Raw);
 
   const hasPrices = prices1.length > 0 || prices2.length > 0;
 

@@ -12,6 +12,11 @@ out/
 .env.local
 .env.*.local
 
+# Credentials / service accounts
+*-service-account.json
+*-credentials.json
+gsc-service-account.json
+
 # IDE
 .idea/
 .vscode/

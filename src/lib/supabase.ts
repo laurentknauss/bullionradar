@@ -130,20 +130,16 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   "20-francs-marianne-coq-or": "20-francs-marianne-coq-or",
   "union-latine-or": "union-latine-or",
   "louis-dor-20-francs-or": "louis-dor-20-francs-or",
-  "50-francs-napoleon-iii-or": "50-francs-napoleon-iii-or",
   "demi-souverain-or": "demi-souverain-or",
-  "demi-souverain-elisabeth-ii-or": "demi-souverain-elisabeth-ii-or",
   "5-dollars-us-or": "5-dollars-us-or",
   "10-dollars-us-or": "10-dollars-us-or",
   "20-dollars-us-or": "20-dollars-us-or",
   "50-pesos-or": "50-pesos-or",
   "4-ducats-or": "4-ducats-or",
   "1-ducat-or": "1-ducat-or",
-  "100-corona-or": "100-corona-or",
   "20-reichsmarks-or": "20-reichsmarks-or",
   "20-francs-tunisie-or": "20-francs-tunisie-or",
   "10-florins-or": "10-florins-or",
-  "100-kurush-or": "100-kurush-or",
   // Panda fractions (Godot)
   "panda-3g-or": "panda-3g-or",
   // Zodiac Monnaie de Paris + Austerlitz (Godot)
@@ -154,11 +150,8 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   "zodiac-vierge-2026-or": "zodiac-vierge-2026-or",
   "zodiac-balance-2026-or": "zodiac-balance-2026-or",
   "zodiac-sagittaire-2026-or": "zodiac-sagittaire-2026-or",
-  "austerlitz-2025-or": "austerlitz-2025-or",
   // Argent manquantes (Godot)
   "buffalo-1oz-argent": "buffalo-1oz-argent",
-  "walking-liberty-1oz-argent": "walking-liberty-1oz-argent",
-  "hokusai-grande-vague-1oz-argent": "hokusai-grande-vague-1oz-argent",
   "100-francs-argent-1982-2002": "100-francs-argent-1982-2002",
 };
 
