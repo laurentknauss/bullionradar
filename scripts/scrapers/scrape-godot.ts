@@ -170,11 +170,151 @@ const GOLD_TENTH: readonly CoinConfig[] = [
   },
 ] as const;
 
+// === Pièces historiques / semi-numismatiques ===
+const GOLD_HISTORIC: readonly CoinConfig[] = [
+  {
+    slug: "10-francs-napoleon-or",
+    name: "10 Francs Napoleon (Demi Napoleon)",
+    url: "https://www.achat-or-et-argent.fr/or/10-francs-napoleon/32",
+  },
+  {
+    slug: "10-francs-marianne-coq-or",
+    name: "10 Francs Marianne Coq",
+    url: "https://www.achat-or-et-argent.fr/or/10-francs-marianne-coq/18860",
+  },
+  {
+    slug: "20-francs-marianne-coq-or",
+    name: "20 Francs Marianne Coq",
+    url: "https://www.achat-or-et-argent.fr/or/20-francs-marianne-coq/17",
+  },
+  {
+    slug: "union-latine-or",
+    name: "Union Latine",
+    url: "https://www.achat-or-et-argent.fr/or/union-latine/20",
+  },
+  {
+    slug: "louis-dor-20-francs-or",
+    name: "Louis d'Or - 20 Francs Or",
+    url: "https://www.achat-or-et-argent.fr/or/louis-d-or-20-francs-or/5231",
+  },
+  {
+    slug: "demi-souverain-or",
+    name: "Demi Souverain",
+    url: "https://www.achat-or-et-argent.fr/or/demi-souverain/49",
+  },
+  {
+    slug: "5-dollars-us-or",
+    name: "5 Dollars US",
+    url: "https://www.achat-or-et-argent.fr/or/5-dollars-us/33",
+  },
+  {
+    slug: "10-dollars-us-or",
+    name: "10 Dollars US",
+    url: "https://www.achat-or-et-argent.fr/or/10-dollars-us/13",
+  },
+  {
+    slug: "20-dollars-us-or",
+    name: "20 Dollars US",
+    url: "https://www.achat-or-et-argent.fr/or/20-dollars-us/19",
+  },
+  {
+    slug: "50-pesos-or",
+    name: "50 Pesos Or (Mexique)",
+    url: "https://www.achat-or-et-argent.fr/or/50-pesos/11",
+  },
+  {
+    slug: "4-ducats-or",
+    name: "4 Ducats Or (Francois-Joseph)",
+    url: "https://www.achat-or-et-argent.fr/or/4-ducats-or/839",
+  },
+  {
+    slug: "1-ducat-or",
+    name: "1 Ducat Or Francois-Joseph 1915",
+    url: "https://www.achat-or-et-argent.fr/or/1-ducat-or-francois-joseph-1915/4767",
+  },
+  {
+    slug: "20-reichsmarks-or",
+    name: "20 Reichsmarks",
+    url: "https://www.achat-or-et-argent.fr/or/20-reichsmarks/34",
+  },
+  {
+    slug: "20-francs-tunisie-or",
+    name: "20 Francs Tunisie",
+    url: "https://www.achat-or-et-argent.fr/or/20-francs-tunisie/44",
+  },
+  {
+    slug: "10-florins-or",
+    name: "10 Florins (Pays-Bas)",
+    url: "https://www.achat-or-et-argent.fr/or/10-florins/18",
+  },
+] as const;
+
+// === Panda fractions ===
+const GOLD_PANDA: readonly CoinConfig[] = [
+  {
+    slug: "panda-15g-or",
+    name: "Panda 15g Or",
+    url: "https://www.achat-or-et-argent.fr/or/panda-15g-or/3289",
+  },
+  {
+    slug: "panda-8g-or",
+    name: "Panda 8g Or",
+    url: "https://www.achat-or-et-argent.fr/or/panda-8g-or/3288",
+  },
+  {
+    slug: "panda-3g-or",
+    name: "Panda 3g Or",
+    url: "https://www.achat-or-et-argent.fr/or/panda-3g-or/3291",
+  },
+] as const;
+
+// === Zodiac / Monnaie de Paris ===
+const GOLD_ZODIAC: readonly CoinConfig[] = [
+  {
+    slug: "zodiac-taureau-2026-or",
+    name: "Signe du Zodiaque Taureau 2026",
+    url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-taureau-2026/23152",
+  },
+  {
+    slug: "zodiac-gemeaux-2026-or",
+    name: "Signe du Zodiaque Gemeaux 2026",
+    url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-gemeaux-2026/23197",
+  },
+  {
+    slug: "zodiac-cancer-2026-or",
+    name: "Signe du Zodiaque Cancer 2026",
+    url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-cancer-2026/23200",
+  },
+  {
+    slug: "zodiac-lion-2026-or",
+    name: "Signe du Zodiaque Lion 2026",
+    url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-lion-2026/23221",
+  },
+  {
+    slug: "zodiac-vierge-2026-or",
+    name: "Signe du Zodiaque Vierge 2026",
+    url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-vierge-2026/23233",
+  },
+  {
+    slug: "zodiac-balance-2026-or",
+    name: "Signe du Zodiaque Balance 2026",
+    url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-balance-2026/23242",
+  },
+  {
+    slug: "zodiac-sagittaire-2026-or",
+    name: "Signe du Zodiaque Sagittaire 2026",
+    url: "https://www.achat-or-et-argent.fr/or/signe-du-zodiaque-sagittaire-2026/23254",
+  },
+] as const;
+
 const GOLD_COINS: readonly CoinConfig[] = [
   ...GOLD_1OZ,
   ...GOLD_HALF,
   ...GOLD_QUARTER,
   ...GOLD_TENTH,
+  ...GOLD_HISTORIC,
+  ...GOLD_PANDA,
+  ...GOLD_ZODIAC,
 ] as const;
 
 // Silver coins to scrape from Godot
@@ -209,6 +349,16 @@ const SILVER_COINS: readonly CoinConfig[] = [
     name: "Silver Eagle 1 Once",
     url: "https://www.achat-or-et-argent.fr/argent/silver-eagle-1-once/1663",
   },
+  {
+    slug: "buffalo-1oz-argent",
+    name: "American Buffalo 1 Once Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/american-buffalo-1-once/1653",
+  },
+  {
+    slug: "panda-30g-argent",
+    name: "Panda 30g Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/panda-30g/3286",
+  },
 ] as const;
 
 // French silver coins to scrape from Godot
@@ -242,6 +392,11 @@ const FRENCH_SILVER_COINS: readonly CoinConfig[] = [
     slug: "5-francs-hercule-ecu-argent",
     name: "5 Francs Hercule (Ecu) Argent",
     url: "https://www.achat-or-et-argent.fr/argent/ecu-5-francs-1795---1889/28",
+  },
+  {
+    slug: "100-francs-argent-1982-2002",
+    name: "100 Francs Argent 1982-2002",
+    url: "https://www.achat-or-et-argent.fr/argent/100-francs-argent-1982-2002/14",
   },
 ] as const;
 

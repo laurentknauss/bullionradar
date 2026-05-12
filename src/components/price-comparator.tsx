@@ -7,6 +7,7 @@ import {
   type DealerPrice as SupabaseDealerPrice,
 } from "@/lib/supabase";
 import { getDealerDisplayName } from "@/lib/utils";
+import { filterUntrackedGodot } from "@/lib/godot-affiliate";
 import { AffiliateLink } from "@/components/affiliate-link";
 
 interface DealerPrice {
@@ -176,7 +177,7 @@ export function PriceComparator() {
   useEffect(() => {
     async function fetchPrices() {
       try {
-        const supabasePrices = await getLatestPrices();
+        const supabasePrices = filterUntrackedGodot(await getLatestPrices());
 
         if (supabasePrices.length === 0) {
           setError("Aucun prix disponible");

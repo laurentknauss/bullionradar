@@ -105,9 +105,6 @@ const AVAILABLE_IMAGES: Record<string, { avers: string } | undefined> = {
     avers: "/coins-v2/silver/libertad-1kg-argent-avers.webp",
   },
   // Autres pièces argent
-  "kookaburra-1oz-argent": {
-    avers: "/coins-v2/silver/kookaburra-1oz-argent-avers.webp",
-  },
   "koala-1oz-argent": { avers: "/coins-v2/silver/koala-1oz-argent-avers.webp" },
   "panda-30g-argent": { avers: "/coins-v2/silver/panda-30g-argent-avers.webp" },
   "noah-ark-1oz-argent": {
