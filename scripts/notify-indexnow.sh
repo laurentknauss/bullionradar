@@ -42,22 +42,31 @@ fi
 
 echo "→ Ping IndexNow pour ${#url_list[@]} URL(s)…"
 
-# IndexNow accepte 10000 URLs max par requête. On envoie tout en une fois.
-url_json=$(printf '"%s",' "${url_list[@]}" | sed 's/,$//')
-payload=$(cat <<JSON
+# IndexNow accepte 10000 URLs max par requête. Payload via fichier temp
+# pour éviter "Argument list too long" sur de gros sitemaps.
+payload_file=$(mktemp)
+trap 'rm -f "$payload_file"' EXIT
+
 {
-  "host": "${HOST}",
-  "key": "${KEY}",
-  "keyLocation": "${KEY_LOCATION}",
-  "urlList": [${url_json}]
-}
-JSON
-)
+  printf '{"host":"%s","key":"%s","keyLocation":"%s","urlList":[' \
+    "$HOST" "$KEY" "$KEY_LOCATION"
+  first=1
+  for url in "${url_list[@]}"; do
+    if [ "$first" -eq 1 ]; then
+      first=0
+    else
+      printf ','
+    fi
+    # Échapper les guillemets éventuels dans l'URL (rare mais safe)
+    printf '"%s"' "$(printf '%s' "$url" | sed 's/"/\\"/g')"
+  done
+  printf ']}'
+} > "$payload_file"
 
 response=$(curl -s -w "\n%{http_code}" -X POST "$ENDPOINT" \
   -H "Content-Type: application/json; charset=utf-8" \
   -H "Host: www.bing.com" \
-  -d "$payload")
+  --data-binary "@${payload_file}")
 
 http_code=$(echo "$response" | tail -n1)
 body=$(echo "$response" | sed '$d')
