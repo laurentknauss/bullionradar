@@ -383,6 +383,46 @@ export default async function CoinPage({ params }: PageProps) {
     return product;
   }
 
+  // 6 FAQs universelles pour chaque pièce — texte aussi rendu visiblement plus bas
+  function buildFaqs(c: Coin): { question: string; answer: string }[] {
+    const metalLabel = c.metal === "gold" ? "or" : "argent";
+    const purityPct = (c.purity * 100).toFixed(2).replace(/\.?0+$/, "");
+    const vatExempt = (c.vat_fr_pct ?? 0) === 0;
+    return [
+      {
+        question: `Quelle est la pureté de la pièce ${c.name} ?`,
+        answer: `${c.name} a une pureté de ${formatFineness(c.fineness)} (${purityPct}% de ${metalLabel} pur). ${c.metal === "gold" && c.purity < 0.999 ? `Elle contient un alliage métallique pour la rendre plus résistante.` : `C'est une pureté de référence pour les pièces bullion d'investissement.`}`,
+      },
+      {
+        question: `Combien pèse la pièce ${c.name} ?`,
+        answer:
+          `${c.name} pèse ${c.weight_g} grammes, soit ${c.weight_oz} once troy${c.weight_oz === 1 ? "" : "s"}. ${c.purity < 0.999 ? `Le poids total inclut l'alliage ; le poids en ${metalLabel} pur est de ${(c.weight_g * c.purity).toFixed(2)} grammes.` : ""}`.trim(),
+      },
+      {
+        question: `${c.name} est-elle exonérée de TVA en France ?`,
+        answer: vatExempt
+          ? `Oui, ${c.name} est exonérée de TVA en France au titre de l'${metalLabel} d'investissement (article 298 sexdecies du Code général des impôts). Aucune TVA n'est appliquée à l'achat.`
+          : `${c.name} est soumise à une TVA de ${c.vat_fr_pct}% en France, car elle ne répond pas aux critères stricts de l'${metalLabel} d'investissement.`,
+      },
+      {
+        question: `Quelle fiscalité s'applique à la revente de ${c.name} ?`,
+        answer: `À la revente en France, deux régimes au choix : la Taxe Forfaitaire sur les Métaux Précieux (TMP) à 11,5% du prix de vente, ou le régime des plus-values (TPV) à 36,2% sur la plus-value avec un abattement de 5% par an de détention dès la 3e année (exonération totale après 22 ans). Conservez vos factures d'achat pour pouvoir choisir le régime le plus avantageux.`,
+      },
+      {
+        question: `Quelle est la prime moyenne de ${c.name} ?`,
+        answer: c.estimated_premium_pct
+          ? `La prime estimée de ${c.name} est d'environ ${c.estimated_premium_pct}% au-dessus du cours spot du ${metalLabel}. Cette prime varie selon la disponibilité, la conjoncture et le dealer choisi. ${c.estimated_premium_pct <= 8 ? "C'est l'une des primes les plus basses du marché pour ce format." : ""}`.trim()
+          : `La prime de ${c.name} dépend de la disponibilité et du dealer. Comparez les prix sur cette page pour identifier l'offre la plus avantageuse.`,
+      },
+      {
+        question: `Où acheter ${c.name} au meilleur prix en France ?`,
+        answer: `BullionRadar compare en temps réel les prix de ${c.name} chez les 3 principaux dealers français : Or.fr, Godot & Fils et Pièces-Or. Le meilleur prix actuel est mis en évidence en haut de cette page. Tous ces dealers livrent en France et acceptent les paiements sécurisés.`,
+      },
+    ];
+  }
+
+  const faqs = buildFaqs(coin);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -404,6 +444,17 @@ export default async function CoinPage({ params }: PageProps) {
         ],
       },
       buildProductJsonLd(coin, prices, image),
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: f.answer,
+          },
+        })),
+      },
     ],
   };
 
@@ -550,6 +601,29 @@ export default async function CoinPage({ params }: PageProps) {
             Créer un comparatif →
           </Link>
         </div>
+
+        {/* FAQ — visible + couvert par schema FAQPage JSON-LD */}
+        <section className="mt-16" aria-labelledby="faq-title">
+          <h2 id="faq-title" className="mb-8 text-2xl font-bold text-[#BE943C]">
+            Questions fréquentes sur {coin.name}
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((f, i) => (
+              <details
+                key={i}
+                className="group rounded-lg border border-neutral-800 bg-neutral-900/40 p-5 open:bg-neutral-900/70"
+              >
+                <summary className="cursor-pointer list-none text-base font-semibold text-white transition-colors group-hover:text-[#BE943C]">
+                  <span className="mr-2 text-[#BE943C]">+</span>
+                  {f.question}
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-300">
+                  {f.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
       </div>
       <Footer />
       <StickyBuyCTA prices={prices} coinName={coin.name} />
