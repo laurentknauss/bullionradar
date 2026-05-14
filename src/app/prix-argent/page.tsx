@@ -5,16 +5,17 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Prix de l'argent au gramme et au kilo — Calculateur argent 925/999 | BullionRadar",
+    "Prix de l'argent au gramme aujourd'hui — Calculateur 925/999 | BullionRadar",
   description:
-    "Prix de l'argent au gramme, au kilo et à l'once en euros. Calculateur pour argent 925, 900 et 999. Prix du gramme d'argent aujourd'hui, estimation de rachat et valeur de l'argenterie.",
+    "Calculez le prix de votre argent en euros : gramme, kilo, argenterie 925/900, pièces françaises Hercule/Semeuse/Turin, lingots. Estimation de rachat incluse.",
   alternates: {
     canonical: "https://bullionradar.fr/prix-argent",
   },
   openGraph: {
-    title: "Prix de l'argent au gramme — Calculateur argent 925 et 999",
+    title:
+      "Prix de l'argent au gramme — Calculateur 925/999 + Argenterie & Pièces françaises",
     description:
-      "Calculez la valeur de votre argent en euros : prix au gramme, au kilo, argenterie 925, pièces 900. Estimation de rachat incluse.",
+      "Calculez en quelques secondes la valeur de votre argent : argenterie 925, pièces Hercule/Semeuse, lingots. Méthodes, poinçons et estimation de rachat.",
     url: "https://bullionradar.fr/prix-argent",
     images: [
       {
