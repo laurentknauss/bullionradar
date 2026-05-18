@@ -13,6 +13,16 @@ import { formatFineness, formatRelativeTime } from "@/lib/format";
 // import { CoinVideoSection } from "@/components/remotion/CoinVideoSection";
 import type { Coin } from "@/types";
 
+// Vidéos YouTube par slug URL (avec tirets entre nombres et unités)
+const COIN_YOUTUBE: Record<string, { videoUrl?: string }> = {
+  "krugerrand-1-oz-or": {
+    videoUrl: "https://www.youtube.com/watch?v=GGiF4LRwLFo",
+  },
+  "maple-leaf-1-oz-or": { videoUrl: "https://youtu.be/ADqGVn5AK7I" },
+  // philharmonique-1-oz-or : thumbnail dispo, vidéo pas encore uploadée
+  "philharmonique-1-oz-or": {},
+};
+
 // Images disponibles (WebP)
 const COIN_IMAGES: Record<string, string> = {
   "krugerrand-1oz-or": "/coins-v2/gold/krugerrand-1oz-or-avers.webp",
@@ -661,9 +671,11 @@ export async function generateMetadata({ params }: PageProps) {
       url: `https://bullionradar.fr/coin/${slugify(coin.name)}`,
       images: [
         {
-          url: "https://bullionradar.fr/images/og-bullionradar.jpg",
-          width: 1200,
-          height: 630,
+          url: COIN_YOUTUBE[slug]
+            ? `https://bullionradar.fr/images/youtube-thumbnails/${slug}.jpg`
+            : "https://bullionradar.fr/images/og-bullionradar.jpg",
+          width: 1280,
+          height: 720,
         },
       ],
     },

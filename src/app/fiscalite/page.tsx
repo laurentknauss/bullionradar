@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     url: "https://bullionradar.fr/fiscalite",
     images: [
       {
-        url: "https://bullionradar.fr/images/fiscalite-metaux-precieux.png",
-        width: 1200,
-        height: 630,
+        url: "https://bullionradar.fr/images/youtube-thumbnails/fiscalite-metaux-precieux.jpg",
+        width: 1280,
+        height: 720,
       },
     ],
   },
