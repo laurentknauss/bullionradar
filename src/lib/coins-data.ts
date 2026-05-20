@@ -350,7 +350,7 @@ export const COINS: Coin[] = [
     design_changes: [{ year: 2023, description: "Avers Charles III" }],
     liquidity: 4,
     vat_fr_pct: 0,
-    estimated_premium_pct: 15,
+    estimated_premium_pct: 12,
     face_value: "10 CAD",
     highlights: [
       "Purete 999.9, micro-gravure laser anti-contrefacon",
@@ -399,7 +399,7 @@ export const COINS: Coin[] = [
     design_changes: [{ year: 2023, description: "Avers Charles III" }],
     liquidity: 4,
     vat_fr_pct: 0,
-    estimated_premium_pct: 21,
+    estimated_premium_pct: 16,
     face_value: "10 GBP",
     highlights: [
       "Securite anti-contrefacon comme la version 1 Oz",
@@ -567,7 +567,7 @@ export const COINS: Coin[] = [
     design_type: "annual",
     liquidity: 3,
     vat_fr_pct: 0,
-    estimated_premium_pct: 13,
+    estimated_premium_pct: 16,
     face_value: "100 CNY",
     highlights: [
       "Design du panda change chaque annee (tres collectionne)",
@@ -598,7 +598,7 @@ export const COINS: Coin[] = [
     ],
     liquidity: 5,
     vat_fr_pct: 0,
-    estimated_premium_pct: 6,
+    estimated_premium_pct: 3,
     face_value: "20 FRF",
     highlights: [
       "Piece d'or francaise la plus echangee",
@@ -632,7 +632,7 @@ export const COINS: Coin[] = [
     ],
     liquidity: 5,
     vat_fr_pct: 0,
-    estimated_premium_pct: 8,
+    estimated_premium_pct: 3,
     face_value: "1 GBP",
     highlights: [
       "Plus de 200 ans d'histoire",
@@ -657,7 +657,7 @@ export const COINS: Coin[] = [
     design_type: "fixed",
     liquidity: 5,
     vat_fr_pct: 0,
-    estimated_premium_pct: 6,
+    estimated_premium_pct: 3,
     face_value: "20 CHF",
     mintage: "58 900 000",
     highlights: [
@@ -684,7 +684,7 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     liquidity: 3,
     vat_fr_pct: 0,
-    estimated_premium_pct: 25,
+    estimated_premium_pct: 7,
     face_value: "10 FRF",
     mintage: "23 680 424",
     highlights: [
@@ -708,7 +708,7 @@ export const COINS: Coin[] = [
     design_type: "fixed",
     liquidity: 3,
     vat_fr_pct: 0,
-    estimated_premium_pct: 25,
+    estimated_premium_pct: 8,
     face_value: "10 FRF",
     mintage: "23 866 852",
     highlights: [
@@ -732,7 +732,7 @@ export const COINS: Coin[] = [
     design_type: "fixed",
     liquidity: 5,
     vat_fr_pct: 0,
-    estimated_premium_pct: 6,
+    estimated_premium_pct: 3,
     face_value: "20 FRF",
     mintage: "117 000 000",
     highlights: [
@@ -756,7 +756,7 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     liquidity: 4,
     vat_fr_pct: 0,
-    estimated_premium_pct: 6,
+    estimated_premium_pct: 3,
     face_value: "20 Francs (ou equivalent)",
     highlights: [
       "Ancetre de l'euro : monnaie commune frappee par 15+ pays",
@@ -779,7 +779,7 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     liquidity: 5,
     vat_fr_pct: 0,
-    estimated_premium_pct: 7,
+    estimated_premium_pct: 4,
     face_value: "20 FRF",
     highlights: [
       "Cree par Napoleon Bonaparte en 1803, successeur des anciens Louis d'or royaux",
@@ -802,7 +802,7 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     liquidity: 4,
     vat_fr_pct: 0,
-    estimated_premium_pct: 12,
+    estimated_premium_pct: 6,
     face_value: "0.5 GBP",
     highlights: [
       "Moitie du Souverain : 3.99g brut, 3.66g d'or pur, or 22 carats",
@@ -871,7 +871,7 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     liquidity: 4,
     vat_fr_pct: 0,
-    estimated_premium_pct: 15,
+    estimated_premium_pct: 5,
     face_value: "20 USD",
     highlights: [
       "Double Eagle : pres d'une once d'or pur (0.9675 oz, 30.09g)",
@@ -894,7 +894,7 @@ export const COINS: Coin[] = [
     design_type: "fixed",
     liquidity: 4,
     vat_fr_pct: 0,
-    estimated_premium_pct: 5,
+    estimated_premium_pct: 2,
     face_value: "50 MXN",
     highlights: [
       "L'une des plus grandes pieces d'or : 41.67g brut, 37.50g d'or pur (1.2057 oz)",
@@ -917,7 +917,7 @@ export const COINS: Coin[] = [
     design_type: "fixed",
     liquidity: 3,
     vat_fr_pct: 0,
-    estimated_premium_pct: 8,
+    estimated_premium_pct: 3,
     face_value: "4 Ducats",
     highlights: [
       "Purete exceptionnelle 98.6% (23.75 carats)",
@@ -963,7 +963,7 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     liquidity: 3,
     vat_fr_pct: 0,
-    estimated_premium_pct: 12,
+    estimated_premium_pct: 4,
     face_value: "20 Mark",
     highlights: [
       "Alter ego allemand du Napoleon 20F, plus d'or fin par unite (7.17g vs 5.81g)",
@@ -1009,7 +1009,7 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     liquidity: 3,
     vat_fr_pct: 0,
-    estimated_premium_pct: 10,
+    estimated_premium_pct: 5,
     face_value: "10 Guilders",
     highlights: [
       "Piece d'or neerlandaise contenant 6.06g d'or pur",

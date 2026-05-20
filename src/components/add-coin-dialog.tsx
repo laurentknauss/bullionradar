@@ -124,8 +124,8 @@ export function AddCoinDialog({ onAdd }: AddCoinDialogProps) {
             {selectedCoin && (
               <p className="text-xs text-[#3d3520]">
                 {selectedCoin.weight_oz} oz &middot;{" "}
-                {(selectedCoin.purity * 100).toFixed(1)}% pur &middot; Prime ~
-                {selectedCoin.estimated_premium_pct}%
+                {(selectedCoin.purity * 100).toFixed(1)}% pur &middot; Prime
+                estimée ~{selectedCoin.estimated_premium_pct}%
               </p>
             )}
           </div>
