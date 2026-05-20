@@ -5,5 +5,37 @@
   "framework": "nextjs",
   "git": {
     "deploymentEnabled": false
-  }
+  },
+  "redirects": [
+    {
+      "source": "/coin/10-francs-napoleon-demi-napoleon",
+      "destination": "/coin/10-francs-napoleon-or",
+      "permanent": true
+    },
+    {
+      "source": "/coin/1-ducat-or-francois-joseph-1915",
+      "destination": "/coin/1-ducat-or",
+      "permanent": true
+    },
+    {
+      "source": "/coin/50-pesos-mexicains-or-centenario",
+      "destination": "/coin/50-pesos-or-centenario",
+      "permanent": true
+    },
+    {
+      "source": "/coin/20-dollars-us-or-double-eagle",
+      "destination": "/coin/20-dollars-or-double-eagle",
+      "permanent": true
+    },
+    {
+      "source": "/coin/5-dollars-us-or-half-eagle",
+      "destination": "/coin/5-dollars-or-half-eagle",
+      "permanent": true
+    },
+    {
+      "source": "/coin/10-dollars-us-or-eagle",
+      "destination": "/coin/10-dollars-or-eagle",
+      "permanent": true
+    }
+  ]
 }

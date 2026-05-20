@@ -2,7 +2,7 @@ import type { Coin } from "@/types";
 
 export const COINS: Coin[] = [
   // =============================================
-  // OR - 25 pieces
+  // OR - 25 pièces
   // =============================================
 
   // --- 1 Oz Or ---
@@ -24,9 +24,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 7.5,
     face_value: "50 USD",
     highlights: [
-      "Premiere piece or US en 999.9 (4 neuf)",
-      "Design inspire du nickel Buffalo de 1913",
-      "Seule piece US en or pur (Eagle est en 22 carats)",
+      "Première pièce or US en 999.9 (4 neuf)",
+      "Design inspiré du nickel Buffalo de 1913",
+      "Seule pièce US en or pur (Eagle est en 22 carats)",
     ],
   },
   {
@@ -50,8 +50,8 @@ export const COINS: Coin[] = [
     highlights: [
       "Alliage 22 carats (91.67% or, 3% argent, 5.33% cuivre)",
       "Poids total 33.93g pour 1oz d'or pur contenu",
-      "Plus resistante aux rayures que les pieces 999.9",
-      "Piece or la plus vendue aux USA",
+      "Plus résistante aux rayures que les pièces 999.9",
+      "Pièce or la plus vendue aux USA",
     ],
   },
   {
@@ -68,7 +68,7 @@ export const COINS: Coin[] = [
     first_year: 1987,
     design_type: "occasional",
     design_changes: [
-      { year: 2021, description: "Nouveau design securise" },
+      { year: 2021, description: "Nouveau design sécurisé" },
       { year: 2023, description: "Avers Charles III" },
     ],
     liquidity: 5,
@@ -76,9 +76,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 6.5,
     face_value: "100 GBP",
     highlights: [
-      "Motif de securite anti-contrefacon depuis 2021",
+      "Motif de sécurité anti-contrefaçon depuis 2021",
       "Image latente et micro-texte sur le trident",
-      "Exoneree de Capital Gains Tax au Royaume-Uni",
+      "Exonérée de Capital Gains Tax au Royaume-Uni",
     ],
   },
   {
@@ -104,9 +104,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 6.5,
     face_value: "100 AUD",
     highlights: [
-      "Design du kangourou change chaque annee",
-      "Anciennement appelee 'Nugget' (1986-1989)",
-      "Perth Mint garantit rachat a vie",
+      "Design du kangourou change chaque année",
+      "Anciennement appelée 'Nugget' (1986-1989)",
+      "Perth Mint garantit rachat à vie",
     ],
   },
   {
@@ -123,7 +123,7 @@ export const COINS: Coin[] = [
     first_year: 1979,
     design_type: "occasional",
     design_changes: [
-      { year: 2013, description: "Ajout micro-gravure securite" },
+      { year: 2013, description: "Ajout micro-gravure sécurité" },
       { year: 2023, description: "Avers Charles III" },
     ],
     liquidity: 5,
@@ -131,10 +131,10 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 6.5,
     face_value: "50 CAD",
     highlights: [
-      "Premiere piece bullion 999.9 au monde (1982)",
-      "Micro-gravure laser d'une feuille d'erable (visible a la loupe)",
-      "Lignes radiales anti-contrefacon depuis 2013",
-      "Une des pieces les plus pures du marche",
+      "Première pièce bullion 999.9 au monde (1982)",
+      "Micro-gravure laser d'une feuille d'érable (visible à la loupe)",
+      "Lignes radiales anti-contrefaçon depuis 2013",
+      "Une des pièces les plus pures du marché",
     ],
   },
   {
@@ -155,10 +155,10 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 6.5,
     face_value: "100 EUR",
     highlights: [
-      "Seule piece bullion majeure en euros",
+      "Seule pièce bullion majeure en euros",
       "Pas de portrait de monarque (instruments de musique)",
-      "Design inchange depuis 1989",
-      "Piece or la plus vendue en Europe",
+      "Design inchangé depuis 1989",
+      "Pièce or la plus vendue en Europe",
     ],
   },
   {
@@ -180,11 +180,11 @@ export const COINS: Coin[] = [
     face_value: null,
     mintage: "44 556 584",
     highlights: [
-      "Premiere piece bullion moderne au monde (1967)",
+      "Première pièce bullion moderne au monde (1967)",
       "Aucune valeur faciale inscrite",
-      "Alliage 22 carats avec cuivre (couleur orangee)",
-      "Plus de 50 millions d'unites produites",
-      "Design inchange depuis 1967",
+      "Alliage 22 carats avec cuivre (couleur orangée)",
+      "Plus de 50 millions d'unités produites",
+      "Design inchangé depuis 1967",
     ],
   },
 
@@ -208,9 +208,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 11,
     face_value: "50 GBP",
     highlights: [
-      "Securite anti-contrefacon comme la version 1 Oz",
+      "Sécurité anti-contrefaçon comme la version 1 Oz",
       "Bon compromis poids/prime pour investir",
-      "Exoneree de Capital Gains Tax au Royaume-Uni",
+      "Exonérée de Capital Gains Tax au Royaume-Uni",
     ],
   },
   {
@@ -232,8 +232,8 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 10,
     face_value: "50 AUD",
     highlights: [
-      "Design du kangourou change chaque annee",
-      "Perth Mint garantit rachat a vie",
+      "Design du kangourou change chaque année",
+      "Perth Mint garantit rachat à vie",
       "Bon compromis poids/prime pour investir",
     ],
   },
@@ -256,8 +256,8 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 12,
     face_value: "25 CAD",
     highlights: [
-      "Purete 999.9, lignee de la premiere piece bullion 4 neuf",
-      "Micro-gravure laser anti-contrefacon",
+      "Pureté 999.9, lignée de la première pièce bullion 4 neuf",
+      "Micro-gravure laser anti-contrefaçon",
       "Bon compromis poids/prime pour investir",
     ],
   },
@@ -279,8 +279,8 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 9,
     face_value: "50 EUR",
     highlights: [
-      "Seule piece bullion majeure en euros",
-      "Design inchange depuis 1989",
+      "Seule pièce bullion majeure en euros",
+      "Design inchangé depuis 1989",
       "Bon compromis poids/prime pour investir",
     ],
   },
@@ -305,9 +305,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 13,
     face_value: "25 GBP",
     highlights: [
-      "Securite anti-contrefacon comme la version 1 Oz",
-      "Ticket d'entree accessible pour investir dans l'or",
-      "Exoneree de Capital Gains Tax au Royaume-Uni",
+      "Sécurité anti-contrefaçon comme la version 1 Oz",
+      "Ticket d'entrée accessible pour investir dans l'or",
+      "Exonérée de Capital Gains Tax au Royaume-Uni",
     ],
   },
   {
@@ -329,9 +329,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 14,
     face_value: "25 AUD",
     highlights: [
-      "Design du kangourou change chaque annee",
-      "Perth Mint garantit rachat a vie",
-      "Ticket d'entree accessible pour investir dans l'or",
+      "Design du kangourou change chaque année",
+      "Perth Mint garantit rachat à vie",
+      "Ticket d'entrée accessible pour investir dans l'or",
     ],
   },
   {
@@ -353,9 +353,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 12,
     face_value: "10 CAD",
     highlights: [
-      "Purete 999.9, micro-gravure laser anti-contrefacon",
-      "Ticket d'entree accessible pour investir dans l'or",
-      "Une des pieces les plus pures du marche",
+      "Pureté 999.9, micro-gravure laser anti-contrefaçon",
+      "Ticket d'entrée accessible pour investir dans l'or",
+      "Une des pièces les plus pures du marché",
     ],
   },
   {
@@ -376,9 +376,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 15,
     face_value: "25 EUR",
     highlights: [
-      "Seule piece bullion majeure en euros",
-      "Design inchange depuis 1989",
-      "Ticket d'entree accessible pour investir dans l'or",
+      "Seule pièce bullion majeure en euros",
+      "Design inchangé depuis 1989",
+      "Ticket d'entrée accessible pour investir dans l'or",
     ],
   },
 
@@ -402,9 +402,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 16,
     face_value: "10 GBP",
     highlights: [
-      "Securite anti-contrefacon comme la version 1 Oz",
-      "Format compact ideal pour offrir",
-      "Exoneree de Capital Gains Tax au Royaume-Uni",
+      "Sécurité anti-contrefaçon comme la version 1 Oz",
+      "Format compact idéal pour offrir",
+      "Exonérée de Capital Gains Tax au Royaume-Uni",
     ],
   },
   {
@@ -426,9 +426,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 20,
     face_value: "15 AUD",
     highlights: [
-      "Design du kangourou change chaque annee",
-      "Perth Mint garantit rachat a vie",
-      "Format compact ideal pour offrir",
+      "Design du kangourou change chaque année",
+      "Perth Mint garantit rachat à vie",
+      "Format compact idéal pour offrir",
     ],
   },
   {
@@ -450,9 +450,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 18,
     face_value: "5 CAD",
     highlights: [
-      "Purete 999.9, micro-gravure laser anti-contrefacon",
-      "Format compact ideal pour offrir",
-      "Une des pieces les plus pures du marche",
+      "Pureté 999.9, micro-gravure laser anti-contrefaçon",
+      "Format compact idéal pour offrir",
+      "Une des pièces les plus pures du marché",
     ],
   },
   {
@@ -473,9 +473,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 18,
     face_value: "10 EUR",
     highlights: [
-      "Seule piece bullion majeure en euros",
-      "Design inchange depuis 1989",
-      "Format compact ideal pour offrir",
+      "Seule pièce bullion majeure en euros",
+      "Design inchangé depuis 1989",
+      "Format compact idéal pour offrir",
     ],
   },
 
@@ -500,8 +500,8 @@ export const COINS: Coin[] = [
     face_value: "1 CAD",
     highlights: [
       "Plus petite Maple Leaf disponible",
-      "Prime elevee due a la taille",
-      "Ideale pour cadeau ou petit budget",
+      "Prime élevée due à la taille",
+      "Idéale pour cadeau ou petit budget",
     ],
   },
   {
@@ -517,16 +517,16 @@ export const COINS: Coin[] = [
     thickness_mm: 2.4,
     first_year: 1982,
     design_type: "annual",
-    design_changes: [{ year: 2016, description: "Passage de 1oz a 30g" }],
+    design_changes: [{ year: 2016, description: "Passage de 1oz à 30g" }],
     liquidity: 4,
     vat_fr_pct: 0,
     estimated_premium_pct: 7,
     face_value: "500 CNY",
     highlights: [
-      "Design du panda change chaque annee (tres collectionne)",
+      "Design du panda change chaque année (très collectionné)",
       "Passage de l'once troy (31.1g) au gramme (30g) en 2016",
-      "Seule piece bullion majeure en grammes",
-      "Tres populaire aupres des collectionneurs asiatiques",
+      "Seule pièce bullion majeure en grammes",
+      "Très populaire auprès des collectionneurs asiatiques",
     ],
   },
   {
@@ -547,9 +547,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 12,
     face_value: "200 CNY",
     highlights: [
-      "Design du panda change chaque annee (tres collectionne)",
+      "Design du panda change chaque année (très collectionné)",
       "Poids en grammes (standard chinois depuis 2016)",
-      "Tres populaire aupres des collectionneurs asiatiques",
+      "Très populaire auprès des collectionneurs asiatiques",
     ],
   },
   {
@@ -570,16 +570,16 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 16,
     face_value: "100 CNY",
     highlights: [
-      "Design du panda change chaque annee (tres collectionne)",
-      "Plus petit format Panda or, ticket d'entree accessible",
+      "Design du panda change chaque année (très collectionné)",
+      "Plus petit format Panda or, ticket d'entrée accessible",
       "Poids en grammes (standard chinois depuis 2016)",
     ],
   },
 
-  // --- Pieces classiques cotees ---
+  // --- Pièces classiques cotées ---
   {
     id: "napoleon-20f-or",
-    name: "Napoleon 20 Francs Or",
+    name: "Napoléon 20 Francs Or",
     metal: "gold",
     weight_oz: 0.1867,
     weight_g: 6.45,
@@ -591,9 +591,9 @@ export const COINS: Coin[] = [
     first_year: 1803,
     design_type: "occasional",
     design_changes: [
-      { year: 1803, description: "Napoleon Empereur" },
-      { year: 1807, description: "Tete lauree" },
-      { year: 1852, description: "Napoleon III" },
+      { year: 1803, description: "Napoléon Empereur" },
+      { year: 1807, description: "Tête laurée" },
+      { year: 1852, description: "Napoléon III" },
       { year: 1899, description: "Marianne Coq" },
     ],
     liquidity: 5,
@@ -601,11 +601,11 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 3,
     face_value: "20 FRF",
     highlights: [
-      "Piece d'or francaise la plus echangee",
+      "Pièce d'or française la plus échangée",
       "Cotation quotidienne (CPoR Devises)",
-      "Nombreuses variantes (Coq, Napoleon III, etc.)",
-      "Exoneree de TVA et plus-values apres 22 ans",
-      "Format standardise de l'Union Latine",
+      "Nombreuses variantes (Coq, Napoléon III, etc.)",
+      "Exonérée de TVA et plus-values après 22 ans",
+      "Format standardisé de l'Union Latine",
     ],
   },
   {
@@ -637,9 +637,9 @@ export const COINS: Coin[] = [
     highlights: [
       "Plus de 200 ans d'histoire",
       "Design Saint-Georges terrassant le dragon",
-      "Nombreux millesimes et ateliers de frappe",
-      "Exoneree de CGT au Royaume-Uni",
-      "Tres liquide sur le marche europeen",
+      "Nombreux millésimes et ateliers de frappe",
+      "Exonérée de CGT au Royaume-Uni",
+      "Très liquide sur le marché européen",
     ],
   },
   {
@@ -661,17 +661,17 @@ export const COINS: Coin[] = [
     face_value: "20 CHF",
     mintage: "58 900 000",
     highlights: [
-      "Surnommee 'Vreneli' (petit visage de femme)",
-      "Meme poids et titre que le Napoleon 20F",
+      "Surnommée 'Vreneli' (petit visage de femme)",
+      "Même poids et titre que le Napoléon 20F",
       "Membre de l'Union Latine (interchangeable)",
-      "Faible prime, excellente liquidite",
+      "Faible prime, excellente liquidité",
     ],
   },
 
-  // --- Pieces historiques / semi-numismatiques ---
+  // --- Pièces historiques / semi-numismatiques ---
   {
     id: "10-francs-napoleon-or",
-    name: "10 Francs Napoleon (Demi Napoleon)",
+    name: "10 Francs Napoléon Or",
     metal: "gold",
     weight_oz: 0.0933,
     weight_g: 3.2258,
@@ -688,9 +688,9 @@ export const COINS: Coin[] = [
     face_value: "10 FRF",
     mintage: "23 680 424",
     highlights: [
-      "Demi-Napoleon : moitie exacte du Napoleon 20F (2.90g d'or fin)",
-      "Piece d'or francaise la plus accessible en budget",
-      "Rarete croissante : exemplaires en bon etat tres recherches",
+      "Demi-Napoléon : moitié exacte du Napoléon 20F (2.90g d'or fin)",
+      "Pièce d'or française la plus accessible en budget",
+      "Rareté croissante : exemplaires en bon état très recherchés",
     ],
   },
   {
@@ -712,9 +712,9 @@ export const COINS: Coin[] = [
     face_value: "10 FRF",
     mintage: "23 866 852",
     highlights: [
-      "Design Chaplain (Marianne / Coq gaulois) de la IIIe Republique",
-      "Variante la moins chere au gramme parmi les 10 Francs or",
-      "Frappee a Paris entre 1899 et 1914",
+      "Design Chaplain (Marianne / Coq gaulois) de la IIIe République",
+      "Variante la moins chère au gramme parmi les 10 Francs or",
+      "Frappée à Paris entre 1899 et 1914",
     ],
   },
   {
@@ -736,7 +736,7 @@ export const COINS: Coin[] = [
     face_value: "20 FRF",
     mintage: "117 000 000",
     highlights: [
-      "Le Napoleon par excellence, piece d'or francaise la plus echangee",
+      "Le Napoléon par excellence, pièce d'or française la plus échangée",
       "Tirage massif (117M), prime faible",
       "Design iconique de Chaplain : Marianne et Coq gaulois",
     ],
@@ -757,11 +757,11 @@ export const COINS: Coin[] = [
     liquidity: 4,
     vat_fr_pct: 0,
     estimated_premium_pct: 3,
-    face_value: "20 Francs (ou equivalent)",
+    face_value: "20 Francs (ou équivalent)",
     highlights: [
-      "Ancetre de l'euro : monnaie commune frappee par 15+ pays",
-      "Memes specs que le Napoleon 20F (6.45g, 900 milliemes)",
-      "Effigies variees (Vreneli, Leopold, Umberto, etc.)",
+      "Ancêtre de l'euro : monnaie commune frappée par 15+ pays",
+      "Mêmes specs que le Napoléon 20F (6.45g, 900 millièmes)",
+      "Effigies variées (Vreneli, Léopold, Umberto, etc.)",
     ],
   },
   {
@@ -782,9 +782,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 4,
     face_value: "20 FRF",
     highlights: [
-      "Cree par Napoleon Bonaparte en 1803, successeur des anciens Louis d'or royaux",
-      "Socle de l'Union Latine et etalon-or europeen",
-      "Multiples effigies : Napoleon Ier, Louis XVIII, Charles X, Louis-Philippe, Napoleon III",
+      "Créé par Napoléon Bonaparte en 1803, successeur des anciens Louis d'or royaux",
+      "Socle de l'Union Latine et étalon-or européen",
+      "Multiples effigies : Napoléon Ier, Louis XVIII, Charles X, Louis-Philippe, Napoléon III",
     ],
   },
   {
@@ -805,14 +805,14 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 6,
     face_value: "0.5 GBP",
     highlights: [
-      "Moitie du Souverain : 3.99g brut, 3.66g d'or pur, or 22 carats",
+      "Moitié du Souverain : 3.99g brut, 3.66g d'or pur, or 22 carats",
       "Revers Saint-Georges terrassant le dragon (Pistrucci)",
-      "Exoneree de CGT au Royaume-Uni (legal tender)",
+      "Exonérée de CGT au Royaume-Uni (legal tender)",
     ],
   },
   {
     id: "5-dollars-us-or",
-    name: "5 Dollars US Or (Half Eagle)",
+    name: "5 Dollars Or Half Eagle",
     metal: "gold",
     weight_oz: 0.2419,
     weight_g: 8.359,
@@ -828,14 +828,14 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 15,
     face_value: "5 USD",
     highlights: [
-      "Half Eagle pre-1933, 0.2419 oz d'or pur",
+      "Half Eagle pré-1933, 0.2419 oz d'or pur",
       "Designs Liberty Head (1839-1908) et Indian Head incuse (1908-1929)",
-      "Piece recherchee par collectionneurs US et europeens",
+      "Pièce recherchée par collectionneurs US et européens",
     ],
   },
   {
     id: "10-dollars-us-or",
-    name: "10 Dollars US Or (Eagle)",
+    name: "10 Dollars Or Eagle",
     metal: "gold",
     weight_oz: 0.4838,
     weight_g: 16.718,
@@ -851,14 +851,14 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 12,
     face_value: "10 USD",
     highlights: [
-      "Eagle pre-1933, pres d'une demi-once d'or pur (0.4838 oz)",
+      "Eagle pré-1933, près d'une demi-once d'or pur (0.4838 oz)",
       "Indian Head Eagle (1907-1933) par Saint-Gaudens, design iconique",
-      "Piece historique de l'ere de l'etalon-or americain",
+      "Pièce historique de l'ère de l'étalon-or américain",
     ],
   },
   {
     id: "20-dollars-us-or",
-    name: "20 Dollars US Or (Double Eagle)",
+    name: "20 Dollars Or Double Eagle",
     metal: "gold",
     weight_oz: 0.9675,
     weight_g: 33.436,
@@ -874,14 +874,14 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 5,
     face_value: "20 USD",
     highlights: [
-      "Double Eagle : pres d'une once d'or pur (0.9675 oz, 30.09g)",
-      "Le Saint-Gaudens (1907-1933) considere comme la plus belle piece d'or jamais frappee",
-      "Nee de la Ruee vers l'or californienne (1849)",
+      "Double Eagle : près d'une once d'or pur (0.9675 oz, 30.09g)",
+      "Le Saint-Gaudens (1907-1933) considéré comme la plus belle pièce d'or jamais frappée",
+      "Née de la Ruée vers l'or californienne (1849)",
     ],
   },
   {
     id: "50-pesos-or",
-    name: "50 Pesos Mexicains Or (Centenario)",
+    name: "50 Pesos Or Centenario",
     metal: "gold",
     weight_oz: 1.2057,
     weight_g: 41.667,
@@ -897,9 +897,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 2,
     face_value: "50 MXN",
     highlights: [
-      "L'une des plus grandes pieces d'or : 41.67g brut, 37.50g d'or pur (1.2057 oz)",
-      "Design spectaculaire avec l'Ange de l'Independance",
-      "Millions de refrappes datees 1947, prime faible",
+      "L'une des plus grandes pièces d'or : 41.67g brut, 37.50g d'or pur (1.2057 oz)",
+      "Design spectaculaire avec l'Ange de l'Indépendance",
+      "Millions de refrappes datées 1947, prime faible",
     ],
   },
   {
@@ -920,14 +920,14 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 3,
     face_value: "4 Ducats",
     highlights: [
-      "Purete exceptionnelle 98.6% (23.75 carats)",
-      "Format unique : 40mm de diametre, seulement 0.7mm d'epaisseur",
-      "Portrait Francois-Joseph Ier, refrappes officielles datees 1915",
+      "Pureté exceptionnelle 98.6% (23.75 carats)",
+      "Format unique : 40mm de diamètre, seulement 0.7mm d'épaisseur",
+      "Portrait François-Joseph Ier, refrappes officielles datées 1915",
     ],
   },
   {
     id: "1-ducat-or",
-    name: "1 Ducat Or (Francois-Joseph 1915)",
+    name: "1 Ducat Or",
     metal: "gold",
     weight_oz: 0.1107,
     weight_g: 3.4909,
@@ -944,7 +944,7 @@ export const COINS: Coin[] = [
     face_value: "1 Ducat",
     highlights: [
       "Or 98.6% (23.75 carats), 3.44g d'or fin",
-      "Refrappes officielles datees 1915 par la Monnaie d'Autriche",
+      "Refrappes officielles datées 1915 par la Monnaie d'Autriche",
       "Format miniature (20mm), accessible pour petit budget",
     ],
   },
@@ -966,9 +966,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 4,
     face_value: "20 Mark",
     highlights: [
-      "Alter ego allemand du Napoleon 20F, plus d'or fin par unite (7.17g vs 5.81g)",
-      "Frappee sous l'Empire allemand (1871-1915), effigie Wilhelm II",
-      "Pas de refrappes, offre limitee, interet numismatique croissant",
+      "Alter ego allemand du Napoléon 20F, plus d'or fin par unité (7.17g vs 5.81g)",
+      "Frappée sous l'Empire allemand (1871-1915), effigie Wilhelm II",
+      "Pas de refrappes, offre limitée, intérêt numismatique croissant",
     ],
   },
   {
@@ -989,14 +989,14 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 10,
     face_value: "20 Francs",
     highlights: [
-      "Memes specs que le Napoleon 20F (Union Latine)",
-      "Inscriptions en arabe, originalite culturelle unique",
-      "Plus rare que les pieces francaises equivalentes",
+      "Mêmes specs que le Napoléon 20F (Union Latine)",
+      "Inscriptions en arabe, originalité culturelle unique",
+      "Plus rare que les pièces françaises équivalentes",
     ],
   },
   {
     id: "10-florins-or",
-    name: "10 Florins Or (Pays-Bas)",
+    name: "10 Florins Or Pays-Bas",
     metal: "gold",
     weight_oz: 0.1947,
     weight_g: 6.729,
@@ -1012,13 +1012,13 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 5,
     face_value: "10 Guilders",
     highlights: [
-      "Piece d'or neerlandaise contenant 6.06g d'or pur",
+      "Pièce d'or néerlandaise contenant 6.06g d'or pur",
       "Portraits Guillaume III et Reine Wilhelmina",
-      "Production arretee, pas de refrappes, offre limitee",
+      "Production arrêtée, pas de refrappes, offre limitée",
     ],
   },
 
-  // --- Zodiac Monnaie de Paris & Austerlitz ---
+  // --- Zodiaque Monnaie de Paris & Austerlitz ---
   {
     id: "zodiac-taureau-2026-or",
     name: "Zodiaque Taureau 2026 Or",
@@ -1038,14 +1038,14 @@ export const COINS: Coin[] = [
     face_value: "5 EUR",
     mintage: "2 026",
     highlights: [
-      "Micro-piece or 999 milliemes frappee par la Monnaie de Paris",
-      "Qualite Belle Epreuve (BE), tirage 2 026 exemplaires",
+      "Micro-pièce or 999 millièmes frappée par la Monnaie de Paris",
+      "Qualité Belle Épreuve (BE), tirage 2 026 exemplaires",
       "Collection Astro 2026, forte valeur collectible",
     ],
   },
   {
     id: "zodiac-gemeaux-2026-or",
-    name: "Zodiaque Gemeaux 2026 Or",
+    name: "Zodiaque Gémeaux 2026 Or",
     metal: "gold",
     weight_oz: 0.0161,
     weight_g: 0.5,
@@ -1062,8 +1062,8 @@ export const COINS: Coin[] = [
     face_value: "5 EUR",
     mintage: "2 026",
     highlights: [
-      "Or pur 999 milliemes, collection Astro Monnaie de Paris",
-      "Tirage strictement limite a 2 026 exemplaires",
+      "Or pur 999 millièmes, collection Astro Monnaie de Paris",
+      "Tirage strictement limité à 2 026 exemplaires",
       "Revers commun avec roue zodiacale des 12 signes",
     ],
   },
@@ -1087,8 +1087,8 @@ export const COINS: Coin[] = [
     mintage: "2 026",
     highlights: [
       "Or fin 999, collection Astro 2026 Monnaie de Paris",
-      "Design du Cancer (signe d'eau), qualite Belle Epreuve",
-      "Tirage limite a 2 026 exemplaires",
+      "Design du Cancer (signe d'eau), qualité Belle Épreuve",
+      "Tirage limité à 2 026 exemplaires",
     ],
   },
   {
@@ -1110,9 +1110,9 @@ export const COINS: Coin[] = [
     face_value: "5 EUR",
     mintage: "2 026",
     highlights: [
-      "Or fin 999 milliemes, qualite Belle Epreuve",
+      "Or fin 999 millièmes, qualité Belle Épreuve",
       "Design du Lion (signe de feu), Monnaie de Paris",
-      "Tirage 2 026 exemplaires, premiere edition or Astro",
+      "Tirage 2 026 exemplaires, première édition or Astro",
     ],
   },
   {
@@ -1134,9 +1134,9 @@ export const COINS: Coin[] = [
     face_value: "5 EUR",
     mintage: "2 026",
     highlights: [
-      "Or pur 999 milliemes, frappe Belle Epreuve Monnaie de Paris",
+      "Or pur 999 millièmes, frappe Belle Épreuve Monnaie de Paris",
       "Design de la Vierge (signe de terre), tirage 2 026 ex.",
-      "Piece miniature (11mm) avec constellation en arriere-plan",
+      "Pièce miniature (11mm) avec constellation en arrière-plan",
     ],
   },
   {
@@ -1158,9 +1158,9 @@ export const COINS: Coin[] = [
     face_value: "5 EUR",
     mintage: "2 026",
     highlights: [
-      "Or fin 999 milliemes, qualite Belle Epreuve",
+      "Or fin 999 millièmes, qualité Belle Épreuve",
       "Design de la Balance (signe d'air), Monnaie de Paris",
-      "Premiere edition or de la collection Astro, tirage 2 026 ex.",
+      "Première édition or de la collection Astro, tirage 2 026 ex.",
     ],
   },
   {
@@ -1182,7 +1182,7 @@ export const COINS: Coin[] = [
     face_value: "5 EUR",
     mintage: "2 026",
     highlights: [
-      "Or pur 999, frappe Belle Epreuve Monnaie de Paris",
+      "Or pur 999, frappe Belle Épreuve Monnaie de Paris",
       "Design du Sagittaire (signe de feu), tirage 2 026 ex.",
       "Collection Astro 2026, forte valeur collectible",
     ],
@@ -1208,9 +1208,9 @@ export const COINS: Coin[] = [
     face_value: "50 CNY",
     mintage: "600 000",
     highlights: [
-      "Plus petite fraction du Panda or (hors 1g), point d'entree abordable",
-      "Design change chaque annee, forte valeur collectible",
-      "Premium eleve mais forte demande collectionneurs",
+      "Plus petite fraction du Panda or (hors 1g), point d'entrée abordable",
+      "Design change chaque année, forte valeur collectible",
+      "Premium élevé mais forte demande collectionneurs",
     ],
   },
 
@@ -1233,10 +1233,10 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 12,
     face_value: null,
     highlights: [
-      "Frappee par Casa de Moneda de Mexico (plus vieille menthe des Ameriques)",
-      "Design iconique : Victoire Ailee + volcans Popocatepetl et Iztaccihuatl",
-      "Pas de valeur faciale (cours legal sans denomination)",
-      "Tirage limite, plus rare que Maple Leaf ou Eagle",
+      "Frappée par Casa de Moneda de Mexico (plus vieille monnaie des Amériques)",
+      "Design iconique : Victoire Ailée + volcans Popocatepetl et Iztaccihuatl",
+      "Pas de valeur faciale (cours légal sans dénomination)",
+      "Tirage limité, plus rare que Maple Leaf ou Eagle",
     ],
   },
   {
@@ -1258,8 +1258,8 @@ export const COINS: Coin[] = [
     face_value: null,
     highlights: [
       "Format fractionnel populaire",
-      "Meme design que la 1oz",
-      "Tirage tres limite",
+      "Même design que la 1oz",
+      "Tirage très limité",
     ],
   },
   {
@@ -1281,8 +1281,8 @@ export const COINS: Coin[] = [
     face_value: null,
     highlights: [
       "Petit format accessible",
-      "Prime plus elevee que les 1oz",
-      "Collectionnee pour sa rarete",
+      "Prime plus élevée que les 1oz",
+      "Collectionnée pour sa rareté",
     ],
   },
   {
@@ -1303,9 +1303,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 25,
     face_value: null,
     highlights: [
-      "Format ideal pour debuter",
-      "Prime elevee sur petits formats",
-      "Tres recherchee des collectionneurs",
+      "Format idéal pour débuter",
+      "Prime élevée sur petits formats",
+      "Très recherchée des collectionneurs",
     ],
   },
   {
@@ -1327,13 +1327,13 @@ export const COINS: Coin[] = [
     face_value: null,
     highlights: [
       "Plus petite Libertad or disponible",
-      "Prime tres elevee",
-      "Plutot pour collectionneurs que investisseurs",
+      "Prime très élevée",
+      "Plutôt pour collectionneurs que investisseurs",
     ],
   },
 
   // =============================================
-  // ARGENT - 25 pieces
+  // ARGENT - 25 pièces
   // =============================================
 
   // --- 1 Oz Argent bullion moderne ---
@@ -1351,7 +1351,7 @@ export const COINS: Coin[] = [
     first_year: 1988,
     design_type: "occasional",
     design_changes: [
-      { year: 2014, description: "Ajout micro-gravure securite" },
+      { year: 2014, description: "Ajout micro-gravure sécurité" },
       { year: 2023, description: "Avers Charles III" },
     ],
     liquidity: 5,
@@ -1359,9 +1359,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 35,
     face_value: "5 CAD",
     highlights: [
-      "Purete 999.9 (4 neuf) - la plus pure du marche",
-      "Micro-gravure laser et lignes radiales anti-contrefacon",
-      "Une des pieces argent les plus vendues au monde",
+      "Pureté 999.9 (4 neuf) - la plus pure du marché",
+      "Micro-gravure laser et lignes radiales anti-contrefaçon",
+      "Une des pièces argent les plus vendues au monde",
     ],
   },
   {
@@ -1382,9 +1382,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 34,
     face_value: "1.50 EUR",
     highlights: [
-      "Version argent lancee en 2008 (or depuis 1989)",
-      "Seule piece bullion argent en euros",
-      "Design identique a la version or",
+      "Version argent lancée en 2008 (or depuis 1989)",
+      "Seule pièce bullion argent en euros",
+      "Design identique à la version or",
     ],
   },
   {
@@ -1406,9 +1406,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 35,
     face_value: "1 AUD",
     highlights: [
-      "Lancee en 2016 (plus recente que la version or)",
-      "Design du kangourou change chaque annee",
-      "Purete 999.9 comme la Maple Leaf",
+      "Lancée en 2016 (plus récente que la version or)",
+      "Design du kangourou change chaque année",
+      "Pureté 999.9 comme la Maple Leaf",
     ],
   },
   {
@@ -1425,7 +1425,7 @@ export const COINS: Coin[] = [
     first_year: 1997,
     design_type: "occasional",
     design_changes: [
-      { year: 2021, description: "Nouveau design securise" },
+      { year: 2021, description: "Nouveau design sécurisé" },
       { year: 2023, description: "Avers Charles III" },
     ],
     liquidity: 5,
@@ -1433,9 +1433,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 34,
     face_value: "2 GBP",
     highlights: [
-      "Elements de securite avances depuis 2021",
+      "Éléments de sécurité avancés depuis 2021",
       "Image latente et micro-texte sur le trident",
-      "Exoneree de CGT au Royaume-Uni",
+      "Exonérée de CGT au Royaume-Uni",
     ],
   },
   {
@@ -1457,10 +1457,10 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 38,
     face_value: "1 USD",
     highlights: [
-      "Piece argent la plus vendue au monde",
+      "Pièce argent la plus vendue au monde",
       "Design Walking Liberty (avers) depuis 1986",
       "Nouveau revers avec aigle en vol depuis 2021",
-      "Prime plus elevee que les concurrentes",
+      "Prime plus élevée que les concurrentes",
     ],
   },
   {
@@ -1481,8 +1481,8 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 33,
     face_value: null,
     highlights: [
-      "Lancee en 2017 pour les 50 ans du Krugerrand or",
-      "Meme design que la version or",
+      "Lancée en 2017 pour les 50 ans du Krugerrand or",
+      "Même design que la version or",
       "Pas de valeur faciale (comme la version or)",
     ],
   },
@@ -1499,15 +1499,15 @@ export const COINS: Coin[] = [
     thickness_mm: 2.98,
     first_year: 1983,
     design_type: "annual",
-    design_changes: [{ year: 2016, description: "Passage de 1oz a 30g" }],
+    design_changes: [{ year: 2016, description: "Passage de 1oz à 30g" }],
     liquidity: 4,
     vat_fr_pct: 0,
     estimated_premium_pct: 38,
     face_value: "10 CNY",
     highlights: [
-      "Design du panda change chaque annee",
-      "Passage de 1oz a 30g en 2016",
-      "Tres recherchee par les collectionneurs",
+      "Design du panda change chaque année",
+      "Passage de 1oz à 30g en 2016",
+      "Très recherchée par les collectionneurs",
     ],
   },
   {
@@ -1529,9 +1529,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 43,
     face_value: "1 AUD",
     highlights: [
-      "Design du koala change chaque annee",
-      "Lancee en 2007 (plus recente que Kookaburra)",
-      "Tirages limites, recherchee par les collectionneurs",
+      "Design du koala change chaque année",
+      "Lancée en 2007 (plus récente que Kookaburra)",
+      "Tirages limités, recherchée par les collectionneurs",
     ],
   },
   {
@@ -1554,8 +1554,8 @@ export const COINS: Coin[] = [
     face_value: null,
     highlights: [
       "Plus petite Libertad disponible",
-      "Tirage tres limite",
-      "Prime tres elevee due a la rarete",
+      "Tirage très limité",
+      "Prime très élevée due à la rareté",
     ],
   },
   {
@@ -1577,8 +1577,8 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 80,
     face_value: null,
     highlights: [
-      "Tirage tres limite, forte prime de rarete",
-      "Ange de l'Independance au revers",
+      "Tirage très limité, forte prime de rareté",
+      "Ange de l'Indépendance au revers",
       "Aucune valeur faciale inscrite",
     ],
   },
@@ -1601,8 +1601,8 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 60,
     face_value: null,
     highlights: [
-      "Tirage limite, prime de rarete significative",
-      "Ange de l'Independance au revers",
+      "Tirage limité, prime de rareté significative",
+      "Ange de l'Indépendance au revers",
       "Aucune valeur faciale inscrite",
     ],
   },
@@ -1626,7 +1626,7 @@ export const COINS: Coin[] = [
     face_value: null,
     highlights: [
       "Bon compromis taille/prime dans la gamme Libertad",
-      "Ange de l'Independance au revers",
+      "Ange de l'Indépendance au revers",
       "Aucune valeur faciale inscrite",
     ],
   },
@@ -1649,12 +1649,12 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 45,
     face_value: null,
     highlights: [
-      "Aucune valeur faciale (unique parmi les pieces bullion)",
-      "Valeur legale = cours du metal (fluctue quotidiennement)",
-      "Tirage tres limite (prime elevee)",
-      "Design de l'Ange de l'Independance",
+      "Aucune valeur faciale (unique parmi les pièces bullion)",
+      "Valeur légale = cours du métal (fluctue quotidiennement)",
+      "Tirage très limité (prime élevée)",
+      "Design de l'Ange de l'Indépendance",
       "Garantie par Banco de Mexico",
-      "Premiere piece bullion annuelle au monde (1982)",
+      "Première pièce bullion annuelle au monde (1982)",
     ],
   },
   {
@@ -1677,7 +1677,7 @@ export const COINS: Coin[] = [
     vat_fr_pct: 0,
     estimated_premium_pct: 40,
     face_value: null,
-    highlights: ["Format 2oz peu courant sur le marche", "Tirage limite"],
+    highlights: ["Format 2oz peu courant sur le marché", "Tirage limité"],
   },
   {
     id: "libertad-5oz-argent",
@@ -1701,7 +1701,7 @@ export const COINS: Coin[] = [
     face_value: null,
     highlights: [
       "Grand format impressionnant",
-      "Tirage tres limite (collectionnee)",
+      "Tirage très limité (collectionnée)",
     ],
   },
   {
@@ -1723,20 +1723,20 @@ export const COINS: Coin[] = [
     face_value: null,
     highlights: [
       "1 kilogramme d'argent pur",
-      "Tirage extremement limite (quelques milliers/an)",
-      "Non frappee en 2013 et 2014",
-      "Tres recherchee par les collectionneurs",
+      "Tirage extrêmement limité (quelques milliers/an)",
+      "Non frappée en 2013 et 2014",
+      "Très recherchée par les collectionneurs",
     ],
   },
   {
     id: "noah-ark-1oz-argent",
-    name: "Arche de Noe 1 Oz Argent",
+    name: "Arche de Noé 1 Oz Argent",
     metal: "silver",
     weight_oz: 1,
     weight_g: 31.1035,
     purity: 0.999,
     fineness: "999",
-    country: "Armenie",
+    country: "Arménie",
     diameter_mm: 38.6,
     thickness_mm: 3.0,
     first_year: 2011,
@@ -1746,9 +1746,9 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 30,
     face_value: "500 AMD",
     highlights: [
-      "Frappee par Geiger Edelmetalle (Allemagne)",
-      "Prime parmi les plus basses du marche",
-      "Piece armenienne mais qualite allemande",
+      "Frappée par Geiger Edelmetalle (Allemagne)",
+      "Prime parmi les plus basses du marché",
+      "Pièce arménienne mais qualité allemande",
     ],
   },
   {
@@ -1776,13 +1776,13 @@ export const COINS: Coin[] = [
     face_value: "1 AUD",
     highlights: [
       "12 animaux du zodiaque chinois (cycle de 12 ans)",
-      "Trois series: I (1999), II (2008), III (2020)",
-      "Tirages limites, tres collectionnee",
-      "Diametre plus grand que les autres 1oz (45.6mm)",
+      "Trois séries : I (1999), II (2008), III (2020)",
+      "Tirages limités, très collectionnée",
+      "Diamètre plus grand que les autres 1oz (45.6mm)",
     ],
   },
 
-  // --- Pieces francaises classiques argent ---
+  // --- Pièces françaises classiques argent ---
   {
     id: "50-francs-hercule-argent",
     name: "50 Francs Hercule Argent",
@@ -1802,9 +1802,9 @@ export const COINS: Coin[] = [
     face_value: "50 FRF",
     mintage: "46 410 266",
     highlights: [
-      "Design Hercule (3 personnages: Liberte, Egalite, Fraternite)",
-      "Frappee de 1974 a 1980",
-      "TVA 20% (piece demontisee depuis 2002)",
+      "Design Hercule (3 personnages : Liberté, Égalité, Fraternité)",
+      "Frappée de 1974 à 1980",
+      "TVA 20% (pièce démonétisée depuis 2002)",
       "Cotation quotidienne CPoR",
     ],
   },
@@ -1827,8 +1827,8 @@ export const COINS: Coin[] = [
     face_value: "10 FRF",
     mintage: "39 088 557",
     highlights: [
-      "Meme design Hercule que la 50 Francs",
-      "Frappee de 1964 a 1973",
+      "Même design Hercule que la 50 Francs",
+      "Frappée de 1964 à 1973",
       "Plus accessible que la 50 Francs",
     ],
   },
@@ -1852,9 +1852,9 @@ export const COINS: Coin[] = [
     mintage: "195 282 126",
     highlights: [
       "Design de la Semeuse (Oscar Roty)",
-      "Frappee de 1960 a 1969",
+      "Frappée de 1960 à 1969",
       "Titre 835/1000 (moins pur que Hercule)",
-      "Tres liquide, petite denomination",
+      "Très liquide, petite dénomination",
     ],
   },
   {
@@ -1878,8 +1878,8 @@ export const COINS: Coin[] = [
     highlights: [
       "Design de Pierre Turin",
       "Titre 680/1000 (alliage billon)",
-      "Frappee 1929-1939",
-      "Prime tres faible",
+      "Frappée 1929-1939",
+      "Prime très faible",
     ],
   },
   {
@@ -1901,14 +1901,14 @@ export const COINS: Coin[] = [
     face_value: "10 FRF",
     mintage: "98 223 600",
     highlights: [
-      "Meme design que la 20 Francs Turin",
+      "Même design que la 20 Francs Turin",
       "Titre 680/1000",
-      "Frappee 1929-1939",
+      "Frappée 1929-1939",
     ],
   },
   {
     id: "5-francs-hercule-ecu-argent",
-    name: "5 Francs Hercule (Ecu) Argent",
+    name: "5 Francs Hercule (Écu) Argent",
     metal: "silver",
     weight_oz: 0.7234,
     weight_g: 25.0,
@@ -1921,22 +1921,22 @@ export const COINS: Coin[] = [
     design_type: "occasional",
     design_changes: [
       { year: 1795, description: "Union et Force" },
-      { year: 1848, description: "Hercule II Republique" },
-      { year: 1870, description: "Hercule III Republique" },
+      { year: 1848, description: "Hercule IIᵉ République" },
+      { year: 1870, description: "Hercule IIIᵉ République" },
     ],
     liquidity: 4,
     vat_fr_pct: 20,
     estimated_premium_pct: 15,
     face_value: "5 FRF",
     highlights: [
-      "Piece historique (depuis 1795)",
-      "Surnommee 'Ecu' par les numismates",
-      "Plusieurs types selon les epoques",
-      "Valeur numismatique selon millesime",
+      "Pièce historique (depuis 1795)",
+      "Surnommée 'Écu' par les numismates",
+      "Plusieurs types selon les époques",
+      "Valeur numismatique selon millésime",
     ],
   },
 
-  // --- Pieces internationales complementaires ---
+  // --- Pièces internationales complémentaires ---
   {
     id: "buffalo-1oz-argent",
     name: "Buffalo 1 Oz Argent",
@@ -1955,10 +1955,10 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 35,
     face_value: null,
     highlights: [
-      "Round prive (pas une piece gouvernementale)",
+      "Round privé (pas une pièce gouvernementale)",
       "Design du nickel Buffalo de 1913",
       "Pas de valeur faciale",
-      "Moins liquide que les pieces souveraines",
+      "Moins liquide que les pièces souveraines",
     ],
   },
   {
@@ -1979,16 +1979,16 @@ export const COINS: Coin[] = [
     estimated_premium_pct: 32,
     face_value: "2 NZD",
     highlights: [
-      "Frappee par New Zealand Mint",
+      "Frappée par New Zealand Mint",
       "Design de la tortue Hawksbill",
-      "Cours legal a Niue (ile du Pacifique)",
-      "Prime moderee, design apprecie",
+      "Cours légal à Niue (île du Pacifique)",
+      "Prime modérée, design apprécié",
     ],
   },
 
   {
     id: "100-francs-argent-1982-2002",
-    name: "100 Francs Argent Pantheon (1982-2002)",
+    name: "100 Francs Argent Panthéon (1982-2002)",
     metal: "silver",
     weight_oz: 0.4823,
     weight_g: 15.0,
@@ -2005,9 +2005,9 @@ export const COINS: Coin[] = [
     face_value: "100 FRF",
     mintage: "14 850 244",
     highlights: [
-      "Derniere piece francaise en argent 900 milliemes, heritage Ve Republique",
-      "13.5g d'argent fin (15g x 900 milliemes), valeur metal + collection",
-      "Millesimes tardifs (1987-1996) a tirages tres limites, cotes elevees",
+      "Dernière pièce française en argent 900 millièmes, héritage Vᵉ République",
+      "13.5g d'argent fin (15g x 900 millièmes), valeur métal + collection",
+      "Millésimes tardifs (1987-1996) à tirages très limités, cotes élevées",
     ],
   },
 ];
