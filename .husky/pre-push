@@ -5,6 +5,12 @@ pnpm run lint || {
   echo "⚠️  Lint warnings found. Run 'pnpm run lint:fix' to auto-fix."
 }
 
+# Vitest suite (BLOCKING) — guardrail "tests as gate"
+pnpm run test:run || {
+  echo "❌ Vitest suite failed. Fix failing tests before pushing."
+  exit 1
+}
+
 # Build check (BLOCKING)
 pnpm run build || {
   echo "❌ Build failed. Fix build errors above."
