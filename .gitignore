@@ -38,6 +38,9 @@ pnpm-debug.log*
 # TypeScript
 *.tsbuildinfo
 
+# Vitest coverage
+coverage/
+
 # Markdown docs (local only)
 *.md
 !README.md

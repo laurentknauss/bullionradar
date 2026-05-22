@@ -22,9 +22,24 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
+  test:
+    name: Vitest (lib + components)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test:run
+
   deploy_production:
     name: Deploy Production
-    needs: [security]
+    needs: [security, test]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
@@ -40,7 +55,7 @@ jobs:
 
   deploy_preview:
     name: Deploy Preview
-    needs: [security]
+    needs: [security, test]
     if: github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:

@@ -100,11 +100,42 @@ METALS_DEV_API_KEY=
 ### Scripts disponibles
 
 ```bash
-pnpm dev       # Dev server (http://localhost:3000)
-pnpm build     # Build production
-pnpm start     # Serveur prod
-pnpm lint      # ESLint
-pnpm format    # Prettier
+pnpm dev            # Dev server (http://localhost:3000)
+pnpm build          # Build production
+pnpm start          # Serveur prod
+pnpm lint           # ESLint
+pnpm format         # Prettier
+pnpm test           # Vitest watch mode
+pnpm test:run       # Vitest one-shot (used in CI)
+pnpm test:coverage  # Vitest + v8 coverage report
+```
+
+## 🧪 Tests
+
+Suite de tests **Vitest** ciblant la logique métier pure (`src/lib/`) et les
+composants critiques (`AffiliateLink`).
+
+| Couche       | Outils                                                       |
+| ------------ | ------------------------------------------------------------ |
+| **Runner**   | Vitest 4 + happy-dom (env DOM rapide, pas de Node child)     |
+| **Composants** | `@testing-library/react` + `@testing-library/user-event`   |
+| **Matchers** | `@testing-library/jest-dom`                                  |
+| **Coverage** | `@vitest/coverage-v8` — gate à 70% sur `src/lib/`            |
+
+### Périmètre testé
+
+- `src/lib/coins-data.ts` — invariants du catalogue (unicité id, plages purity/liquidity, VAT 0% pour l'or)
+- `src/lib/godot-affiliate.ts` — mapping URL produit → URL trackée, filtres
+- `src/lib/supabase.ts` — helpers purs (mapping coin_id ↔ price slug, client Supabase mocké)
+- `src/lib/utils.ts` — `cn` (tailwind-merge) + `getDealerDisplayName`
+- `src/lib/format.ts` — `formatFineness`, `formatRelativeTime` (fake timers)
+- `src/components/affiliate-link.tsx` — transformations href orfr/godot + tracking Vercel Analytics
+
+### Lancer en local
+
+```bash
+pnpm test           # watch mode
+pnpm test:coverage  # rapport HTML dans coverage/index.html
 ```
 
 ## 🔄 Pipeline de scraping
