@@ -6,6 +6,7 @@ import { filterUntrackedGodot } from "@/lib/godot-affiliate";
 import { getDealerDisplayName } from "@/lib/utils";
 import { AffiliateLink } from "@/components/affiliate-link";
 import { Footer } from "@/components/footer";
+import { YouTubeLiteEmbed } from "@/components/youtube-lite-embed";
 import { formatFineness, formatRelativeTime } from "@/lib/format";
 // Vidéos Remotion désactivées sur le site (les vidéos sont pour YouTube uniquement).
 // Réactiver : décommenter ces imports + le bloc <CoinVideoSection> plus bas.
@@ -13,14 +14,16 @@ import { formatFineness, formatRelativeTime } from "@/lib/format";
 // import { CoinVideoSection } from "@/components/remotion/CoinVideoSection";
 import type { Coin } from "@/types";
 
-// Vidéos YouTube par slug URL (avec tirets entre nombres et unités)
+// Vidéos YouTube par slug URL (slug = slugify(coin.name) — cf findCoinBySlug)
 const COIN_YOUTUBE: Record<string, { videoUrl?: string }> = {
-  "krugerrand-1-oz-or": {
-    videoUrl: "https://www.youtube.com/watch?v=GGiF4LRwLFo",
-  },
+  "krugerrand-1-oz-or": { videoUrl: "https://youtu.be/GGiF4LRwLFo" },
   "maple-leaf-1-oz-or": { videoUrl: "https://youtu.be/ADqGVn5AK7I" },
-  // philharmonique-1-oz-or : thumbnail dispo, vidéo pas encore uploadée
-  "philharmonique-1-oz-or": {},
+  "philharmonique-1-oz-or": { videoUrl: "https://youtu.be/00v9EPQDuBw" },
+  "britannia-1-oz-or": { videoUrl: "https://youtu.be/DRguTIUrrGg" },
+  "20-francs-suisse-or-vreneli": { videoUrl: "https://youtu.be/hgHfXQDUMho" },
+  "10-francs-napoleon-or": { videoUrl: "https://youtu.be/irMGqTHO3nQ" },
+  "10-florins-or-pays-bas": { videoUrl: "https://youtu.be/8UfU3c_SOFc" },
+  // 20 Reichsmarks Or, American Buffalo 1oz Or, Fiscalite, Voyager : production terminee mais pas encore uploadees YT
 };
 
 // Images disponibles (WebP)
@@ -141,6 +144,13 @@ function slugify(name: string): string {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+}
+
+function getYouTubeVideoId(url: string): string | null {
+  const match = url.match(
+    /(?:youtu\.be\/|youtube\.com\/watch\?v=|youtube\.com\/embed\/)([\w-]+)/,
+  );
+  return match ? match[1] : null;
 }
 
 function findCoinBySlug(coins: Coin[], slug: string): Coin | undefined {
@@ -433,6 +443,33 @@ export default async function CoinPage({ params }: PageProps) {
 
   const faqs = buildFaqs(coin);
 
+  const youtubeVideoUrl = COIN_YOUTUBE[slug]?.videoUrl;
+  const youtubeVideoId = youtubeVideoUrl
+    ? getYouTubeVideoId(youtubeVideoUrl)
+    : null;
+
+  const videoObjectJsonLd =
+    youtubeVideoUrl && youtubeVideoId
+      ? {
+          "@type": "VideoObject",
+          name: `${coin.name} — Caractéristiques, Histoire & Investissement`,
+          description: `Analyse complète de la pièce ${coin.name} : spécifications techniques, histoire, design, marché et fiscalité française. Comparez les prix chez les dealers français sur BullionRadar.`,
+          thumbnailUrl: `https://bullionradar.fr/images/youtube-thumbnails/${slug}.jpg`,
+          uploadDate: "2026-05-22",
+          contentUrl: youtubeVideoUrl,
+          embedUrl: `https://www.youtube-nocookie.com/embed/${youtubeVideoId}`,
+          publisher: {
+            "@type": "Organization",
+            name: "BullionRadar",
+            url: "https://bullionradar.fr",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://bullionradar.fr/images/header-bullionradar.jpeg",
+            },
+          },
+        }
+      : null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -454,6 +491,7 @@ export default async function CoinPage({ params }: PageProps) {
         ],
       },
       buildProductJsonLd(coin, prices, image),
+      ...(videoObjectJsonLd ? [videoObjectJsonLd] : []),
       {
         "@type": "FAQPage",
         mainEntity: faqs.map((f) => ({
@@ -525,10 +563,18 @@ export default async function CoinPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Video vue d'ensemble — DÉSACTIVÉE (vidéos pour YouTube uniquement, pas pour le site) */}
-        {/* {hasVideo(coin.id) && (
-          <CoinVideoSection slug={coin.id} coinName={coin.name} />
-        )} */}
+        {/* Vidéo YouTube intégrée (lite embed — thumbnail propre, iframe au clic) */}
+        {youtubeVideoId && (
+          <section className="mt-8 mb-8 overflow-hidden rounded-xl border border-amber-500/40 bg-[#BE943C]/15 p-6">
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
+              <YouTubeLiteEmbed
+                videoId={youtubeVideoId}
+                thumbnailUrl={`https://img.youtube.com/vi/${youtubeVideoId}/maxresdefault.jpg`}
+                title={`Vidéo ${coin.name} — BullionRadar`}
+              />
+            </div>
+          </section>
+        )}
 
         {/* Caractéristiques */}
         <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-6">
