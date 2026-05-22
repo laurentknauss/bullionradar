@@ -36,6 +36,11 @@
       "source": "/coin/10-dollars-us-or-eagle",
       "destination": "/coin/10-dollars-or-eagle",
       "permanent": true
+    },
+    {
+      "source": "/coin/american-buffalo-1oz-or",
+      "destination": "/coin/american-buffalo-1-oz-or",
+      "permanent": true
     }
   ]
 }
