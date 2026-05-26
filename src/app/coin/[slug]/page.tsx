@@ -23,7 +23,8 @@ const COIN_YOUTUBE: Record<string, { videoUrl?: string }> = {
   "20-francs-suisse-or-vreneli": { videoUrl: "https://youtu.be/hgHfXQDUMho" },
   "10-francs-napoleon-or": { videoUrl: "https://youtu.be/irMGqTHO3nQ" },
   "10-florins-or-pays-bas": { videoUrl: "https://youtu.be/8UfU3c_SOFc" },
-  // 20 Reichsmarks Or, American Buffalo 1oz Or, Fiscalite, Voyager : production terminee mais pas encore uploadees YT
+  "20-reichsmarks-or": { videoUrl: "https://youtu.be/H0ZfTX4G454" },
+  // American Buffalo 1oz Or, Napoleon 20F, Fiscalite, Voyager : production terminee mais pas encore uploadees YT
 };
 
 // Images disponibles (WebP)
