@@ -2,9 +2,9 @@ name: Scrape Dealer Prices
 
 on:
   schedule:
-    # 11h France (10:00 UTC hiver, 09:00 UTC été)
-    # On utilise 10:00 UTC pour être safe
-    - cron: '0 10 * * *'
+    # 2x/jour, espacé de 12h — 08:00 et 20:00 UTC (10h et 22h Paris en CEST)
+    # Godot + Pièces-Or rafraîchis 2x/jour (évite le "il y a 1j" sur la prod)
+    - cron: '0 8,20 * * *'
   workflow_dispatch: # Permet de lancer manuellement
 
 jobs:
