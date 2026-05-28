@@ -24,7 +24,8 @@ const COIN_YOUTUBE: Record<string, { videoUrl?: string }> = {
   "10-francs-napoleon-or": { videoUrl: "https://youtu.be/irMGqTHO3nQ" },
   "10-florins-or-pays-bas": { videoUrl: "https://youtu.be/8UfU3c_SOFc" },
   "20-reichsmarks-or": { videoUrl: "https://youtu.be/H0ZfTX4G454" },
-  // American Buffalo 1oz Or, Napoleon 20F, Fiscalite, Voyager : production terminee mais pas encore uploadees YT
+  "50-pesos-or-centenario": { videoUrl: "https://youtu.be/E-FAvTKMhd8" },
+  // American Buffalo 1oz Or, Napoleon 20F, Fiscalite, Voyager, 5 Dollars Half Eagle, 4 Ducats : production terminee mais pas encore uploadees YT
 };
 
 // Images disponibles (WebP)
