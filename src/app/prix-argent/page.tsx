@@ -145,6 +145,12 @@ export default function PrixArgentPage() {
             ci-dessous pour estimer la valeur de votre argent au cours
             d&apos;aujourd&apos;hui.
           </p>
+          <p className="mt-4 text-sm leading-relaxed text-neutral-400">
+            <strong className="text-[#BE943C]">Données en temps réel :</strong>{" "}
+            calculateur basé sur le cours spot live. Prix des dealers français
+            scannés par notre intelligence artificielle, actualisés 2 fois par
+            jour à intervalle de 12 heures.
+          </p>
         </div>
 
         {/* Calculator */}
@@ -786,7 +792,7 @@ export default function PrixArgentPage() {
                   },
                   {
                     c: "Prime à l'achat",
-                    bullion: "15–30% au-dessus du spot",
+                    bullion: "20–30% (TVA 20% + prime dealer)",
                     argenterie: "Variable (parfois sous le spot au poids)",
                   },
                   {
