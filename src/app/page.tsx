@@ -79,31 +79,34 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="w-full">
-        <div className="mx-auto max-w-[900px]">
+      {/* Hero — bannière plein-largeur avec texte overlay */}
+      <section className="relative w-full overflow-hidden">
+        <div className="relative h-[420px] w-full md:h-[560px] lg:h-[640px]">
           <Image
-            src="/images/bonhomme-coffre-fort.jpeg"
-            alt="BullionRadar - Comparateur de pièces d'or et d'argent"
-            width={1024}
-            height={512}
-            className="mx-auto h-auto w-full max-w-[500px]"
+            src="/images/header-bullionradar-banner.png"
+            alt="BullionRadar - Mr Monopoly et coffre-fort débordant de pièces d'or"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
             priority
           />
-        </div>
-        <div className="mx-auto max-w-[800px] px-6 py-10 text-center">
-          <p className="mb-4 text-lg font-semibold tracking-wide text-black">
-            L&apos;unique comparatif indépendant de pièces d&apos;or et
-            d&apos;argent en France
-          </p>
-          <h1 className="mb-4 text-3xl leading-tight font-black text-[#1a1a1a] md:text-5xl">
-            Comparez les pièces d&apos;or et d&apos;argent au meilleur prix
-          </h1>
-          <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-black">
-            Comparez les caractéristiques de dizaines de pièces d&apos;or et
-            d&apos;argent, et trouvez le meilleur prix pour votre achat
-            d&apos;argent ou d&apos;or chez les dealers français.
-          </p>
+          {/* Overlay dégradé sombre pour lisibilité du texte (à gauche) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/10" />
+          {/* Contenu texte overlay */}
+          <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6 md:px-10">
+            <div className="max-w-xl text-white">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#FFD700] md:text-sm">
+                Comparateur indépendant or & argent en France
+              </p>
+              <h1 className="mb-4 text-3xl font-black leading-tight text-white md:text-5xl">
+                Comparez les pièces d&apos;or et d&apos;argent au meilleur prix
+              </h1>
+              <p className="text-base leading-relaxed text-white/90 md:text-lg">
+                Dizaines de pièces analysées, prix scannés en temps réel par
+                notre IA chez les meilleurs dealers français.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
