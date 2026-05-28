@@ -41,14 +41,14 @@ export default function AProposPage() {
           </h2>
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <p>
-              BullionRadar est un <strong>comparateur indépendant</strong> de
-              pièces d&apos;or et d&apos;argent d&apos;investissement, conçu
+              BullionRadar est un <strong>comparateur indépendant</strong>{" "}
+              de pièces d&apos;or et d&apos;argent d&apos;investissement, conçu
               pour les investisseurs français.
             </p>
             <p>
               Nous ne vendons aucune pièce. Notre seul objectif est de vous
-              fournir une <strong>information objective et à jour</strong> pour
-              vous aider à prendre les meilleures décisions
+              fournir une <strong>information objective et à jour</strong>{" "}
+              pour vous aider à prendre les meilleures décisions
               d&apos;investissement en métaux précieux.
             </p>
             <p>
@@ -73,13 +73,12 @@ export default function AProposPage() {
               <strong>totalement gratuite</strong> pour les utilisateurs.
             </p>
             <p>
-              Pour assurer la pérennité technique du projet, BullionRadar a
-              postulé aux programmes d&apos;affiliation de dealers reconnus tels
-              que <strong>Godot & Fils</strong> et <strong>Or.fr</strong>.
+              Pour assurer la pérennité technique du projet, BullionRadar est{" "}
+              <strong>partenaire affilié</strong> de dealers reconnus, dont{" "}
+              <strong>Godot & Fils</strong> et <strong>Or.fr</strong>.
             </p>
             <p>
-              À ce jour, ces demandes sont en cours d&apos;étude. Si elles sont
-              validées, BullionRadar pourrait percevoir une commission sur les
+              À ce titre, BullionRadar perçoit une commission sur certaines
               transactions initiées via le site.{" "}
               <strong>
                 Ce modèle n&apos;impacte jamais le prix final payé par
@@ -105,7 +104,7 @@ export default function AProposPage() {
             </p>
             <p>
               Pour chaque pièce, nous analysons et comparons les{" "}
-              <strong>caractéristiques techniques</strong> : poids, pureté,
+              <strong>caractéristiques techniques</strong>{" "}: poids, pureté,
               diamètre, épaisseur, pays d&apos;origine, première année de
               frappe, liquidité sur le marché secondaire et prime estimée par
               rapport au cours spot.
@@ -121,17 +120,18 @@ export default function AProposPage() {
           <div className="space-y-4 leading-relaxed tracking-wide text-[#FFFFF0]/80">
             <ul className="list-disc space-y-3 pl-6">
               <li>
-                <strong>Indépendance</strong> — Aucun dealer n&apos;est
+                <strong>Indépendance</strong>{" "}— Aucun dealer n&apos;est
                 privilégié. Le tri est strictement basé sur le prix.
               </li>
               <li>
-                <strong>Transparence</strong> — Les prix proviennent directement
-                des sources dealers. Notre modèle économique est exposé en toute
-                clarté.
+                <strong>Transparence</strong>{" "}— Les prix proviennent
+                directement des sources dealers. Notre modèle économique est
+                exposé en toute clarté.
               </li>
               <li>
-                <strong>Mise à jour quotidienne</strong> — Les prix reflètent
-                l&apos;état réel du marché chaque jour.
+                <strong>Mise à jour quotidienne</strong>{" "}— Prix actualisés{" "}
+                <strong>2 fois par jour à intervalle de 12 heures</strong>{" "}
+                (08h et 20h UTC), pour refléter l&apos;état réel du marché.
               </li>
             </ul>
           </div>
