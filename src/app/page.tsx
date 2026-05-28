@@ -81,13 +81,13 @@ export default function HomePage() {
 
       {/* Hero — texte à gauche, bannière à droite (image dominante) */}
       <section className="w-full">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-10 md:grid-cols-[1fr_2fr] md:gap-10 md:py-14 lg:gap-12">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-10 md:grid-cols-[1fr_2fr] md:gap-10 md:py-14 lg:grid-cols-[5fr_7fr] lg:gap-12">
           {/* Colonne gauche : texte */}
           <div className="text-left">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#3d3520] md:text-sm">
               Unique comparateur or & argent en France
             </p>
-            <h1 className="mb-4 text-3xl font-black leading-tight text-[#1a1a1a] md:text-4xl lg:text-5xl">
+            <h1 className="mb-4 text-balance text-3xl font-black leading-tight text-[#1a1a1a] md:text-4xl lg:text-5xl">
               Comparez et achetez au meilleur prix
             </h1>
             <p className="text-base leading-relaxed text-black/85 md:text-lg">
