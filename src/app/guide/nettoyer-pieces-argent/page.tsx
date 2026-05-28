@@ -160,15 +160,11 @@ export default function NettoyagePiecesArgentPage() {
         {/* Intro */}
         <div className="mb-10 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
           <p className="leading-relaxed text-neutral-300">
-            Vos pièces en argent ternissent, noircissent ou présentent des
-            taches ? C&apos;est normal : l&apos;argent réagit au soufre présent
-            dans l&apos;air pour former du{" "}
+            L&apos;argent ternit au contact du soufre de l&apos;air et forme du{" "}
             <strong className="text-white">sulfure d&apos;argent</strong> (Ag
-            <sub>2</sub>S), une couche noire en surface. Bonne nouvelle : cette
-            oxydation est{" "}
-            <strong className="text-white">purement superficielle</strong> et
-            peut être retirée sans abîmer vos pièces — à condition
-            d&apos;utiliser les bonnes méthodes.
+            <sub>2</sub>S), une couche noire{" "}
+            <strong className="text-white">purement superficielle</strong>{" "}
+            qui se retire sans abîmer la pièce — avec les bonnes méthodes.
           </p>
         </div>
 
@@ -292,22 +288,19 @@ export default function NettoyagePiecesArgentPage() {
             <div className="mt-6 rounded-lg border border-amber-600/20 bg-amber-900/10 px-4 py-3">
               <p className="text-sm text-neutral-300">
                 <strong className="text-amber-400">Pourquoi ça marche :</strong>{" "}
-                la réaction d&apos;oxydo-réduction transfère le soufre (S) du
-                sulfure d&apos;argent (Ag<sub>2</sub>S) vers l&apos;aluminium
-                (Al). L&apos;argent métallique est restauré sur la pièce, et
-                l&apos;aluminium se sulfure à sa place. Aucune perte de métal.
+                réaction d&apos;oxydo-réduction — le soufre du sulfure
+                d&apos;argent migre vers l&apos;aluminium. L&apos;argent métal
+                est restauré, sans aucune perte.
               </p>
             </div>
 
             <div className="mt-4 rounded-lg border border-red-500/30 bg-red-900/10 px-4 py-3">
               <p className="text-sm text-neutral-300">
-                <strong className="text-red-400">Attention :</strong> le
-                bicarbonate doit être{" "}
-                <strong className="text-white">dissous dans l&apos;eau</strong>,
-                jamais frotté directement sur la pièce. Le bicarbonate sec est
-                abrasif et laisse des micro-rayures invisibles à l&apos;œil nu
-                mais visibles au microscope. C&apos;est la réaction
-                électrolytique qui nettoie, pas le frottement.
+                <strong className="text-red-400">Attention :</strong>{" "}
+                bicarbonate à{" "}
+                <strong className="text-white">dissoudre dans l&apos;eau</strong>{" "}
+                — jamais frotté sec (abrasif, micro-rayures). C&apos;est
+                l&apos;électrolyse qui nettoie, pas le frottement.
               </p>
             </div>
           </div>
@@ -482,38 +475,40 @@ export default function NettoyagePiecesArgentPage() {
         </div>
 
         {/* ========================= */}
-        {/* ERREURS A EVITER */}
+        {/* ERREURS A EVITER (accordéon) */}
         {/* ========================= */}
-        <div className="mb-8 rounded-xl border-2 border-red-500/40 bg-neutral-900 p-6">
-          <h2 className="mb-4 text-xl font-bold text-red-400">
-            Erreurs à ne jamais commettre
-          </h2>
-
-          <div className="space-y-4">
+        <details className="group mb-8 rounded-xl border-2 border-red-500/40 bg-neutral-900">
+          <summary className="flex cursor-pointer list-none items-center justify-between p-6 text-xl font-bold text-red-400 [&::-webkit-details-marker]:hidden">
+            <span>Erreurs à ne jamais commettre</span>
+            <span className="text-sm transition-transform group-open:rotate-180">
+              ▼
+            </span>
+          </summary>
+          <div className="space-y-4 px-6 pb-6">
             {[
               {
                 error: "Frotter au bicarbonate de soude sec",
-                why: "Souvent recommandé à tort sur Internet. Le bicarbonate en poudre est abrasif et laisse des micro-rayures sur l'argent. Il ne doit être utilisé que dissous dans l'eau, dans le cadre de la méthode électrolytique avec aluminium.",
+                why: "Bicarbonate en poudre = abrasif → micro-rayures. À n'utiliser QUE dissous dans l'eau (méthode électrolytique avec aluminium).",
               },
               {
                 error: "Frotter avec du dentifrice",
-                why: "Abrasif : laisse des micro-rayures visibles sur l'argent. La pièce paraît propre mais est définitivement endommagée en surface.",
+                why: "Abrasif. La pièce paraît propre mais est définitivement micro-rayée.",
               },
               {
                 error: "Utiliser de l'eau de Javel",
-                why: "L'hypochlorite de sodium attaque l'argent et provoque des taches blanches irréversibles (chlorure d'argent).",
+                why: "L'hypochlorite attaque l'argent → taches blanches irréversibles (chlorure d'argent).",
               },
               {
                 error: "Frotter avec une brosse ou un tampon abrasif",
-                why: "Les frottements créent des rayures circulaires typiques d'un nettoyage amateur. Sur une pièce bullion, cela n'affecte pas la valeur métal, mais détruit l'aspect.",
+                why: "Rayures circulaires typiques d'un nettoyage amateur. Détruit l'aspect même si la valeur métal est préservée.",
               },
               {
                 error: 'Utiliser un produit type "Silver Dip" chimique',
-                why: "Ces bains acides dissolvent une fine couche d'argent à chaque utilisation. Efficace mais destructif : la pièce perd du poids et les détails s'estompent avec le temps.",
+                why: "Bains acides : dissolvent une fine couche d'argent à chaque usage. Perte de poids et détails estompés.",
               },
               {
                 error: "Manipuler la pièce à mains nues après nettoyage",
-                why: "Le sébum et l'acidité de la peau relancent l'oxydation en quelques jours. Utilisez toujours des gants en coton.",
+                why: "Sébum + acidité peau = oxydation en quelques jours. Toujours gants coton.",
               },
             ].map((item) => (
               <div key={item.error} className="rounded-lg bg-neutral-800 p-4">
@@ -527,48 +522,47 @@ export default function NettoyagePiecesArgentPage() {
               </div>
             ))}
           </div>
-        </div>
+        </details>
 
         {/* ========================= */}
-        {/* CONSERVATION */}
+        {/* CONSERVATION (accordéon) */}
         {/* ========================= */}
-        <div className="mb-8 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
-          <div className="mb-4 flex items-center gap-3">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#BE943C] text-lg font-black text-black">
-              5
+        <details className="group mb-8 rounded-xl border border-neutral-800 bg-neutral-900">
+          <summary className="flex cursor-pointer list-none items-center justify-between p-6 [&::-webkit-details-marker]:hidden">
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#BE943C] text-lg font-black text-black">
+                5
+              </span>
+              <h2 className="text-xl font-bold text-white">
+                Conserver ses pièces — prévenir l&apos;oxydation
+              </h2>
+            </div>
+            <span className="text-sm text-[#BE943C] transition-transform group-open:rotate-180">
+              ▼
             </span>
-            <h2 className="text-xl font-bold text-white">
-              Conserver ses pièces en argent : prévenir plutôt que guérir
-            </h2>
-          </div>
+          </summary>
 
-          <p className="mb-4 text-neutral-300">
-            Le meilleur nettoyage est celui qu&apos;on n&apos;a pas à faire.
-            Quelques précautions simples empêchent l&apos;oxydation de se
-            former.
-          </p>
-
-          <div className="space-y-3">
+          <div className="space-y-3 px-6 pb-6">
             {[
               {
                 title: "Capsules individuelles",
-                desc: "Chaque pièce dans sa capsule hermétique en plastique dur (type Leuchtturm ou Lindner). Protège des chocs, de l'air et de l'humidité.",
+                desc: "Capsule hermétique plastique dur (Leuchtturm, Lindner). Protège chocs, air, humidité.",
               },
               {
                 title: "Tubes empilables",
-                desc: "Pour les pièces bullion achetées en quantité (Maple Leaf, Philharmonique). Les tubes officiels des Monnaies (Royal Canadian Mint, Austrian Mint) sont conçus pour un stockage longue durée.",
+                desc: "Tubes officiels des Monnaies (RC Mint, Austrian Mint) pour pièces bullion en quantité — stockage longue durée.",
               },
               {
                 title: "Sachets anti-humidité",
-                desc: "Placez des sachets de silica gel dans votre coffre ou tiroir de rangement. L'humidité est le premier facteur d'oxydation.",
+                desc: "Silica gel dans coffre/tiroir. L'humidité est le premier facteur d'oxydation.",
               },
               {
-                title: "Eviter le contact avec le caoutchouc",
-                desc: "Le caoutchouc dégage du soufre, qui accélère le ternissement de l'argent. Pas d'élastiques autour des tubes, pas de tapis en caoutchouc dans le coffre.",
+                title: "Éviter le caoutchouc",
+                desc: "Le caoutchouc dégage du soufre → ternissement accéléré. Pas d'élastiques autour des tubes.",
               },
               {
                 title: "Ne jamais toucher à mains nues",
-                desc: "Manipulez vos pièces avec des gants en coton blanc. Les empreintes digitales provoquent une oxydation localisée très visible avec le temps.",
+                desc: "Gants coton blanc obligatoires. Les empreintes digitales provoquent une oxydation localisée visible avec le temps.",
               },
             ].map((item) => (
               <div key={item.title} className="rounded-lg bg-neutral-800 p-4">
@@ -577,17 +571,22 @@ export default function NettoyagePiecesArgentPage() {
               </div>
             ))}
           </div>
-        </div>
+        </details>
 
         {/* ========================= */}
-        {/* ARGENT 925 vs 999 */}
+        {/* ARGENT 925 vs 999 (accordéon) */}
         {/* ========================= */}
-        <div className="mb-8 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
-          <h2 className="mb-4 text-lg font-bold text-white">
-            Nettoyage argent 925 vs argent 999 : quelle différence ?
-          </h2>
+        <details className="group mb-8 rounded-xl border border-neutral-800 bg-neutral-900">
+          <summary className="flex cursor-pointer list-none items-center justify-between p-6 [&::-webkit-details-marker]:hidden">
+            <h2 className="text-lg font-bold text-white">
+              Argent 925 vs argent 999 — quelle différence ?
+            </h2>
+            <span className="text-sm text-[#BE943C] transition-transform group-open:rotate-180">
+              ▼
+            </span>
+          </summary>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto px-6 pb-6">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-neutral-700">
@@ -641,7 +640,7 @@ export default function NettoyagePiecesArgentPage() {
               </tbody>
             </table>
           </div>
-        </div>
+        </details>
 
         {/* ========================= */}
         {/* FAQ */}
@@ -673,12 +672,15 @@ export default function NettoyagePiecesArgentPage() {
           </Link>
         </div>
 
-        {/* Sources */}
-        <div className="mt-12 border-t border-neutral-800 pt-6">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-400">
-            Sources
-          </p>
-          <ul className="space-y-1 text-xs text-neutral-400">
+        {/* Sources (accordéon) */}
+        <details className="group mt-12 border-t border-neutral-800 pt-6">
+          <summary className="flex cursor-pointer list-none items-center justify-between text-xs font-semibold uppercase tracking-wide text-neutral-400 [&::-webkit-details-marker]:hidden">
+            <span>Sources</span>
+            <span className="text-xs transition-transform group-open:rotate-180">
+              ▼
+            </span>
+          </summary>
+          <ul className="mt-3 space-y-1 text-xs text-neutral-400">
             <li>
               Chimie des réactions d&apos;oxydo-réduction argent/aluminium —
               Sulfure d&apos;argent (Ag<sub>2</sub>S) et réduction
@@ -693,7 +695,7 @@ export default function NettoyagePiecesArgentPage() {
               sur la valeur des pièces de collection
             </li>
           </ul>
-        </div>
+        </details>
       </div>
 
       <Footer />
