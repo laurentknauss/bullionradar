@@ -85,12 +85,17 @@ export function isGodotAffiliateTracked(productUrl: string): boolean {
   return getGodotAffiliateUrl(productUrl) !== null;
 }
 
+// Politique : on AFFICHE tous les prix Godot, y compris ceux sans lien affilié
+// tracé (bullion argent étrangers non couverts par le programme Godot).
+// Objectif rétention des visiteurs > commission : un comparateur complet vaut
+// mieux qu'un prix masqué. Les pièces non tracées pointent vers l'URL produit
+// directe (cf. affiliate-link.tsx, fallback non commissionné).
+// La fonction reste un passthrough pour conserver un point de contrôle unique
+// si la politique évolue (réactiver un filtrage ciblé).
 export function filterUntrackedGodot<
   T extends { dealer: string; product_url?: string | null },
 >(prices: T[]): T[] {
-  return prices.filter(
-    (p) => p.dealer !== "godot" || isGodotAffiliateTracked(p.product_url ?? ""),
-  );
+  return prices;
 }
 
 export { GODOT_HOMEPAGE_FALLBACK };

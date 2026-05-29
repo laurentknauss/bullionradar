@@ -78,6 +78,8 @@ describe("isGodotAffiliateTracked", () => {
 });
 
 describe("filterUntrackedGodot", () => {
+  // Politique rétention : tous les prix Godot sont affichés (passthrough),
+  // qu'ils soient tracés en affiliation ou non (cf. godot-affiliate.ts).
   const trackedGodotUrl =
     "https://www.godot-fils.com/categorie/or/krugerrand-1-oz/12/";
 
@@ -94,26 +96,24 @@ describe("filterUntrackedGodot", () => {
     expect(filterUntrackedGodot(prices)).toEqual(prices);
   });
 
-  it("drops godot rows that are not tracked", () => {
+  it("keeps godot rows that are NOT tracked (rétention policy)", () => {
     const prices = [
       {
         dealer: "godot",
         product_url:
-          "https://www.godot-fils.com/categorie/or/inconnu/99999999/",
+          "https://www.godot-fils.com/categorie/argent/libertad-1-once/1661",
       },
       { dealer: "godot", product_url: trackedGodotUrl },
     ];
-    const filtered = filterUntrackedGodot(prices);
-    expect(filtered).toHaveLength(1);
-    expect(filtered[0]?.product_url).toBe(trackedGodotUrl);
+    expect(filterUntrackedGodot(prices)).toEqual(prices);
   });
 
-  it("drops godot rows with null/undefined product_url", () => {
+  it("keeps godot rows with null/undefined product_url", () => {
     const prices = [
       { dealer: "godot", product_url: null },
       { dealer: "godot" },
     ];
-    expect(filterUntrackedGodot(prices)).toEqual([]);
+    expect(filterUntrackedGodot(prices)).toEqual(prices);
   });
 
   it("returns an empty array for empty input", () => {
