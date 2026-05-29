@@ -153,6 +153,7 @@ const COIN_ID_TO_PRICE_SLUG: Record<string, string> = {
   // Argent manquantes (Godot)
   "buffalo-1oz-argent": "buffalo-1oz-argent",
   "100-francs-argent-1982-2002": "100-francs-argent-1982-2002",
+  "panda-30g-argent": "panda-30g-argent",
 };
 
 // Récupérer le slug Supabase à partir de l'ID coins-data

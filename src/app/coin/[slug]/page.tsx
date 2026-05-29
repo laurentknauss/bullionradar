@@ -457,6 +457,19 @@ export default async function CoinPage({ params }: PageProps) {
     const metalLabel = c.metal === "gold" ? "or" : "argent";
     const purityPct = (c.purity * 100).toFixed(2).replace(/\.?0+$/, "");
     const vatExempt = (c.vat_fr_pct ?? 0) === 0;
+    // TVA : régime distinct or (art. 298 sexdecies A) / argent (cours légal)
+    let vatAnswer: string;
+    if (vatExempt) {
+      vatAnswer =
+        c.metal === "gold"
+          ? `Oui, ${c.name} est exonérée de TVA en France au titre de l'or d'investissement (article 298 sexdecies A du Code général des impôts). Aucune TVA n'est appliquée à l'achat.`
+          : `Oui, aucune TVA n'est appliquée à l'achat de ${c.name} en France : c'est une pièce d'argent à cours légal. Contrairement aux lingots et aux « rounds » d'argent (soumis à 20 %), les pièces d'argent ayant cours légal échappent à la TVA. L'exonération de l'article 298 sexdecies A du CGI ne vise, elle, que l'or d'investissement.`;
+    } else {
+      vatAnswer =
+        c.metal === "gold"
+          ? `${c.name} est soumise à une TVA de ${c.vat_fr_pct}% en France, car elle ne répond pas aux critères de l'or d'investissement.`
+          : `${c.name} est soumise à une TVA de ${c.vat_fr_pct}% en France : pièce d'argent démonétisée ou sans cours légal (assimilée aux lingots et « rounds »), elle ne bénéficie pas de l'absence de TVA réservée aux pièces d'argent à cours légal.`;
+    }
     return [
       {
         question: `Quelle est la pureté de la pièce ${c.name} ?`,
@@ -469,9 +482,7 @@ export default async function CoinPage({ params }: PageProps) {
       },
       {
         question: `${c.name} est-elle exonérée de TVA en France ?`,
-        answer: vatExempt
-          ? `Oui, ${c.name} est exonérée de TVA en France au titre de l'${metalLabel} d'investissement (article 298 sexdecies du Code général des impôts). Aucune TVA n'est appliquée à l'achat.`
-          : `${c.name} est soumise à une TVA de ${c.vat_fr_pct}% en France, car elle ne répond pas aux critères stricts de l'${metalLabel} d'investissement.`,
+        answer: vatAnswer,
       },
       {
         question: `Quelle fiscalité s'applique à la revente de ${c.name} ?`,

@@ -169,13 +169,20 @@ export default function FiscalitePage() {
         {/* Intro */}
         <div className="mb-10 rounded-xl border border-neutral-800 bg-neutral-900 p-6">
           <p className="leading-relaxed text-neutral-300">
-            L&apos;or et l&apos;argent d&apos;investissement sont{" "}
+            L&apos;or d&apos;investissement est{" "}
             <strong className="text-white">
-              exonérés de TVA à l&apos;achat
+              exonéré de TVA à l&apos;achat
             </strong>{" "}
-            en France. En revanche, lors de la{" "}
+            (article 298 sexdecies A du CGI). L&apos;argent, lui, est{" "}
+            <strong className="text-white">soumis à la TVA de 20 %</strong> à
+            l&apos;achat — sauf les pièces d&apos;argent à{" "}
+            <strong className="text-white">cours légal</strong> (Maple Leaf,
+            American Eagle, Britannia, Philharmonique, Libertad…), qui en sont
+            dispensées ; les lingots et «&nbsp;rounds&nbsp;» d&apos;argent
+            restent taxés à 20 %. En revanche, lors de la{" "}
             <strong className="text-white">revente</strong>, le vendeur est
-            soumis à l&apos;un des deux régimes fiscaux suivants : la{" "}
+            soumis — pour l&apos;or comme pour l&apos;argent — à l&apos;un des
+            deux régimes fiscaux suivants : la{" "}
             <strong className="text-[#BE943C]">
               Taxe sur les Métaux Précieux (TMP)
             </strong>{" "}

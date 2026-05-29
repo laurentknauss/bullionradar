@@ -792,7 +792,7 @@ export default function PrixArgentPage() {
                   },
                   {
                     c: "Prime à l'achat",
-                    bullion: "20–30% (TVA 20% + prime dealer)",
+                    bullion: "15–30% (0% TVA si cours légal, sinon +20%)",
                     argenterie: "Variable (parfois sous le spot au poids)",
                   },
                   {
