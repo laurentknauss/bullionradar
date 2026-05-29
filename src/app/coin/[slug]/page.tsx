@@ -15,17 +15,63 @@ import { formatFineness, formatRelativeTime } from "@/lib/format";
 import type { Coin } from "@/types";
 
 // Vidéos YouTube par slug URL (slug = slugify(coin.name) — cf findCoinBySlug)
-const COIN_YOUTUBE: Record<string, { videoUrl?: string }> = {
-  "krugerrand-1-oz-or": { videoUrl: "https://youtu.be/GGiF4LRwLFo" },
-  "maple-leaf-1-oz-or": { videoUrl: "https://youtu.be/ADqGVn5AK7I" },
-  "philharmonique-1-oz-or": { videoUrl: "https://youtu.be/00v9EPQDuBw" },
-  "britannia-1-oz-or": { videoUrl: "https://youtu.be/DRguTIUrrGg" },
-  "20-francs-suisse-or-vreneli": { videoUrl: "https://youtu.be/hgHfXQDUMho" },
-  "10-francs-napoleon-or": { videoUrl: "https://youtu.be/irMGqTHO3nQ" },
-  "10-florins-or-pays-bas": { videoUrl: "https://youtu.be/8UfU3c_SOFc" },
-  "20-reichsmarks-or": { videoUrl: "https://youtu.be/H0ZfTX4G454" },
-  "50-pesos-or-centenario": { videoUrl: "https://youtu.be/E-FAvTKMhd8" },
-  "napoleon-20-francs-or": { videoUrl: "https://youtu.be/WVy7Vh6rVzs" },
+// uploadDate (ISO 8601) + duration (ISO 8601, ex. PT4M36S) sont les VRAIES valeurs
+// YouTube de chaque vidéo (source que Google recoupe via contentUrl) — utilisées
+// telles quelles dans le schema VideoObject. Ne pas remettre une date unique en dur.
+const COIN_YOUTUBE: Record<
+  string,
+  { videoUrl?: string; uploadDate?: string; duration?: string }
+> = {
+  "krugerrand-1-oz-or": {
+    videoUrl: "https://youtu.be/GGiF4LRwLFo",
+    uploadDate: "2026-05-12",
+    duration: "PT4M36S",
+  },
+  "maple-leaf-1-oz-or": {
+    videoUrl: "https://youtu.be/ADqGVn5AK7I",
+    uploadDate: "2026-05-14",
+    duration: "PT3M43S",
+  },
+  "philharmonique-1-oz-or": {
+    videoUrl: "https://youtu.be/00v9EPQDuBw",
+    uploadDate: "2026-05-18",
+    duration: "PT4M10S",
+  },
+  "britannia-1-oz-or": {
+    videoUrl: "https://youtu.be/DRguTIUrrGg",
+    uploadDate: "2026-05-20",
+    duration: "PT4M52S",
+  },
+  "20-francs-suisse-or-vreneli": {
+    videoUrl: "https://youtu.be/hgHfXQDUMho",
+    uploadDate: "2026-05-19",
+    duration: "PT4M19S",
+  },
+  "10-francs-napoleon-or": {
+    videoUrl: "https://youtu.be/irMGqTHO3nQ",
+    uploadDate: "2026-05-21",
+    duration: "PT4M18S",
+  },
+  "10-florins-or-pays-bas": {
+    videoUrl: "https://youtu.be/8UfU3c_SOFc",
+    uploadDate: "2026-05-22",
+    duration: "PT5M59S",
+  },
+  "20-reichsmarks-or": {
+    videoUrl: "https://youtu.be/H0ZfTX4G454",
+    uploadDate: "2026-05-26",
+    duration: "PT5M43S",
+  },
+  "50-pesos-or-centenario": {
+    videoUrl: "https://youtu.be/E-FAvTKMhd8",
+    uploadDate: "2026-05-28",
+    duration: "PT6M54S",
+  },
+  "napoleon-20-francs-or": {
+    videoUrl: "https://youtu.be/WVy7Vh6rVzs",
+    uploadDate: "2026-05-29",
+    duration: "PT5M18S",
+  },
   // American Buffalo 1oz Or, Fiscalite, Voyager, 5 Dollars Half Eagle, 4 Ducats : production terminee mais pas encore uploadees YT
 };
 
@@ -446,7 +492,8 @@ export default async function CoinPage({ params }: PageProps) {
 
   const faqs = buildFaqs(coin);
 
-  const youtubeVideoUrl = COIN_YOUTUBE[slug]?.videoUrl;
+  const coinVideo = COIN_YOUTUBE[slug];
+  const youtubeVideoUrl = coinVideo?.videoUrl;
   const youtubeVideoId = youtubeVideoUrl
     ? getYouTubeVideoId(youtubeVideoUrl)
     : null;
@@ -458,7 +505,8 @@ export default async function CoinPage({ params }: PageProps) {
           name: `${coin.name} — Caractéristiques, Histoire & Investissement`,
           description: `Analyse complète de la pièce ${coin.name} : spécifications techniques, histoire, design, marché et fiscalité française. Comparez les prix chez les dealers français sur BullionRadar.`,
           thumbnailUrl: `https://bullionradar.fr/images/youtube-thumbnails/${slug}.jpg`,
-          uploadDate: "2026-05-22",
+          uploadDate: coinVideo?.uploadDate ?? "2026-05-22",
+          ...(coinVideo?.duration ? { duration: coinVideo.duration } : {}),
           contentUrl: youtubeVideoUrl,
           embedUrl: `https://www.youtube-nocookie.com/embed/${youtubeVideoId}`,
           publisher: {
