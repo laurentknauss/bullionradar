@@ -359,6 +359,11 @@ const SILVER_COINS: readonly CoinConfig[] = [
     name: "Panda 30g Argent",
     url: "https://www.achat-or-et-argent.fr/argent/panda-30g/3286",
   },
+  {
+    slug: "libertad-1oz-argent",
+    name: "Libertad 1 Once Argent",
+    url: "https://www.achat-or-et-argent.fr/argent/libertad-1-once/1661",
+  },
 ] as const;
 
 // French silver coins to scrape from Godot
